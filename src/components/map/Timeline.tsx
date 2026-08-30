@@ -42,7 +42,7 @@ export default function Timeline() {
   });
 
   return (
-    <div className="absolute bottom-3 left-1/2 z-[5] w-[min(940px,calc(100%-32px))] -translate-x-1/2 rounded-xl border border-ink/12 bg-panel/82 px-3.5 pt-3 pb-2 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] sm:bottom-[22px] sm:px-5 sm:pt-3.5 sm:pb-2.5">
+    <div className="absolute bottom-3 left-1/2 z-[5] w-[min(940px,calc(100%-32px))] -translate-x-1/2 rounded-xl border border-ink/12 bg-panel/55 px-3.5 pt-3 pb-2 shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%] sm:bottom-[22px] sm:px-5 sm:pt-3.5 sm:pb-2.5">
       <div className="mb-3 flex items-center justify-center gap-2 sm:gap-3">
         <div className="flex gap-1">
           <StepButton direction="left" years={50} onClick={() => step(-1, 50)} />

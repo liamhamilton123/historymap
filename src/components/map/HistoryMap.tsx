@@ -13,6 +13,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 import { buildStyle, polityFilter, POLITY_LAYERS, HATCHED_STATUSES } from '~/lib/mapStyle';
 import { hatchImage, HATCH_PIXEL_RATIO } from '~/lib/hatch';
+import { attachPolityLabels, type PolityLabels } from './polityLabels';
 import { useMapStore } from '~/lib/store';
 import { readView, pushView, writeView } from '~/lib/url';
 import { hasWebGL2 } from '~/lib/webgl';
@@ -68,6 +69,7 @@ export default function HistoryMap() {
   const globe = useMapStore((state) => state.globe);
   const t = useMapStore((state) => state.t);
   const styleReady = useRef(false);
+  const labels = useRef<PolityLabels | null>(null);
 
   useEffect(() => {
     if (!container.current || map.current) return;
@@ -95,7 +97,7 @@ export default function HistoryMap() {
         // Rotation is noise on this kind of map; dragging should pan, always.
         dragRotate: false,
         pitchWithRotate: false,
-        attributionControl: { compact: true },
+        attributionControl: false,
       });
     } catch (error) {
       console.error('[atlas] map failed to initialise', error);
@@ -111,6 +113,17 @@ export default function HistoryMap() {
       registerHatches(instance);
       applyInstant(instance, useMapStore.getState().t);
     });
+
+    let cancelled = false;
+    attachPolityLabels(instance)
+      .then((attached) => {
+        // The island can unmount before the fetch settles; tear down rather
+        // than leaving markers bound to a removed map.
+        if (cancelled) return attached.destroy();
+        labels.current = attached;
+        attached.update(useMapStore.getState().t);
+      })
+      .catch((error) => console.error('[atlas] polity labels failed to load', error));
 
     // The island can mount before Vite has applied the global Tailwind sheet.
     // MapLibre snapshots its canvas size during construction, so observe the
@@ -164,7 +177,7 @@ export default function HistoryMap() {
       });
     }
 
-    instance.addControl(new ScaleControl({ unit: 'metric' }), 'bottom-right');
+    instance.addControl(new ScaleControl({ unit: 'metric' }), 'top-right');
 
     const currentView = () => {
       const center = instance.getCenter();
@@ -199,6 +212,9 @@ export default function HistoryMap() {
     window.addEventListener('popstate', restoreFromHistory);
 
     return () => {
+      cancelled = true;
+      labels.current?.destroy();
+      labels.current = null;
       styleReady.current = false;
       resizeObserver.disconnect();
       instance.off('movestart', beginMapHistory);
@@ -229,6 +245,7 @@ export default function HistoryMap() {
   useEffect(() => {
     if (!map.current) return;
     if (styleReady.current) applyInstant(map.current, t);
+    labels.current?.update(t);
     if (restoringHistory.current) return;
     const center = map.current.getCenter();
     writeView({ t, lng: center.lng, lat: center.lat, zoom: map.current.getZoom() });
@@ -256,7 +273,7 @@ export default function HistoryMap() {
       />
       <a
         href="/"
-        className="absolute top-4 left-4 z-[5] inline-flex size-10 items-center justify-center rounded-xl border border-ink/12 bg-panel/82 text-ink shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] transition-colors hover:border-ink/20 hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        className="absolute top-4 left-4 z-[5] inline-flex size-10 items-center justify-center rounded-xl border border-ink/12 bg-panel/55 text-ink shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%] transition-colors hover:border-ink/20 hover:bg-panel/75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         aria-label="Close map and return home"
         title="Close map"
       >

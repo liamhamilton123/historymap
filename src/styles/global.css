@@ -39,7 +39,7 @@
 
 /* MapLibre owns this markup, so Tailwind's @apply is used for its chrome. */
 @layer components {
-  .maplibregl-ctrl-group { @apply !border !border-ink/12 !bg-panel/82 !shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%]; }
+  .maplibregl-ctrl-group { @apply !border !border-ink/12 !bg-panel/82 !shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%]; }
   .maplibregl-ctrl-group button + button { @apply !border-t-ink/12; }
   .maplibregl-ctrl-group button .maplibregl-ctrl-icon { @apply ![filter:opacity(.65)]; }
   @media (prefers-color-scheme: dark) {
@@ -47,5 +47,14 @@
   }
   .maplibregl-ctrl-attrib { @apply !bg-ocean-deep/75 text-[11px] text-ink-faint; }
   .maplibregl-ctrl-attrib a { @apply text-ink-dim; }
+  /* Keep MapLibre's scale indicator aligned with the custom map controls. */
+  .maplibregl-ctrl-top-right { top: 1rem !important; right: 13rem !important; z-index: 6 !important; }
+  .maplibregl-ctrl-scale {
+    border-color: var(--color-ink-faint) !important;
+    background-color: color-mix(in srgb, var(--color-panel) 88%, transparent) !important;
+    color: var(--color-ink-dim) !important;
+    box-shadow: var(--shadow-panel);
+  }
   .maplibregl-canvas:focus { @apply outline-none; }
+
 }

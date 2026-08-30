@@ -4,6 +4,7 @@
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { join, basename } from 'node:path';
 import polygonClipping from 'polygon-clipping';
+import polylabel from 'polylabel';
 import { topology } from 'topojson-server';
 import { presimplify, simplify } from 'topojson-simplify';
 import { feature as topoFeature } from 'topojson-client';
@@ -31,6 +32,16 @@ const OPEN_ENDED = 9999;
 const MONTH_START = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 
 const SQ_DEG_TO_SQ_KM = 111 * 111;
+
+/**
+ * Sets how early a label appears: a polity shows its name once its extent is
+ * roughly a fixed fraction of the viewport, so Russia is labelled from the
+ * first zoom level and Armenia only once you are looking at the Caucasus.
+ * Raise it to label more at once, at the cost of crowding.
+ */
+const LABEL_ZOOM_CONSTANT = 90;
+/** Precision of the label anchor search, in degrees. */
+const LABEL_PRECISION = 0.05;
 
 /**
  * How a span is drawn. The styling itself lives in one place, POLITY_STATUS in
@@ -259,6 +270,9 @@ for (const spec of specs) {
         to,
         fromDate: entry.from,
         toDate: entry.to ?? null,
+        // Lets a span be named something other than the polity, for the cases
+        // where "Russia" over Crimea would read worse than "Crimea".
+        label: entry.label ?? null,
       },
       geometry,
     });
@@ -308,17 +322,44 @@ console.log(`  overlap check: ${compared} coexisting pair(s) intersected`);
 
 features.sort((a, b) => a.properties.from - b.properties.from);
 
+// --- label anchors ---------------------------------------------------------
+// Kept out of the polygon file and resolved here rather than in the browser:
+// placing a name needs the pole of inaccessibility of the polity's largest
+// piece, which is the one point guaranteed to be inside a concave shape.
+const labels = features.map((f) => {
+  const polygons = polygonsOf(f.geometry);
+  const largest = polygons.reduce((a, b) => (areaOf([a]) >= areaOf([b]) ? a : b));
+  const [lng, lat] = polylabel(largest, LABEL_PRECISION);
+  const extent = Math.sqrt(areaOf(polygons));
+  return {
+    polity: f.properties.polity,
+    text: f.properties.label ?? f.properties.name,
+    color: f.properties.color,
+    status: f.properties.status,
+    from: f.properties.from,
+    to: f.properties.to,
+    anchor: [Number(lng.toFixed(3)), Number(lat.toFixed(3))],
+    minZoom: Number(
+      Math.max(0, Math.min(8, Math.log2(LABEL_ZOOM_CONSTANT / extent))).toFixed(2),
+    ),
+  };
+});
+
 await mkdir(OUT_DIR, { recursive: true });
 const out = join(OUT_DIR, 'polities.geojson');
 await writeFile(out, JSON.stringify({ type: 'FeatureCollection', features }));
+const labelsOut = join(OUT_DIR, 'polity-labels.json');
+await writeFile(labelsOut, JSON.stringify(labels));
 const { size } = await import('node:fs/promises').then((fs) => fs.stat(out));
 
 if (problems.length) {
   console.log(`\n${problems.length} problem(s):`);
   for (const problem of problems) console.log(`  ! ${problem}`);
 }
+const labelSize = (await import('node:fs/promises').then((fs) => fs.stat(labelsOut))).size;
 console.log(
   `\npolities.geojson · ${features.length} features · ${(size / 1024).toFixed(0)} KB` +
-    ` · ${byPolity.size} polities`,
+    ` · ${byPolity.size} polities` +
+    `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB`,
 );
 if (problems.length) process.exitCode = 1;

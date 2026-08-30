@@ -22,8 +22,11 @@ npm run dev
 
 ```
 src/
-  components/map/     HistoryMap (the island), Timeline, MapControls
-  lib/mapStyle.ts     The MapLibre style
+  components/map/     HistoryMap (the island), Timeline, MapControls, polityLabels
+  lib/mapStyle.ts     The MapLibre style, and POLITY_STATUS — the one place
+                      a status's fill, stripes, outline and label are defined
+  lib/hatch.ts        Generates the diagonal stripe pattern for disputed land
+  lib/time.ts         Instants as decimal years; ISO dates in and out
   lib/years.ts        Timeline scale and BC/AD formatting
   lib/store.ts        Zustand store
   lib/url.ts          View state in the URL
@@ -31,6 +34,7 @@ src/
   pages/map.astro     The interactive map
 data/                 Basemap pipeline — see data/README.md
 public/data/          Generated. Gitignored. Rebuild with `npm run data:build`.
+                      basemap.geojson, polities.geojson, polity-labels.json
 ```
 
 ## Notes

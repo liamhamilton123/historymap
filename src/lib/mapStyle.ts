@@ -44,6 +44,7 @@ export const POLITY_STATUS = {
     lineOpacity: 0.9,
     lineWidth: 1,
     lineDash: null,
+    labelOpacity: 1,
   },
   /** Held in fact, but the claim is rejected — occupation, annexation, secession. */
   disputed: {
@@ -55,6 +56,7 @@ export const POLITY_STATUS = {
     lineOpacity: 1,
     lineWidth: 1.3,
     lineDash: [2, 1.6],
+    labelOpacity: 0.72,
   },
 } as const satisfies Record<string, StatusStyle>;
 
@@ -65,6 +67,8 @@ type StatusStyle = {
   lineOpacity: number;
   lineWidth: number;
   lineDash: readonly number[] | null;
+  /** Dims the name of a polity whose hold on the ground is contested. */
+  labelOpacity: number;
 };
 
 export type PolityStatus = keyof typeof POLITY_STATUS;

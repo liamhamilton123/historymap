@@ -4,7 +4,7 @@
 | --- | --- |
 | `npm run data:fetch` | Downloads Natural Earth into `data/sources/` (gitignored). Cached; `--force` to redownload. |
 | `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap.geojson`. |
-| `npm run data:polities` | Builds `public/data/polities.geojson` from `data/polities/`. |
+| `npm run data:polities` | Builds `public/data/polities.geojson` and `polity-labels.json` from `data/polities/`. |
 | `npm run data:build` | All three, in order. |
 
 ## Polities
@@ -81,6 +81,18 @@ remainder is given the identical cut. Only the interior line is yours to draw.
 Anything the parts bin cannot express can be given as an inline `geometry` on a
 span instead. Inline shapes join the same topology, so one drawn to meet a
 neighbour's coordinates keeps meeting it.
+
+## Labels
+
+The build also writes `public/data/polity-labels.json`: one anchor per span, at
+the pole of inaccessibility of the polity's largest piece, which is the one
+point guaranteed to fall inside a concave shape. Each carries a `minZoom`
+derived from the polity's extent, so Russia is named at the first zoom level and
+Armenia only once you are looking at the Caucasus. `LABEL_ZOOM_CONSTANT` in
+`build-polities.mjs` trades labels shown against crowding.
+
+A span may set `label` to be named something other than its polity — useful
+where "Russia" over Crimea would read worse than "Crimea".
 
 ## Simplification
 
