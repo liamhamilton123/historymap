@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+*.log
+
+# ETL intermediates + generated map data (rebuild with `npm run data:build`)
+data/sources/
+public/data/*.geojson
+public/data/*.pmtiles

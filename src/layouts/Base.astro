@@ -1,0 +1,39 @@
+---
+import '~/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Full-bleed pages (the map) suppress normal document scrolling. */
+  fullBleed?: boolean;
+}
+
+const { title, description, fullBleed = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b1a26" />
+  </head>
+  <body class={fullBleed ? 'full-bleed' : ''}>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  body.full-bleed {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+</style>
