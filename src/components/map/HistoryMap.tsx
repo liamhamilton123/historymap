@@ -19,6 +19,20 @@ import Timeline from './Timeline';
 import MapControls from './MapControls';
 import MapUnavailable from './MapUnavailable';
 
+const MAX_VIEW_WIDTH_METERS = 750_000;
+const EARTH_CIRCUMFERENCE_METERS = 40_075_016.68557849;
+const MAP_TILE_SIZE = 512;
+
+/** Convert a 750 km horizontal view into a MapLibre zoom for this viewport. */
+function maxZoomForViewWidth(width: number, latitude: number) {
+  const latitudeScale = Math.cos((latitude * Math.PI) / 180);
+  const zoom = Math.log2(
+    (width * EARTH_CIRCUMFERENCE_METERS * latitudeScale) /
+      (MAP_TILE_SIZE * MAX_VIEW_WIDTH_METERS),
+  );
+  return Math.min(22, Math.max(0.8, zoom));
+}
+
 /** Show only the polities that existed at `t`. */
 function applyInstant(instance: MapLibreMap, t: number) {
   for (const layer of POLITY_LAYERS) instance.setFilter(layer.id, polityFilter(t, layer.status));
@@ -28,6 +42,7 @@ export default function HistoryMap() {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
   const [failed, setFailed] = useState<'webgl' | 'init' | null>(null);
+  const [atMaxZoom, setAtMaxZoom] = useState(false);
   const restoringHistory = useRef(false);
 
   const globe = useMapStore((state) => state.globe);
@@ -47,6 +62,7 @@ export default function HistoryMap() {
     setWorkerUrl(maplibreWorkerUrl);
 
     const view = readView();
+    const maxZoom = maxZoomForViewWidth(container.current.clientWidth, view.lat);
     let instance: MapLibreMap;
     try {
       instance = new MapLibreMap({
@@ -55,7 +71,7 @@ export default function HistoryMap() {
         center: [view.lng, view.lat],
         zoom: view.zoom,
         minZoom: 0.8,
-        maxZoom: 10,
+        maxZoom,
         // Rotation is noise on this kind of map; dragging should pan, always.
         dragRotate: false,
         pitchWithRotate: false,
@@ -78,7 +94,15 @@ export default function HistoryMap() {
     // The island can mount before Vite has applied the global Tailwind sheet.
     // MapLibre snapshots its canvas size during construction, so observe the
     // container and resize once layout settles (and on future viewport changes).
-    const resizeObserver = new ResizeObserver(() => instance.resize());
+    const updateMaxZoom = () => {
+      const width = container.current?.clientWidth ?? 0;
+      if (width > 0) instance.setMaxZoom(maxZoomForViewWidth(width, instance.getCenter().lat));
+      setAtMaxZoom(instance.getZoom() >= instance.getMaxZoom() - 0.01);
+    };
+    const resizeObserver = new ResizeObserver(() => {
+      instance.resize();
+      updateMaxZoom();
+    });
     resizeObserver.observe(container.current);
 
     // Surface style/source failures. Without this MapLibre swallows them into
@@ -148,6 +172,8 @@ export default function HistoryMap() {
 
     instance.on('movestart', beginMapHistory);
     instance.on('moveend', syncUrl);
+    instance.on('moveend', updateMaxZoom);
+    instance.on('zoomend', updateMaxZoom);
     window.addEventListener('atlas:history-start', beginMapHistory);
     window.addEventListener('popstate', restoreFromHistory);
 
@@ -156,6 +182,8 @@ export default function HistoryMap() {
       resizeObserver.disconnect();
       instance.off('movestart', beginMapHistory);
       instance.off('moveend', syncUrl);
+      instance.off('moveend', updateMaxZoom);
+      instance.off('zoomend', updateMaxZoom);
       window.removeEventListener('atlas:history-start', beginMapHistory);
       window.removeEventListener('popstate', restoreFromHistory);
       instance.remove();
@@ -204,6 +232,7 @@ export default function HistoryMap() {
       <MapControls
         onZoomIn={() => map.current?.zoomIn({ duration: 180 })}
         onZoomOut={() => map.current?.zoomOut({ duration: 180 })}
+        canZoomIn={!atMaxZoom}
       />
       <Timeline />
     </div>

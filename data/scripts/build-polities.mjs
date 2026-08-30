@@ -17,7 +17,7 @@ import { simplifyGeometry } from './lib/geo.mjs';
  * and the same border simplifies two ways, leaving slivers along every
  * frontier — which is exactly what the overlap check below reports.
  */
-const SIMPLIFY_WEIGHT = 0.004;
+const SIMPLIFY_WEIGHT = 0.0002;
 /** Polygons smaller than this are dropped. Square degrees; ~25 km². */
 const MIN_AREA = 0.002;
 /**

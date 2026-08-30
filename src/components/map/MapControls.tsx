@@ -3,12 +3,13 @@ import { useMapStore } from '~/lib/store';
 type MapControlsProps = {
   onZoomIn: () => void;
   onZoomOut: () => void;
+  canZoomIn: boolean;
 };
 
 const buttonClass =
   'cursor-pointer rounded-md px-3 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
 
-export default function MapControls({ onZoomIn, onZoomOut }: MapControlsProps) {
+export default function MapControls({ onZoomIn, onZoomOut, canZoomIn }: MapControlsProps) {
   const globe = useMapStore((state) => state.globe);
   const setGlobe = useMapStore((state) => state.setGlobe);
 
@@ -37,7 +38,7 @@ export default function MapControls({ onZoomIn, onZoomOut }: MapControlsProps) {
       <div className="mt-2 flex flex-col items-center border-t border-white/9 pt-2">
         <span className="mb-1.5 text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Zoom</span>
         <div className="flex flex-col overflow-hidden rounded-[9px] border border-white/9 bg-white/4">
-          <button className="grid size-[34px] cursor-pointer place-items-center border-b border-white/9 text-lg leading-none text-ink-dim transition-colors hover:bg-white/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomIn} aria-label="Zoom in" title="Zoom in">
+          <button className="grid size-[34px] cursor-pointer place-items-center border-b border-white/9 text-lg leading-none text-ink-dim transition-colors hover:bg-white/10 hover:text-ink disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-ink-dim focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomIn} disabled={!canZoomIn} aria-label="Zoom in" title={canZoomIn ? 'Zoom in' : 'Maximum zoom: 750 km view'}>
             +
           </button>
           <button className="grid size-[34px] cursor-pointer place-items-center text-lg leading-none text-ink-dim transition-colors hover:bg-white/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomOut} aria-label="Zoom out" title="Zoom out">

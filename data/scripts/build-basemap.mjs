@@ -5,7 +5,9 @@ import { join } from 'node:path';
 import { SOURCES_DIR, OUT_DIR, NATURAL_EARTH_LAYERS } from './lib/config.mjs';
 import { simplifyGeometry } from './lib/geo.mjs';
 
-const TOLERANCE = 0.02;
+// Preserve enough of the 1:50m source geometry to hold up at the map's
+// maximum zoom without making the single GeoJSON source needlessly large.
+const TOLERANCE = 0.001;
 const MIN_AREA = 0.01;
 
 await mkdir(OUT_DIR, { recursive: true });
