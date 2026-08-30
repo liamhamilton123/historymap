@@ -7,6 +7,11 @@ export const SOURCES_DIR = join(ROOT, 'data', 'sources');
 export const OUT_DIR = join(ROOT, 'public', 'data');
 
 export const POLITIES_DIR = join(ROOT, 'data', 'polities');
+/**
+ * Named ground that no polity held. The same shape of file as a polity, minus
+ * everything that implies an owner — see data/README.md.
+ */
+export const UNCLAIMED_DIR = join(ROOT, 'data', 'unclaimed');
 export const PARTS_FILE = join(ROOT, 'data', 'parts.json');
 
 /** Physical layers, drawn as the basemap. */

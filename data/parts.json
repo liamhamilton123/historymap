@@ -224,6 +224,19 @@
         ]]
       }
     },
+    "oregon-country-north": {
+      "name": "Oregon Country, north of the Columbia",
+      "source": "british-columbia",
+      "why": "The Oregon Country ran from 42N to 54 degrees 40 minutes — the southern limit of Russian America — so half of it is ground that is British Columbia today. Splitting it out is what lets the whole of it be contested between Britain and the United States before 1846, instead of the 49th parallel appearing on the map twenty-eight years before the treaty drew it. Only the northern edge is drawn; east and west are already British Columbia's own limits.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-141.50, 42.00], [-113.50, 42.00], [-113.50, 54.6667], [-141.50, 54.6667],
+          [-141.50, 42.00]
+        ]]
+      }
+    },
+
     "province-of-canada": {
       "name": "Canada East and West, New Brunswick and Nova Scotia",
       "source": "CAN",

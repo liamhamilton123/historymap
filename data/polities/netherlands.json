@@ -2,6 +2,7 @@
   "name": "Netherlands",
   "color": "#d08a4a",
   "minArea": 0.0005,
+  "adjective": "Dutch",
   "features": [
     { "from": "1783-09-03", "to": null, "parts": ["dutch-caribbean", "ABW", "CUW", "SXM"], "label": "Dutch Caribbean",
       "source": "Held since the 1630s, apart from short British occupations during the Napoleonic wars, which are too brief to draw." }

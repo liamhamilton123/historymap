@@ -8,7 +8,7 @@ import polylabel from 'polylabel';
 import { topology } from 'topojson-server';
 import { presimplify, simplify } from 'topojson-simplify';
 import { feature as topoFeature } from 'topojson-client';
-import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
+import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
 import { simplifyGeometry } from './lib/geo.mjs';
 
 /**
@@ -48,8 +48,14 @@ const LABEL_PRECISION = 0.05;
  * src/lib/mapStyle.ts — this list only exists so a typo is a build failure
  * rather than a territory that silently renders as undisputed. Keep in step.
  */
-const STATUSES = ['controlled', 'disputed'];
+const STATUSES = ['controlled', 'disputed', 'contested'];
 const DEFAULT_STATUS = 'controlled';
+/**
+ * The one status that may share ground. Every other overlap is a mistake; two
+ * spans that are both `contested` are the map saying "these polities each claim
+ * this", which is a thing the world does and the model has to be able to say.
+ */
+const SHARED_STATUS = 'contested';
 
 /**
  * ISO date -> decimal year. The fractional part only has to order events
@@ -124,6 +130,19 @@ function areaOf(polygons) {
 const problems = [];
 const km2 = (sqDeg) => `${(sqDeg * SQ_DEG_TO_SQ_KM).toFixed(0)} km²`;
 
+/**
+ * Whether a span's label says who holds the ground — by the polity's name, or
+ * by the adjective its possessions are conventionally named with, so that
+ * "British North America" counts as saying Britain without having to spell it
+ * "North America (Britain)".
+ */
+function namesOwner(label, spec) {
+  const text = label.toLowerCase();
+  return [spec.name, spec.id, spec.adjective]
+    .filter(Boolean)
+    .some((form) => text.includes(String(form).toLowerCase()));
+}
+
 // --- the parts bin: modern countries, then the pieces carved out of them ----
 const parts = new Map();
 const partsPath = join(SOURCES_DIR, 'naturalearth', `${NATURAL_EARTH_PARTS}.geojson`);
@@ -177,17 +196,33 @@ for (const [id, spec] of Object.entries(partSpec)) {
   );
 }
 
-// --- polity specs: the filename is the id ----------------------------------
-const specFiles = (await readdir(POLITIES_DIR)).filter((name) => name.endsWith('.json')).sort();
+// --- specs: the filename is the id -----------------------------------------
+// Two kinds of file, assembled identically. A polity holds ground; an
+// unclaimed region is ground with a name and nobody holding it. They share one
+// id space and one overlap check precisely because they are alternatives for
+// the same slot: ground is held by one polity, or by none and then named.
+const SOURCES = [
+  { dir: POLITIES_DIR, kind: 'polity' },
+  { dir: UNCLAIMED_DIR, kind: 'unclaimed' },
+];
 const specs = [];
 const used = new Set();
+const seenIds = new Map();
 
-for (const file of specFiles) {
+for (const { dir, kind } of SOURCES) {
+  const files = (await readdir(dir).catch(() => [])).filter((name) => name.endsWith('.json')).sort();
+  for (const file of files) {
   const id = basename(file, '.json');
-  const spec = JSON.parse(await readFile(join(POLITIES_DIR, file), 'utf8'));
+  const spec = JSON.parse(await readFile(join(dir, file), 'utf8'));
   spec.id = id;
   spec.file = file;
+  spec.kind = kind;
+  if (seenIds.has(id)) problems.push(`${file}: id "${id}" is already used by ${seenIds.get(id)}`);
+  seenIds.set(id, file);
   spec.entries = spec.features ?? [];
+  if (kind === 'unclaimed' && spec.color) {
+    problems.push(`${file}: unclaimed ground cannot have a colour — it has no owner to be coloured by`);
+  }
   specs.push(spec);
   spec.entries.forEach((entry, index) => {
     if (entry.geometry) {
@@ -205,6 +240,7 @@ for (const file of specFiles) {
       else used.add(code);
     }
   });
+  }
 }
 
 // --- simplify every part at once, on a shared topology ---------------------
@@ -254,17 +290,44 @@ for (const spec of specs) {
     const to = toInstant(entry.to);
     if (!(to > from)) problems.push(`${spec.file}: ${entry.from} ends (${entry.to}) before it starts`);
 
-    const status = entry.status ?? spec.status ?? DEFAULT_STATUS;
-    if (!STATUSES.includes(status)) {
+    // An unclaimed region has no owner, so it has neither a colour — colour on
+    // this map means identity — nor a status, which only says how an owner
+    // holds something. Saying otherwise in the file is a mistake worth naming.
+    const unclaimed = spec.kind === 'unclaimed';
+    let status = entry.status ?? spec.status ?? DEFAULT_STATUS;
+    if (unclaimed) {
+      if (entry.status ?? spec.status) {
+        problems.push(`${spec.file}: unclaimed ground cannot have a status`);
+      }
+      status = null;
+    } else if (!STATUSES.includes(status)) {
       problems.push(`${spec.file}: ${entry.from} has unknown status "${status}"`);
+    }
+
+    // A label replaces the polity's name on the map, which is exactly where a
+    // possession stops looking like a possession: "Jamaica" in Britain's colour
+    // does not say whose it is. So a renamed span has to name its owner, either
+    // the way history already does it — "British North America", "New Spain" —
+    // or by saying so outright, "Louisiana (France)". Unclaimed ground is
+    // exempt: it has no owner to name.
+    if (!unclaimed && entry.label && !namesOwner(entry.label, spec)) {
+      problems.push(
+        `${spec.file}: "${entry.label}" does not say whose it is — name the owner,` +
+          ` as "${entry.label} (${spec.name ?? spec.id})" or with "${spec.adjective ?? spec.name ?? spec.id}"`,
+      );
     }
 
     features.push({
       type: 'Feature',
       properties: {
+        // Which of the two kinds of file this came from. The style needs it to
+        // keep unclaimed ground out of the layers that colour by owner.
+        kind: spec.kind,
+        // The id of whatever occupies this ground: a polity, or the name given
+        // to ground that no polity held.
         polity: spec.id,
         name: spec.name ?? spec.id,
-        color: spec.color ?? '#8a8a8a',
+        color: unclaimed ? null : spec.color ?? '#8a8a8a',
         status,
         from,
         to,
@@ -297,12 +360,22 @@ for (const f of features) {
   list.push(f.properties);
   byPolity.set(f.properties.polity, list);
 }
+const unclaimedCount = new Set(
+  features.filter((f) => f.properties.kind === 'unclaimed').map((f) => f.properties.polity),
+).size;
 
 const claims = features.map((f) => {
   const polygons = polygonsOf(f.geometry);
   return { props: f.properties, polygons, bbox: bboxOf(polygons) };
 });
 let compared = 0;
+const contested = [];
+/** Which other polities each feature shares its ground with, by feature index. */
+const sharedWith = new Map();
+const rivals = (index) => {
+  if (!sharedWith.has(index)) sharedWith.set(index, new Set());
+  return sharedWith.get(index);
+};
 for (let i = 0; i < claims.length; i++) {
   for (let j = i + 1; j < claims.length; j++) {
     const a = claims[i];
@@ -314,15 +387,69 @@ for (let i = 0; i < claims.length; i++) {
     const shared = areaOf(polygonClipping.intersection(a.polygons, b.polygons));
     if (shared <= OVERLAP_EPSILON) continue;
     const when = `${formatInstant(from)}..${to === OPEN_ENDED ? 'now' : formatInstant(to)}`;
+
+    // Both sides saying `contested` is a deliberate shared claim, not a
+    // modelling error. Two spans of one polity are still a duplicate even
+    // then: a polity cannot contest itself.
+    if (
+      a.props.status === SHARED_STATUS &&
+      b.props.status === SHARED_STATUS &&
+      a.props.polity !== b.props.polity
+    ) {
+      rivals(i).add(b.props.polity);
+      rivals(j).add(a.props.polity);
+      contested.push(`${a.props.polity} and ${b.props.polity} contest ${km2(shared)} during ${when}`);
+      continue;
+    }
+
+    // Unclaimed ground that someone turns out to hold is the whole point of
+    // checking it: the region says nobody was here, and a polity says otherwise.
+    // Exactly one side being unclaimed is the interesting case: the region says
+    // nobody was here and a polity says otherwise. Both sides unclaimed is two
+    // regions overlapping, which the generic message already describes.
+    const empty = a.props.kind === 'unclaimed' ? a : b.props.kind === 'unclaimed' ? b : null;
+    const holder = empty === a ? b : empty === b ? a : null;
     problems.push(
       a.props.polity === b.props.polity
         ? `${a.props.polity} claims ${km2(shared)} twice during ${when}` +
             ` (spans ${a.props.fromDate} and ${b.props.fromDate})`
-        : `${a.props.polity} and ${b.props.polity} both claim ${km2(shared)} during ${when}`,
+        : empty && holder && holder.props.kind !== 'unclaimed'
+          ? `${empty.props.polity} is drawn unclaimed, but ${holder.props.polity}` +
+            ` holds ${km2(shared)} of it during ${when}`
+          : `${a.props.polity} and ${b.props.polity} both claim ${km2(shared)} during ${when}`,
     );
   }
 }
 console.log(`  overlap check: ${compared} coexisting pair(s) intersected`);
+for (const note of contested) console.log(`    shared: ${note}`);
+
+// --- who is drawn which way on shared ground -------------------------------
+// A contested feature needs stripes that read through the other claimant's, so
+// each is numbered within its own dispute and the style leans the stripes by
+// that number. Sorting by polity id makes the numbering stable across builds
+// rather than dependent on the order files happened to be read in. Two
+// claimants is what reads cleanly; a third would need a device beyond lean.
+const hatches = new Map();
+features.forEach((f, index) => {
+  if (f.properties.status !== SHARED_STATUS) return;
+  const claimants = [...rivals(index), f.properties.polity].sort();
+  const claim = claimants.indexOf(f.properties.polity);
+  const id = `hatch-${SHARED_STATUS}-${claim}-${f.properties.color.replace('#', '')}`;
+  f.properties.claim = claim;
+  // The image the style reaches for with ['get', 'hatch']. Built here so the
+  // id is spelled in exactly one place and the runtime only has to register
+  // what this list names.
+  f.properties.hatch = id;
+  if (!hatches.has(id)) {
+    hatches.set(id, { id, status: f.properties.status, color: f.properties.color, claim });
+  }
+  if (claimants.length > 2) {
+    problems.push(
+      `${f.properties.polity} contests ${f.properties.fromDate} with ${claimants.length - 1}` +
+        ` others; only two claimants can be told apart by stripe lean`,
+    );
+  }
+});
 
 features.sort((a, b) => a.properties.from - b.properties.from);
 
@@ -330,13 +457,18 @@ features.sort((a, b) => a.properties.from - b.properties.from);
 // Kept out of the polygon file and resolved here rather than in the browser:
 // placing a name needs the pole of inaccessibility of the polity's largest
 // piece, which is the one point guaranteed to be inside a concave shape.
-const labels = features.map((f) => {
+const labels = features.flatMap((f) => {
+  // Contested ground is named once. The name belongs to the place, not to
+  // whichever claimant happens to be drawn first, and one label per claimant
+  // would stack two identical names on the same anchor.
+  if (f.properties.claim > 0) return [];
   const polygons = polygonsOf(f.geometry);
   const largest = polygons.reduce((a, b) => (areaOf([a]) >= areaOf([b]) ? a : b));
   const [lng, lat] = polylabel(largest, LABEL_PRECISION);
   const extent = Math.sqrt(areaOf(polygons));
-  return {
+  return [{
     polity: f.properties.polity,
+    kind: f.properties.kind,
     text: f.properties.label ?? f.properties.name,
     color: f.properties.color,
     status: f.properties.status,
@@ -346,7 +478,7 @@ const labels = features.map((f) => {
     minZoom: Number(
       Math.max(0, Math.min(8, Math.log2(LABEL_ZOOM_CONSTANT / extent))).toFixed(2),
     ),
-  };
+  }];
 });
 
 await mkdir(OUT_DIR, { recursive: true });
@@ -354,6 +486,11 @@ const out = join(OUT_DIR, 'polities.geojson');
 await writeFile(out, JSON.stringify({ type: 'FeatureCollection', features }));
 const labelsOut = join(OUT_DIR, 'polity-labels.json');
 await writeFile(labelsOut, JSON.stringify(labels));
+// The stripe images the map has to generate before it can draw shared ground.
+// Only the data knows which polity colours end up contesting anything, so the
+// list is emitted rather than guessed at in the browser.
+const hatchesOut = join(OUT_DIR, 'polity-hatches.json');
+await writeFile(hatchesOut, JSON.stringify([...hatches.values()]));
 const { size } = await import('node:fs/promises').then((fs) => fs.stat(out));
 
 if (problems.length) {
@@ -363,7 +500,8 @@ if (problems.length) {
 const labelSize = (await import('node:fs/promises').then((fs) => fs.stat(labelsOut))).size;
 console.log(
   `\npolities.geojson · ${features.length} features · ${(size / 1024).toFixed(0)} KB` +
-    ` · ${byPolity.size} polities` +
-    `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB`,
+    ` · ${byPolity.size - unclaimedCount} polities · ${unclaimedCount} unclaimed region(s)` +
+    `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB` +
+    `\npolity-hatches.json · ${hatches.size} contested stripe pattern(s)`,
 );
 if (problems.length) process.exitCode = 1;

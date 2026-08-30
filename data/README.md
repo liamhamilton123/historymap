@@ -4,7 +4,7 @@
 | --- | --- |
 | `npm run data:fetch` | Downloads Natural Earth into `data/sources/` (gitignored). Cached; `--force` to redownload. |
 | `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap.geojson`. |
-| `npm run data:polities` | Builds `public/data/polities.geojson` and `polity-labels.json` from `data/polities/`. |
+| `npm run data:polities` | Builds `public/data/polities.geojson`, `polity-labels.json` and `polity-hatches.json` from `data/polities/` and `data/unclaimed/`. |
 | `npm run data:build` | All three, in order. |
 
 ## Coverage
@@ -20,11 +20,12 @@ them is simply absent, not empty:
 Colombia is the one polity outside both: it is drawn only so Panama has
 somewhere to come from in 1903. South America otherwise has no coverage.
 
-Two blanks in North America are deliberate rather than missing. The Pacific
-Northwest is unclaimed until the convention of 1818, because Spain, Britain,
-Russia and the United States all claimed it and none of them held it — and
-this model gives any piece of ground one holder at a time. Hawaii is unclaimed
-before Kamehameha unified the islands in 1795.
+The Pacific Northwest is drawn as the unclaimed Oregon Country from 1783 until
+the Oregon Treaty of 1846 — claimed by four powers and then occupied jointly by
+two, held by none of them throughout — so no boundary runs through it and the
+49th parallel appears only on the day the treaty drew it. Hawaii before
+Kamehameha unified the islands in 1795 is the one remaining blank, and is
+deliberate rather than missing.
 
 Known simplifications, all noted in the file that makes them: the Confederacy
 is drawn at its eleven-state extent from the founding of the provisional
@@ -57,10 +58,74 @@ A span may carry a `status`, defaulting to `controlled`:
 { "from": "2014-03-18", "to": null, "parts": ["crimea"], "status": "disputed" }
 ```
 
-`controlled` is ground held and not seriously contested; `disputed` is ground
+`controlled` is ground held and not seriously contested. `disputed` is ground
 held in fact but whose claim is rejected — occupation, annexation, unrecognised
-secession. A disputed span is drawn with diagonal stripes over its fill and a
-dashed outline.
+secession — drawn with diagonal stripes over its fill and a dashed outline.
+
+`contested` is the third case: ground **more than one polity claims at once**,
+with no one of them holding it. Where `disputed` has one holder, this has none,
+so it is the one status the overlap check lets share ground — the same shape is
+written once per claimant, in each polity's own file:
+
+```json
+// in two polity files at once, for ground they both claim
+{ "from": "...", "to": "...", "parts": ["..."], "status": "contested" }
+```
+
+Nothing currently uses it. Where two states each claim ground and neither holds
+it, the better answer is usually an unclaimed region — see below — which names
+the place rather than making it the joint property of its claimants.
+
+Contested spans get no fill, because two translucent fills stacked would blend
+into a third colour belonging to neither claimant. Each claimant reads as
+stripes in its own colour instead, and the build numbers the claimants within
+each dispute so the style can lean their stripes opposite ways and both show
+through. Two claimants is what reads; a third is a build error, because lean
+alone cannot separate them. Ground contested this way is named once, not once
+per claimant, and clicking it names every claimant on it.
+
+The stripe colours are the reason for a third output file. `fill-pattern`
+cannot be tinted per feature, so a coloured hatch needs one generated image per
+colour, and only the data knows which colours end up contesting anything —
+hence `polity-hatches.json`, which is the list the map registers before it can
+draw shared ground. With nothing contested it is written as an empty list.
+
+## Unclaimed ground
+
+Not every piece of ground has an owner, and a map that can only draw owners has
+to leave the rest blank — which reads as missing data rather than as a fact.
+So there is a second kind of file, in `data/unclaimed/`, named by its id the
+same way. It is a polity file with everything that implies an owner taken out:
+
+```json
+{
+  "name": "Oregon Country",
+  "features": [
+    { "from": "1818-10-20", "to": "1846-06-15",
+      "parts": ["oregon-country", "oregon-country-north"],
+      "source": "Occupied jointly by Britain and the United States ..." }
+  ]
+}
+```
+
+No `color`, because colour on this map means identity and there is none here.
+No `status`, because a status says how an owner holds something. Saying either
+is a build error rather than something quietly ignored. What it keeps is a
+name, spans, geometry assembled from the same parts bin, and a `source` note —
+so the ground can be labelled and can answer a click.
+
+Polities and unclaimed regions **share one id space and one overlap check**,
+because they are alternatives filling the same slot: a piece of ground is held
+by one polity, or by none and then named. That makes the check do double duty —
+ground drawn as unclaimed that some polity turns out to hold is reported as
+exactly that, which is how the Oregon Country's dates stay honest against the
+Oregon Treaty.
+
+Features carry a `kind` of `polity` or `unclaimed` to keep the two apart in the
+style: unclaimed ground is drawn in the theme's neutral with a dotted outline
+rather than in an owner's colour, and named in italic rather than upright
+capitals — the old atlas convention, upright for what a state administers and
+italic for what is merely a place.
 
 **All of that styling lives in one place**, `POLITY_STATUS` in
 `src/lib/mapStyle.ts`. Adding a status there gives it a fill opacity, an
@@ -74,7 +139,10 @@ quietly rendering as undisputed.
 
 A polity can hold controlled and disputed ground at the same time — that is
 simply two spans running concurrently, which is why the overlap check is
-geometric rather than a comparison of dates.
+geometric rather than a comparison of dates. It is also why `contested` had to
+be a status rather than a flag on the check: the build has to be able to tell
+"these two both claim this on purpose" from "one of these is wrong", and the
+spans themselves are the only place that intent is written down.
 
 `from` and `to` are ISO dates — `YYYY`, `YYYY-MM` or `YYYY-MM-DD`, negative for
 BC. `to: null` means "still current". Dates are exclusive at the end, so one
@@ -120,6 +188,28 @@ Armenia only once you are looking at the Caucasus. `LABEL_ZOOM_CONSTANT` in
 
 A span may set `label` to be named something other than its polity — useful
 where "Russia" over Crimea would read worse than "Crimea".
+
+**A label has to say who holds the ground**, and the build fails if it does
+not. A renamed span is exactly where a possession stops looking like one:
+"Jamaica" written across Britain's colour names the island but not its owner,
+and a reader has to already know the palette to tell whose it is. Either form
+works —
+
+```json
+{ "label": "British North America" }   // the way history already says it
+{ "label": "Louisiana (France)" }      // or say it outright
+```
+
+— because the check accepts the polity's name, its id, or the `adjective` it
+declares for its possessions:
+
+```json
+{ "name": "Britain", "adjective": "British", "features": [ ... ] }
+```
+
+which is what lets "New Spain", "Danish West Indies" and "U.S. Virgin Islands"
+stand as written. Unclaimed regions are exempt: they have no owner to name, and
+their name is the entity's own.
 
 ## Simplification
 

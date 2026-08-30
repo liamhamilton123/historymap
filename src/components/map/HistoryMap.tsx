@@ -14,13 +14,15 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 import {
   buildStyle,
-  polityFilter,
   selectionFilter,
-  POLITY_LAYERS,
-  HATCHED_STATUSES,
+  TIMED_LAYERS,
+  UNCLAIMED_FILL,
+  POLITY_STATUS,
+  STATIC_HATCHES,
   SELECTED_LAYER,
+  type PolityHatch,
 } from '~/lib/mapStyle';
-import { hatchImage, HATCH_PIXEL_RATIO } from '~/lib/hatch';
+import { hatchImage, hexToRgb, HATCH_PIXEL_RATIO } from '~/lib/hatch';
 import { attachPolityLabels, type PolityLabels } from './polityLabels';
 import { useMapStore } from '~/lib/store';
 import { readView, pushView, writeView } from '~/lib/url';
@@ -48,25 +50,63 @@ function maxZoomForViewWidth(width: number, latitude: number) {
   return Math.min(22, Math.max(0.8, zoom));
 }
 
+const HATCHES_URL = '/data/polity-hatches.json';
+
+/**
+ * The stripe patterns for ground more than one polity claims. Fetched once and
+ * reused, because a style reload — which is what a light/dark switch is —
+ * empties the image registry and needs them all over again.
+ */
+let contestedHatches: Promise<PolityHatch[]> | null = null;
+function loadContestedHatches(): Promise<PolityHatch[]> {
+  contestedHatches ??= fetch(HATCHES_URL).then((response) => {
+    if (!response.ok) throw new Error(`${response.status} fetching ${HATCHES_URL}`);
+    return response.json();
+  });
+  return contestedHatches;
+}
+
 /**
  * Register the stripe patterns the hatched statuses reference. Has to happen
  * before the style is drawn, or fill-pattern resolves to a missing image and
  * those layers render nothing at all.
  */
 function registerHatches(instance: MapLibreMap) {
-  for (const { imageId, hatch } of HATCHED_STATUSES) {
+  for (const { imageId, hatch } of STATIC_HATCHES) {
     if (instance.hasImage(imageId)) continue;
     instance.addImage(imageId, hatchImage(hatch), { pixelRatio: HATCH_PIXEL_RATIO });
   }
+  // Contested ground needs one image per claimant's colour, and only the data
+  // knows which colours those are. This settles after the style has drawn;
+  // adding an image late simply repaints the layer that was waiting on it.
+  loadContestedHatches()
+    .then((rows) => {
+      for (const { id, status, color, claim } of rows) {
+        const spec = POLITY_STATUS[status]?.hatch;
+        if (!spec || instance.hasImage(id)) continue;
+        instance.addImage(
+          id,
+          // Opposite leans are what let two claimants read through each other
+          // rather than the one drawn second hiding the one drawn first.
+          hatchImage(spec, { color: hexToRgb(color), slope: claim % 2 === 0 ? 1 : -1 }),
+          { pixelRatio: HATCH_PIXEL_RATIO },
+        );
+      }
+    })
+    .catch((error) => {
+      // A torn-down map throws from hasImage; that is not worth reporting.
+      console.error('[atlas] contested stripe patterns failed', error);
+    });
 }
 
-/** The layer clicks are tested against: the fill covers every polity on screen,
- *  hatches and outlines only ever sit on top of one. */
-const PICK_LAYER = 'polity-fill';
+/** The layers clicks are tested against: between them the two fills cover every
+ *  piece of ground on screen, held or not, and hatches and outlines only ever
+ *  sit on top of one of them. */
+const PICK_LAYERS = ['polity-fill', UNCLAIMED_FILL];
 
-/** Show only the polities that existed at `t`. */
+/** Show only the ground that existed at `t`, held or not. */
 function applyInstant(instance: MapLibreMap, t: number) {
-  for (const layer of POLITY_LAYERS) instance.setFilter(layer.id, polityFilter(t, layer.status));
+  for (const layer of TIMED_LAYERS) instance.setFilter(layer.id, layer.filter(t));
 }
 
 /** Outline the selected polity, or nothing when the panel is closed. */
@@ -145,9 +185,24 @@ export default function HistoryMap() {
     // selects it, and a click that lands anywhere else dismisses the panel,
     // which is what clicking away from a thing is expected to do.
     const handleClick = (event: MapMouseEvent) => {
-      if (!instance.getLayer(PICK_LAYER)) return;
-      const [feature] = instance.queryRenderedFeatures(event.point, { layers: [PICK_LAYER] });
-      setSelection((feature?.properties as PolitySelection | undefined) ?? null);
+      const layers = PICK_LAYERS.filter((id) => instance.getLayer(id));
+      if (!layers.length) return;
+      const hits = instance.queryRenderedFeatures(event.point, { layers });
+      const [feature] = hits;
+      if (!feature) return setSelection(null);
+      const properties = feature.properties as PolitySelection;
+      // Contested ground carries a feature per claimant, all of them under the
+      // pointer at once, so the panel can say who else claims it rather than
+      // silently picking whichever happened to be drawn on top.
+      const rivals = [
+        ...new Set(
+          hits
+            .filter((hit) => hit.properties.polity !== properties.polity)
+            .filter((hit) => hit.properties.status === 'contested')
+            .map((hit) => hit.properties.name as string),
+        ),
+      ];
+      setSelection({ ...properties, rivals });
     };
     // Hovering a polity has to look clickable, but only over the polities —
     // the ocean is still just something to drag.
@@ -158,8 +213,10 @@ export default function HistoryMap() {
       instance.getCanvas().style.cursor = '';
     };
     instance.on('click', handleClick);
-    instance.on('mouseenter', PICK_LAYER, enterPolity);
-    instance.on('mouseleave', PICK_LAYER, leavePolity);
+    for (const layer of PICK_LAYERS) {
+      instance.on('mouseenter', layer, enterPolity);
+      instance.on('mouseleave', layer, leavePolity);
+    }
 
     let cancelled = false;
     attachPolityLabels(instance)
@@ -261,8 +318,10 @@ export default function HistoryMap() {
     return () => {
       cancelled = true;
       instance.off('click', handleClick);
-      instance.off('mouseenter', PICK_LAYER, enterPolity);
-      instance.off('mouseleave', PICK_LAYER, leavePolity);
+      for (const layer of PICK_LAYERS) {
+        instance.off('mouseenter', layer, enterPolity);
+        instance.off('mouseleave', layer, leavePolity);
+      }
       labels.current?.destroy();
       labels.current = null;
       styleReady.current = false;

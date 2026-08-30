@@ -1,4 +1,4 @@
-import { POLITY_STATUS, DEFAULT_STATUS, type PolityStatus } from '~/lib/mapStyle';
+import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, type PolityStatus } from '~/lib/mapStyle';
 import { OPEN_ENDED } from '~/lib/time';
 
 /**
@@ -8,15 +8,21 @@ import { OPEN_ENDED } from '~/lib/time';
  */
 export type PolitySelection = {
   polity: string;
+  /** Ground with an owner, or ground that only has a name. */
+  kind: 'polity' | 'unclaimed';
   name: string;
-  color: string;
-  status: string;
+  color: string | null;
+  status: string | null;
   from: number;
   to: number;
   fromDate: string;
   toDate: string | null;
   label: string | null;
   source: string | null;
+  /** The other polities claiming this same ground, when the status is
+   *  contested. Collected from the click rather than written by the build,
+   *  because it is a fact about a place, not about any one span. */
+  rivals?: string[];
 };
 
 const MONTHS = [
@@ -50,28 +56,41 @@ type PolityInfoProps = {
  * right and the timeline below, so nothing it shows covers a control.
  */
 export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
-  const status =
-    POLITY_STATUS[selection.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
+  const unclaimed = selection.kind === 'unclaimed';
+  // Whatever the map calls this ground. A span's label already names its owner
+  // — "Jamaica (Britain)", not "Jamaica" — so it says everything the polity's
+  // own name would and says it as the reader just saw it written.
+  const title = selection.label ?? selection.name;
+  const status = unclaimed
+    ? UNCLAIMED
+    : POLITY_STATUS[selection.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
   const ongoing = selection.to >= OPEN_ENDED;
   const ended = selection.toDate ? formatDate(selection.toDate) : 'present';
 
   return (
     <aside
       className="absolute top-16 left-4 z-[5] w-[min(19rem,calc(100vw-2rem))] max-h-[calc(100dvh-16rem)] overflow-y-auto rounded-xl border border-ink/12 bg-panel/72 p-4 shadow-panel backdrop-blur-[10px] backdrop-saturate-[140%]"
-      aria-label={`About ${selection.name}`}
+      aria-label={`About ${title}`}
     >
       <div className="flex items-start gap-2.5">
+        {/* An unclaimed region has no colour to show, so it gets the outline of
+            a swatch with nothing in it rather than a borrowed one. */}
         <span
-          className="mt-1 size-3 shrink-0 rounded-[3px] border border-ink/20"
-          style={{ backgroundColor: selection.color }}
+          className={
+            'mt-1 size-3 shrink-0 rounded-[3px] border border-ink/20' +
+            (unclaimed ? ' border-dashed border-ink/35' : '')
+          }
+          style={unclaimed ? undefined : { backgroundColor: selection.color ?? undefined }}
           aria-hidden="true"
         />
         <div className="min-w-0 flex-1">
-          <h2 className="font-serif text-[19px] leading-tight text-ink">{selection.name}</h2>
-          {/* Only worth showing when the map calls this ground something else. */}
-          {selection.label && selection.label !== selection.name && (
-            <p className="mt-0.5 text-[11px] text-ink-faint">shown as {selection.label}</p>
-          )}
+          <h2
+            className={
+              'font-serif text-[19px] leading-tight text-ink' + (unclaimed ? ' italic' : '')
+            }
+          >
+            {title}
+          </h2>
         </div>
         <button
           type="button"
@@ -97,8 +116,15 @@ export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
           </dd>
         </div>
         <div>
-          <dt className="text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Status</dt>
-          <dd className="mt-0.5 text-ink-dim">{status.title}</dd>
+          <dt className="text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">
+            {unclaimed ? 'Held by' : 'Status'}
+          </dt>
+          <dd className="mt-0.5 text-ink-dim">
+            {unclaimed ? 'No one' : status.title}
+            {selection.rivals && selection.rivals.length > 0 && (
+              <span className="text-ink-faint"> · with {selection.rivals.join(', ')}</span>
+            )}
+          </dd>
         </div>
         {selection.source && (
           <div>

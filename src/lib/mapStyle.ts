@@ -4,7 +4,7 @@ import type {
   LayerSpecification,
   StyleSpecification,
 } from 'maplibre-gl';
-import type { HatchSpec } from './hatch';
+import { POLITY_COLOR, type HatchSpec } from './hatch';
 
 type ColorScheme = 'light' | 'dark';
 
@@ -17,16 +17,19 @@ const COLORS: Record<ColorScheme, {
   sky: string;
   horizon: string;
   select: string;
+  unclaimed: string;
 }> = {
   dark: {
     ocean: '#0b1a26', land: '#222c38', landStroke: 'rgba(150, 175, 200, 0.22)',
     water: '#0d2231', river: 'rgba(120, 170, 210, 0.35)', sky: '#0a1620', horizon: '#16303f',
     select: '#e0b872',
+    unclaimed: '#93a7b4',
   },
   light: {
     ocean: '#dbe8ed', land: '#d5d2c7', landStroke: 'rgba(66, 84, 91, 0.34)',
     water: '#c8dfe8', river: 'rgba(67, 126, 157, 0.52)', sky: '#c8e0ea', horizon: '#e8f0ed',
     select: '#8a6124',
+    unclaimed: '#69767d',
   },
 };
 
@@ -63,7 +66,49 @@ export const POLITY_STATUS = {
     lineDash: [2, 1.6],
     labelOpacity: 0.72,
   },
+  /**
+   * Claimed by more than one polity at once — joint occupation, or a frontier
+   * two states each consider theirs. Where `disputed` is one holder whose claim
+   * others reject, this is ground that genuinely carries a feature per
+   * claimant, stacked on top of each other.
+   *
+   * That is why it gets no fill: two translucent fills would blend into a
+   * third colour belonging to neither claimant. The claimants read as stripes
+   * in their own colours instead, leaning opposite ways so both show through.
+   * An invisible fill is still a clickable one, which is what keeps the info
+   * panel working over contested ground.
+   */
+  contested: {
+    title: 'Contested',
+    fillOpacity: 0,
+    hatch: { size: 10, period: 5, thickness: 1.8, color: POLITY_COLOR, opacity: 0.85 },
+    lineOpacity: 0.85,
+    lineWidth: 1,
+    lineDash: [1.5, 2.5],
+    labelOpacity: 0.85,
+  },
 } as const satisfies Record<string, StatusStyle>;
+
+/**
+ * Ground that no polity held, named anyway. Deliberately not a status: a status
+ * says how an owner holds something, and here there is no owner. That is also
+ * why its colour comes from the theme rather than from the feature — colour on
+ * this map means identity, and an unclaimed region has none to show.
+ *
+ * It keeps a faint fill so it still reads as ground and stays clickable, and a
+ * dotted outline, which is the old convention for a limit nobody agreed on.
+ */
+export const UNCLAIMED = {
+  title: 'Unclaimed',
+  fillOpacity: 0.1,
+  lineOpacity: 0.55,
+  lineWidth: 1,
+  lineDash: [1, 2.2],
+  labelOpacity: 0.9,
+} as const;
+
+export const UNCLAIMED_FILL = 'unclaimed-fill';
+export const UNCLAIMED_LINE = 'unclaimed-line';
 
 type StatusStyle = {
   /** How the status is named to the reader, in the info panel. */
@@ -88,18 +133,53 @@ export const DEFAULT_STATUS: PolityStatus = 'controlled';
  * one layer per status because line-dasharray cannot be driven by a feature
  * property; the fill can, so it stays a single layer.
  */
-/** The statuses that draw stripes, and the pattern image each one registers. */
-export const HATCHED_STATUSES = (Object.entries(POLITY_STATUS) as [PolityStatus, StatusStyle][])
+const HATCHED = (Object.entries(POLITY_STATUS) as [PolityStatus, StatusStyle][])
   .filter(([, style]) => style.hatch)
-  .map(([status, style]) => ({ status, imageId: `hatch-${status}`, hatch: style.hatch! }));
+  .map(([status, style]) => ({ status, hatch: style.hatch! }));
 
-export const POLITY_LAYERS: { id: string; status?: PolityStatus }[] = [
-  { id: 'polity-fill' },
-  ...HATCHED_STATUSES.map(({ status }) => ({ id: `polity-hatch-${status}`, status })),
+/**
+ * Statuses whose stripes are one fixed image, registered once at startup.
+ */
+export const STATIC_HATCHES = HATCHED.filter(({ hatch }) => hatch.color !== POLITY_COLOR).map(
+  ({ status, hatch }) => ({ status, hatch, imageId: `hatch-${status}` }),
+);
+
+/**
+ * Statuses whose stripes take the polity's own colour. One image is needed per
+ * colour and lean actually present in the data, so the image is chosen per
+ * feature from the `hatch` property, and the build lists what to register in
+ * polity-hatches.json — only the data knows which colours occur.
+ */
+export const POLITY_HATCHES = HATCHED.filter(({ hatch }) => hatch.color === POLITY_COLOR);
+
+/** One row of public/data/polity-hatches.json, written by the data build. */
+export type PolityHatch = {
+  /** The image id, which is also the `hatch` property on the features using it. */
+  id: string;
+  status: PolityStatus;
+  color: string;
+  /** Which claimant this is on its piece of ground; decides the stripes' lean. */
+  claim: number;
+};
+
+/**
+ * Every layer whose visible features depend on the current instant. Each one
+ * carries the filter to re-apply, because the two kinds of ground on the map
+ * are selected differently and the caller should not have to know which is
+ * which.
+ */
+export const TIMED_LAYERS: { id: string; filter: (t: number) => FilterSpecification }[] = [
+  { id: 'polity-fill', filter: (t) => polityFilter(t) },
+  ...HATCHED.map(({ status }) => ({
+    id: `polity-hatch-${status}`,
+    filter: (t: number) => polityFilter(t, status),
+  })),
   ...(Object.keys(POLITY_STATUS) as PolityStatus[]).map((status) => ({
     id: `polity-line-${status}`,
-    status,
+    filter: (t: number) => polityFilter(t, status),
   })),
+  { id: UNCLAIMED_FILL, filter: unclaimedFilter },
+  { id: UNCLAIMED_LINE, filter: unclaimedFilter },
 ];
 
 /** The outline drawn around whichever polity the reader has clicked. */
@@ -130,10 +210,23 @@ export function polityFilter(t: number, status?: PolityStatus): FilterSpecificat
   const clauses: ExpressionSpecification[] = [
     ['<=', ['get', 'from'], t],
     ['>', ['get', 'to'], t],
+    // Unclaimed ground shares the source file but must never reach a layer
+    // that colours by owner, because it has no owner and so no colour.
+    ['==', ['get', 'kind'], 'polity'],
   ];
   if (status) clauses.push(['==', ['get', 'status'], status]);
   // Spreading defeats the tuple inference the style spec's filter type wants.
   return ['all', ...clauses] as FilterSpecification;
+}
+
+/** The same span of time, for the ground nobody held. */
+export function unclaimedFilter(t: number): FilterSpecification {
+  return [
+    'all',
+    ['<=', ['get', 'from'], t],
+    ['>', ['get', 'to'], t],
+    ['==', ['get', 'kind'], 'unclaimed'],
+  ] as FilterSpecification;
 }
 
 /**
@@ -194,13 +287,25 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
       },
       // Stripes go over the fill and under the outlines, so a dashed border
       // still reads cleanly against them.
-      ...HATCHED_STATUSES.map(
+      ...STATIC_HATCHES.map(
         ({ status, imageId }): LayerSpecification => ({
           id: `polity-hatch-${status}`,
           type: 'fill',
           source: 'polities',
           filter: polityFilter(t, status),
           paint: { 'fill-pattern': imageId },
+        }),
+      ),
+      // One layer still, but the image comes off the feature: every claimant on
+      // a contested piece of ground draws here, each with its own colour and
+      // lean, so they overlay rather than replace one another.
+      ...POLITY_HATCHES.map(
+        ({ status }): LayerSpecification => ({
+          id: `polity-hatch-${status}`,
+          type: 'fill',
+          source: 'polities',
+          filter: polityFilter(t, status),
+          paint: { 'fill-pattern': ['get', 'hatch'] },
         }),
       ),
       ...(Object.entries(POLITY_STATUS) as [PolityStatus, StatusStyle][]).map(
@@ -225,6 +330,35 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
           },
         }),
       ),
+      // Neither of these colours by feature: an unclaimed region takes the
+      // theme's neutral, because there is no owner whose colour it could wear.
+      {
+        id: UNCLAIMED_FILL,
+        type: 'fill',
+        source: 'polities',
+        filter: unclaimedFilter(t),
+        paint: { 'fill-color': colors.unclaimed, 'fill-opacity': UNCLAIMED.fillOpacity },
+      },
+      {
+        id: UNCLAIMED_LINE,
+        type: 'line',
+        source: 'polities',
+        filter: unclaimedFilter(t),
+        paint: {
+          'line-color': colors.unclaimed,
+          'line-opacity': UNCLAIMED.lineOpacity,
+          'line-width': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            1,
+            0.6 * UNCLAIMED.lineWidth,
+            6,
+            1.6 * UNCLAIMED.lineWidth,
+          ],
+          'line-dasharray': [...UNCLAIMED.lineDash],
+        },
+      },
       // Sits above every polity layer so the highlight is never half-hidden
       // by a neighbour drawn later, and below the physical features so it
       // does not paint over a lake or a river.

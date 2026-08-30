@@ -1,12 +1,14 @@
 import { Marker, type Map as MapLibreMap } from 'maplibre-gl';
-import { POLITY_STATUS, DEFAULT_STATUS, type PolityStatus } from '~/lib/mapStyle';
+import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, type PolityStatus } from '~/lib/mapStyle';
 
 /** One row of public/data/polity-labels.json, written by the data build. */
 type PolityLabel = {
   polity: string;
+  /** 'polity' for ground with an owner, 'unclaimed' for ground with only a name. */
+  kind: 'polity' | 'unclaimed';
   text: string;
-  color: string;
-  status: string;
+  color: string | null;
+  status: string | null;
   from: number;
   to: number;
   anchor: [number, number];
@@ -16,8 +18,21 @@ type PolityLabel = {
 
 const LABELS_URL = '/data/polity-labels.json';
 
-const styleFor = (status: string) =>
-  POLITY_STATUS[status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
+const styleFor = (label: PolityLabel) =>
+  label.kind === 'unclaimed'
+    ? UNCLAIMED
+    : POLITY_STATUS[label.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
+
+/**
+ * Held ground is named in upright capitals, unclaimed ground in italic. That is
+ * the old atlas convention — upright for what a state administers, italic for
+ * what is merely a place — and it is doing real work here, because the name of
+ * an unclaimed region must not be mistaken for the name of an owner.
+ */
+const TYPE = {
+  polity: 'font-semibold tracking-[0.05em] uppercase text-ink',
+  unclaimed: 'font-medium italic tracking-[0.02em] text-ink-dim',
+} as const;
 
 function labelElement(label: PolityLabel): HTMLElement {
   const element = document.createElement('span');
@@ -25,10 +40,9 @@ function labelElement(label: PolityLabel): HTMLElement {
   // No halo, plate or shadow: the names carry on colour alone, so legibility
   // is the fill palette's job rather than an effect layered over it.
   element.className =
-    'pointer-events-none block whitespace-nowrap text-[12px] font-semibold ' +
-    'tracking-[0.05em] uppercase text-ink';
+    'pointer-events-none block whitespace-nowrap text-[12px] ' + TYPE[label.kind];
   element.textContent = label.text;
-  element.style.opacity = String(styleFor(label.status).labelOpacity);
+  element.style.opacity = String(styleFor(label).labelOpacity);
   // MapLibre puts will-change:transform on every marker, which promotes each
   // label to its own compositing layer — the text is then rasterised into a
   // texture and resampled at whatever subpixel offset it lands on, which is
