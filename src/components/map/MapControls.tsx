@@ -34,13 +34,13 @@ export default function MapControls({ onZoomIn, onZoomOut }: MapControlsProps) {
         </button>
       </div>
 
-      <div className="mt-2 flex items-center justify-between border-t border-white/9 pt-2">
-        <span className="px-2 text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Zoom</span>
-        <div className="flex flex-col gap-1">
-          <button className={`${buttonClass} px-2.5 text-base leading-none text-ink-dim hover:bg-white/8 hover:text-ink`} onClick={onZoomIn} aria-label="Zoom in" title="Zoom in">
+      <div className="mt-2 flex flex-col items-center border-t border-white/9 pt-2">
+        <span className="mb-1.5 text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Zoom</span>
+        <div className="flex flex-col overflow-hidden rounded-[9px] border border-white/9 bg-white/4">
+          <button className="grid size-[34px] cursor-pointer place-items-center border-b border-white/9 text-lg leading-none text-ink-dim transition-colors hover:bg-white/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomIn} aria-label="Zoom in" title="Zoom in">
             +
           </button>
-          <button className={`${buttonClass} px-2.5 text-base leading-none text-ink-dim hover:bg-white/8 hover:text-ink`} onClick={onZoomOut} aria-label="Zoom out" title="Zoom out">
+          <button className="grid size-[34px] cursor-pointer place-items-center text-lg leading-none text-ink-dim transition-colors hover:bg-white/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomOut} aria-label="Zoom out" title="Zoom out">
             −
           </button>
         </div>

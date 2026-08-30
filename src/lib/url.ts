@@ -1,7 +1,9 @@
 /** The map's view lives in the URL so any state is linkable and back/forward works. */
+import { MAX_YEAR, MIN_YEAR } from './years';
+
 export type ViewState = { year: number; lng: number; lat: number; zoom: number };
 
-export const DEFAULT_VIEW: ViewState = { year: 1400, lng: 15, lat: 30, zoom: 1.9 };
+export const DEFAULT_VIEW: ViewState = { year: 1980, lng: 15, lat: 30, zoom: 1.9 };
 
 export function readView(): ViewState {
   if (typeof window === 'undefined') return DEFAULT_VIEW;
@@ -11,7 +13,7 @@ export function readView(): ViewState {
     return Number.isFinite(value) && params.has(key) ? value : fallback;
   };
   return {
-    year: num('year', DEFAULT_VIEW.year),
+    year: Math.min(Math.max(num('year', DEFAULT_VIEW.year), MIN_YEAR), MAX_YEAR),
     lng: num('lng', DEFAULT_VIEW.lng),
     lat: num('lat', DEFAULT_VIEW.lat),
     zoom: num('zoom', DEFAULT_VIEW.zoom),
