@@ -16,14 +16,17 @@ const COLORS: Record<ColorScheme, {
   river: string;
   sky: string;
   horizon: string;
+  select: string;
 }> = {
   dark: {
     ocean: '#0b1a26', land: '#222c38', landStroke: 'rgba(150, 175, 200, 0.22)',
     water: '#0d2231', river: 'rgba(120, 170, 210, 0.35)', sky: '#0a1620', horizon: '#16303f',
+    select: '#e0b872',
   },
   light: {
     ocean: '#dbe8ed', land: '#d5d2c7', landStroke: 'rgba(66, 84, 91, 0.34)',
     water: '#c8dfe8', river: 'rgba(67, 126, 157, 0.52)', sky: '#c8e0ea', horizon: '#e8f0ed',
+    select: '#8a6124',
   },
 };
 
@@ -39,6 +42,7 @@ const COLORS: Record<ColorScheme, {
 export const POLITY_STATUS = {
   /** Held, and not seriously contested. */
   controlled: {
+    title: 'Controlled',
     fillOpacity: 0.45,
     hatch: null,
     lineOpacity: 0.9,
@@ -48,6 +52,7 @@ export const POLITY_STATUS = {
   },
   /** Held in fact, but the claim is rejected — occupation, annexation, secession. */
   disputed: {
+    title: 'Disputed',
     fillOpacity: 0.3,
     // Neutral stripes over the polity's own colour, so the treatment reads the
     // same whoever holds the ground. A coloured hatch would need one pattern
@@ -61,6 +66,8 @@ export const POLITY_STATUS = {
 } as const satisfies Record<string, StatusStyle>;
 
 type StatusStyle = {
+  /** How the status is named to the reader, in the info panel. */
+  title: string;
   fillOpacity: number;
   /** Diagonal stripes drawn over the fill, or null for a plain fill. */
   hatch: HatchSpec | null;
@@ -94,6 +101,26 @@ export const POLITY_LAYERS: { id: string; status?: PolityStatus }[] = [
     status,
   })),
 ];
+
+/** The outline drawn around whichever polity the reader has clicked. */
+export const SELECTED_LAYER = 'polity-selected';
+
+/**
+ * The selection outline covers every span of the clicked polity that exists at
+ * `t` — a polity holding contested ground alongside controlled ground is one
+ * thing to the reader, so it highlights as one thing.
+ */
+export function selectionFilter(t: number, polity: string | null): FilterSpecification {
+  // Nothing selected still needs a filter that matches nothing: a layer with
+  // no filter at all would outline every polity on the map.
+  if (!polity) return ['boolean', false] as FilterSpecification;
+  return [
+    'all',
+    ['<=', ['get', 'from'], t],
+    ['>', ['get', 'to'], t],
+    ['==', ['get', 'polity'], polity],
+  ] as FilterSpecification;
+}
 
 /**
  * A polity feature is on screen for exactly the span it existed. This one
@@ -198,6 +225,20 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
           },
         }),
       ),
+      // Sits above every polity layer so the highlight is never half-hidden
+      // by a neighbour drawn later, and below the physical features so it
+      // does not paint over a lake or a river.
+      {
+        id: SELECTED_LAYER,
+        type: 'line',
+        source: 'polities',
+        filter: selectionFilter(t, null),
+        paint: {
+          'line-color': colors.select,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 1, 1.6, 6, 3],
+          'line-opacity': 0.95,
+        },
+      },
       {
         id: 'lakes',
         type: 'fill',

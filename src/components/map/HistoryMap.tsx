@@ -3,6 +3,7 @@ import {
   Map as MapLibreMap,
   ScaleControl,
   setWorkerUrl,
+  type MapMouseEvent,
 } from 'maplibre-gl';
 // MapLibre resolves its worker relative to its own module URL, which no
 // bundler preserves — the request 404s and the map renders nothing at all,
@@ -11,7 +12,14 @@ import {
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-import { buildStyle, polityFilter, POLITY_LAYERS, HATCHED_STATUSES } from '~/lib/mapStyle';
+import {
+  buildStyle,
+  polityFilter,
+  selectionFilter,
+  POLITY_LAYERS,
+  HATCHED_STATUSES,
+  SELECTED_LAYER,
+} from '~/lib/mapStyle';
 import { hatchImage, HATCH_PIXEL_RATIO } from '~/lib/hatch';
 import { attachPolityLabels, type PolityLabels } from './polityLabels';
 import { useMapStore } from '~/lib/store';
@@ -20,6 +28,7 @@ import { hasWebGL2 } from '~/lib/webgl';
 import Timeline from './Timeline';
 import MapControls from './MapControls';
 import MapUnavailable from './MapUnavailable';
+import PolityInfo, { type PolitySelection } from './PolityInfo';
 
 const MAX_VIEW_WIDTH_METERS = 750_000;
 const EARTH_CIRCUMFERENCE_METERS = 40_075_016.68557849;
@@ -51,9 +60,18 @@ function registerHatches(instance: MapLibreMap) {
   }
 }
 
+/** The layer clicks are tested against: the fill covers every polity on screen,
+ *  hatches and outlines only ever sit on top of one. */
+const PICK_LAYER = 'polity-fill';
+
 /** Show only the polities that existed at `t`. */
 function applyInstant(instance: MapLibreMap, t: number) {
   for (const layer of POLITY_LAYERS) instance.setFilter(layer.id, polityFilter(t, layer.status));
+}
+
+/** Outline the selected polity, or nothing when the panel is closed. */
+function applySelection(instance: MapLibreMap, t: number, polity: string | null) {
+  instance.setFilter(SELECTED_LAYER, selectionFilter(t, polity));
 }
 
 export default function HistoryMap() {
@@ -65,6 +83,9 @@ export default function HistoryMap() {
     typeof window === 'undefined' ? 'dark' : systemColorScheme(),
   );
   const restoringHistory = useRef(false);
+  const [selection, setSelection] = useState<PolitySelection | null>(null);
+  // The click handler is registered once, so it cannot read the state above.
+  const selected = useRef<string | null>(null);
 
   const globe = useMapStore((state) => state.globe);
   const t = useMapStore((state) => state.t);
@@ -97,6 +118,11 @@ export default function HistoryMap() {
         // Rotation is noise on this kind of map; dragging should pan, always.
         dragRotate: false,
         pitchWithRotate: false,
+        // A pan must never open the info panel. MapLibre only fires 'click'
+        // when the pointer stayed within this many pixels between press and
+        // release, so panning and clicking stay cleanly separate without the
+        // handler having to track the drag itself.
+        clickTolerance: 4,
         attributionControl: false,
       });
     } catch (error) {
@@ -112,7 +138,28 @@ export default function HistoryMap() {
       styleReady.current = true;
       registerHatches(instance);
       applyInstant(instance, useMapStore.getState().t);
+      applySelection(instance, useMapStore.getState().t, selected.current);
     });
+
+    // One handler for both opening and closing: a click that lands on a polity
+    // selects it, and a click that lands anywhere else dismisses the panel,
+    // which is what clicking away from a thing is expected to do.
+    const handleClick = (event: MapMouseEvent) => {
+      if (!instance.getLayer(PICK_LAYER)) return;
+      const [feature] = instance.queryRenderedFeatures(event.point, { layers: [PICK_LAYER] });
+      setSelection((feature?.properties as PolitySelection | undefined) ?? null);
+    };
+    // Hovering a polity has to look clickable, but only over the polities —
+    // the ocean is still just something to drag.
+    const enterPolity = () => {
+      instance.getCanvas().style.cursor = 'pointer';
+    };
+    const leavePolity = () => {
+      instance.getCanvas().style.cursor = '';
+    };
+    instance.on('click', handleClick);
+    instance.on('mouseenter', PICK_LAYER, enterPolity);
+    instance.on('mouseleave', PICK_LAYER, leavePolity);
 
     let cancelled = false;
     attachPolityLabels(instance)
@@ -213,6 +260,9 @@ export default function HistoryMap() {
 
     return () => {
       cancelled = true;
+      instance.off('click', handleClick);
+      instance.off('mouseenter', PICK_LAYER, enterPolity);
+      instance.off('mouseleave', PICK_LAYER, leavePolity);
       labels.current?.destroy();
       labels.current = null;
       styleReady.current = false;
@@ -246,10 +296,26 @@ export default function HistoryMap() {
     if (!map.current) return;
     if (styleReady.current) applyInstant(map.current, t);
     labels.current?.update(t);
+    // A span the map is no longer showing must not keep a panel open over it.
+    if (selection && (t < selection.from || t >= selection.to)) setSelection(null);
     if (restoringHistory.current) return;
     const center = map.current.getCenter();
     writeView({ t, lng: center.lng, lat: center.lat, zoom: map.current.getZoom() });
   }, [t]);
+
+  useEffect(() => {
+    selected.current = selection?.polity ?? null;
+    if (map.current && styleReady.current) applySelection(map.current, t, selected.current);
+  }, [selection, t]);
+
+  useEffect(() => {
+    if (!selection) return;
+    const dismiss = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelection(null);
+    };
+    window.addEventListener('keydown', dismiss);
+    return () => window.removeEventListener('keydown', dismiss);
+  }, [selection]);
 
   useEffect(() => {
     if (!map.current) return;
@@ -281,6 +347,7 @@ export default function HistoryMap() {
           <path d="m3 3 10 10M13 3 3 13" strokeLinecap="round" />
         </svg>
       </a>
+      {selection && <PolityInfo selection={selection} onClose={() => setSelection(null)} />}
       <MapControls
         onZoomIn={() => map.current?.zoomIn({ duration: 180 })}
         onZoomOut={() => map.current?.zoomOut({ duration: 180 })}

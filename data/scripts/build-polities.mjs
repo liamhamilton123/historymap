@@ -273,6 +273,10 @@ for (const spec of specs) {
         // Lets a span be named something other than the polity, for the cases
         // where "Russia" over Crimea would read worse than "Crimea".
         label: entry.label ?? null,
+        // The one-line justification for the span's dates, shown in the info
+        // panel. It is the only prose the data carries, so it travels with the
+        // feature rather than being looked up from the spec at runtime.
+        source: entry.source ?? null,
       },
       geometry,
     });
