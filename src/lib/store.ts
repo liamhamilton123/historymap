@@ -7,6 +7,7 @@ type MapState = {
   setYear: (year: number) => void;
   togglePlaying: () => void;
   setPlaying: (playing: boolean) => void;
+  setGlobe: (globe: boolean) => void;
   toggleGlobe: () => void;
 };
 
@@ -17,5 +18,6 @@ export const useMapStore = create<MapState>((set) => ({
   setYear: (year) => set({ year }),
   togglePlaying: () => set((state) => ({ playing: !state.playing })),
   setPlaying: (playing) => set({ playing }),
+  setGlobe: (globe) => set({ globe }),
   toggleGlobe: () => set((state) => ({ globe: !state.globe })),
 }));

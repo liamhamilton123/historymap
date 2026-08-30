@@ -1,35 +1,27 @@
 ---
 import Base from '~/layouts/Base.astro';
-import HistoryMap from '~/components/map/HistoryMap';
 ---
 
 <Base
   title="Atlas"
-  description="An interactive map."
-  fullBleed
+  description="Explore history through an interactive map."
 >
-  {/*
-    client:only because MapLibre needs a real canvas and window — there is
-    nothing meaningful to server-render here. Every other page on the site
-    ships zero JavaScript; this is the one island that pays for itself.
-  */}
-  <HistoryMap client:only="react" />
-
-  <noscript>
-    <div class="noscript">
-      <h1>Atlas</h1>
-      <p>The interactive map needs JavaScript.</p>
+  <main class="mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-6 py-20 sm:px-10">
+    <p class="mb-5 text-sm font-medium tracking-[0.18em] text-accent uppercase">Atlas</p>
+    <h1 class="max-w-3xl font-serif text-5xl leading-[1.02] tracking-tight sm:text-7xl">
+      Explore the shape of history.
+    </h1>
+    <p class="mt-7 max-w-xl text-lg leading-relaxed text-ink-dim">
+      A quiet, interactive map for moving through the world and its long history.
+    </p>
+    <div class="mt-10">
+      <a
+        href="/map"
+        class="inline-flex items-center rounded-lg bg-accent px-5 py-3 text-sm font-medium text-ocean-deep transition-colors hover:bg-[#f0ca84] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      >
+        Open the map
+        <span aria-hidden="true" class="ml-2">→</span>
+      </a>
     </div>
-  </noscript>
+  </main>
 </Base>
-
-<style>
-  .noscript {
-    max-width: 34rem;
-    margin: 18vh auto;
-    padding: 0 1.5rem;
-    font-family: var(--sans);
-    line-height: 1.6;
-  }
-  .noscript h1 { font-family: var(--serif); font-weight: 500; }
-</style>

@@ -26,14 +26,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0b1a26" />
   </head>
-  <body class={fullBleed ? 'full-bleed' : ''}>
+  <body class={fullBleed ? 'overflow-hidden overscroll-none' : ''}>
     <slot />
   </body>
 </html>
-
-<style is:global>
-  body.full-bleed {
-    overflow: hidden;
-    overscroll-behavior: none;
-  }
-</style>

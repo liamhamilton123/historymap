@@ -72,10 +72,10 @@ export default function Timeline() {
   }, [playing]);
 
   return (
-    <div className="timeline panel">
-      <div className="timeline-head">
+    <div className="absolute bottom-3 left-1/2 z-[5] w-[min(940px,calc(100%-32px))] -translate-x-1/2 rounded-xl border border-white/9 bg-panel/82 px-3.5 pt-3 pb-2 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] sm:bottom-[22px] sm:px-5 sm:pt-3.5 sm:pb-2.5">
+      <div className="mb-2.5 flex items-center gap-3.5">
         <button
-          className="icon-button play"
+          className="grid size-10 shrink-0 cursor-pointer place-items-center rounded-full border border-white/9 bg-white/4 transition-[background-color,border-color] duration-120 hover:border-white/16 hover:bg-white/10 aria-pressed:border-accent aria-pressed:bg-accent/15 aria-pressed:text-accent"
           onClick={() => {
             if (!playing) beginHistory();
             togglePlaying();
@@ -87,26 +87,25 @@ export default function Timeline() {
           {playing ? <PauseIcon /> : <PlayIcon />}
         </button>
 
-        <div className="year-readout">
-          <span className="year-value">{formatYear(year)}</span>
+        <div className="min-w-0 flex-1">
+          <span className="font-serif text-[22px] leading-[1.1] tracking-[0.01em] tabular-nums sm:text-[28px]">{formatYear(year)}</span>
         </div>
 
-        <div className="stepper">
-          <button className="icon-button" onClick={() => step(-1)} title="Back (←)" aria-label="Back">
+        <div className="flex shrink-0 gap-1.5">
+          <button className="grid size-[34px] cursor-pointer place-items-center rounded-[9px] border border-white/9 bg-white/4 transition-[background-color,border-color] duration-120 hover:border-white/16 hover:bg-white/10" onClick={() => step(-1)} title="Back (←)" aria-label="Back">
             <ChevronIcon direction="left" />
           </button>
-          <button className="icon-button" onClick={() => step(1)} title="Forward (→)" aria-label="Forward">
+          <button className="grid size-[34px] cursor-pointer place-items-center rounded-[9px] border border-white/9 bg-white/4 transition-[background-color,border-color] duration-120 hover:border-white/16 hover:bg-white/10" onClick={() => step(1)} title="Forward (→)" aria-label="Forward">
             <ChevronIcon direction="right" />
           </button>
         </div>
       </div>
 
-      <div className="track">
-        <div className="track-line" />
-        <div className="track-fill" style={{ width: `${fraction * 100}%` }} />
-        <span className="thumb" style={{ left: `${fraction * 100}%` }} />
+      <div className="group relative flex h-6 items-center">
+        <div className="pointer-events-none absolute right-0 left-0 h-0.75 rounded-sm bg-white/10" />
+        <div className="pointer-events-none absolute left-0 h-0.75 rounded-sm bg-linear-to-r from-accent/35 to-accent" style={{ width: `${fraction * 100}%` }} />
         <input
-          className="track-input"
+          className="peer absolute inset-0 m-0 w-full cursor-pointer appearance-none bg-transparent opacity-0"
           type="range"
           min={0}
           max={RESOLUTION}
@@ -120,11 +119,12 @@ export default function Timeline() {
           aria-label="Year"
           aria-valuetext={formatYear(year)}
         />
+        <span className="pointer-events-none absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent shadow-[0_0_0_4px_rgba(224,184,114,0.18),0_2px_8px_rgba(0,0,0,0.5)] transition-shadow duration-140 group-hover:shadow-[0_0_0_7px_rgba(224,184,114,0.22),0_2px_10px_rgba(0,0,0,0.55)] peer-focus-visible:shadow-[0_0_0_7px_rgba(224,184,114,0.4)]" style={{ left: `${fraction * 100}%` }} />
       </div>
 
-      <div className="ticks" aria-hidden="true">
+      <div className="relative mt-0.5 h-4" aria-hidden="true">
         {TICKS.map((tick) => (
-          <span key={tick} className="tick" style={{ left: `${yearToFraction(tick) * 100}%` }}>
+          <span key={tick} className="absolute top-0 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] text-ink-faint even:hidden sm:even:inline" style={{ left: `${yearToFraction(tick) * 100}%` }}>
             {formatYearShort(tick)}
           </span>
         ))}

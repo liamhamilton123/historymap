@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   Map as MapLibreMap,
-  NavigationControl,
   ScaleControl,
   setWorkerUrl,
 } from 'maplibre-gl';
@@ -11,7 +10,6 @@ import {
 // handing MapLibre the resulting URL is the supported fix.
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import '~/styles/map.css';
 
 import { buildStyle } from '~/lib/mapStyle';
 import { useMapStore } from '~/lib/store';
@@ -65,12 +63,50 @@ export default function HistoryMap() {
     map.current = instance;
     useMapStore.getState().setYear(view.year);
 
+    // The island can mount before Vite has applied the global Tailwind sheet.
+    // MapLibre snapshots its canvas size during construction, so observe the
+    // container and resize once layout settles (and on future viewport changes).
+    const resizeObserver = new ResizeObserver(() => instance.resize());
+    resizeObserver.observe(container.current);
+
     // Surface style/source failures. Without this MapLibre swallows them into
     // an unhandled 'error' event and the map just stays empty.
     instance.on('error', (event) => console.error('[atlas] map error:', event.error ?? event));
-    if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__map = instance;
+    if (import.meta.env.DEV) {
+      (window as unknown as Record<string, unknown>).__map = instance;
+      console.info('[atlas] map initialising', {
+        view,
+        canvasSize: { width: container.current.clientWidth, height: container.current.clientHeight },
+        webgl2: hasWebGL2(),
+      });
+      instance.on('style.load', () => {
+        console.info('[atlas] style loaded', {
+          layers: instance.getStyle().layers?.map((layer) => layer.id),
+          source: instance.getSource('basemap') ? 'registered' : 'missing',
+        });
+      });
+      instance.on('sourcedataloading', (event) => {
+        if (event.sourceId === 'basemap') console.info('[atlas] basemap source loading');
+      });
+      instance.on('sourcedata', (event) => {
+        if (event.sourceId === 'basemap') {
+          console.info('[atlas] basemap source data event', {
+            sourceLoaded: event.isSourceLoaded,
+            dataType: event.dataType,
+          });
+        }
+      });
+      instance.on('idle', () => {
+        const features = instance.querySourceFeatures('basemap');
+        console.info('[atlas] map idle', {
+          zoom: instance.getZoom(),
+          center: instance.getCenter().toArray(),
+          basemapFeaturesInLoadedTiles: features.length,
+          canvasSize: { width: container.current?.clientWidth, height: container.current?.clientHeight },
+        });
+      });
+    }
 
-    instance.addControl(new NavigationControl({ showCompass: false }), 'bottom-right');
     instance.addControl(new ScaleControl({ unit: 'metric' }), 'bottom-right');
 
     const currentView = () => {
@@ -104,6 +140,7 @@ export default function HistoryMap() {
     window.addEventListener('popstate', restoreFromHistory);
 
     return () => {
+      resizeObserver.disconnect();
       instance.off('movestart', beginMapHistory);
       instance.off('moveend', syncUrl);
       window.removeEventListener('atlas:history-start', beginMapHistory);
@@ -131,9 +168,28 @@ export default function HistoryMap() {
   if (failed) return <MapUnavailable reason={failed} />;
 
   return (
-    <div className="map-root">
-      <div ref={container} className="map-canvas" />
-      <MapControls />
+    <div className="fixed inset-0 h-dvh w-screen overflow-hidden">
+      <div
+        ref={container}
+        className="absolute inset-0"
+        // MapLibre measures this element synchronously. Keep its dimensions
+        // available even before a client-only island's stylesheet settles.
+        style={{ width: '100vw', height: '100vh' }}
+      />
+      <a
+        href="/"
+        className="absolute top-4 left-4 z-[5] inline-flex size-10 items-center justify-center rounded-xl border border-white/9 bg-panel/82 text-ink shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] transition-colors hover:border-white/16 hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        aria-label="Close map and return home"
+        title="Close map"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+          <path d="m3 3 10 10M13 3 3 13" strokeLinecap="round" />
+        </svg>
+      </a>
+      <MapControls
+        onZoomIn={() => map.current?.zoomIn({ duration: 180 })}
+        onZoomOut={() => map.current?.zoomOut({ duration: 180 })}
+      />
       <Timeline />
     </div>
   );
