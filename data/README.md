@@ -32,12 +32,16 @@ A span may carry a `status`, defaulting to `controlled`:
 
 `controlled` is ground held and not seriously contested; `disputed` is ground
 held in fact but whose claim is rejected — occupation, annexation, unrecognised
-secession. A disputed span is drawn with a faded fill and a dashed outline.
+secession. A disputed span is drawn with diagonal stripes over its fill and a
+dashed outline.
 
 **All of that styling lives in one place**, `POLITY_STATUS` in
-`src/lib/mapStyle.ts`. Adding a status there gives it a fill opacity, an outline
-layer and a line style automatically; nothing is styled per feature, so every
-disputed territory on the map matches by construction. `STATUSES` in
+`src/lib/mapStyle.ts`. Adding a status there gives it a fill opacity, an
+optional stripe pattern, an outline layer and a line style automatically;
+nothing is styled per feature, so every disputed territory on the map matches by
+construction. The stripe tile is generated from the same entry by
+`src/lib/hatch.ts` rather than shipped as an image, so its spacing, weight and
+colour stay described alongside everything else. `STATUSES` in
 `build-polities.mjs` mirrors the keys so a typo fails the build instead of
 quietly rendering as undisputed.
 

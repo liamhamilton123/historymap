@@ -14,11 +14,11 @@ export default function MapControls({ onZoomIn, onZoomOut, canZoomIn }: MapContr
   const setGlobe = useMapStore((state) => state.setGlobe);
 
   return (
-    <div className="absolute top-4 right-4 z-[5] w-48 rounded-xl border border-white/9 bg-panel/82 p-2 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%]">
+    <div className="absolute top-4 right-4 z-[5] w-48 rounded-xl border border-ink/12 bg-panel/82 p-2 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%]">
       <p className="px-2 pt-1 pb-2 text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Projection</p>
-      <div className="grid grid-cols-2 rounded-lg bg-white/4 p-1" role="group" aria-label="Map projection">
+      <div className="grid grid-cols-2 rounded-lg bg-ink/4 p-1" role="group" aria-label="Map projection">
         <button
-          className={`${buttonClass} flex items-center justify-center gap-1.5 ${!globe ? 'bg-accent text-ocean-deep shadow-sm' : 'text-ink-dim hover:bg-white/8 hover:text-ink'}`}
+          className={`${buttonClass} flex items-center justify-center gap-1.5 ${!globe ? 'bg-accent text-ocean-deep shadow-sm' : 'text-ink-dim hover:bg-ink/8 hover:text-ink'}`}
           onClick={() => setGlobe(false)}
           aria-pressed={!globe}
         >
@@ -26,7 +26,7 @@ export default function MapControls({ onZoomIn, onZoomOut, canZoomIn }: MapContr
           Flat
         </button>
         <button
-          className={`${buttonClass} flex items-center justify-center gap-1.5 ${globe ? 'bg-accent text-ocean-deep shadow-sm' : 'text-ink-dim hover:bg-white/8 hover:text-ink'}`}
+          className={`${buttonClass} flex items-center justify-center gap-1.5 ${globe ? 'bg-accent text-ocean-deep shadow-sm' : 'text-ink-dim hover:bg-ink/8 hover:text-ink'}`}
           onClick={() => setGlobe(true)}
           aria-pressed={globe}
         >
@@ -35,13 +35,13 @@ export default function MapControls({ onZoomIn, onZoomOut, canZoomIn }: MapContr
         </button>
       </div>
 
-      <div className="mt-2 flex flex-col items-center border-t border-white/9 pt-2">
+      <div className="mt-2 flex flex-col items-center border-t border-ink/12 pt-2">
         <span className="mb-1.5 text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Zoom</span>
-        <div className="flex flex-col overflow-hidden rounded-[9px] border border-white/9 bg-white/4">
-          <button className="grid size-[34px] cursor-pointer place-items-center border-b border-white/9 text-lg leading-none text-ink-dim transition-colors hover:bg-white/10 hover:text-ink disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-ink-dim focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomIn} disabled={!canZoomIn} aria-label="Zoom in" title={canZoomIn ? 'Zoom in' : 'Maximum zoom: 750 km view'}>
+        <div className="flex flex-col overflow-hidden rounded-[9px] border border-ink/12 bg-ink/4">
+          <button className="grid size-[34px] cursor-pointer place-items-center border-b border-ink/12 text-lg leading-none text-ink-dim transition-colors hover:bg-ink/10 hover:text-ink disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:bg-transparent disabled:hover:text-ink-dim focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomIn} disabled={!canZoomIn} aria-label="Zoom in" title={canZoomIn ? 'Zoom in' : 'Maximum zoom: 750 km view'}>
             +
           </button>
-          <button className="grid size-[34px] cursor-pointer place-items-center text-lg leading-none text-ink-dim transition-colors hover:bg-white/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomOut} aria-label="Zoom out" title="Zoom out">
+          <button className="grid size-[34px] cursor-pointer place-items-center text-lg leading-none text-ink-dim transition-colors hover:bg-ink/10 hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent" onClick={onZoomOut} aria-label="Zoom out" title="Zoom out">
             −
           </button>
         </div>

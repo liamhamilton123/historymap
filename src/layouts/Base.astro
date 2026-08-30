@@ -24,7 +24,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#0b1a26" />
+    <meta name="theme-color" content="#0b1a26" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)" />
   </head>
   <body class={fullBleed ? 'overflow-hidden overscroll-none' : ''}>
     <slot />

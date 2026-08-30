@@ -1,7 +1,7 @@
 export default function MapUnavailable({ reason }: { reason: 'webgl' | 'init' }) {
   return (
     <div className="fixed inset-0 grid place-items-center overflow-auto p-6">
-      <div className="max-w-2xl rounded-xl border border-white/9 bg-panel/82 px-8 py-7 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%]">
+      <div className="max-w-2xl rounded-xl border border-ink/12 bg-panel/82 px-8 py-7 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%]">
         <h1 className="mb-3.5 font-serif text-[1.6rem] font-medium">The map can’t start</h1>
         {reason === 'webgl' ? (
           <>

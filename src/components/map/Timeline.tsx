@@ -42,7 +42,7 @@ export default function Timeline() {
   });
 
   return (
-    <div className="absolute bottom-3 left-1/2 z-[5] w-[min(940px,calc(100%-32px))] -translate-x-1/2 rounded-xl border border-white/9 bg-panel/82 px-3.5 pt-3 pb-2 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] sm:bottom-[22px] sm:px-5 sm:pt-3.5 sm:pb-2.5">
+    <div className="absolute bottom-3 left-1/2 z-[5] w-[min(940px,calc(100%-32px))] -translate-x-1/2 rounded-xl border border-ink/12 bg-panel/82 px-3.5 pt-3 pb-2 shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] sm:bottom-[22px] sm:px-5 sm:pt-3.5 sm:pb-2.5">
       <div className="mb-3 flex items-center justify-center gap-2 sm:gap-3">
         <div className="flex gap-1">
           <StepButton direction="left" years={50} onClick={() => step(-1, 50)} />
@@ -58,7 +58,7 @@ export default function Timeline() {
       </div>
 
       <div className="group relative flex h-6 items-center">
-        <div className="pointer-events-none absolute right-0 left-0 h-0.75 rounded-sm bg-white/10" />
+        <div className="pointer-events-none absolute right-0 left-0 h-0.75 rounded-sm bg-ink/10" />
         <div className="pointer-events-none absolute left-0 h-0.75 rounded-sm bg-linear-to-r from-accent/35 to-accent" style={{ width: `${fraction * 100}%` }} />
         <input
           className="peer absolute inset-0 m-0 w-full cursor-pointer appearance-none bg-transparent opacity-0"
@@ -80,7 +80,7 @@ export default function Timeline() {
       <div className="relative mt-0.5 h-6" aria-hidden="true">
         {TICKS.map((tick) => (
           <span key={tick} className="absolute top-0 -translate-x-1/2" style={{ left: `${tToFraction(tick) * 100}%` }}>
-            <span className="mx-auto block h-1 w-px bg-white/25" />
+            <span className="mx-auto block h-1 w-px bg-ink/25" />
             {(tick % 5 === 0 || tick === MAX_T) && (
               <span className="mt-1 block -translate-x-1/2 whitespace-nowrap font-mono text-[10px] text-ink-faint">
                 {formatYearShort(tick)}
@@ -98,7 +98,7 @@ function StepButton({ direction, years, onClick }: { direction: 'left' | 'right'
   const chevronCount = years === 50 ? 3 : years === 5 ? 2 : 1;
   return (
     <button
-      className="group flex h-11 min-w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded-lg border border-white/8 bg-white/5 px-1 text-[10px] font-semibold leading-none text-ink-dim tabular-nums shadow-[inset_0_1px_rgba(255,255,255,0.06)] transition-all duration-150 hover:-translate-y-px hover:border-accent/60 hover:bg-accent/12 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:translate-y-0"
+      className="group flex h-11 min-w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded-lg border border-ink/10 bg-ink/5 px-1 text-[10px] font-semibold leading-none text-ink-dim tabular-nums shadow-[inset_0_1px_rgba(255,255,255,0.06)] transition-all duration-150 hover:-translate-y-px hover:border-accent/60 hover:bg-accent/12 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:translate-y-0"
       onClick={onClick}
       title={label}
       aria-label={label}

@@ -4,13 +4,27 @@ import type {
   LayerSpecification,
   StyleSpecification,
 } from 'maplibre-gl';
+import type { HatchSpec } from './hatch';
 
-const COLORS = {
-  ocean: '#0b1a26',
-  land: '#222c38',
-  landStroke: 'rgba(150, 175, 200, 0.22)',
-  water: '#0d2231',
-  river: 'rgba(120, 170, 210, 0.35)',
+type ColorScheme = 'light' | 'dark';
+
+const COLORS: Record<ColorScheme, {
+  ocean: string;
+  land: string;
+  landStroke: string;
+  water: string;
+  river: string;
+  sky: string;
+  horizon: string;
+}> = {
+  dark: {
+    ocean: '#0b1a26', land: '#222c38', landStroke: 'rgba(150, 175, 200, 0.22)',
+    water: '#0d2231', river: 'rgba(120, 170, 210, 0.35)', sky: '#0a1620', horizon: '#16303f',
+  },
+  light: {
+    ocean: '#dbe8ed', land: '#d5d2c7', landStroke: 'rgba(66, 84, 91, 0.34)',
+    water: '#c8dfe8', river: 'rgba(67, 126, 157, 0.52)', sky: '#c8e0ea', horizon: '#e8f0ed',
+  },
 };
 
 /**
@@ -24,13 +38,30 @@ const COLORS = {
  */
 export const POLITY_STATUS = {
   /** Held, and not seriously contested. */
-  controlled: { fillOpacity: 0.45, lineOpacity: 0.9, lineWidth: 1, lineDash: null },
+  controlled: {
+    fillOpacity: 0.45,
+    hatch: null,
+    lineOpacity: 0.9,
+    lineWidth: 1,
+    lineDash: null,
+  },
   /** Held in fact, but the claim is rejected — occupation, annexation, secession. */
-  disputed: { fillOpacity: 0.18, lineOpacity: 1, lineWidth: 1.3, lineDash: [2, 1.6] },
+  disputed: {
+    fillOpacity: 0.3,
+    // Neutral stripes over the polity's own colour, so the treatment reads the
+    // same whoever holds the ground. A coloured hatch would need one pattern
+    // image per polity, since fill-pattern cannot be tinted per feature.
+    hatch: { size: 8, period: 4, thickness: 1.4, color: [255, 255, 255], opacity: 0.5 },
+    lineOpacity: 1,
+    lineWidth: 1.3,
+    lineDash: [2, 1.6],
+  },
 } as const satisfies Record<string, StatusStyle>;
 
 type StatusStyle = {
   fillOpacity: number;
+  /** Diagonal stripes drawn over the fill, or null for a plain fill. */
+  hatch: HatchSpec | null;
   lineOpacity: number;
   lineWidth: number;
   lineDash: readonly number[] | null;
@@ -46,8 +77,14 @@ export const DEFAULT_STATUS: PolityStatus = 'controlled';
  * one layer per status because line-dasharray cannot be driven by a feature
  * property; the fill can, so it stays a single layer.
  */
+/** The statuses that draw stripes, and the pattern image each one registers. */
+export const HATCHED_STATUSES = (Object.entries(POLITY_STATUS) as [PolityStatus, StatusStyle][])
+  .filter(([, style]) => style.hatch)
+  .map(([status, style]) => ({ status, imageId: `hatch-${status}`, hatch: style.hatch! }));
+
 export const POLITY_LAYERS: { id: string; status?: PolityStatus }[] = [
   { id: 'polity-fill' },
+  ...HATCHED_STATUSES.map(({ status }) => ({ id: `polity-hatch-${status}`, status })),
   ...(Object.keys(POLITY_STATUS) as PolityStatus[]).map((status) => ({
     id: `polity-line-${status}`,
     status,
@@ -82,13 +119,14 @@ const fillOpacityByStatus = [
 ] as unknown as ExpressionSpecification;
 
 /** Physical basemap from Natural Earth, with polity fills on top of the land. */
-export function buildStyle(t: number): StyleSpecification {
+export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleSpecification {
+  const colors = COLORS[colorScheme];
   return {
     version: 8,
     sky: {
-      'sky-color': '#0a1620',
-      'horizon-color': '#16303f',
-      'fog-color': '#0b1a26',
+      'sky-color': colors.sky,
+      'horizon-color': colors.horizon,
+      'fog-color': colors.ocean,
       'horizon-fog-blend': 0.6,
       'sky-horizon-blend': 0.7,
     },
@@ -105,13 +143,13 @@ export function buildStyle(t: number): StyleSpecification {
       },
     },
     layers: [
-      { id: 'ocean', type: 'background', paint: { 'background-color': COLORS.ocean } },
+      { id: 'ocean', type: 'background', paint: { 'background-color': colors.ocean } },
       {
         id: 'land',
         type: 'fill',
         source: 'basemap',
         filter: ['==', ['get', 'kind'], 'land'],
-        paint: { 'fill-color': COLORS.land },
+        paint: { 'fill-color': colors.land },
       },
       {
         id: 'polity-fill',
@@ -123,6 +161,17 @@ export function buildStyle(t: number): StyleSpecification {
           'fill-opacity': fillOpacityByStatus,
         },
       },
+      // Stripes go over the fill and under the outlines, so a dashed border
+      // still reads cleanly against them.
+      ...HATCHED_STATUSES.map(
+        ({ status, imageId }): LayerSpecification => ({
+          id: `polity-hatch-${status}`,
+          type: 'fill',
+          source: 'polities',
+          filter: polityFilter(t, status),
+          paint: { 'fill-pattern': imageId },
+        }),
+      ),
       ...(Object.entries(POLITY_STATUS) as [PolityStatus, StatusStyle][]).map(
         ([status, style]): LayerSpecification => ({
           id: `polity-line-${status}`,
@@ -150,7 +199,7 @@ export function buildStyle(t: number): StyleSpecification {
         type: 'fill',
         source: 'basemap',
         filter: ['==', ['get', 'kind'], 'lake'],
-        paint: { 'fill-color': COLORS.water },
+        paint: { 'fill-color': colors.water },
       },
       {
         id: 'rivers',
@@ -159,7 +208,7 @@ export function buildStyle(t: number): StyleSpecification {
         filter: ['==', ['get', 'kind'], 'river'],
         minzoom: 2.5,
         paint: {
-          'line-color': COLORS.river,
+          'line-color': colors.river,
           'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.3, 9, 1.2],
         },
       },
@@ -169,7 +218,7 @@ export function buildStyle(t: number): StyleSpecification {
         source: 'basemap',
         filter: ['==', ['get', 'kind'], 'land'],
         paint: {
-          'line-color': COLORS.landStroke,
+          'line-color': colors.landStroke,
           'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.3, 6, 1],
         },
       },

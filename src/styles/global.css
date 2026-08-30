@@ -16,16 +16,35 @@
 }
 
 @layer base {
-  :root { color-scheme: dark; }
+  :root {
+    color-scheme: dark;
+  }
   html, body { @apply m-0 h-full bg-ocean-deep font-sans text-ink antialiased; }
   a { @apply text-accent; }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --color-ocean: #e7edf0;
+      --color-ocean-deep: #f7f5ef;
+      --color-ink: #17232d;
+      --color-ink-dim: #526370;
+      --color-ink-faint: #71818c;
+      --color-panel: #fffdf8;
+      --color-accent: #8a6124;
+      --shadow-panel: 0 12px 40px rgba(27, 42, 52, 0.16);
+    }
+  }
 }
 
 /* MapLibre owns this markup, so Tailwind's @apply is used for its chrome. */
 @layer components {
-  .maplibregl-ctrl-group { @apply !border !border-white/9 !bg-panel/82 !shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%]; }
-  .maplibregl-ctrl-group button + button { @apply !border-t-white/9; }
-  .maplibregl-ctrl-group button .maplibregl-ctrl-icon { @apply ![filter:invert(1)_opacity(.75)]; }
+  .maplibregl-ctrl-group { @apply !border !border-ink/12 !bg-panel/82 !shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%]; }
+  .maplibregl-ctrl-group button + button { @apply !border-t-ink/12; }
+  .maplibregl-ctrl-group button .maplibregl-ctrl-icon { @apply ![filter:opacity(.65)]; }
+  @media (prefers-color-scheme: dark) {
+    .maplibregl-ctrl-group button .maplibregl-ctrl-icon { @apply ![filter:invert(1)_opacity(.75)]; }
+  }
   .maplibregl-ctrl-attrib { @apply !bg-ocean-deep/75 text-[11px] text-ink-faint; }
   .maplibregl-ctrl-attrib a { @apply text-ink-dim; }
   .maplibregl-canvas:focus { @apply outline-none; }

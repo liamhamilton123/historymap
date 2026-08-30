@@ -11,7 +11,8 @@ import {
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-import { buildStyle, polityFilter, POLITY_LAYERS } from '~/lib/mapStyle';
+import { buildStyle, polityFilter, POLITY_LAYERS, HATCHED_STATUSES } from '~/lib/mapStyle';
+import { hatchImage, HATCH_PIXEL_RATIO } from '~/lib/hatch';
 import { useMapStore } from '~/lib/store';
 import { readView, pushView, writeView } from '~/lib/url';
 import { hasWebGL2 } from '~/lib/webgl';
@@ -23,6 +24,10 @@ const MAX_VIEW_WIDTH_METERS = 750_000;
 const EARTH_CIRCUMFERENCE_METERS = 40_075_016.68557849;
 const MAP_TILE_SIZE = 512;
 
+function systemColorScheme(): 'light' | 'dark' {
+  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+}
+
 /** Convert a 750 km horizontal view into a MapLibre zoom for this viewport. */
 function maxZoomForViewWidth(width: number, latitude: number) {
   const latitudeScale = Math.cos((latitude * Math.PI) / 180);
@@ -31,6 +36,18 @@ function maxZoomForViewWidth(width: number, latitude: number) {
       (MAP_TILE_SIZE * MAX_VIEW_WIDTH_METERS),
   );
   return Math.min(22, Math.max(0.8, zoom));
+}
+
+/**
+ * Register the stripe patterns the hatched statuses reference. Has to happen
+ * before the style is drawn, or fill-pattern resolves to a missing image and
+ * those layers render nothing at all.
+ */
+function registerHatches(instance: MapLibreMap) {
+  for (const { imageId, hatch } of HATCHED_STATUSES) {
+    if (instance.hasImage(imageId)) continue;
+    instance.addImage(imageId, hatchImage(hatch), { pixelRatio: HATCH_PIXEL_RATIO });
+  }
 }
 
 /** Show only the polities that existed at `t`. */
@@ -43,6 +60,9 @@ export default function HistoryMap() {
   const map = useRef<MapLibreMap | null>(null);
   const [failed, setFailed] = useState<'webgl' | 'init' | null>(null);
   const [atMaxZoom, setAtMaxZoom] = useState(false);
+  const [colorScheme, setColorScheme] = useState<'light' | 'dark'>(() =>
+    typeof window === 'undefined' ? 'dark' : systemColorScheme(),
+  );
   const restoringHistory = useRef(false);
 
   const globe = useMapStore((state) => state.globe);
@@ -67,7 +87,7 @@ export default function HistoryMap() {
     try {
       instance = new MapLibreMap({
         container: container.current,
-        style: buildStyle(view.t),
+        style: buildStyle(view.t, systemColorScheme()),
         center: [view.lng, view.lat],
         zoom: view.zoom,
         minZoom: 0.8,
@@ -88,6 +108,7 @@ export default function HistoryMap() {
     // setFilter throws until the style exists, so gate on it and re-apply once.
     instance.on('style.load', () => {
       styleReady.current = true;
+      registerHatches(instance);
       applyInstant(instance, useMapStore.getState().t);
     });
 
@@ -192,6 +213,20 @@ export default function HistoryMap() {
   }, []);
 
   useEffect(() => {
+    const query = window.matchMedia('(prefers-color-scheme: light)');
+    const updateScheme = () => setColorScheme(query.matches ? 'light' : 'dark');
+    updateScheme();
+    query.addEventListener('change', updateScheme);
+    return () => query.removeEventListener('change', updateScheme);
+  }, []);
+
+  useEffect(() => {
+    if (!map.current) return;
+    styleReady.current = false;
+    map.current.setStyle(buildStyle(useMapStore.getState().t, colorScheme));
+  }, [colorScheme]);
+
+  useEffect(() => {
     if (!map.current) return;
     if (styleReady.current) applyInstant(map.current, t);
     if (restoringHistory.current) return;
@@ -221,7 +256,7 @@ export default function HistoryMap() {
       />
       <a
         href="/"
-        className="absolute top-4 left-4 z-[5] inline-flex size-10 items-center justify-center rounded-xl border border-white/9 bg-panel/82 text-ink shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] transition-colors hover:border-white/16 hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        className="absolute top-4 left-4 z-[5] inline-flex size-10 items-center justify-center rounded-xl border border-ink/12 bg-panel/82 text-ink shadow-panel backdrop-blur-[18px] backdrop-saturate-[140%] transition-colors hover:border-ink/20 hover:bg-panel focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         aria-label="Close map and return home"
         title="Close map"
       >
