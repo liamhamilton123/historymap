@@ -1,0 +1,8 @@
+{
+  "name": "Dominica",
+  "color": "#8a9c5f",
+  "minArea": 0.0005,
+  "features": [
+    { "from": "1978-11-03", "to": null, "parts": ["DMA"] }
+  ]
+}

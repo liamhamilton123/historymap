@@ -1,0 +1,8 @@
+{
+  "name": "Saint Lucia",
+  "color": "#a07f9c",
+  "minArea": 0.0005,
+  "features": [
+    { "from": "1979-02-22", "to": null, "parts": ["LCA"] }
+  ]
+}

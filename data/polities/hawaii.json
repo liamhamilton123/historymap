@@ -1,0 +1,8 @@
+{
+  "name": "Hawaii",
+  "color": "#6aa39b",
+  "features": [
+    { "from": "1795-01-01", "to": "1898-08-12", "parts": ["hawaii"],
+      "source": "From Kamehameha's unification of the islands to annexation by the United States. Kauai submitted in 1810; the whole chain is drawn from 1795." }
+  ]
+}

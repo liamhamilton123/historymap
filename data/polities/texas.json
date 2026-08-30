@@ -1,0 +1,8 @@
+{
+  "name": "Republic of Texas",
+  "color": "#b8935a",
+  "features": [
+    { "from": "1836-03-02", "to": "1845-12-29", "parts": ["texas"], "status": "disputed",
+      "source": "Independent in fact and recognised by the United States, Britain and France, but never by Mexico, whose rejection is why it is drawn as contested. The republic's claim ran far north into what is now Colorado and Wyoming; only the ground it held is drawn." }
+  ]
+}

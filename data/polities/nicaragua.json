@@ -1,0 +1,7 @@
+{
+  "name": "Nicaragua",
+  "color": "#98a05a",
+  "features": [
+    { "from": "1838-11-05", "to": null, "parts": ["NIC"] }
+  ]
+}

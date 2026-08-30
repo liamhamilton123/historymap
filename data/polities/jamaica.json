@@ -1,0 +1,7 @@
+{
+  "name": "Jamaica",
+  "color": "#8fa055",
+  "features": [
+    { "from": "1962-08-06", "to": null, "parts": ["JAM"] }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "St Vincent and the Grenadines",
+  "color": "#5f9c96",
+  "minArea": 0.0005,
+  "features": [
+    { "from": "1979-10-27", "to": null, "parts": ["VCT"] }
+  ]
+}

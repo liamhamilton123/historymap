@@ -5,6 +5,7 @@ import {
   MAX_T,
   TICKS,
   clampT,
+  isLabelledTick,
   formatYear,
   formatYearShort,
   fractionToT,
@@ -81,7 +82,7 @@ export default function Timeline() {
         {TICKS.map((tick) => (
           <span key={tick} className="absolute top-0 -translate-x-1/2" style={{ left: `${tToFraction(tick) * 100}%` }}>
             <span className="mx-auto block h-1 w-px bg-ink/25" />
-            {(tick % 5 === 0 || tick === MAX_T) && (
+            {isLabelledTick(tick) && (
               <span className="mt-1 block -translate-x-1/2 whitespace-nowrap font-mono text-[10px] text-ink-faint">
                 {formatYearShort(tick)}
               </span>

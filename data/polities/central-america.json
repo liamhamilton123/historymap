@@ -1,0 +1,12 @@
+{
+  "name": "Central America",
+  "color": "#a5674f",
+  "features": [
+    { "from": "1823-07-01", "to": "1838-11-05", "parts": ["GTM", "SLV", "HND", "NIC", "CRI"],
+      "source": "The Federal Republic, declared after the provinces left the Mexican empire." },
+    { "from": "1838-11-05", "to": "1839-04-17", "parts": ["GTM", "SLV"],
+      "source": "Nicaragua, Honduras and Costa Rica left within weeks of each other." },
+    { "from": "1839-04-17", "to": "1841-02-02", "parts": ["SLV"],
+      "source": "Guatemala gone; El Salvador kept the federal government alive alone until it dissolved." }
+  ]
+}

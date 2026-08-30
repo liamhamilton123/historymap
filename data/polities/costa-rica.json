@@ -1,0 +1,7 @@
+{
+  "name": "Costa Rica",
+  "color": "#7fa06f",
+  "features": [
+    { "from": "1838-11-05", "to": null, "parts": ["CRI"] }
+  ]
+}

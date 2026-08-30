@@ -1,0 +1,8 @@
+{
+  "name": "St Kitts and Nevis",
+  "color": "#7f8fb0",
+  "minArea": 0.0005,
+  "features": [
+    { "from": "1983-09-19", "to": null, "parts": ["KNA"] }
+  ]
+}

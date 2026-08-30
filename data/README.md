@@ -7,6 +7,33 @@
 | `npm run data:polities` | Builds `public/data/polities.geojson` and `polity-labels.json` from `data/polities/`. |
 | `npm run data:build` | All three, in order. |
 
+## Coverage
+
+Two regions, drawn at whatever depth the sources support. Everything outside
+them is simply absent, not empty:
+
+| | |
+| --- | --- |
+| **North America** | 1783 to now. From the Treaty of Paris, so no colonial empire has to be drawn back to its founding. Covers the mainland, Central America, the Caribbean and Greenland. |
+| **Post-Soviet Eurasia** | 1922 to now. The USSR and its successor states. |
+
+Colombia is the one polity outside both: it is drawn only so Panama has
+somewhere to come from in 1903. South America otherwise has no coverage.
+
+Two blanks in North America are deliberate rather than missing. The Pacific
+Northwest is unclaimed until the convention of 1818, because Spain, Britain,
+Russia and the United States all claimed it and none of them held it — and
+this model gives any piece of ground one holder at a time. Hawaii is unclaimed
+before Kamehameha unified the islands in 1795.
+
+Known simplifications, all noted in the file that makes them: the Confederacy
+is drawn at its eleven-state extent from the founding of the provisional
+government rather than state by state as the secessions came in, and Kentucky
+and Missouri are Union throughout because the Confederacy claimed them but
+never held them; the Republic of Texas is drawn as the ground it held rather
+than the wider claim it never controlled; Ontario's and Quebec's growth after
+1870 is internal to Canada and so changes nothing here.
+
 ## Polities
 
 One file per polity, named by its id: `data/polities/ukraine.json`. Each file

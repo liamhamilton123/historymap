@@ -1,0 +1,7 @@
+{
+  "name": "Honduras",
+  "color": "#5b8fa8",
+  "features": [
+    { "from": "1838-11-05", "to": null, "parts": ["HND"] }
+  ]
+}

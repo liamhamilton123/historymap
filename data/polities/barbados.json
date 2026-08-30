@@ -1,0 +1,7 @@
+{
+  "name": "Barbados",
+  "color": "#b89a5c",
+  "features": [
+    { "from": "1966-11-30", "to": null, "parts": ["BRB"] }
+  ]
+}

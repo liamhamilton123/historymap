@@ -1,0 +1,15 @@
+{
+  "name": "France",
+  "color": "#5c76b0",
+  "minArea": 0.0005,
+  "features": [
+    { "from": "1783-09-03", "to": "1804-01-01", "parts": ["HTI"], "label": "Saint-Domingue",
+      "source": "The richest colony in the Caribbean, lost to the Haitian Revolution." },
+    { "from": "1795-07-22", "to": "1809-07-09", "parts": ["DOM"], "label": "Santo Domingo",
+      "source": "Ceded by Spain at Basel and retaken by Spain after the Napoleonic wars reached the island." },
+    { "from": "1800-10-01", "to": "1803-12-20", "parts": ["louisiana-purchase", "confederacy-west"], "label": "Louisiana",
+      "source": "Retroceded by Spain at San Ildefonso and sold to the United States three years later." },
+    { "from": "1783-09-03", "to": null, "parts": ["french-antilles", "BLM", "MAF"], "label": "French Antilles" },
+    { "from": "1783-09-03", "to": null, "parts": ["SPM"], "label": "St-Pierre" }
+  ]
+}

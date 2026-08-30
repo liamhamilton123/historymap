@@ -1,0 +1,10 @@
+{
+  "name": "Dominican Republic",
+  "color": "#5f96a0",
+  "features": [
+    { "from": "1844-02-27", "to": "1861-03-18", "parts": ["DOM"],
+      "source": "Independent from Haiti, until the president handed the country back to Spain." },
+    { "from": "1865-07-11", "to": null, "parts": ["DOM"],
+      "source": "Restored after the War of Restoration drove Spain out again." }
+  ]
+}

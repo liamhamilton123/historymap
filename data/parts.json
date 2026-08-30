@@ -1,5 +1,5 @@
 {
-  "note": "Pieces of Natural Earth's modern countries that changed hands inside the period, split out so a polity can be assembled from them. Each part takes the source country's polygons that fall entirely inside `within` ([west, south, east, north]); the source country keeps the rest. Referenced by id from the files in data/polities/.",
+  "note": "Pieces of Natural Earth's modern countries that changed hands inside the period, split out so a polity can be assembled from them. A part is taken out of its source and the source keeps the remainder, so nothing is ever in two parts at once. `within` takes whole polygons falling inside [west, south, east, north]; `clip` cuts against a drawn shape. Carves are applied in the order written here, each cutting from whatever its source has left — so a later carve may be drawn generously where it abuts ground an earlier one already took. Referenced by id from the files in data/polities/.",
 
   "parts": {
     "crimea": {
@@ -7,6 +7,251 @@
       "source": "RUS",
       "within": [32.0, 44.0, 37.0, 46.5],
       "why": "Natural Earth draws Crimea as part of Russia. Splitting it out lets it sit under Ukraine before 2014 and Russia after."
+    },
+
+    "alaska": {
+      "name": "Alaska",
+      "source": "USA",
+      "within": [-180.0, 51.0, -129.0, 72.0],
+      "why": "Russian America until 1867. The box clears the contiguous states, whose northernmost point is 49.4N, and Hawaii, which lies far to the south."
+    },
+    "aleutians-west": {
+      "name": "Western Aleutians",
+      "source": "USA",
+      "within": [170.0, 50.0, 180.0, 54.0],
+      "why": "Six islands of the Aleutian chain that Natural Earth draws past the antimeridian, so they miss the Alaska box entirely. Held by whoever holds `alaska`."
+    },
+    "hawaii": {
+      "name": "Hawaii",
+      "source": "USA",
+      "within": [-161.0, 18.0, -154.0, 23.0],
+      "why": "An independent kingdom until 1898."
+    },
+    "texas": {
+      "name": "Texas",
+      "source": "USA",
+      "why": "Spanish, then Mexican, then an independent republic, then annexed in 1845. Carved first, so the Louisiana Purchase and the Mexican Cession can be drawn generously where they meet it. Drawn as the modern state plus the Oklahoma panhandle, which the Republic held and gave up in 1850; the Republic's wider claim north into Colorado and Wyoming was never controlled and is not drawn. The southern and western edges run out into Mexico and the Gulf, because the real limit there is the source's own coastline and river border.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-93.85, 29.75], [-93.72, 30.05], [-93.70, 30.50], [-93.75, 31.00],
+          [-93.85, 31.50], [-94.00, 32.00], [-94.04, 32.60], [-94.04, 33.55],
+          [-94.60, 33.65], [-95.20, 33.90], [-96.00, 33.85], [-96.60, 33.70],
+          [-97.10, 33.90], [-97.80, 34.10], [-98.60, 34.15], [-99.40, 34.35],
+          [-100.00, 34.56], [-100.00, 37.00], [-103.00, 37.00], [-103.00, 32.00],
+          [-106.62, 32.00], [-107.50, 30.50], [-104.00, 27.00], [-100.00, 24.00],
+          [-96.00, 24.00], [-93.00, 27.00], [-93.90, 28.50], [-93.85, 29.75]
+        ]]
+      }
+    },
+    "louisiana-purchase": {
+      "name": "Louisiana Purchase",
+      "source": "USA",
+      "why": "Bought from France in 1803. The eastern edge is the Mississippi, the western the Continental Divide, and the southern the Adams-Onis line of 1819 — up the 100th meridian from the Red River to the Arkansas, then up the Arkansas to its source. The northern edge runs above the 49th parallel because the real limit there is the source's own border with Canada. It reaches past the Mississippi at the bottom to take the Isle of Orleans, which was the point of the purchase; the Florida Parishes north of it stayed Spanish and are left for `florida`.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-95.20, 50.00], [-95.20, 47.24], [-94.80, 46.50], [-94.10, 45.80],
+          [-93.85, 45.30], [-93.25, 44.95], [-92.75, 44.72], [-91.90, 44.05],
+          [-91.30, 43.80], [-91.20, 43.50], [-91.15, 43.10], [-90.70, 42.60],
+          [-90.40, 42.10], [-91.00, 41.50], [-91.10, 41.00], [-91.40, 40.40],
+          [-91.50, 40.00], [-91.40, 39.70], [-90.70, 39.20], [-90.15, 38.85],
+          [-90.20, 38.55], [-89.90, 38.00], [-89.50, 37.30], [-89.15, 36.98],
+          [-89.20, 36.60], [-89.55, 36.20], [-89.70, 35.95], [-89.60, 35.60],
+          [-90.10, 35.40], [-90.10, 35.12], [-90.60, 34.60], [-90.90, 34.20],
+          [-91.05, 33.90], [-91.10, 33.60], [-91.15, 33.00], [-91.30, 32.50],
+          [-91.10, 32.00], [-91.40, 31.50], [-91.50, 31.20], [-91.60, 31.00],
+          [-91.40, 30.80], [-91.20, 30.45], [-90.60, 30.35], [-89.90, 30.25],
+          [-89.60, 30.15], [-89.00, 28.80], [-92.00, 28.20], [-95.00, 28.00],
+          [-99.00, 27.00], [-100.00, 27.00], [-100.00, 37.80], [-100.90, 37.75],
+          [-102.00, 38.00], [-103.00, 38.10], [-104.60, 38.25], [-105.50, 38.50],
+          [-106.00, 38.90], [-106.30, 39.20], [-106.20, 39.70], [-106.10, 40.20],
+          [-106.30, 40.80], [-106.60, 41.30], [-107.30, 41.80], [-107.80, 42.20],
+          [-108.40, 42.50], [-109.20, 42.80], [-109.90, 43.20], [-110.00, 43.80],
+          [-110.20, 44.50], [-110.70, 44.90], [-111.30, 45.20], [-112.30, 45.60],
+          [-113.00, 45.90], [-113.50, 46.50], [-114.00, 47.00], [-114.30, 47.60],
+          [-113.60, 48.20], [-113.80, 48.70], [-114.00, 49.00], [-114.00, 50.00],
+          [-95.20, 50.00]
+        ]]
+      }
+    },
+    "florida": {
+      "name": "Florida",
+      "source": "USA",
+      "why": "Spanish Florida as the Adams-Onis treaty settled it in 1819: the peninsula, the panhandle, and the Gulf coast strip of Alabama, Mississippi and the Florida Parishes of Louisiana that made up West Florida. The western edge may be drawn out past the Mississippi because the Louisiana Purchase has already taken everything on that side.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-92.00, 31.05], [-88.00, 31.00], [-85.00, 31.00], [-84.95, 30.75],
+          [-83.00, 30.72], [-82.20, 30.60], [-81.50, 30.72], [-80.50, 30.60],
+          [-79.00, 26.00], [-79.50, 24.00], [-83.00, 23.80], [-85.00, 28.00],
+          [-88.00, 28.80], [-90.00, 29.00], [-92.00, 29.00], [-92.00, 31.05]
+        ]]
+      }
+    },
+    "oregon-country": {
+      "name": "Oregon Country",
+      "source": "USA",
+      "why": "Held jointly with Britain from 1818 until the treaty of 1846 split it at the 49th parallel. Only the southern edge has to be exact — 42N, still the California-Oregon line. The eastern edge is a meridian well past the Continental Divide, because the Louisiana Purchase has already taken everything east of it.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-130.00, 42.00], [-104.00, 42.00], [-104.00, 49.50], [-130.00, 49.50],
+          [-130.00, 42.00]
+        ]]
+      }
+    },
+    "gadsden-purchase": {
+      "name": "Gadsden Purchase",
+      "source": "USA",
+      "why": "Bought from Mexico in 1854, for a southern railroad route. Bounded north by the border Guadalupe Hidalgo drew in 1848 — west along 31.8N to the 108th meridian, north to the Gila, then down the Gila to the Colorado — and south by the modern border, which is the source's own edge.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-106.55, 31.80], [-108.20, 31.78], [-108.20, 32.78], [-109.00, 32.78],
+          [-109.80, 32.85], [-110.80, 32.90], [-111.50, 33.00], [-112.00, 33.20],
+          [-112.60, 33.00], [-113.30, 32.90], [-114.10, 32.75], [-114.70, 32.72],
+          [-115.20, 32.40], [-114.00, 30.50], [-110.00, 30.00], [-106.00, 30.50],
+          [-106.55, 31.80]
+        ]]
+      }
+    },
+    "mexican-cession": {
+      "name": "Mexican Cession",
+      "source": "USA",
+      "why": "Taken from Mexico in 1848: California, Nevada, Utah, and the parts of Arizona, New Mexico, Colorado and Wyoming that Texas, the Louisiana Purchase, Oregon and the Gadsden Purchase have not already claimed. Drawn as a plain box for exactly that reason — it is whatever is left in the southwest.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-126.00, 28.00], [-99.00, 28.00], [-99.00, 43.00], [-126.00, 43.00],
+          [-126.00, 28.00]
+        ]]
+      }
+    },
+
+    "confederacy-east": {
+      "name": "The Confederacy east of the Mississippi",
+      "source": "USA",
+      "why": "Virginia, the Carolinas, Georgia, Alabama, Mississippi and Tennessee. Carved from what is left of the original United States once Florida has been taken, so only the northern frontier has to be drawn: the Potomac to the Fairfax Stone, the Mason-Dixon line, the Ohio, the Big Sandy, and then the Kentucky-Tennessee line — Kentucky and Maryland stayed in the Union, so the border runs well south of the Ohio in the west. The southern and eastern edges run out into the Gulf and the Atlantic.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-75.62, 37.95], [-76.30, 38.00], [-76.60, 38.15], [-77.05, 38.40],
+          [-77.05, 38.90], [-77.45, 39.08], [-77.73, 39.32], [-78.10, 39.45],
+          [-78.45, 39.53], [-78.76, 39.62], [-79.10, 39.47], [-79.49, 39.20],
+          [-79.49, 39.72], [-80.52, 39.72], [-80.52, 40.64], [-80.65, 40.55],
+          [-80.70, 40.30], [-81.00, 40.05], [-81.45, 39.75], [-81.75, 39.45],
+          [-82.00, 39.10], [-82.35, 38.85], [-82.60, 38.60], [-82.55, 38.30],
+          [-82.45, 37.95], [-82.35, 37.60], [-82.40, 37.30], [-83.00, 36.95],
+          [-83.68, 36.60], [-85.00, 36.63], [-86.50, 36.65], [-88.05, 36.63],
+          [-88.05, 36.50], [-89.45, 36.50], [-92.00, 36.50], [-92.00, 28.00],
+          [-80.00, 28.00], [-74.00, 34.00], [-74.50, 37.00], [-75.00, 37.95],
+          [-75.62, 37.95]
+        ]]
+      }
+    },
+    "west-virginia": {
+      "name": "West Virginia",
+      "source": "confederacy-east",
+      "why": "The western counties refused to leave the Union and were admitted as a state of their own in 1863, so they cannot stay inside Virginia. Only the boundary with Virginia is drawn — the rest is the frontier `confederacy-east` has already established, which is why this clip may run north into Pennsylvania. The line is far more ragged on the ground than at this tolerance.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-79.49, 39.20], [-79.55, 38.90], [-79.90, 38.50], [-80.30, 37.90],
+          [-80.90, 37.50], [-81.30, 37.30], [-81.70, 37.20], [-82.40, 37.30],
+          [-83.50, 38.00], [-83.50, 41.00], [-77.40, 41.00], [-77.40, 39.40],
+          [-78.35, 39.12], [-78.75, 39.32], [-79.20, 39.20], [-79.49, 39.20]
+        ]]
+      }
+    },
+    "confederacy-west": {
+      "name": "The Confederacy west of the Mississippi",
+      "source": "louisiana-purchase",
+      "why": "Louisiana and Arkansas, the two Purchase states that seceded. Bounded north by the Arkansas-Missouri line at 36.5N, with the notch that keeps the Missouri bootheel in the Union, and west by the Arkansas line at 94.62W. Everything else is the Purchase's own edge.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-94.62, 36.50], [-90.15, 36.50], [-90.15, 36.00], [-89.70, 36.00],
+          [-89.40, 36.50], [-88.00, 36.50], [-88.00, 28.00], [-95.00, 28.00],
+          [-95.00, 33.60], [-94.62, 33.60], [-94.62, 36.50]
+        ]]
+      }
+    },
+
+    "newfoundland": {
+      "name": "Newfoundland",
+      "source": "CAN",
+      "within": [-60.0, 46.0, -52.0, 52.0],
+      "why": "A separate British colony, then a dominion of its own, until it joined Canada in 1949."
+    },
+    "labrador": {
+      "name": "Labrador",
+      "source": "CAN",
+      "why": "Attached to Newfoundland in 1809 and joined Canada with it in 1949, so it cannot sit inside Quebec. The boundary is the height of land the Privy Council settled in 1927, drawn to the tolerance this map renders at.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-57.10, 51.42], [-57.80, 51.80], [-60.20, 52.30], [-63.50, 52.70],
+          [-65.80, 53.60], [-67.20, 54.80], [-65.50, 56.00], [-64.30, 57.50],
+          [-64.30, 58.80], [-64.80, 60.60], [-59.00, 61.50], [-52.50, 56.00],
+          [-54.50, 50.80], [-57.10, 51.42]
+        ]]
+      }
+    },
+    "arctic-archipelago": {
+      "name": "Arctic Archipelago",
+      "source": "CAN",
+      "within": [-141.0, 60.0, -60.0, 84.0],
+      "why": "Britain kept the northern islands when it transferred Rupert's Land in 1870 and handed them over separately in 1880. The box takes only whole islands north of 60N; the mainland polygon reaches down to 41.7N and so is left alone."
+    },
+    "prince-edward-island": {
+      "name": "Prince Edward Island",
+      "source": "CAN",
+      "within": [-64.6, 45.9, -61.9, 47.15],
+      "why": "Stayed out of Confederation until 1873. The box stops short of Cape Breton, which reaches east to 59.8W."
+    },
+    "british-columbia": {
+      "name": "British Columbia",
+      "source": "CAN",
+      "why": "A separate colony on the Pacific until it joined Canada in 1871. Bounded east by the 120th meridian down to 53.8N and then the Continental Divide, north by 60N with the Yukon above it, and west by open ocean — the Alaska panhandle belongs to another country and so is not in this source.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-120.00, 60.00], [-120.00, 53.80], [-118.80, 53.20], [-118.00, 52.60],
+          [-117.30, 52.00], [-116.60, 51.40], [-115.80, 50.70], [-115.00, 50.00],
+          [-114.40, 49.40], [-114.05, 49.00], [-114.05, 47.50], [-125.00, 46.50],
+          [-136.00, 51.00], [-141.10, 56.00], [-141.10, 60.00], [-120.00, 60.00]
+        ]]
+      }
+    },
+    "province-of-canada": {
+      "name": "Canada East and West, New Brunswick and Nova Scotia",
+      "source": "CAN",
+      "why": "The four provinces that federated in 1867, leaving Rupert's Land and the North-Western Territory as the remainder of CAN. Only the northern edge is drawn: Ontario stopped at the Albany River and Quebec at the Eastmain, and everything above was the Hudson's Bay Company's. The southern and eastern edges run out into the United States and the Atlantic, where the real limit is the source's own coastline.",
+      "clip": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-90.50, 41.00], [-90.50, 48.60], [-90.00, 49.60], [-89.00, 50.60],
+          [-87.50, 51.20], [-85.50, 51.40], [-83.50, 51.50], [-81.50, 51.50],
+          [-79.80, 51.60], [-79.20, 52.00], [-77.00, 52.10], [-74.00, 52.20],
+          [-71.00, 52.20], [-68.00, 52.20], [-66.60, 52.10], [-64.00, 51.40],
+          [-58.00, 51.00], [-55.00, 49.50], [-55.00, 44.00], [-60.00, 42.50],
+          [-67.00, 42.50], [-90.50, 41.00]
+        ]]
+      }
+    },
+
+    "french-antilles": {
+      "name": "French Antilles",
+      "source": "FRA",
+      "within": [-63.5, 14.0, -60.5, 17.0],
+      "why": "Martinique, Guadeloupe and its dependencies, which Natural Earth draws as part of France rather than as codes of their own."
+    },
+    "dutch-caribbean": {
+      "name": "Dutch Caribbean",
+      "source": "NLD",
+      "within": [-69.0, 11.5, -62.5, 18.3],
+      "why": "Bonaire, Saba and Sint Eustatius, which Natural Earth draws as part of the Netherlands. Aruba, Curacao and Sint Maarten have codes of their own."
     }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "name": "Guatemala",
+  "color": "#6f9c8a",
+  "features": [
+    { "from": "1839-04-17", "to": null, "parts": ["GTM"],
+      "source": "Seceded from the Federal Republic under Rafael Carrera." }
+  ]
+}

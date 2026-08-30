@@ -1,0 +1,18 @@
+{
+  "name": "Canada",
+  "color": "#c2705a",
+  "features": [
+    { "from": "1867-07-01", "to": "1870-07-15", "parts": ["province-of-canada"],
+      "source": "Confederation: Ontario, Quebec, New Brunswick and Nova Scotia, with Ontario stopping at the Albany River and Quebec at the Eastmain." },
+    { "from": "1870-07-15", "to": "1871-07-20", "parts": ["province-of-canada", "CAN"],
+      "source": "Rupert's Land and the North-Western Territory bought from the Hudson's Bay Company for 300,000 pounds." },
+    { "from": "1871-07-20", "to": "1873-07-01", "parts": ["province-of-canada", "CAN", "british-columbia"],
+      "source": "British Columbia joined on the promise of a railway." },
+    { "from": "1873-07-01", "to": "1880-09-01", "parts": ["province-of-canada", "CAN", "british-columbia", "prince-edward-island"],
+      "source": "Prince Edward Island joined once Ottawa took on its railway debt." },
+    { "from": "1880-09-01", "to": "1949-03-31", "parts": ["province-of-canada", "CAN", "british-columbia", "prince-edward-island", "arctic-archipelago"],
+      "source": "Britain transferred the Arctic islands." },
+    { "from": "1949-03-31", "to": null, "parts": ["province-of-canada", "CAN", "british-columbia", "prince-edward-island", "arctic-archipelago", "newfoundland", "labrador"],
+      "source": "Newfoundland and Labrador joined after two referendums." }
+  ]
+}

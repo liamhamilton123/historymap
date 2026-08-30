@@ -1,0 +1,8 @@
+{
+  "name": "Antigua and Barbuda",
+  "color": "#b07f5c",
+  "minArea": 0.0005,
+  "features": [
+    { "from": "1981-11-01", "to": null, "parts": ["ATG"] }
+  ]
+}

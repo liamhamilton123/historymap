@@ -1,0 +1,8 @@
+{
+  "name": "El Salvador",
+  "color": "#a88a5c",
+  "features": [
+    { "from": "1841-02-02", "to": null, "parts": ["SLV"],
+      "source": "The last member of the Federal Republic, independent once it dissolved." }
+  ]
+}

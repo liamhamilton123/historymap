@@ -1,0 +1,14 @@
+{
+  "name": "Confederate States",
+  "color": "#a08f76",
+  "features": [
+    { "from": "1861-02-04", "to": "1863-06-20",
+      "parts": ["confederacy-east", "west-virginia", "confederacy-west", "texas", "florida"],
+      "status": "disputed",
+      "source": "Held in fact and recognised by no state at all, which is why it is drawn as contested throughout. Drawn at its eleven-state extent from the founding of the provisional government: the secessions ran from South Carolina in December 1860 to Tennessee in June 1861, and separating them would need a carve for every state. Kentucky and Missouri were claimed and starred on the flag but never controlled, so they are not drawn." },
+    { "from": "1863-06-20", "to": "1865-05-26",
+      "parts": ["confederacy-east", "confederacy-west", "texas", "florida"],
+      "status": "disputed",
+      "source": "West Virginia admitted to the Union as a state of its own. The end date is the surrender of the Trans-Mississippi, the last army in the field, rather than Appomattox six weeks earlier." }
+  ]
+}

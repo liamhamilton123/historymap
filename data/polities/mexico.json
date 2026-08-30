@@ -1,0 +1,16 @@
+{
+  "name": "Mexico",
+  "color": "#5f9464",
+  "features": [
+    { "from": "1821-09-27", "to": "1823-07-01", "parts": ["MEX", "texas", "mexican-cession", "gadsden-purchase", "GTM", "SLV", "HND", "NIC", "CRI"],
+      "source": "The First Mexican Empire, which the provinces of Central America joined and then left." },
+    { "from": "1823-07-01", "to": "1836-03-02", "parts": ["MEX", "texas", "mexican-cession", "gadsden-purchase"],
+      "source": "The republic at its full extent, from Oregon's border to Guatemala." },
+    { "from": "1836-03-02", "to": "1848-02-02", "parts": ["MEX", "mexican-cession", "gadsden-purchase"],
+      "source": "Texas gone in fact, though Mexico went on rejecting the claim." },
+    { "from": "1848-02-02", "to": "1854-06-30", "parts": ["MEX", "gadsden-purchase"],
+      "source": "Guadalupe Hidalgo: half the national territory ceded to the United States." },
+    { "from": "1854-06-30", "to": null, "parts": ["MEX"],
+      "source": "The Gadsden sale fixed the present border." }
+  ]
+}

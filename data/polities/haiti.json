@@ -1,0 +1,10 @@
+{
+  "name": "Haiti",
+  "color": "#8f6fa0",
+  "features": [
+    { "from": "1804-01-01", "to": null, "parts": ["HTI"],
+      "source": "The first state in the Americas founded by a slave revolt." },
+    { "from": "1822-02-09", "to": "1844-02-27", "parts": ["DOM"], "label": "Santo Domingo",
+      "source": "Twenty-two years of Haitian rule over the whole island, ended by the Dominican war of independence." }
+  ]
+}

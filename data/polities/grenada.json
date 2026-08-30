@@ -1,0 +1,8 @@
+{
+  "name": "Grenada",
+  "color": "#6f9c72",
+  "minArea": 0.0005,
+  "features": [
+    { "from": "1974-02-07", "to": null, "parts": ["GRD"] }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Bahamas",
+  "color": "#6f8fb8",
+  "features": [
+    { "from": "1973-07-10", "to": null, "parts": ["BHS"] }
+  ]
+}
