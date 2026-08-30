@@ -1,0 +1,14 @@
+{
+  "name": "Estonia",
+  "color": "#5b93a8",
+  "features": [
+    {
+      "from": "1991-09-06",
+      "to": null,
+      "parts": [
+        "EST"
+      ],
+      "source": "Independence recognised by the USSR."
+    }
+  ]
+}

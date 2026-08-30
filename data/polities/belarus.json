@@ -1,0 +1,13 @@
+{
+  "name": "Belarus",
+  "color": "#8f9a55",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "BLR"
+      ]
+    }
+  ]
+}

@@ -1,31 +1,33 @@
 import { useEffect } from 'react';
 import { useMapStore } from '~/lib/store';
 import {
-  MIN_YEAR,
-  MAX_YEAR,
+  MIN_T,
+  MAX_T,
   TICKS,
+  clampT,
   formatYear,
   formatYearShort,
-  fractionToYear,
-  yearToFraction,
+  fractionToT,
+  tToFraction,
 } from '~/lib/years';
 
-const RESOLUTION = MAX_YEAR - MIN_YEAR;
+const RESOLUTION = MAX_T - MIN_T;
 /** Arrow-key step, in years. */
 const STEP = 1;
 /**
- * The timeline UI. Nothing is bound to it yet — moving it changes the year in
- * the store and nothing else, because there is no time-varying data to filter.
+ * The timeline UI. It steps in whole years, but the instant it writes to the
+ * store is a decimal year, so a finer track can be added without the data or
+ * the map filter changing.
  */
 export default function Timeline() {
-  const year = useMapStore((state) => state.year);
-  const setYear = useMapStore((state) => state.setYear);
+  const t = useMapStore((state) => state.t);
+  const setT = useMapStore((state) => state.setT);
 
-  const fraction = yearToFraction(year);
+  const fraction = tToFraction(t);
   const beginHistory = () => window.dispatchEvent(new Event('atlas:history-start'));
   const step = (direction: 1 | -1, amount = 1) => {
     beginHistory();
-    setYear(Math.min(Math.max(year + direction * amount, MIN_YEAR), MAX_YEAR));
+    setT(clampT(Math.floor(t) + direction * amount));
   };
 
   useEffect(() => {
@@ -47,7 +49,7 @@ export default function Timeline() {
           <StepButton direction="left" years={5} onClick={() => step(-1, 5)} />
           <StepButton direction="left" years={1} onClick={() => step(-1, 1)} />
         </div>
-        <span className="min-w-22 rounded-xl border border-accent/25 bg-accent/10 px-2 py-2 text-center font-serif text-[22px] leading-[1.1] tracking-[0.01em] text-accent tabular-nums shadow-[inset_0_1px_rgba(255,255,255,0.08)] sm:min-w-24 sm:text-[28px]">{formatYear(year)}</span>
+        <span className="min-w-22 rounded-xl border border-accent/25 bg-accent/10 px-2 py-2 text-center font-serif text-[22px] leading-[1.1] tracking-[0.01em] text-accent tabular-nums shadow-[inset_0_1px_rgba(255,255,255,0.08)] sm:min-w-24 sm:text-[28px]">{formatYear(t)}</span>
         <div className="flex gap-1">
           <StepButton direction="right" years={1} onClick={() => step(1, 1)} />
           <StepButton direction="right" years={5} onClick={() => step(1, 5)} />
@@ -67,19 +69,19 @@ export default function Timeline() {
           value={Math.round(fraction * RESOLUTION)}
           onPointerDown={beginHistory}
           onChange={(event) => {
-            setYear(fractionToYear(Number(event.target.value) / RESOLUTION));
+            setT(fractionToT(Number(event.target.value) / RESOLUTION));
           }}
           aria-label="Year"
-          aria-valuetext={formatYear(year)}
+          aria-valuetext={formatYear(t)}
         />
         <span className="pointer-events-none absolute top-1/2 size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent shadow-[0_0_0_4px_rgba(224,184,114,0.18),0_2px_8px_rgba(0,0,0,0.5)] transition-shadow duration-140 group-hover:shadow-[0_0_0_7px_rgba(224,184,114,0.22),0_2px_10px_rgba(0,0,0,0.55)] peer-focus-visible:shadow-[0_0_0_7px_rgba(224,184,114,0.4)]" style={{ left: `${fraction * 100}%` }} />
       </div>
 
       <div className="relative mt-0.5 h-6" aria-hidden="true">
         {TICKS.map((tick) => (
-          <span key={tick} className="absolute top-0 -translate-x-1/2" style={{ left: `${yearToFraction(tick) * 100}%` }}>
+          <span key={tick} className="absolute top-0 -translate-x-1/2" style={{ left: `${tToFraction(tick) * 100}%` }}>
             <span className="mx-auto block h-1 w-px bg-white/25" />
-            {(tick % 5 === 0 || tick === MAX_YEAR) && (
+            {(tick % 5 === 0 || tick === MAX_T) && (
               <span className="mt-1 block -translate-x-1/2 whitespace-nowrap font-mono text-[10px] text-ink-faint">
                 {formatYearShort(tick)}
               </span>

@@ -1,0 +1,14 @@
+{
+  "name": "Latvia",
+  "color": "#6f86b0",
+  "features": [
+    {
+      "from": "1991-09-06",
+      "to": null,
+      "parts": [
+        "LVA"
+      ],
+      "source": "Independence recognised by the USSR."
+    }
+  ]
+}

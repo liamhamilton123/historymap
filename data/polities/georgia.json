@@ -1,0 +1,13 @@
+{
+  "name": "Georgia",
+  "color": "#9c6f9e",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "GEO"
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 // pass --force to redownload.
 import { mkdir, writeFile, stat } from 'node:fs/promises';
 import { join } from 'node:path';
-import { SOURCES_DIR, NATURAL_EARTH_LAYERS } from './lib/config.mjs';
+import { SOURCES_DIR, NATURAL_EARTH_LAYERS, NATURAL_EARTH_PARTS } from './lib/config.mjs';
 
 const FORCE = process.argv.includes('--force');
 const NE_RAW = (layer) =>
@@ -32,11 +32,16 @@ async function download(url, destination, label) {
 const naturalEarthDir = join(SOURCES_DIR, 'naturalearth');
 await mkdir(naturalEarthDir, { recursive: true });
 
-console.log('Natural Earth (public domain physical basemap)');
-await Promise.all(
-  NATURAL_EARTH_LAYERS.map((layer) =>
+console.log('Natural Earth (public domain)');
+await Promise.all([
+  ...NATURAL_EARTH_LAYERS.map((layer) =>
     download(NE_RAW(layer.file), join(naturalEarthDir, `${layer.file}.geojson`), layer.file),
   ),
-);
+  download(
+    NE_RAW(NATURAL_EARTH_PARTS),
+    join(naturalEarthDir, `${NATURAL_EARTH_PARTS}.geojson`),
+    NATURAL_EARTH_PARTS,
+  ),
+]);
 
-console.log('\nNext: npm run data:basemap');
+console.log('\nNext: npm run data:build');

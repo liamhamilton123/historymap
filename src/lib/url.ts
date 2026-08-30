@@ -1,9 +1,10 @@
 /** The map's view lives in the URL so any state is linkable and back/forward works. */
-import { MAX_YEAR, MIN_YEAR } from './years';
+import { clampT } from './years';
+import { formatInstant, parseInstant } from './time';
 
-export type ViewState = { year: number; lng: number; lat: number; zoom: number };
+export type ViewState = { t: number; lng: number; lat: number; zoom: number };
 
-export const DEFAULT_VIEW: ViewState = { year: 1980, lng: 15, lat: 30, zoom: 1.9 };
+export const DEFAULT_VIEW: ViewState = { t: 1980, lng: 15, lat: 30, zoom: 1.9 };
 
 export function readView(): ViewState {
   if (typeof window === 'undefined') return DEFAULT_VIEW;
@@ -12,8 +13,11 @@ export function readView(): ViewState {
     const value = Number(params.get(key));
     return Number.isFinite(value) && params.has(key) ? value : fallback;
   };
+  // `t` is an ISO date, so a link can point at a day as easily as at a year.
+  const t = params.get('t');
+  const parsed = t === null ? null : parseInstant(t);
   return {
-    year: Math.min(Math.max(num('year', DEFAULT_VIEW.year), MIN_YEAR), MAX_YEAR),
+    t: clampT(parsed ?? DEFAULT_VIEW.t),
     lng: num('lng', DEFAULT_VIEW.lng),
     lat: num('lat', DEFAULT_VIEW.lat),
     zoom: num('zoom', DEFAULT_VIEW.zoom),
@@ -24,7 +28,7 @@ let pending = 0;
 
 function urlFor(view: ViewState): string {
   const params = new URLSearchParams(window.location.search);
-  params.set('year', String(Math.round(view.year)));
+  params.set('t', formatInstant(view.t));
   params.set('lng', view.lng.toFixed(3));
   params.set('lat', view.lat.toFixed(3));
   params.set('zoom', view.zoom.toFixed(2));

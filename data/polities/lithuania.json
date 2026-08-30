@@ -1,0 +1,14 @@
+{
+  "name": "Lithuania",
+  "color": "#8479ad",
+  "features": [
+    {
+      "from": "1991-09-06",
+      "to": null,
+      "parts": [
+        "LTU"
+      ],
+      "source": "Independence recognised by the USSR."
+    }
+  ]
+}

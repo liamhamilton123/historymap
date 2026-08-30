@@ -1,0 +1,13 @@
+{
+  "name": "Uzbekistan",
+  "color": "#a98a4e",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "UZB"
+      ]
+    }
+  ]
+}

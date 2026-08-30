@@ -1,0 +1,22 @@
+{
+  "name": "Russia",
+  "color": "#a8524c",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "RUS"
+      ]
+    },
+    {
+      "from": "2014-03-18",
+      "to": null,
+      "parts": [
+        "crimea"
+      ],
+      "status": "disputed",
+      "source": "Occupied and annexed by Russia in 2014; recognised as Ukrainian by most states."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Ukraine",
+  "color": "#c8a24a",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": "2014-03-18",
+      "parts": [
+        "UKR",
+        "crimea"
+      ]
+    },
+    {
+      "from": "2014-03-18",
+      "to": null,
+      "parts": [
+        "UKR"
+      ],
+      "source": "Crimea passes to Russian control."
+    }
+  ]
+}

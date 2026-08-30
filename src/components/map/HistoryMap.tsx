@@ -11,13 +11,18 @@ import {
 import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
-import { buildStyle } from '~/lib/mapStyle';
+import { buildStyle, polityFilter, POLITY_LAYERS } from '~/lib/mapStyle';
 import { useMapStore } from '~/lib/store';
 import { readView, pushView, writeView } from '~/lib/url';
 import { hasWebGL2 } from '~/lib/webgl';
 import Timeline from './Timeline';
 import MapControls from './MapControls';
 import MapUnavailable from './MapUnavailable';
+
+/** Show only the polities that existed at `t`. */
+function applyInstant(instance: MapLibreMap, t: number) {
+  for (const layer of POLITY_LAYERS) instance.setFilter(layer.id, polityFilter(t, layer.status));
+}
 
 export default function HistoryMap() {
   const container = useRef<HTMLDivElement>(null);
@@ -26,7 +31,8 @@ export default function HistoryMap() {
   const restoringHistory = useRef(false);
 
   const globe = useMapStore((state) => state.globe);
-  const year = useMapStore((state) => state.year);
+  const t = useMapStore((state) => state.t);
+  const styleReady = useRef(false);
 
   useEffect(() => {
     if (!container.current || map.current) return;
@@ -45,7 +51,7 @@ export default function HistoryMap() {
     try {
       instance = new MapLibreMap({
         container: container.current,
-        style: buildStyle(),
+        style: buildStyle(view.t),
         center: [view.lng, view.lat],
         zoom: view.zoom,
         minZoom: 0.8,
@@ -61,7 +67,13 @@ export default function HistoryMap() {
       return;
     }
     map.current = instance;
-    useMapStore.getState().setYear(view.year);
+    useMapStore.getState().setT(view.t);
+
+    // setFilter throws until the style exists, so gate on it and re-apply once.
+    instance.on('style.load', () => {
+      styleReady.current = true;
+      applyInstant(instance, useMapStore.getState().t);
+    });
 
     // The island can mount before Vite has applied the global Tailwind sheet.
     // MapLibre snapshots its canvas size during construction, so observe the
@@ -112,7 +124,7 @@ export default function HistoryMap() {
     const currentView = () => {
       const center = instance.getCenter();
       return {
-        year: useMapStore.getState().year,
+        t: useMapStore.getState().t,
         lng: center.lng,
         lat: center.lat,
         zoom: instance.getZoom(),
@@ -128,7 +140,7 @@ export default function HistoryMap() {
       const restored = readView();
       restoringHistory.current = true;
       instance.jumpTo({ center: [restored.lng, restored.lat], zoom: restored.zoom });
-      useMapStore.getState().setYear(restored.year);
+      useMapStore.getState().setT(restored.t);
       requestAnimationFrame(() => {
         restoringHistory.current = false;
       });
@@ -140,6 +152,7 @@ export default function HistoryMap() {
     window.addEventListener('popstate', restoreFromHistory);
 
     return () => {
+      styleReady.current = false;
       resizeObserver.disconnect();
       instance.off('movestart', beginMapHistory);
       instance.off('moveend', syncUrl);
@@ -151,10 +164,12 @@ export default function HistoryMap() {
   }, []);
 
   useEffect(() => {
-    if (!map.current || restoringHistory.current) return;
+    if (!map.current) return;
+    if (styleReady.current) applyInstant(map.current, t);
+    if (restoringHistory.current) return;
     const center = map.current.getCenter();
-    writeView({ year, lng: center.lng, lat: center.lat, zoom: map.current.getZoom() });
-  }, [year]);
+    writeView({ t, lng: center.lng, lat: center.lat, zoom: map.current.getZoom() });
+  }, [t]);
 
   useEffect(() => {
     if (!map.current) return;

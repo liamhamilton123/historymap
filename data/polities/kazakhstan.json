@@ -1,0 +1,13 @@
+{
+  "name": "Kazakhstan",
+  "color": "#4f8f9c",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "KAZ"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Kyrgyzstan",
+  "color": "#6b9370",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "KGZ"
+      ]
+    }
+  ]
+}

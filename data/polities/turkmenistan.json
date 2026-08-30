@@ -1,0 +1,13 @@
+{
+  "name": "Turkmenistan",
+  "color": "#96794c",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "TKM"
+      ]
+    }
+  ]
+}

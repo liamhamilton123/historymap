@@ -1,0 +1,13 @@
+{
+  "name": "Tajikistan",
+  "color": "#7d9b5f",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "TJK"
+      ]
+    }
+  ]
+}

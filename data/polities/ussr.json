@@ -1,0 +1,49 @@
+{
+  "name": "Soviet Union",
+  "color": "#b8443f",
+  "features": [
+    {
+      "from": "1922-12-30",
+      "to": "1991-09-06",
+      "parts": [
+        "RUS",
+        "crimea",
+        "UKR",
+        "BLR",
+        "EST",
+        "LVA",
+        "LTU",
+        "MDA",
+        "GEO",
+        "ARM",
+        "AZE",
+        "KAZ",
+        "UZB",
+        "TKM",
+        "TJK",
+        "KGZ"
+      ],
+      "source": "Treaty on the Creation of the USSR. Ends at Soviet recognition of Baltic independence."
+    },
+    {
+      "from": "1991-09-06",
+      "to": "1991-12-26",
+      "parts": [
+        "RUS",
+        "crimea",
+        "UKR",
+        "BLR",
+        "MDA",
+        "GEO",
+        "ARM",
+        "AZE",
+        "KAZ",
+        "UZB",
+        "TKM",
+        "TJK",
+        "KGZ"
+      ],
+      "source": "The same state minus the Baltics, until the Supreme Soviet declared it dissolved."
+    }
+  ]
+}

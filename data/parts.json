@@ -1,0 +1,12 @@
+{
+  "note": "Pieces of Natural Earth's modern countries that changed hands inside the period, split out so a polity can be assembled from them. Each part takes the source country's polygons that fall entirely inside `within` ([west, south, east, north]); the source country keeps the rest. Referenced by id from the files in data/polities/.",
+
+  "parts": {
+    "crimea": {
+      "name": "Crimea",
+      "source": "RUS",
+      "within": [32.0, 44.0, 37.0, 46.5],
+      "why": "Natural Earth draws Crimea as part of Russia. Splitting it out lets it sit under Ukraine before 2014 and Russia after."
+    }
+  }
+}

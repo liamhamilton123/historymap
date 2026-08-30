@@ -1,0 +1,13 @@
+{
+  "name": "Armenia",
+  "color": "#b06a86",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "ARM"
+      ]
+    }
+  ]
+}

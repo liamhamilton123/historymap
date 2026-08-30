@@ -1,0 +1,13 @@
+{
+  "name": "Moldova",
+  "color": "#7fa07a",
+  "features": [
+    {
+      "from": "1991-12-26",
+      "to": null,
+      "parts": [
+        "MDA"
+      ]
+    }
+  ]
+}
