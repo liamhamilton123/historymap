@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144">
+  <filter id="vellum"><feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values=".4 0 0 0 .36  0 .32 0 0 .28  0 0 .2 0 .16  0 0 0 .18 0"/></filter>
+  <rect width="144" height="144" filter="url(#vellum)" opacity=".4"/>
+  <path d="M0 18H144M0 42H144M0 66H144M0 90H144M0 114H144M0 138H144" stroke="#8a6a34" stroke-width=".5" opacity=".16"/>
+</svg>

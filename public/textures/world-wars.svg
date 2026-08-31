@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <pattern id="dots" width="4" height="4" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r=".62" fill="#3e3428" opacity=".38"/>
+  </pattern>
+  <rect width="48" height="48" fill="url(#dots)"/>
+  <path d="M0 9.5H48M0 29.5H48" stroke="#514131" stroke-width=".45" opacity=".2"/>
+</svg>

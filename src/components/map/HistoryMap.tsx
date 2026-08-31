@@ -16,6 +16,7 @@ import {
   buildStyle,
   historicalThemeForYear,
   selectionFilter,
+  themePaint,
   TIMED_LAYERS,
   UNCLAIMED_FILL,
   POLITY_STATUS,
@@ -115,6 +116,37 @@ function applySelection(instance: MapLibreMap, t: number, polity: string | null)
   instance.setFilter(SELECTED_LAYER, selectionFilter(t, polity));
 }
 
+/** The paint property names setPaintProperty accepts, across all layer types. */
+type PaintProperty = Parameters<MapLibreMap['setPaintProperty']>[1];
+
+/**
+ * Move the map to another era, or to the other colour scheme, in place.
+ *
+ * An era differs from another only in paint — buildStyle guarantees the layer
+ * list is the same in all of them — so none of this needs a new style. That
+ * matters twice over: setStyle empties the image registry, so every stripe
+ * pattern would have to be fetched and re-registered on each boundary the
+ * timeline is dragged across, and a replaced style pops into place where a
+ * painted one is cross-faded by MapLibre's own transition.
+ */
+function applyTheme(
+  instance: MapLibreMap,
+  t: number,
+  colorScheme: 'light' | 'dark',
+  historicalThemes: boolean,
+) {
+  const { sky, layers } = themePaint(t, colorScheme, historicalThemes);
+  for (const [id, paint] of Object.entries(layers)) {
+    if (!instance.getLayer(id)) continue;
+    for (const [property, value] of Object.entries(paint)) {
+      // themePaint names real properties of the layer it names; the style
+      // spec's union just cannot see that through a keyed record.
+      instance.setPaintProperty(id, property as PaintProperty, value);
+    }
+  }
+  if (sky) instance.setSky(sky);
+}
+
 export default function HistoryMap() {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
@@ -184,6 +216,12 @@ export default function HistoryMap() {
     instance.on('style.load', () => {
       styleReady.current = true;
       registerHatches(instance);
+      applyTheme(
+        instance,
+        useMapStore.getState().t,
+        systemColorScheme(),
+        useMapStore.getState().historicalThemes,
+      );
       applyInstant(instance, useMapStore.getState().t);
       applySelection(instance, useMapStore.getState().t, selected.current);
     });
@@ -352,10 +390,11 @@ export default function HistoryMap() {
     return () => query.removeEventListener('change', updateScheme);
   }, []);
 
+  // historicalTheme is in the deps rather than t: the paint only changes when
+  // the era does, so scrubbing within one era repaints nothing.
   useEffect(() => {
-    if (!map.current) return;
-    styleReady.current = false;
-    map.current.setStyle(buildStyle(useMapStore.getState().t, colorScheme, historicalThemes));
+    if (!map.current || !styleReady.current) return;
+    applyTheme(map.current, useMapStore.getState().t, colorScheme, historicalThemes);
   }, [colorScheme, historicalTheme, historicalThemes]);
 
   useEffect(() => {

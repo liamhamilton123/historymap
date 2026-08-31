@@ -58,29 +58,125 @@
   .map-control-panel, .polity-info-panel, .timeline-panel { font-family: var(--map-theme-ui-font); }
   .map-control-panel > p, .polity-info-panel h2, .timeline-year { font-family: var(--map-theme-display-font) !important; }
 
-  .map-theme[data-map-theme="age-of-exploration"] {
-    --map-theme-accent: #d0a85c;
-    --map-theme-ui-font: Georgia, "Times New Roman", serif;
-    --map-theme-display-font: Georgia, "Times New Roman", serif;
+  /* Each era commits to its own chrome, not just its own accent. The panels
+     are on screen the whole time, so re-colouring them is the single most
+     visible thing an era can do; a tinted border on an otherwise identical
+     panel is not a different map, it is the same map with a different border. */
+
+  .map-theme[data-map-theme="stone-age"] {
+    --map-theme-accent: #c69a63;
+    --map-theme-ui-font: Optima, Candara, "Gill Sans", sans-serif;
+    --map-theme-display-font: Optima, Candara, "Gill Sans", sans-serif;
+    --color-panel: #1d1917;
+    --color-ink: #ece0cf;
+    --color-ink-dim: #b6a288;
+    --color-ink-faint: #857665;
+    --color-accent: #c69a63;
+    --shadow-panel: 0 12px 40px rgba(16, 12, 8, .55);
   }
-  .map-theme[data-map-theme="age-of-exploration"] .map-theme-atmosphere {
-    opacity: .12;
-    background: repeating-linear-gradient(0deg, rgba(126, 86, 34, .12) 0 1px, transparent 1px 5px), radial-gradient(ellipse at center, transparent 42%, rgba(105, 66, 20, .16));
+  .map-theme[data-map-theme="stone-age"] .map-theme-atmosphere {
+    opacity: .3;
+    background: url('/textures/stone-age.svg'), radial-gradient(ellipse at center, transparent 30%, rgba(30, 22, 14, .55));
+    background-size: 200px 200px, auto;
     mix-blend-mode: multiply;
   }
+
+  .map-theme[data-map-theme="bronze-age"] {
+    --map-theme-accent: #d9a256;
+    --map-theme-ui-font: Optima, Candara, "Gill Sans", sans-serif;
+    --map-theme-display-font: Copperplate, "Copperplate Gothic Light", Optima, serif;
+    --color-panel: #1d1a14;
+    --color-ink: #f0e0c0;
+    --color-ink-dim: #bda882;
+    --color-ink-faint: #8a7a5c;
+    --color-accent: #d9a256;
+    --shadow-panel: 0 12px 40px rgba(20, 14, 4, .5);
+  }
+  .map-theme[data-map-theme="bronze-age"] .map-theme-atmosphere {
+    opacity: .26;
+    background: url('/textures/bronze-age.svg'), radial-gradient(ellipse at 50% 20%, rgba(214, 176, 110, .22), transparent 60%);
+    background-size: 128px 128px, auto;
+    mix-blend-mode: multiply;
+  }
+
+  .map-theme[data-map-theme="iron-age"] {
+    --map-theme-accent: #c98f52;
+    --map-theme-ui-font: Palatino, "Palatino Linotype", "Times New Roman", serif;
+    --map-theme-display-font: "Trajan Pro", Copperplate, Palatino, serif;
+    --color-panel: #1a1614;
+    --color-ink: #ece2d6;
+    --color-ink-dim: #b3a294;
+    --color-ink-faint: #82766c;
+    --color-accent: #c98f52;
+    --shadow-panel: 0 12px 40px rgba(14, 10, 8, .55);
+  }
+  .map-theme[data-map-theme="iron-age"] .map-theme-atmosphere {
+    opacity: .24;
+    background: url('/textures/iron-age.svg'), radial-gradient(ellipse at center, transparent 40%, rgba(40, 24, 16, .4));
+    background-size: 128px 128px, auto;
+    mix-blend-mode: multiply;
+  }
+
+  .map-theme[data-map-theme="middle-ages"] {
+    --map-theme-accent: #d9b455;
+    --map-theme-ui-font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --map-theme-display-font: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --color-panel: #171b2c;
+    --color-ink: #f2e8cc;
+    --color-ink-dim: #bfb08a;
+    --color-ink-faint: #877f66;
+    --color-accent: #d9b455;
+    --shadow-panel: 0 12px 40px rgba(8, 12, 30, .55);
+  }
+  .map-theme[data-map-theme="middle-ages"] .map-theme-atmosphere {
+    opacity: .28;
+    background: url('/textures/middle-ages.svg'), radial-gradient(ellipse at center, transparent 36%, rgba(60, 44, 12, .38));
+    background-size: 144px 144px, auto;
+    mix-blend-mode: multiply;
+  }
+
+  .map-theme[data-map-theme="age-of-exploration"] {
+    --map-theme-accent: #d9b063;
+    --map-theme-ui-font: Georgia, "Times New Roman", serif;
+    --map-theme-display-font: Georgia, "Times New Roman", serif;
+    --color-panel: #241d13;
+    --color-ink: #f0e2c4;
+    --color-ink-dim: #c0a97f;
+    --color-ink-faint: #8d7a58;
+    --color-accent: #d9b063;
+    --shadow-panel: 0 12px 40px rgba(28, 18, 4, .5);
+  }
+  .map-theme[data-map-theme="age-of-exploration"] .map-theme-atmosphere {
+    opacity: .26;
+    background: url('/textures/age-of-exploration.svg'), radial-gradient(ellipse at center, transparent 38%, rgba(78, 48, 12, .45));
+    background-size: 160px 160px, auto;
+    mix-blend-mode: multiply;
+  }
+
   .map-theme[data-map-theme="industrial-era"] {
-    --map-theme-accent: #a7b2a6;
+    --map-theme-accent: #b9c6bf;
     --map-theme-ui-font: "Avenir Next", Avenir, "Gill Sans", sans-serif;
     --map-theme-display-font: Georgia, "Times New Roman", serif;
+    --color-panel: #1b1f20;
+    --color-ink: #dfe6e4;
+    --color-ink-dim: #9fadaa;
+    --color-ink-faint: #71807d;
+    --color-accent: #b9c6bf;
+    --shadow-panel: 0 12px 40px rgba(8, 12, 12, .55);
   }
   .map-theme[data-map-theme="industrial-era"] .map-theme-atmosphere {
-    opacity: .1;
-    background: radial-gradient(ellipse at 50% 0%, rgba(175, 188, 183, .22), transparent 55%), linear-gradient(rgba(43, 48, 48, .06), rgba(43, 48, 48, .06));
+    opacity: .2;
+    background: url('/textures/industrial-era.svg'), radial-gradient(ellipse at 50% 0%, rgba(175, 188, 183, .3), transparent 55%);
+    background-size: 96px 96px, auto;
+    mix-blend-mode: multiply;
   }
+
   .map-theme[data-map-theme="world-wars"] {
     --map-theme-accent: #624a36;
     --map-theme-ui-font: ui-monospace, "SF Mono", Menlo, monospace;
     --map-theme-display-font: ui-monospace, "SF Mono", Menlo, monospace;
+    /* Printed on paper in both colour schemes: this era is a document, and a
+       document does not have a dark mode. */
     --color-panel: #e8dfca;
     --color-ink: #2f2b24;
     --color-ink-dim: #5b5143;
@@ -89,9 +185,9 @@
     --shadow-panel: 0 12px 40px rgba(50, 41, 30, .22);
   }
   .map-theme[data-map-theme="world-wars"] .map-theme-atmosphere {
-    opacity: .24;
-    background: repeating-linear-gradient(0deg, rgba(52, 45, 35, .14) 0 1px, transparent 1px 4px), radial-gradient(rgba(61, 54, 43, .22) .7px, transparent .8px), linear-gradient(135deg, rgba(119, 100, 74, .16), transparent 45%, rgba(78, 87, 74, .12));
-    background-size: auto, 4px 4px, auto;
+    opacity: .3;
+    background: url('/textures/world-wars.svg'), linear-gradient(135deg, rgba(119, 100, 74, .2), transparent 45%, rgba(78, 87, 74, .16));
+    background-size: 48px 48px, auto;
     mix-blend-mode: multiply;
   }
   .map-theme[data-map-theme="world-wars"] .map-control-panel,
@@ -99,24 +195,119 @@
   .map-theme[data-map-theme="world-wars"] .timeline-panel {
     background-image: repeating-linear-gradient(0deg, rgba(74, 58, 39, .035) 0 1px, transparent 1px 4px);
   }
+
   .map-theme[data-map-theme="cold-war"] {
     --map-theme-accent: #d0ac6b;
     --map-theme-ui-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
     --map-theme-display-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --color-panel: #0d1a22;
+    --color-ink: #e2edf2;
+    --color-ink-dim: #9db4bf;
+    --color-ink-faint: #6d838e;
+    --color-accent: #d0ac6b;
+    --shadow-panel: 0 12px 40px rgba(2, 10, 16, .6);
   }
   .map-theme[data-map-theme="cold-war"] .map-theme-atmosphere {
-    opacity: .09;
-    background: linear-gradient(90deg, rgba(71, 176, 207, .14), transparent 38%, rgba(113, 156, 191, .12));
+    opacity: .16;
+    background: url('/textures/cold-war.svg'), linear-gradient(90deg, rgba(71, 176, 207, .2), transparent 38%, rgba(113, 156, 191, .18));
+    background-size: 96px 96px, auto;
+    mix-blend-mode: screen;
   }
+
   .map-theme[data-map-theme="internet-age"] {
     --map-theme-accent: #62e5ff;
     --map-theme-ui-font: ui-sans-serif, system-ui, "Helvetica Neue", sans-serif;
     --map-theme-display-font: ui-monospace, "SF Mono", Menlo, monospace;
+    --color-panel: #04141f;
+    --color-ink: #d8fbff;
+    --color-ink-dim: #84c9d8;
+    --color-ink-faint: #4f8b9c;
+    --color-accent: #62e5ff;
+    --shadow-panel: 0 12px 40px rgba(0, 20, 30, .65);
   }
   .map-theme[data-map-theme="internet-age"] .map-theme-atmosphere {
-    opacity: .22;
-    background: repeating-linear-gradient(0deg, rgba(102, 220, 247, .24) 0 1px, transparent 1px 48px), repeating-linear-gradient(90deg, rgba(102, 220, 247, .24) 0 1px, transparent 1px 48px), radial-gradient(circle at 50% 50%, transparent 35%, rgba(28, 124, 158, .2));
+    opacity: .3;
+    background: url('/textures/internet-age.svg'), radial-gradient(circle at 50% 50%, transparent 35%, rgba(28, 124, 158, .28));
+    background-size: 96px 96px, auto;
     mix-blend-mode: screen;
+  }
+
+  /* The map itself already follows the colour scheme, so the chrome has to as
+     well, or a light map ends up wearing a dark panel. world-wars is the one
+     exception above: it is paper in both. */
+  @media (prefers-color-scheme: light) {
+    .map-theme[data-map-theme="stone-age"] {
+      --color-panel: #f5efe6;
+      --color-ink: #2e2620;
+      --color-ink-dim: #6d5f50;
+      --color-ink-faint: #94867a;
+      --color-accent: #8a5f24;
+      --map-theme-accent: #8a5f24;
+      --shadow-panel: 0 12px 40px rgba(70, 56, 40, .2);
+    }
+    .map-theme[data-map-theme="bronze-age"] {
+      --color-panel: #fcf2df;
+      --color-ink: #33291a;
+      --color-ink-dim: #74624a;
+      --color-ink-faint: #9a8a70;
+      --color-accent: #8a5a1c;
+      --map-theme-accent: #8a5a1c;
+      --shadow-panel: 0 12px 40px rgba(84, 62, 26, .2);
+    }
+    .map-theme[data-map-theme="iron-age"] {
+      --color-panel: #f6f0ea;
+      --color-ink: #2b221d;
+      --color-ink-dim: #6b5c52;
+      --color-ink-faint: #948379;
+      --color-accent: #8a4f1c;
+      --map-theme-accent: #8a4f1c;
+      --shadow-panel: 0 12px 40px rgba(64, 46, 34, .2);
+    }
+    .map-theme[data-map-theme="middle-ages"] {
+      --color-panel: #fbf4e0;
+      --color-ink: #23253a;
+      --color-ink-dim: #5c5a68;
+      --color-ink-faint: #8a8590;
+      --color-accent: #8a6a1c;
+      --map-theme-accent: #8a6a1c;
+      --shadow-panel: 0 12px 40px rgba(40, 44, 80, .2);
+    }
+    .map-theme[data-map-theme="age-of-exploration"] {
+      --color-panel: #fdf6e3;
+      --color-ink: #3a2d18;
+      --color-ink-dim: #7a664a;
+      --color-ink-faint: #9a8a6c;
+      --color-accent: #8a6124;
+      --map-theme-accent: #8a6124;
+      --shadow-panel: 0 12px 40px rgba(96, 74, 34, .2);
+    }
+    .map-theme[data-map-theme="industrial-era"] {
+      --color-panel: #f2f4f2;
+      --color-ink: #1e2626;
+      --color-ink-dim: #556060;
+      --color-ink-faint: #7c8686;
+      --color-accent: #4a5a5e;
+      --map-theme-accent: #4a5a5e;
+      --shadow-panel: 0 12px 40px rgba(40, 52, 54, .18);
+    }
+    .map-theme[data-map-theme="cold-war"] {
+      --color-panel: #f4f7f8;
+      --color-ink: #12222b;
+      --color-ink-dim: #4e6570;
+      --color-ink-faint: #7b8d97;
+      --color-accent: #96601c;
+      --map-theme-accent: #96601c;
+      --shadow-panel: 0 12px 40px rgba(24, 44, 56, .18);
+    }
+    .map-theme[data-map-theme="internet-age"] {
+      --color-panel: #f0fdff;
+      --color-ink: #062a35;
+      --color-ink-dim: #3d707f;
+      --color-ink-faint: #6b98a5;
+      --color-accent: #0090c4;
+      --map-theme-accent: #0090c4;
+      --shadow-panel: 0 12px 40px rgba(0, 90, 120, .18);
+    }
   }
 
   .maplibregl-ctrl-group { @apply !border !border-ink/12 !bg-panel/82 !shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%]; }

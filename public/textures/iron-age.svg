@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <filter id="rust"><feTurbulence type="turbulence" baseFrequency=".12" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values=".45 0 0 0 .24  0 .26 0 0 .12  0 0 .18 0 .08  0 0 0 .38 -.04"/></filter>
+  <rect width="128" height="128" filter="url(#rust)" opacity=".42"/>
+  <path d="M-8 96L136 -48M-8 176L136 32" fill="none" stroke="#5a4034" stroke-width=".6" opacity=".18"/>
+</svg>

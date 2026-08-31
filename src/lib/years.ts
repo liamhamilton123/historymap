@@ -3,31 +3,49 @@
 import { yearOf } from './time';
 
 /**
- * The span the track covers. It starts before the earliest data rather than on
- * it — 1783 for North America, 1922 for the Soviet Union — so the first thing
- * on the map is something you scrub *to*, not something already there when the
- * handle bottoms out.
+ * The span the track covers. It reaches back past the earliest polity data —
+ * 1783 for North America, 1922 for the Soviet Union — because the map's era
+ * themes run to the stone age, and an era the handle cannot reach may as well
+ * not exist. The cost is deliberate and known: the centuries that actually
+ * carry data are a small fraction of a linear track this wide, so the drag is
+ * coarse there and the step buttons are what you reach for to land on a year.
  */
-export const MIN_T = 1750;
+export const MIN_T = -10000;
 export const MAX_T = 2026;
 
 /**
- * Tick spacing, in years. The track is a fixed width and the span is now wide
- * enough that a tick per year would be a solid grey bar, so ticks are decades
- * and only the half-centuries are written. The slider itself still steps one
- * year at a time; this is only what gets drawn.
+ * Tick spacing, in years. The track is a fixed width and the span covers twelve
+ * millennia, so ticks are quarter-millennia and only the millennia are written.
+ * The slider itself still steps one year at a time; this is only what gets
+ * drawn.
  */
-const TICK_STEP = 10;
-const LABEL_STEP = 50;
+const TICK_STEP = 250;
+const LABEL_STEP = 1000;
+
+/**
+ * A year with its era, for anywhere a bare number would be ambiguous now that
+ * the track runs either side of zero.
+ *
+ * The data numbers years astronomically — negative for BCE, with a year zero —
+ * and this labels them the way they were given rather than shifting by one to
+ * the historians' convention. So -3000 reads as 3000 BCE, which is the year the
+ * bronze age boundary was set at, and not as 3001 BCE.
+ */
+function withEra(year: number): string {
+  if (year < 0) return `${-year} BCE`;
+  if (year === 0) return '0';
+  if (year < 1000) return `${year} CE`;
+  return String(year);
+}
 
 /** Full label for the current instant. */
 export function formatYear(t: number): string {
-  return String(yearOf(t));
+  return withEra(yearOf(t));
 }
 
 /** Compact form for timeline tick labels. */
 export function formatYearShort(t: number): string {
-  return String(yearOf(t));
+  return withEra(yearOf(t));
 }
 
 /** Instant -> 0..1 position along the linear timeline track. */
