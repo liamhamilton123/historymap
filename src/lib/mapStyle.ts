@@ -52,6 +52,23 @@ export type HistoricalTheme =
   | 'internet-age';
 
 /**
+ * How each era is named to the reader. Kept beside the eras themselves so a new
+ * one cannot be added without a name, which is what let the old hand-written
+ * ladder in the controls panel fall four eras behind.
+ */
+export const HISTORICAL_THEME_TITLE: Record<HistoricalTheme, string> = {
+  'stone-age': 'Stone Age',
+  'bronze-age': 'Bronze Age',
+  'iron-age': 'Iron Age',
+  'middle-ages': 'Middle Ages',
+  'age-of-exploration': 'Age of Exploration',
+  'industrial-era': 'Industrial Era',
+  'world-wars': 'World Wars',
+  'cold-war': 'Cold War',
+  'internet-age': 'Internet Age',
+};
+
+/**
  * Choose the visual era independently of the historical data on the map.
  *
  * The boundaries are the conventional ones and, like any periodisation, they

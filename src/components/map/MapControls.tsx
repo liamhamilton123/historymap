@@ -12,20 +12,10 @@ const buttonClass =
 
 export default function MapControls({ onZoomIn, onZoomOut, canZoomIn }: MapControlsProps) {
   const globe = useMapStore((state) => state.globe);
-  const t = useMapStore((state) => state.t);
   const setGlobe = useMapStore((state) => state.setGlobe);
   const historicalThemes = useMapStore((state) => state.historicalThemes);
   const setHistoricalThemes = useMapStore((state) => state.setHistoricalThemes);
   const [showAttribution, setShowAttribution] = useState(false);
-  const themeLabel = t >= 1990
-    ? 'Internet Age'
-    : t >= 1945
-      ? 'Cold War'
-      : t >= 1910
-        ? 'World Wars'
-        : t >= 1800
-          ? 'Industrial Era'
-          : 'Age of Exploration';
 
   return (
     <div className="map-control-panel absolute top-4 right-4 z-[5] w-[148px] rounded-xl border border-ink/12 bg-panel/55 p-2 shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%]">
@@ -59,9 +49,6 @@ export default function MapControls({ onZoomIn, onZoomOut, canZoomIn }: MapContr
             onChange={(event) => setHistoricalThemes(event.target.checked)}
           />
         </label>
-        <p className="px-1.5 pt-0.5 text-[9px] tracking-[0.1em] text-ink-faint uppercase">
-          {historicalThemes ? themeLabel : 'Classic styling'}
-        </p>
       </div>
 
       <div className="mt-2 flex flex-col items-center border-t border-ink/12 pt-2">
