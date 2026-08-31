@@ -1,0 +1,9 @@
+{
+  "name": "Chinook",
+  "color": "#6a8398",
+  "features": [
+    { "from": "1400", "to": "1860",
+      "geometry": {"type":"Polygon","coordinates":[[[-124.5,46.4],[-123.9,46.5],[-123,46.1],[-122,45.8],[-121.8,45.5],[-122.1,45.2],[-123.2,45.2],[-124.1,45.7],[-124.5,46.4]]]},
+      "source": "The lower Chinookan peoples of the Columbia River and its estuary, including Chinook, Clatsop, Kathlamet, Wahkiakum and Willapa communities. The river was their trade and fishing corridor, not a centralized Chinook state. The span ends in 1860, by which point removals, disease and settler land claims had displaced most Chinookan people from full-time life along the Columbia's banks." }
+  ]
+}

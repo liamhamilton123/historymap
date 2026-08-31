@@ -1,0 +1,9 @@
+{
+  "name": "Coast Salish",
+  "color": "#5b8f89",
+  "features": [
+    { "from": "1400", "to": "1855",
+      "geometry": {"type":"Polygon","coordinates":[[[-123.7,49],[-122.2,49.1],[-121.5,48.5],[-121.7,47.2],[-122.5,46.9],[-123.4,47.3],[-123.7,49]]]},
+      "source": "The Coast Salish peoples of Puget Sound, represented here as an approximate shared coastal extent rather than a single political unit. Their communities were politically independent. The span ends with the Point Elliott and related Puget Sound treaties of 1854–55, which compelled many communities to cede their ancestral lands and relocate to reservations." }
+  ]
+}

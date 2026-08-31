@@ -1,0 +1,9 @@
+{
+  "name": "Ohlone",
+  "color": "#a16f61",
+  "features": [
+    { "from": "1400", "to": "1810",
+      "geometry": {"type":"Polygon","coordinates":[[[-123,38],[-122,37.9],[-121.7,37.5],[-121.7,36.6],[-122.1,36.2],[-122.6,36.4],[-123,37.2],[-123,38]]]},
+      "source": "The Ohlone peoples of the San Francisco Peninsula, East Bay and Monterey Bay region: roughly fifty politically independent communities, not a single state. Spanish settlement, missions, introduced disease, forced labor and religious coercion had devastated those local ways of life by 1810. The endpoint records that rupture, not the disappearance of Ohlone people." }
+  ]
+}

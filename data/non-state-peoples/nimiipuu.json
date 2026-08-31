@@ -1,0 +1,9 @@
+{
+  "name": "Nez Perce",
+  "color": "#907b52",
+  "features": [
+    { "from": "1400", "to": "1877",
+      "geometry": {"type":"Polygon","coordinates":[[[-120.1,46],[-119.2,47.7],[-117.3,48.4],[-115.2,47.8],[-115.2,46.3],[-116.4,45.5],[-118.6,45.5],[-120.1,46]]]},
+      "source": "Nimiipuu homeland in what are now north-central Idaho, south-eastern Washington and north-eastern Oregon. The 1855 treaty reserved part of that homeland; the 1863 treaty reduced it by about ninety percent. This span ends with the 1877 war and forced removal of the non-treaty bands from their homes, not because the Nimiipuu ceased to be a people." }
+  ]
+}

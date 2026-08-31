@@ -1,0 +1,9 @@
+{
+  "name": "Klamath",
+  "color": "#8b7958",
+  "features": [
+    { "from": "1400", "to": "1864-10-14",
+      "geometry": {"type":"Polygon","coordinates":[[[-123.5,43.1],[-122.1,43.5],[-120.8,43],[-120.7,42],[-121.5,41.6],[-123,41.6],[-123.5,43.1]]]},
+      "source": "Klamath country around the upper Klamath Basin, where the Klamath, Modoc and Yahooskin Paiute peoples maintained distinct communities. The span ends with the treaty of October 1864, which compelled those peoples to cede twenty-three million acres and concentrate on the Klamath Reservation; it does not imply an end to their continuing rights or presence." }
+  ]
+}

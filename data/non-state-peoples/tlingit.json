@@ -1,0 +1,9 @@
+{
+  "name": "Tlingit",
+  "color": "#627f99",
+  "features": [
+    { "from": "1400", "to": "1867-10-18",
+      "geometry": {"type":"Polygon","coordinates":[[[-141,60.1],[-138.2,59.8],[-135.4,58.9],[-132.1,57.2],[-132.4,55.2],[-134.3,54.6],[-136.2,55.4],[-138.2,56.8],[-140,58.4],[-141,60.1]]]},
+      "source": "Lingít Aaní, the Tlingit homeland along southeast Alaska and the northern coast of British Columbia. Russian forts controlled particular sites but not this whole country; Tlingit clans remained autonomous. The span ends when the United States formally took Alaska from Russia on 18 October 1867, a change in the map's state-claim layer rather than an end to Tlingit life or connection to the land." }
+  ]
+}
