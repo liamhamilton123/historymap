@@ -4,7 +4,7 @@
 | --- | --- |
 | `npm run data:fetch` | Downloads Natural Earth into `data/sources/` (gitignored). Cached; `--force` to redownload. |
 | `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap.geojson`. |
-| `npm run data:polities` | Builds `public/data/polities.geojson`, `polity-labels.json` and `polity-hatches.json` from `data/polities/` and `data/unclaimed/`. |
+| `npm run data:polities` | Builds `public/data/polities.topojson`, `polity-labels.json` and `polity-hatches.json` from `data/polities/` and `data/unclaimed/`. |
 | `npm run data:build` | All three, in order. |
 
 ## Coverage
@@ -220,6 +220,38 @@ per polity: give two neighbours their own tolerances and their shared border
 simplifies two ways, leaving a sliver along every frontier. Per-polity
 `minArea` is safe and is supported as a field on a polity file.
 
+## Why the output is TopoJSON
+
+Every span is dissolved out of the same parts bin, so spans repeat each other's
+outlines wholesale: Canada's Pacific coast is identical across all six of its
+spans, and Britain's across all twenty-two. Written as GeoJSON, each of those
+is a separate copy of the same coordinates.
+
+TopoJSON stores each shared outline once as an *arc* and has every span that
+uses it hold a reference. The 120 spans currently reduce to 703 arcs — and the
+76 parts alone already account for 690 of them, so topology extraction is
+rediscovering the parts bin on its own.
+
+That is what stops the file growing as history is added. **A span that
+recombines ground already drawn costs references, not coordinates.** Measured
+on this data, going from 120 spans to 235 over the same parts grows the
+GeoJSON by 202% and the TopoJSON by 1%; the current file is 435 KB against
+2.3 MB, and 158 KB against 728 KB gzipped.
+
+Two things this rests on, both easy to break:
+
+- **The parts must be simplified together, as one topology, before they are
+  dissolved.** That is what makes shared outlines come out bit-identical, and
+  identical coordinates are exactly what arc matching keys on. Simplify per
+  polity and the arcs stop matching and the file triples.
+- **Quantisation is sized from `PRECISION`**, the same grid `simplifyGeometry`
+  already rounds to, so it discards nothing that survived rounding. Coordinates
+  come back out of the file unchanged.
+
+MapLibre cannot read TopoJSON, so `src/lib/polities.ts` fetches and converts it
+before handing it to the source with `setData` — about 20 ms, once, cached
+across the style reloads a light/dark switch causes.
+
 ## Checks
 
 The build exits non-zero on any of:
@@ -228,9 +260,29 @@ The build exits non-zero on any of:
 - a span that ends before it starts, or one using an unknown `status`
 - **the same ground claimed twice at one instant** — by two polities, which is
   the failure the parts bin exists to prevent, or by one polity, which means a
-  duplicated span. Every pair whose spans and bounding boxes both overlap is
-  actually intersected.
+  duplicated span
 - geometry that disappears entirely once specks are dropped
+
+That last check is answered from part ids, not from geometry. Carving already
+guarantees what it is testing: no two distinct parts share ground, so two spans
+naming disjoint sets of parts **cannot** overlap, and two spans naming a part in
+common overlap on exactly that part. Neither case needs an intersection. Only
+inline `geometry` spans, drawn freehand rather than carved, still need one.
+
+Spans are swept in date order and the sweep stops as soon as a span starts after
+the current one ended, so pairs that never coexist are never examined. Together
+that is what keeps the check from being quadratic in spans, which is the shape
+that bites as history goes deeper — measured on this data, 120 spans to 1,080
+takes the whole build from 0.72 s to 0.98 s, where the old geometric check
+alone took 32 s at 240.
+
+It also catches *more* than the geometric version did: two polities claiming the
+same part are now reported even when the ground they share is too small to
+survive simplification, which used to hide the mistake entirely.
+
+The build prints `overlap check: N coexisting pair(s), M intersected`. **M is
+the number to watch** — it is how much of the check still costs geometry, and it
+should stay near zero, rising only with the number of inline shapes.
 
 ## Source
 

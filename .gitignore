@@ -7,5 +7,6 @@ dist/
 # ETL intermediates + generated map data (rebuild with `npm run data:build`)
 data/sources/
 public/data/*.geojson
+public/data/*.topojson
 public/data/*.json
 public/data/*.pmtiles

@@ -3,6 +3,7 @@ import {
   Map as MapLibreMap,
   ScaleControl,
   setWorkerUrl,
+  type GeoJSONSource,
   type MapMouseEvent,
 } from 'maplibre-gl';
 // MapLibre resolves its worker relative to its own module URL, which no
@@ -18,11 +19,13 @@ import {
   TIMED_LAYERS,
   UNCLAIMED_FILL,
   POLITY_STATUS,
+  POLITY_SOURCE,
   STATIC_HATCHES,
   SELECTED_LAYER,
   type PolityHatch,
 } from '~/lib/mapStyle';
 import { hatchImage, hexToRgb, HATCH_PIXEL_RATIO } from '~/lib/hatch';
+import { loadPolities } from '~/lib/polities';
 import { attachPolityLabels, type PolityLabels } from './polityLabels';
 import { useMapStore } from '~/lib/store';
 import { readView, pushView, writeView } from '~/lib/url';
@@ -104,6 +107,24 @@ function registerHatches(instance: MapLibreMap) {
  *  sit on top of one of them. */
 const PICK_LAYERS = ['polity-fill', UNCLAIMED_FILL];
 
+/**
+ * Fill the polity source, which the style declares empty. The data is TopoJSON
+ * — one shared outline stored once instead of once per span — and MapLibre
+ * cannot read that, so it is converted first. Runs on every style.load, since
+ * a light/dark switch rebuilds the style and drops the source's data with it;
+ * loadPolities caches, so only the first one costs anything.
+ */
+function loadPolityData(instance: MapLibreMap) {
+  loadPolities()
+    .then((data) => {
+      // The style can have been replaced, or the map removed, while this was
+      // in flight — in which case there is nothing left to fill.
+      const source = instance.getSource(POLITY_SOURCE) as GeoJSONSource | undefined;
+      source?.setData(data);
+    })
+    .catch((error) => console.error('[atlas] polities failed to load', error));
+}
+
 /** Show only the ground that existed at `t`, held or not. */
 function applyInstant(instance: MapLibreMap, t: number) {
   for (const layer of TIMED_LAYERS) instance.setFilter(layer.id, layer.filter(t));
@@ -176,6 +197,7 @@ export default function HistoryMap() {
     // setFilter throws until the style exists, so gate on it and re-apply once.
     instance.on('style.load', () => {
       styleReady.current = true;
+      loadPolityData(instance);
       registerHatches(instance);
       applyInstant(instance, useMapStore.getState().t);
       applySelection(instance, useMapStore.getState().t, selected.current);

@@ -1,6 +1,9 @@
-// One file per polity -> one flat FeatureCollection of "this shape, this
-// polity, this span of time". Every feature is independent; nothing is joined
-// at runtime. The map draws it with a single filter on the current instant.
+// One file per polity -> one flat collection of "this shape, this polity, this
+// span of time". Every feature is independent; nothing is joined at runtime.
+// The map draws it with a single filter on the current instant.
+//
+// It ships as TopoJSON so that the outlines those features share are stored
+// once rather than once per span — see the write step at the bottom.
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { join, basename } from 'node:path';
 import polygonClipping from 'polygon-clipping';
@@ -21,6 +24,12 @@ import { simplifyGeometry } from './lib/geo.mjs';
 const SIMPLIFY_WEIGHT = 0.0002;
 /** Polygons smaller than this are dropped. Square degrees; ~25 km². */
 const MIN_AREA = 0.002;
+/**
+ * Coordinate precision, in degrees — about 11 m. Geometry is rounded to this,
+ * and the TopoJSON quantisation grid at the end is sized to it, so the two
+ * cannot drift and start writing out each other's rounding noise.
+ */
+const PRECISION = 1e-4;
 /**
  * Below this, an overlap between two polities is arithmetic noise rather than
  * a modelling mistake. Square degrees; roughly a tenth of a square km.
@@ -208,6 +217,8 @@ const SOURCES = [
 const specs = [];
 const used = new Set();
 const seenIds = new Map();
+/** Part keys that came from an inline `geometry` rather than the parts bin. */
+const inlineParts = new Set();
 
 for (const { dir, kind } of SOURCES) {
   const files = (await readdir(dir).catch(() => [])).filter((name) => name.endsWith('.json')).sort();
@@ -232,6 +243,10 @@ for (const { dir, kind } of SOURCES) {
       parts.set(key, polygonsOf(entry.geometry));
       entry.partKeys = [key];
       used.add(key);
+      // Drawn freehand rather than carved out of a source, so nothing
+      // guarantees it misses its neighbours the way a part does. The overlap
+      // check has to fall back to real geometry for these.
+      inlineParts.add(key);
       return;
     }
     entry.partKeys = entry.parts ?? [];
@@ -259,6 +274,7 @@ console.log(
 
 // --- assemble the features -------------------------------------------------
 const features = [];
+const featureParts = [];
 for (const spec of specs) {
   let kept = 0;
   for (const entry of spec.entries) {
@@ -279,7 +295,7 @@ for (const spec of specs) {
     // Both sides of a shared arc get the same treatment, so no seam appears.
     const geometry = simplifyGeometry(
       { type: 'MultiPolygon', coordinates: polygons },
-      { tolerance: 0, minArea: spec.minArea ?? MIN_AREA },
+      { tolerance: 0, minArea: spec.minArea ?? MIN_AREA, precision: 1 / PRECISION },
     );
     if (!geometry) {
       problems.push(`${spec.file}: ${entry.from} has nothing left after dropping specks`);
@@ -343,6 +359,10 @@ for (const spec of specs) {
       },
       geometry,
     });
+    // Which parts this span was assembled from, parallel to `features`. Kept
+    // beside them rather than on them because the overlap check needs it and
+    // the map does not: it must not be shipped.
+    featureParts.push(entry.partKeys);
     kept++;
   }
   console.log(`  ${spec.id}: ${kept} feature(s)`);
@@ -351,9 +371,23 @@ for (const spec of specs) {
 // --- the check: no ground may be claimed twice at the same instant ----------
 // One test covers both mistakes. Two polities overlapping is the failure the
 // parts bin exists to prevent; one polity overlapping itself is a duplicated
-// span. It has to be geometric rather than a comparison of dates, because a
-// polity legitimately holds several spans at once when they carry different
-// statuses — controlled ground here, disputed ground there.
+// span. It cannot be a comparison of dates alone, because a polity legitimately
+// holds several spans at once when they carry different statuses — controlled
+// ground here, disputed ground there.
+//
+// It is mostly answered from part ids rather than from geometry, because
+// carving already guarantees the thing being checked: a part is taken out of
+// its source and the source keeps the remainder, so no two distinct parts ever
+// share ground. Two spans naming disjoint sets of parts therefore cannot
+// overlap whatever their shapes look like, and two spans naming a part in
+// common overlap on exactly that part — neither case needs an intersection.
+//
+// Only inline `geometry` spans, which are drawn freehand rather than carved,
+// still need the real thing.
+//
+// Answering it this way also catches more than the geometry did: two polities
+// claiming the same part are now reported even when the ground they share is
+// too small to survive being simplified, which used to hide the mistake.
 const byPolity = new Map();
 for (const f of features) {
   const list = byPolity.get(f.properties.polity) ?? [];
@@ -364,11 +398,28 @@ const unclaimedCount = new Set(
   features.filter((f) => f.properties.kind === 'unclaimed').map((f) => f.properties.polity),
 ).size;
 
-const claims = features.map((f) => {
+const claims = features.map((f, index) => {
+  const partKeys = featureParts[index];
   const polygons = polygonsOf(f.geometry);
-  return { props: f.properties, polygons, bbox: bboxOf(polygons) };
+  return {
+    // Position in `features`, which the sort below no longer preserves. The
+    // contested numbering further down is keyed by it.
+    index,
+    props: f.properties,
+    polygons,
+    bbox: bboxOf(polygons),
+    parts: new Set(partKeys),
+    inline: partKeys.some((key) => inlineParts.has(key)),
+  };
 });
-let compared = 0;
+// Sorted by start so the sweep below can stop early rather than screening
+// every pair: once a later span begins after this one has ended, so does
+// every span after it. This is what keeps the check from being quadratic in
+// spans, which is the shape that bites as history goes deeper.
+claims.sort((a, b) => a.props.from - b.props.from);
+
+let coexisting = 0;
+let intersected = 0;
 const contested = [];
 /** Which other polities each feature shares its ground with, by feature index. */
 const sharedWith = new Map();
@@ -377,15 +428,34 @@ const rivals = (index) => {
   return sharedWith.get(index);
 };
 for (let i = 0; i < claims.length; i++) {
+  const a = claims[i];
   for (let j = i + 1; j < claims.length; j++) {
-    const a = claims[i];
     const b = claims[j];
+    // Sorted by start, so b begins at or after a — and so does everything
+    // after it. Once that is past a's end, nothing later can coexist with a.
+    if (b.props.from >= a.props.to) break;
+    coexisting++;
+
+    const common = [...a.parts].filter((key) => b.parts.has(key));
+    // Disjoint parts, nothing drawn freehand: they cannot overlap. This is
+    // the case for almost every pair, and it costs a set lookup.
+    if (!common.length && !a.inline && !b.inline) continue;
+
+    let shared;
+    if (common.length) {
+      // They name the same ground, so how much they share is the size of the
+      // parts they share. No intersection needed to know it, or to measure it.
+      shared = common.reduce((total, key) => total + areaOf(simplified.get(key) ?? []), 0);
+    } else {
+      // One side at least is freehand, so only the shapes can settle it.
+      if (bboxesDisjoint(a.bbox, b.bbox)) continue;
+      intersected++;
+      shared = areaOf(polygonClipping.intersection(a.polygons, b.polygons));
+    }
+    if (shared <= OVERLAP_EPSILON) continue;
+
     const from = Math.max(a.props.from, b.props.from);
     const to = Math.min(a.props.to, b.props.to);
-    if (!(to > from) || bboxesDisjoint(a.bbox, b.bbox)) continue;
-    compared++;
-    const shared = areaOf(polygonClipping.intersection(a.polygons, b.polygons));
-    if (shared <= OVERLAP_EPSILON) continue;
     const when = `${formatInstant(from)}..${to === OPEN_ENDED ? 'now' : formatInstant(to)}`;
 
     // Both sides saying `contested` is a deliberate shared claim, not a
@@ -396,8 +466,8 @@ for (let i = 0; i < claims.length; i++) {
       b.props.status === SHARED_STATUS &&
       a.props.polity !== b.props.polity
     ) {
-      rivals(i).add(b.props.polity);
-      rivals(j).add(a.props.polity);
+      rivals(a.index).add(b.props.polity);
+      rivals(b.index).add(a.props.polity);
       contested.push(`${a.props.polity} and ${b.props.polity} contest ${km2(shared)} during ${when}`);
       continue;
     }
@@ -420,7 +490,12 @@ for (let i = 0; i < claims.length; i++) {
     );
   }
 }
-console.log(`  overlap check: ${compared} coexisting pair(s) intersected`);
+// Intersections against coexisting pairs is the number worth watching: it says
+// how much of the check still costs geometry. It should stay near zero, rising
+// only with the number of inline shapes.
+console.log(
+  `  overlap check: ${coexisting} coexisting pair(s), ${intersected} intersected`,
+);
 for (const note of contested) console.log(`    shared: ${note}`);
 
 // --- who is drawn which way on shared ground -------------------------------
@@ -481,9 +556,31 @@ const labels = features.flatMap((f) => {
   }];
 });
 
+// --- write -----------------------------------------------------------------
+// Shipped as TopoJSON, not GeoJSON. Spans are dissolved out of a shared parts
+// bin, so a span that keeps ground its predecessor held repeats that outline
+// coordinate for coordinate: Canada's Pacific coast is identical across all
+// six of its spans, and the whole of Britain's is identical across twenty-two.
+// Topology extraction stores each such outline once and has every span
+// reference it, which is what stops the file growing as history is added —
+// adding a span that recombines ground already drawn costs references, not
+// coordinates.
+//
+// This works only because the parts were simplified together as one topology
+// above. That makes shared outlines come out bit-identical, and identical
+// coordinates are exactly what arc matching keys on. Simplify per polity
+// instead and the arcs stop matching and the file triples.
 await mkdir(OUT_DIR, { recursive: true });
-const out = join(OUT_DIR, 'polities.geojson');
-await writeFile(out, JSON.stringify({ type: 'FeatureCollection', features }));
+const out = join(OUT_DIR, 'polities.topojson');
+// Quantisation snaps coordinates to a grid before delta-encoding them. Sized
+// from the data's own extent so the grid lands on PRECISION — the same step
+// simplifyGeometry already rounds to, so this discards nothing that survived
+// it. TopoJSON scales each axis independently, so the longer one sets the step.
+const bounds = bboxOf(features.flatMap((f) => polygonsOf(f.geometry)));
+const quantization =
+  Math.ceil(Math.max(bounds[2] - bounds[0], bounds[3] - bounds[1]) / PRECISION) + 1;
+const topojson = topology({ polities: { type: 'FeatureCollection', features } }, quantization);
+await writeFile(out, JSON.stringify(topojson));
 const labelsOut = join(OUT_DIR, 'polity-labels.json');
 await writeFile(labelsOut, JSON.stringify(labels));
 // The stripe images the map has to generate before it can draw shared ground.
@@ -498,8 +595,12 @@ if (problems.length) {
   for (const problem of problems) console.log(`  ! ${problem}`);
 }
 const labelSize = (await import('node:fs/promises').then((fs) => fs.stat(labelsOut))).size;
+// Arcs against features is the number worth watching: it says how much of the
+// map is shared outline rather than fresh coastline. It should stay close to
+// the part count as spans are added, and climb only when new ground is drawn.
 console.log(
-  `\npolities.geojson · ${features.length} features · ${(size / 1024).toFixed(0)} KB` +
+  `\npolities.topojson · ${features.length} features · ${topojson.arcs.length} arcs` +
+    ` · ${(size / 1024).toFixed(0)} KB` +
     ` · ${byPolity.size - unclaimedCount} polities · ${unclaimedCount} unclaimed region(s)` +
     `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB` +
     `\npolity-hatches.json · ${hatches.size} contested stripe pattern(s)`,

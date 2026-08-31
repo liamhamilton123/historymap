@@ -42,7 +42,6 @@ function labelElement(label: PolityLabel): HTMLElement {
   element.className =
     'pointer-events-none block whitespace-nowrap text-[12px] ' + TYPE[label.kind];
   element.textContent = label.text;
-  element.style.opacity = String(styleFor(label).labelOpacity);
   // MapLibre puts will-change:transform on every marker, which promotes each
   // label to its own compositing layer — the text is then rasterised into a
   // texture and resampled at whatever subpixel offset it lands on, which is
@@ -71,7 +70,15 @@ export async function attachPolityLabels(map: MapLibreMap) {
     // other one centres with a percentage, which lands on a half pixel for any
     // odd-sized element and leaves the text permanently blurred. Centring is
     // done below instead, in whole pixels.
-    marker: new Marker({ element: labelElement(label), anchor: 'top-left' })
+    marker: new Marker({
+      element: labelElement(label),
+      anchor: 'top-left',
+      // Markers are DOM overlays, so unlike map layers they need an explicit
+      // covered opacity. Without it MapLibre leaves labels on the far side of
+      // the globe faintly visible.
+      opacity: styleFor(label).labelOpacity,
+      opacityWhenCovered: 0,
+    })
       .setLngLat(label.anchor)
       .addTo(map),
     centred: false,
