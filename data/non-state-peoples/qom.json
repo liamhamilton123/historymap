@@ -1,0 +1,9 @@
+{
+  "name": "Qom",
+  "color": "#8a8267",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-63.5,-20.5],[-57,-20.3],[-56.8,-28.2],[-61,-28.5],[-63.2,-25.3],[-63.5,-20.5]]]},
+      "source": "An approximate associated extent for Qom communities of the Gran Chaco in present-day Argentina, Paraguay and Bolivia. It is not a claim of one polity or a fixed boundary; Qom communities remain present across the region." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Warao",
+  "color": "#768c89",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-63,10.2],[-59.2,10.1],[-59,7.4],[-61.2,7],[-62.8,8.2],[-63,10.2]]]},
+      "source": "An approximate associated extent for Warao communities of the Orinoco Delta and adjoining coast. The delta's waterways and settlements have changed over time, so this is not a fixed political boundary; Warao people remain present in the region." }
+  ]
+}

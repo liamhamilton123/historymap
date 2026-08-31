@@ -1,0 +1,9 @@
+{
+  "name": "Tehuelche",
+  "color": "#7e8490",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-71.5,-40],[-63,-40.2],[-62.8,-49.2],[-68,-50.2],[-71.2,-46.5],[-71.5,-40]]]},
+      "source": "An approximate associated extent for Tehuelche peoples of Patagonia. The label encompasses distinct, mobile communities rather than one state or fixed territory; Tehuelche communities and identities remain present." }
+  ]
+}

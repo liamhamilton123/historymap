@@ -1,0 +1,9 @@
+{
+  "name": "Yanomami",
+  "color": "#6d8b78",
+  "features": [
+    { "from": "1700", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-67,4],[-60,4.4],[-60.3,0.3],[-63.2,-1],[-66.7,0.5],[-67,4]]]},
+      "source": "An approximate associated extent for Yanomami communities on both sides of the Brazil–Venezuela border. The early date is deliberately conservative for a people whose present distribution has changed through movement and outside pressure; it is not a fixed political boundary." }
+  ]
+}

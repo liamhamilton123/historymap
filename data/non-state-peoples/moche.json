@@ -1,0 +1,9 @@
+{
+  "name": "Moche",
+  "color": "#a36b4e",
+  "features": [
+    { "from": "100", "to": "800",
+      "geometry": {"type":"Polygon","coordinates":[[[-80.8,-4],[-77.4,-4],[-77,-10.2],[-78.5,-10.8],[-80.5,-8.3],[-80.8,-4]]]},
+      "source": "An approximate extent for the Moche archaeological tradition on Peru's north coast and adjacent Andean foothills. Moche communities formed multiple regional polities with a shared material and religious tradition, rather than one securely reconstructed state boundary." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Guaraní",
+  "color": "#819064",
+  "features": [
+    { "from": "1000", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-63.5,-18],[-48.5,-18],[-48,-28.5],[-54.5,-31],[-61.5,-26.5],[-63.5,-18]]]},
+      "source": "An approximate associated extent for diverse Guaraní-speaking peoples across the Paraná–Paraguay basin and adjoining southern Brazil. It is not a claim that these communities formed one state or held an unchanged boundary; Guaraní peoples remain present across this wider region." }
+  ]
+}

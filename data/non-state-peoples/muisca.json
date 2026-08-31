@@ -1,0 +1,9 @@
+{
+  "name": "Muisca",
+  "color": "#9a8560",
+  "features": [
+    { "from": "600", "to": "1537",
+      "geometry": {"type":"Polygon","coordinates":[[[-75.8,7.8],[-72.6,7.7],[-72.4,4.5],[-73.8,4.1],[-75.5,5.2],[-75.8,7.8]]]},
+      "source": "An approximate extent for Muisca-speaking communities of Colombia's Eastern Cordillera. The loose zipa and zaque confederations linked many chiefdoms but were not a unified modern-style state; the span ends with the Spanish conquest of the highlands." }
+  ]
+}

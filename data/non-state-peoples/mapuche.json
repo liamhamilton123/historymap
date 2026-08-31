@@ -1,0 +1,9 @@
+{
+  "name": "Mapuche",
+  "color": "#678a68",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-74.8,-34.5],[-69.2,-34.6],[-68.3,-41.5],[-70.2,-43.5],[-74.3,-40.8],[-74.8,-34.5]]]},
+      "source": "An approximate associated extent for Mapuche communities in south-central Chile and the adjoining eastern Andes. It does not claim a single polity or unchanged territorial boundary: Mapuche communities have maintained distinct identities through colonial and republican expansion." }
+  ]
+}

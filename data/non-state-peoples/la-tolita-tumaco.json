@@ -1,0 +1,9 @@
+{
+  "name": "La Tolita–Tumaco",
+  "color": "#9c765b",
+  "features": [
+    { "from": "-600", "to": "400",
+      "geometry": {"type":"Polygon","coordinates":[[[-80.2,2.8],[-77.4,3],[-77.2,-1.8],[-79.2,-2.2],[-80.3,0.2],[-80.2,2.8]]]},
+      "source": "An approximate archaeological-cultural extent for the La Tolita–Tumaco tradition of the Pacific coast of northern Ecuador and southern Colombia. It marks related settlement, ceramic and metalworking traditions, not a unified people or state boundary." }
+  ]
+}

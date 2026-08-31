@@ -1,0 +1,9 @@
+{
+  "name": "Tikuna",
+  "color": "#6f8d74",
+  "features": [
+    { "from": "1700", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-73,-2],[-67,-1.8],[-66.8,-5.2],[-70.4,-5.6],[-72.7,-4.1],[-73,-2]]]},
+      "source": "An approximate associated extent for Tikuna communities of the upper Amazon around the Brazil–Colombia–Peru border. The start is conservative for a riverine people whose settlements moved over time; it is not a fixed territorial boundary." }
+  ]
+}

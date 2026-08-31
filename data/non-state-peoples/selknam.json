@@ -1,0 +1,9 @@
+{
+  "name": "Selk'nam",
+  "color": "#778593",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-70.8,-52.6],[-65.4,-52.7],[-65.3,-55.4],[-68.4,-55.8],[-70.6,-54.5],[-70.8,-52.6]]]},
+      "source": "An approximate associated extent for Selk'nam communities of Isla Grande de Tierra del Fuego. It does not treat Selk'nam life as ending with the nineteenth- and twentieth-century genocide; Selk'nam identity persists today." }
+  ]
+}

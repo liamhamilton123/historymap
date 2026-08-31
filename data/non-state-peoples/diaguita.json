@@ -1,0 +1,9 @@
+{
+  "name": "Diaguita",
+  "color": "#997d65",
+  "features": [
+    { "from": "1000", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-71.7,-25.5],[-67,-25.4],[-66.8,-33.4],[-69.5,-34],[-71.2,-30.5],[-71.7,-25.5]]]},
+      "source": "An approximate associated extent for Diaguita communities in the semi-arid Andes and valleys of northwestern Argentina and northern Chile. The label covers related but diverse communities, not a single state; colonial and republican rule did not end Diaguita identities." }
+  ]
+}

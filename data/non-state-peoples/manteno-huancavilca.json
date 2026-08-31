@@ -1,0 +1,9 @@
+{
+  "name": "Manteño-Huancavilca",
+  "color": "#9a7c5c",
+  "features": [
+    { "from": "500", "to": "1532",
+      "geometry": {"type":"Polygon","coordinates":[[[-81.5,-0.2],[-78.8,0],[-78.6,-3.5],[-80.1,-4],[-81.4,-2.4],[-81.5,-0.2]]]},
+      "source": "An approximate extent for the Manteño-Huancavilca lordships of Ecuador's central and southern coast. The connected hill, port and maritime-trade centres were multiple chiefdoms and lordships, not one surveyed territorial state." }
+  ]
+}

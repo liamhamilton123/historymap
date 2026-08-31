@@ -1,0 +1,9 @@
+{
+  "name": "Charrúa",
+  "color": "#9b806b",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-59.5,-29],[-53,-29.2],[-52.8,-34.5],[-55.8,-35.3],[-59,-32.8],[-59.5,-29]]]},
+      "source": "An approximate associated extent for Charrúa communities of present-day Uruguay and the lower Paraná–Uruguay region. It is not a claim of a unified polity or unchanged boundary; Charrúa identity and communities persist despite nineteenth-century state violence and dispossession." }
+  ]
+}

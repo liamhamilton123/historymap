@@ -1,0 +1,9 @@
+{
+  "name": "Chachapoya",
+  "color": "#758c71",
+  "features": [
+    { "from": "500", "to": "1570",
+      "geometry": {"type":"Polygon","coordinates":[[[-79,-4.5],[-75.8,-4.5],[-75.6,-7.8],[-77.4,-8.2],[-78.8,-6.8],[-79,-4.5]]]},
+      "source": "An approximate extent for Chachapoya societies in the cloud-forest eastern Andes of northern Peru. Their curacazgos formed a confederated cultural and political landscape rather than a single fixed state; the span ends with colonial reductions that forced the abandonment of many settlements." }
+  ]
+}

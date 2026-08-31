@@ -1,0 +1,9 @@
+{
+  "name": "Wichí",
+  "color": "#88856c",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-65,-20],[-59,-20.2],[-58.8,-25.8],[-62.3,-26.2],[-64.7,-23.5],[-65,-20]]]},
+      "source": "An approximate associated extent for Wichí communities of the western Gran Chaco, chiefly in present-day Argentina and Bolivia. The many communities were autonomous, not a single state, and remain present in the region." }
+  ]
+}

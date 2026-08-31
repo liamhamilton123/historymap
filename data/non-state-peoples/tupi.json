@@ -1,0 +1,9 @@
+{
+  "name": "Tupí peoples",
+  "color": "#8c895e",
+  "features": [
+    { "from": "1000", "to": "1600",
+      "geometry": {"type":"Polygon","coordinates":[[[-50,-5],[-35,-5],[-36,-24],[-42,-26],[-48,-20],[-50,-5]]]},
+      "source": "An approximate contact-era extent for many Tupí-speaking coastal peoples of eastern Brazil, including but not limited to Tupinambá communities. The label is linguistic and cultural rather than a single people or polity; the span ends as colonial displacement made this continuous coastal representation misleading." }
+  ]
+}

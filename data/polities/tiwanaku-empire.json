@@ -1,0 +1,9 @@
+{
+  "name": "Tiwanaku Empire",
+  "color": "#6c7a83",
+  "features": [
+    { "from": "500", "to": "1100",
+      "geometry": {"type":"Polygon","coordinates":[[[-71,-13.5],[-65,-13.5],[-64.5,-20.8],[-67.5,-22.5],[-70.7,-19.5],[-71,-13.5]]]},
+      "source": "An authored approximation of Tiwanaku's highland core and regional political sphere around Lake Titicaca and the southern Andes. Its political influence reached beyond any precise surviving border; the span follows the empire's first-millennium florescence and subsequent collapse." }
+  ]
+}

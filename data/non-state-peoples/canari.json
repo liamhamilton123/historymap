@@ -1,0 +1,9 @@
+{
+  "name": "Cañari",
+  "color": "#857e62",
+  "features": [
+    { "from": "1000", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-79.8,-1.7],[-76.8,-1.6],[-76.7,-4.3],[-78.5,-4.7],[-79.7,-3.2],[-79.8,-1.7]]]},
+      "source": "An approximate associated extent for Cañari communities of Ecuador's southern highlands. Cañari lordships were distinct rather than one state; Inca and Spanish rule transformed political control without ending Cañari identity." }
+  ]
+}

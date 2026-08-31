@@ -1,0 +1,9 @@
+{
+  "name": "Mebêngôkre (Kayapó)",
+  "color": "#6f8d6d",
+  "features": [
+    { "from": "1700", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-56.5,-4],[-49,-4],[-48.7,-10.5],[-52.2,-12],[-55.8,-8.7],[-56.5,-4]]]},
+      "source": "An approximate associated extent for Mebêngôkre (Kayapó) communities of the southeastern Brazilian Amazon. The date is conservative and does not assert a fixed early boundary; Mebêngôkre peoples remain present in several distinct communities and territories." }
+  ]
+}

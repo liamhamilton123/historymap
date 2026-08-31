@@ -1,0 +1,9 @@
+{
+  "name": "Wari Empire",
+  "color": "#6f756f",
+  "features": [
+    { "from": "600", "to": "1000",
+      "geometry": {"type":"Polygon","coordinates":[[[-77.5,-8.5],[-72,-8.8],[-71.3,-15.8],[-73,-18.2],[-76.8,-14.8],[-77.5,-8.5]]]},
+      "source": "An authored approximation of the Wari state's core and wider sphere in the central Andes. Wari urban centres, administration and military expansion support treating it as a polity, but its exact frontiers shifted and remain archaeologically reconstructed." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Tairona",
+  "color": "#a4785d",
+  "features": [
+    { "from": "800", "to": "1600",
+      "geometry": {"type":"Polygon","coordinates":[[[-74.9,11.8],[-72.4,11.9],[-72.5,10.2],[-73.8,9.8],[-74.7,10.5],[-74.9,11.8]]]},
+      "source": "An approximate archaeological-cultural extent for the Tairona societies of Colombia's Sierra Nevada de Santa Marta and adjoining Caribbean coast. It represents related settlements and chiefdoms, not a fixed state boundary; colonial disruption ended the pre-contact settlement pattern, while later peoples of the Sierra retain distinct cultural continuities." }
+  ]
+}

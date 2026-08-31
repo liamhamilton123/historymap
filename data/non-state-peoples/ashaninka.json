@@ -1,0 +1,9 @@
+{
+  "name": "Asháninka",
+  "color": "#758c6c",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-76.5,-8],[-72,-7.8],[-71.7,-13.5],[-74.7,-14],[-76.2,-11.5],[-76.5,-8]]]},
+      "source": "An approximate associated extent for Asháninka communities of the central Peruvian Amazon and adjoining eastern Andes. It represents many autonomous communities rather than a state and does not assert unchanged boundaries." }
+  ]
+}

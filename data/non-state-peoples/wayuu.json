@@ -1,0 +1,9 @@
+{
+  "name": "Wayuu",
+  "color": "#a48762",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-73.5,12.7],[-70,12.8],[-69.8,10.2],[-72.2,10],[-73.4,11.1],[-73.5,12.7]]]},
+      "source": "An approximate associated extent for Wayuu communities of the Guajira Peninsula in present-day Colombia and Venezuela. Wayuu clans are not one polity, and the shape does not assert an unchanged boundary; Wayuu communities remain present across the peninsula." }
+  ]
+}

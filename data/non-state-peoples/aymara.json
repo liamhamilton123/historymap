@@ -1,0 +1,9 @@
+{
+  "name": "Aymara",
+  "color": "#73879a",
+  "features": [
+    { "from": "1000", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-71.5,-13.5],[-64.5,-13.5],[-64.2,-21.8],[-68,-22.8],[-71,-19.5],[-71.5,-13.5]]]},
+      "source": "An approximate associated extent for the many Aymara-speaking peoples of the Altiplano and adjacent valleys in present-day Bolivia, Peru and Chile. It is not a claim of one polity or an unchanged boundary; Aymara communities remain present across the region." }
+  ]
+}

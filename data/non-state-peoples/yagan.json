@@ -1,0 +1,9 @@
+{
+  "name": "Yagán",
+  "color": "#708795",
+  "features": [
+    { "from": "1400", "to": null,
+      "geometry": {"type":"Polygon","coordinates":[[[-73.5,-53.8],[-65.2,-53.8],[-65.1,-56.7],[-70.8,-56.8],[-73.2,-55.8],[-73.5,-53.8]]]},
+      "source": "An approximate associated extent for Yagán communities of the Beagle Channel and southern Fuegian archipelago. Their canoe-based communities were not a state or fixed territorial block; Yagán identity persists today." }
+  ]
+}
