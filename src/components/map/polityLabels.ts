@@ -1,11 +1,11 @@
 import { Marker, type Map as MapLibreMap } from 'maplibre-gl';
-import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, type PolityStatus } from '~/lib/mapStyle';
+import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, CULTURAL_REGION, type PolityStatus } from '~/lib/mapStyle';
 
 /** One row of public/data/polity-labels.json, written by the data build. */
 type PolityLabel = {
   polity: string;
   /** 'polity' for ground with an owner, 'unclaimed' for ground with only a name. */
-  kind: 'polity' | 'unclaimed';
+  kind: 'polity' | 'unclaimed' | 'cultural-region';
   text: string;
   color: string | null;
   status: string | null;
@@ -21,7 +21,9 @@ const LABELS_URL = '/data/polity-labels.json';
 const styleFor = (label: PolityLabel) =>
   label.kind === 'unclaimed'
     ? UNCLAIMED
-    : POLITY_STATUS[label.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
+    : label.kind === 'cultural-region'
+      ? CULTURAL_REGION
+      : POLITY_STATUS[label.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
 
 /**
  * Held ground is named in upright capitals, unclaimed ground in italic. That is
@@ -32,6 +34,7 @@ const styleFor = (label: PolityLabel) =>
 const TYPE = {
   polity: 'font-semibold tracking-[0.05em] uppercase text-ink',
   unclaimed: 'font-medium italic tracking-[0.02em] text-ink-dim',
+  'cultural-region': 'font-medium italic tracking-[0.02em] text-ink-dim',
 } as const;
 
 function labelElement(label: PolityLabel): HTMLElement {

@@ -11,7 +11,7 @@ import polylabel from 'polylabel';
 import { topology } from 'topojson-server';
 import { presimplify, simplify } from 'topojson-simplify';
 import { feature as topoFeature } from 'topojson-client';
-import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
+import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, CULTURAL_REGIONS_DIR, UNMAPPED_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
 import { simplifyGeometry } from './lib/geo.mjs';
 import { writeVectorTiles } from './lib/vector-tiles.mjs';
 
@@ -214,6 +214,7 @@ for (const [id, spec] of Object.entries(partSpec)) {
 const SOURCES = [
   { dir: POLITIES_DIR, kind: 'polity' },
   { dir: UNCLAIMED_DIR, kind: 'unclaimed' },
+  { dir: CULTURAL_REGIONS_DIR, kind: 'cultural-region' },
 ];
 const specs = [];
 const used = new Set();
@@ -234,6 +235,9 @@ for (const { dir, kind } of SOURCES) {
   spec.entries = spec.features ?? [];
   if (kind === 'unclaimed' && spec.color) {
     problems.push(`${file}: unclaimed ground cannot have a colour — it has no owner to be coloured by`);
+  }
+  if (kind === 'cultural-region' && !spec.color) {
+    problems.push(`${file}: a cultural region needs a colour`);
   }
   specs.push(spec);
   spec.entries.forEach((entry, index) => {
@@ -311,10 +315,11 @@ for (const spec of specs) {
     // this map means identity — nor a status, which only says how an owner
     // holds something. Saying otherwise in the file is a mistake worth naming.
     const unclaimed = spec.kind === 'unclaimed';
+    const culturalRegion = spec.kind === 'cultural-region';
     let status = entry.status ?? spec.status ?? DEFAULT_STATUS;
-    if (unclaimed) {
+    if (unclaimed || culturalRegion) {
       if (entry.status ?? spec.status) {
-        problems.push(`${spec.file}: unclaimed ground cannot have a status`);
+        problems.push(`${spec.file}: ${unclaimed ? 'unclaimed ground' : 'a cultural region'} cannot have a status`);
       }
       status = null;
     } else if (!STATUSES.includes(status)) {
@@ -327,7 +332,7 @@ for (const spec of specs) {
     // the way history already does it — "British North America", "New Spain" —
     // or by saying so outright, "Louisiana (France)". Unclaimed ground is
     // exempt: it has no owner to name.
-    if (!unclaimed && entry.label && !namesOwner(entry.label, spec)) {
+    if (!unclaimed && !culturalRegion && entry.label && !namesOwner(entry.label, spec)) {
       problems.push(
         `${spec.file}: "${entry.label}" does not say whose it is — name the owner,` +
           ` as "${entry.label} (${spec.name ?? spec.id})" or with "${spec.adjective ?? spec.name ?? spec.id}"`,
@@ -436,6 +441,10 @@ for (let i = 0; i < claims.length; i++) {
     // after it. Once that is past a's end, nothing later can coexist with a.
     if (b.props.from >= a.props.to) break;
     coexisting++;
+
+    // A cultural region is an associated extent, not an exclusive claim. Its
+    // overlap with a polity (or another cultural region) is expected.
+    if (a.props.kind === 'cultural-region' || b.props.kind === 'cultural-region') continue;
 
     const common = [...a.parts].filter((key) => b.parts.has(key));
     // Disjoint parts, nothing drawn freehand: they cannot overlap. This is
@@ -571,6 +580,30 @@ const tileResult = await writeVectorTiles(
 await rm(join(OUT_DIR, 'polities.topojson'), { force: true });
 const labelsOut = join(OUT_DIR, 'polity-labels.json');
 await writeFile(labelsOut, JSON.stringify(labels));
+// Unmapped societies have chronology but no geometry. Keep them in a small,
+// separate manifest so future timeline/search UI can use them without inventing
+// a map shape or putting invisible features into vector tiles.
+const unmapped = [];
+for (const file of (await readdir(UNMAPPED_DIR).catch(() => [])).filter((name) => name.endsWith('.json')).sort()) {
+  const spec = JSON.parse(await readFile(join(UNMAPPED_DIR, file), 'utf8'));
+  if (spec.color || spec.features || spec.geometry || spec.parts) {
+    problems.push(`${file}: unmapped societies may contain chronology and notes, but no colour or geometry`);
+    continue;
+  }
+  for (const span of spec.spans ?? []) {
+    const from = toInstant(span.from);
+    const to = toInstant(span.to);
+    if (!(to > from)) {
+      problems.push(`${file}: ${span.from} ends (${span.to}) before it starts`);
+      continue;
+    }
+    unmapped.push({
+      id: basename(file, '.json'), kind: 'unmapped', name: spec.name ?? basename(file, '.json'),
+      from, to, fromDate: span.from, toDate: span.to ?? null, source: span.source ?? null,
+    });
+  }
+}
+await writeFile(join(OUT_DIR, 'unmapped.json'), JSON.stringify(unmapped));
 // The stripe images the map has to generate before it can draw shared ground.
 // Only the data knows which polity colours end up contesting anything, so the
 // list is emitted rather than guessed at in the browser.

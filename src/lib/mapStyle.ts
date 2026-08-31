@@ -360,6 +360,18 @@ export const UNCLAIMED = {
 export const UNCLAIMED_FILL = 'unclaimed-fill';
 export const UNCLAIMED_LINE = 'unclaimed-line';
 
+/** A broad cultural association, intentionally not a political boundary. */
+export const CULTURAL_REGION = {
+  title: 'Cultural region',
+  fillOpacity: 0.13,
+  lineOpacity: 0.5,
+  lineWidth: 0.9,
+  lineDash: [2, 2.6],
+  labelOpacity: 0.78,
+} as const;
+export const CULTURAL_REGION_FILL = 'cultural-region-fill';
+export const CULTURAL_REGION_LINE = 'cultural-region-line';
+
 /** The blurred echo under the coastline, and the one under polity borders. */
 export const COAST_GLOW = 'theme-coastline-glow';
 export const POLITY_GLOW = 'polity-glow';
@@ -484,6 +496,14 @@ export function unclaimedFilter(t: number): FilterSpecification {
   ] as FilterSpecification;
 }
 
+/** The time-bounded, deliberately imprecise regions associated with cultures. */
+export function culturalRegionFilter(t: number): FilterSpecification {
+  return [
+    'all', ['<=', ['get', 'from'], t], ['>', ['get', 'to'], t],
+    ['==', ['get', 'kind'], 'cultural-region'],
+  ] as FilterSpecification;
+}
+
 /**
  * Fill opacity chosen by status, scaled by the era's `fill` multiplier, with
  * the default for anything unrecognised. A `match` expression is a tuple to
@@ -572,6 +592,11 @@ export function themePaint(
         work.line.width,
       ),
     },
+    [CULTURAL_REGION_FILL]: { 'fill-opacity': CULTURAL_REGION.fillOpacity * work.fill },
+    [CULTURAL_REGION_LINE]: {
+      'line-opacity': CULTURAL_REGION.lineOpacity * work.line.opacity,
+      'line-width': byZoom([0.6 * CULTURAL_REGION.lineWidth, 1.6 * CULTURAL_REGION.lineWidth], work.line.width),
+    },
     [SELECTED_LAYER]: { 'line-color': colors.select },
     lakes: { 'fill-color': colors.water },
     rivers: {
@@ -654,6 +679,26 @@ export function buildStyle(
         'source-layer': 'basemap',
         filter: ['==', ['get', 'kind'], 'land'],
         paint: paint.layers[COAST_GLOW],
+      },
+      {
+        id: CULTURAL_REGION_FILL,
+        type: 'fill',
+        source: POLITY_SOURCE,
+        'source-layer': 'polities',
+        filter: culturalRegionFilter(t),
+        paint: { 'fill-color': ['get', 'color'], ...paint.layers[CULTURAL_REGION_FILL] },
+      },
+      {
+        id: CULTURAL_REGION_LINE,
+        type: 'line',
+        source: POLITY_SOURCE,
+        'source-layer': 'polities',
+        filter: culturalRegionFilter(t),
+        paint: {
+          'line-color': ['get', 'color'],
+          'line-dasharray': [...CULTURAL_REGION.lineDash],
+          ...paint.layers[CULTURAL_REGION_LINE],
+        },
       },
       {
         id: 'polity-fill',

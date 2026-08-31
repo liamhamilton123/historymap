@@ -1,4 +1,4 @@
-import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, type PolityStatus } from '~/lib/mapStyle';
+import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, CULTURAL_REGION, type PolityStatus } from '~/lib/mapStyle';
 import { OPEN_ENDED } from '~/lib/time';
 
 /**
@@ -9,7 +9,7 @@ import { OPEN_ENDED } from '~/lib/time';
 export type PolitySelection = {
   polity: string;
   /** Ground with an owner, or ground that only has a name. */
-  kind: 'polity' | 'unclaimed';
+  kind: 'polity' | 'unclaimed' | 'cultural-region';
   name: string;
   color: string | null;
   status: string | null;
@@ -57,13 +57,16 @@ type PolityInfoProps = {
  */
 export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
   const unclaimed = selection.kind === 'unclaimed';
+  const culturalRegion = selection.kind === 'cultural-region';
   // Whatever the map calls this ground. A span's label already names its owner
   // — "Jamaica (Britain)", not "Jamaica" — so it says everything the polity's
   // own name would and says it as the reader just saw it written.
   const title = selection.label ?? selection.name;
   const status = unclaimed
     ? UNCLAIMED
-    : POLITY_STATUS[selection.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
+    : culturalRegion
+      ? CULTURAL_REGION
+      : POLITY_STATUS[selection.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
   const ongoing = selection.to >= OPEN_ENDED;
   const ended = selection.toDate ? formatDate(selection.toDate) : 'present';
 
@@ -78,7 +81,7 @@ export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
         <span
           className={
             'mt-1 size-3 shrink-0 rounded-[3px] border border-ink/20' +
-            (unclaimed ? ' border-dashed border-ink/35' : '')
+            ((unclaimed || culturalRegion) ? ' border-dashed border-ink/35' : '')
           }
           style={unclaimed ? undefined : { backgroundColor: selection.color ?? undefined }}
           aria-hidden="true"
@@ -86,7 +89,7 @@ export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
         <div className="min-w-0 flex-1">
           <h2
             className={
-              'font-serif text-[19px] leading-tight text-ink' + (unclaimed ? ' italic' : '')
+              'font-serif text-[19px] leading-tight text-ink' + ((unclaimed || culturalRegion) ? ' italic' : '')
             }
           >
             {title}
@@ -117,7 +120,7 @@ export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
         </div>
         <div>
           <dt className="text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">
-            {unclaimed ? 'Held by' : 'Status'}
+            {unclaimed ? 'Held by' : culturalRegion ? 'Map treatment' : 'Status'}
           </dt>
           <dd className="mt-0.5 text-ink-dim">
             {unclaimed ? 'No one' : status.title}

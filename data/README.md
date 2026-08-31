@@ -4,7 +4,7 @@
 | --- | --- |
 | `npm run data:fetch` | Downloads Natural Earth into `data/sources/` (gitignored). Cached; `--force` to redownload. |
 | `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap/` vector tiles. |
-| `npm run data:polities` | Builds `public/data/polities/` vector tiles, `polity-labels.json` and `polity-hatches.json` from `data/polities/` and `data/unclaimed/`. |
+| `npm run data:polities` | Builds vector tiles, labels, hatches, and `unmapped.json` from the historical data directories. |
 | `npm run data:build` | All three, in order. |
 
 ## Coverage
@@ -147,6 +147,44 @@ spans themselves are the only place that intent is written down.
 `from` and `to` are ISO dates — `YYYY`, `YYYY-MM` or `YYYY-MM-DD`, negative for
 BC. `to: null` means "still current". Dates are exclusive at the end, so one
 span ending on the day the next begins leaves no gap.
+
+## Cultural regions
+
+`data/cultural-regions/` is for a broad **Cultural region**: an approximate
+area associated with a culture or society, not a state territory. Cultural
+regions deliberately may overlap polities and one another. They draw beneath
+polities with a low-opacity fill and dashed outline; italic labels keep them
+from being read as political boundaries.
+
+```json
+{
+  "name": "Example cultural region",
+  "color": "#8f6e4a",
+  "features": [
+    { "from": "-1000", "to": "500", "geometry": { "type": "Polygon", "coordinates": [] },
+      "source": "Brief citation or evidence note." }
+  ]
+}
+```
+
+The approximate shape is intentional. Do not give these entries a `status`:
+`controlled`, `disputed`, and `contested` describe political possession.
+
+## Unmapped societies
+
+`data/unmapped/` is for an **Unmapped** society: one that belongs in chronology
+and search but has no geographic extent we can responsibly render. Its file
+has no colour, parts, features, or geometry; the build writes its spans to
+`public/data/unmapped.json` for timeline UI.
+
+```json
+{
+  "name": "Example unmapped society",
+  "spans": [
+    { "from": "-8000", "to": "-5000", "source": "Brief citation or evidence note." }
+  ]
+}
+```
 
 ## Parts
 

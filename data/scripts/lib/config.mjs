@@ -12,6 +12,13 @@ export const POLITIES_DIR = join(ROOT, 'data', 'polities');
  * everything that implies an owner — see data/README.md.
  */
 export const UNCLAIMED_DIR = join(ROOT, 'data', 'unclaimed');
+/**
+ * Broad, deliberately imprecise spatial associations. Unlike polities these
+ * may overlap one another and held ground.
+ */
+export const CULTURAL_REGIONS_DIR = join(ROOT, 'data', 'cultural-regions');
+/** Timeline entities with no map extent that can responsibly be drawn. */
+export const UNMAPPED_DIR = join(ROOT, 'data', 'unmapped');
 export const PARTS_FILE = join(ROOT, 'data', 'parts.json');
 
 /** Physical layers, drawn as the basemap. */

@@ -19,6 +19,7 @@ import {
   themePaint,
   TIMED_LAYERS,
   UNCLAIMED_FILL,
+  CULTURAL_REGION_FILL,
   POLITY_STATUS,
   STATIC_HATCHES,
   SELECTED_LAYER,
@@ -104,7 +105,7 @@ function registerHatches(instance: MapLibreMap) {
 /** The layers clicks are tested against: between them the two fills cover every
  *  piece of ground on screen, held or not, and hatches and outlines only ever
  *  sit on top of one of them. */
-const PICK_LAYERS = ['polity-fill', UNCLAIMED_FILL];
+const PICK_LAYERS = ['polity-fill', UNCLAIMED_FILL, CULTURAL_REGION_FILL];
 
 /** Show only the ground that existed at `t`, held or not. */
 function applyInstant(instance: MapLibreMap, t: number) {
