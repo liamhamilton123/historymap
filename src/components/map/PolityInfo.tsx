@@ -13,6 +13,8 @@ export type PolitySelection = {
   name: string;
   color: string | null;
   status: string | null;
+  relationship: 'vassal' | 'occupation' | null;
+  overlord: string | null;
   from: number;
   to: number;
   fromDate: string;
@@ -129,6 +131,14 @@ export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
             )}
           </dd>
         </div>
+        {selection.relationship && selection.overlord && (
+          <div>
+            <dt className="text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Relationship</dt>
+            <dd className="mt-0.5 text-ink-dim">
+              {selection.relationship === 'vassal' ? 'Vassal of' : 'Occupied by'} {selection.overlord}
+            </dd>
+          </div>
+        )}
         {selection.source && (
           <div>
             <dt className="text-[10px] font-medium tracking-[0.14em] text-ink-faint uppercase">Note</dt>

@@ -60,6 +60,7 @@ const LABEL_PRECISION = 0.05;
  */
 const STATUSES = ['controlled', 'disputed', 'contested'];
 const DEFAULT_STATUS = 'controlled';
+const RELATIONSHIPS = ['vassal', 'occupation'];
 /**
  * The one status that may share ground. Every other overlap is a mistake; two
  * spans that are both `contested` are the map saying "these polities each claim
@@ -316,6 +317,8 @@ for (const spec of specs) {
     // holds something. Saying otherwise in the file is a mistake worth naming.
     const unclaimed = spec.kind === 'unclaimed';
     const culturalRegion = spec.kind === 'cultural-region';
+    const relationship = entry.relationship ?? spec.relationship ?? null;
+    const overlord = relationship ? entry.overlord ?? spec.overlord ?? spec.name ?? spec.id : null;
     let status = entry.status ?? spec.status ?? DEFAULT_STATUS;
     if (unclaimed || culturalRegion) {
       if (entry.status ?? spec.status) {
@@ -324,6 +327,12 @@ for (const spec of specs) {
       status = null;
     } else if (!STATUSES.includes(status)) {
       problems.push(`${spec.file}: ${entry.from} has unknown status "${status}"`);
+    }
+    if (relationship && !RELATIONSHIPS.includes(relationship)) {
+      problems.push(`${spec.file}: ${entry.from} has unknown relationship "${relationship}"`);
+    }
+    if ((unclaimed || culturalRegion) && relationship) {
+      problems.push(`${spec.file}: ${unclaimed ? 'unclaimed ground' : 'a cultural region'} cannot have a relationship`);
     }
 
     // A label replaces the polity's name on the map, which is exactly where a
@@ -351,6 +360,8 @@ for (const spec of specs) {
         name: spec.name ?? spec.id,
         color: unclaimed ? null : spec.color ?? '#8a8a8a',
         status,
+        relationship,
+        overlord,
         from,
         to,
         fromDate: entry.from,

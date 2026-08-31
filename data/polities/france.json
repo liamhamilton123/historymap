@@ -3,6 +3,7 @@
   "color": "#5c76b0",
   "minArea": 0.0005,
   "adjective": "French",
+  "relationship": "vassal",
   "features": [
     { "from": "1783-09-03", "to": "1804-01-01", "parts": ["HTI"], "label": "Saint-Domingue (France)",
       "source": "The richest colony in the Caribbean, lost to the Haitian Revolution." },

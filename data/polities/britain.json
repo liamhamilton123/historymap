@@ -2,6 +2,7 @@
   "name": "Britain",
   "color": "#93566b",
   "adjective": "British",
+  "relationship": "vassal",
   "features": [
     { "from": "1783-09-03", "to": "1846-06-15", "parts": ["province-of-canada", "CAN", "british-columbia", "prince-edward-island"], "label": "British North America",
       "source": "The colonies and the Hudson's Bay Company's Rupert's Land. Stops short of the Oregon Country, which is drawn separately for as long as its ownership was open." },
@@ -23,7 +24,9 @@
     { "from": "1783-09-03", "to": "1962-08-06", "parts": ["JAM"], "label": "Jamaica (Britain)" },
     { "from": "1783-09-03", "to": "1973-07-10", "parts": ["BHS"], "label": "Bahamas (Britain)" },
     { "from": "1783-09-03", "to": "1966-11-30", "parts": ["BRB"], "label": "Barbados (Britain)" },
-    { "from": "1797-02-18", "to": "1962-08-31", "parts": ["TTO"], "label": "Trinidad (Britain)" },
+    { "from": "1797-02-18", "to": "1802-03-25", "parts": ["TTO"], "label": "Trinidad (Britain)", "relationship": "occupation",
+      "source": "Taken by British expedition in 1797; shown as occupied until the Treaty of Amiens confirmed British possession." },
+    { "from": "1802-03-25", "to": "1962-08-31", "parts": ["TTO"], "label": "Trinidad (Britain)" },
     { "from": "1783-09-03", "to": "1974-02-07", "parts": ["GRD"], "label": "Grenada (Britain)" },
     { "from": "1783-09-03", "to": "1978-11-03", "parts": ["DMA"], "label": "Dominica (Britain)" },
     { "from": "1783-09-03", "to": "1979-02-22", "parts": ["LCA"], "label": "St Lucia (Britain)",

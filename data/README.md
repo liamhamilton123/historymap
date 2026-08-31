@@ -170,6 +170,21 @@ from being read as political boundaries.
 The approximate shape is intentional. Do not give these entries a `status`:
 `controlled`, `disputed`, and `contested` describe political possession.
 
+## Vassals
+
+A dependent polity or colonial possession may carry `"relationship": "vassal"`.
+When a span belongs to a parent polity's file, the parent is inferred; set
+`overlord` only when it should name a different parent. This preserves the
+existing territory and colour while the panel makes the dependency explicit.
+
+```json
+{ "label": "Jamaica (Britain)", "relationship": "vassal" }
+```
+
+An existing span may instead carry `"relationship": "occupation"`. This
+does not change its geometry; it records that the named parent held the area
+by occupation, and the panel says “Occupied by …”.
+
 ## Unmapped societies
 
 `data/unmapped/` is for an **Unmapped** society: one that belongs in chronology

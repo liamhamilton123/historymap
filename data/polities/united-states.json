@@ -28,10 +28,13 @@
     { "from": "1898-08-12", "to": null, "parts": ["hawaii"], "label": "Hawaii (United States)",
       "source": "Annexed by joint resolution five years after the overthrow of the kingdom." },
     { "from": "1898-12-10", "to": null, "parts": ["PRI"], "label": "Puerto Rico (United States)",
+      "relationship": "vassal",
       "source": "Ceded by Spain in the Treaty of Paris." },
     { "from": "1898-12-10", "to": "1902-05-20", "parts": ["CUB"], "status": "disputed", "label": "Cuba (United States)",
+      "relationship": "occupation",
       "source": "Occupied under military government between Spanish withdrawal and Cuban independence." },
     { "from": "1917-03-31", "to": null, "parts": ["VIR"], "label": "U.S. Virgin Islands",
+      "relationship": "vassal",
       "source": "Bought from Denmark." }
   ]
 }

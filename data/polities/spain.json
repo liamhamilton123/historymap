@@ -2,6 +2,7 @@
   "name": "Spain",
   "color": "#c98a3f",
   "adjective": "Spanish",
+  "relationship": "vassal",
   "features": [
     { "from": "1783-09-03", "to": "1821-09-27", "parts": ["MEX", "texas", "mexican-cession", "gadsden-purchase"], "label": "New Spain",
       "source": "The Viceroyalty of New Spain, to the independence of Mexico." },
@@ -22,6 +23,7 @@
     { "from": "1809-07-09", "to": "1822-02-09", "parts": ["DOM"], "label": "Santo Domingo (Spain)",
       "source": "Retaken from France, then lost to Haiti. The two months of independent Spanish Haiti at the end are too brief to draw." },
     { "from": "1861-03-18", "to": "1865-07-11", "parts": ["DOM"], "label": "Santo Domingo (Spain)",
+      "relationship": "occupation",
       "source": "Annexed at the Dominican president's invitation and abandoned after the War of Restoration." },
     { "from": "1783-09-03", "to": "1797-02-18", "parts": ["TTO"], "label": "Trinidad (Spain)",
       "source": "Taken by a British expedition and kept at Amiens." }
