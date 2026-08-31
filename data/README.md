@@ -23,10 +23,35 @@ convention of 1790 until the Oregon Treaty of 1846 — claimed by four powers an
 two, held by none of them throughout — so no boundary runs through it and the
 49th parallel appears only on the day the treaty drew it. Ground no polity is drawn on
 is blank rather than filled with a continent-sized approximation: the many
-Indigenous nations of the Americas appear as the polities that can be drawn as
-polities — the Triple Alliance, the Inca, the Chimú, the Maya, the
-Haudenosaunee — and the rest is left open until an evidence-backed shape exists
-for it. Three blanks are deliberate in the same way: Hawaii before Kamehameha
+Indigenous nations of the Americas are drawn in two layers, because they are
+two different facts.
+
+Those that had a government speaking for the ground are polities: the Triple
+Alliance, the Inca, the Chimú, the Maya, the Haudenosaunee, the
+Huron-Wendat Confederacy, the Powhatan paramount chiefdom, the Muscogee
+(Creek) Confederacy, the
+Cherokee under the treaty of 1730, and the Pueblo Revolt. Each is drawn only
+for the years this map can hold it, because a colonial claim is drawn on the
+same ground from a known date and the two cannot share it: the Wendat to the
+dispersal of 1650; the Powhatan to 1609, where the Virginia colony begins,
+rather than to the chiefdom's own end in 1646; the Cherokee and the Muscogee to
+the Treaty of Paris in 1783, which hands their country to the United States
+here, rather than to removal in the 1830s. Every one of those cut-offs is
+written into the span's own `source`.
+
+Everything else is a cultural region, and that is not a lesser answer — it is
+the accurate one twice over. Most of these nations were confederacies of
+self-governing towns or autonomous bands rather than states: the pueblos were
+twenty towns speaking six languages, the Apache and the Anishinaabe governed
+themselves band by band, and drawing any of them as one polity would invent a
+government that did not exist. And the ones that did hold their ground in fact
+mostly held it *under someone else's claim* — Comanche, Apache, Sioux and
+Blackfoot country all lie inside Spanish, Mexican, British or United States
+territory as this map draws it, for the whole of their lives.
+The polity layer cannot say that, because it lets exactly one holder onto a
+piece of ground. The cultural region layer can, and the gap it opens between
+the claim and the control is the point of it: the United States buys the
+northern plains in 1803 and does not hold them until the 1870s. Three blanks are deliberate in the same way: Hawaii before Kamehameha
 unified the islands in 1795, the Falkland Islands before France founded Port
 Louis in 1764, and the country west of the Rockies between 1783 and the
 Hudson's Bay Company licence of 1821.
@@ -65,9 +90,43 @@ along the St Lawrence, the Ottawa and the north shores of the lakes by the
 1750s; its valley spans are deliberately left uncut so the river they were
 built on stays inside them. New Netherland and New Sweden are drawn for the
 years they existed, which is why the English seaboard is two separate footholds
-until 1664. French Louisiana is the lower valley west of the Mississippi, the
-ground France actually administered from the Gulf, rather than the whole later
-Purchase, which is only what Spain takes over in 1763.
+until 1664.
+
+French Louisiana grows the same way, in eight steps keyed to the same source,
+and is drawn as rivers and coast rather than as anything a later state line
+follows. Fort Maurepas at Biloxi in 1699 is the whole colony for three years;
+Fort Louis on the Mobile in 1702 makes the Gulf district, which runs from the
+Pearl to the Perdido and stops there because Spain held Pensacola throughout;
+Natchitoches on the Red in 1714 is the first ground away from the coast, facing
+the Spanish presidio at Los Adaes; New Orleans in 1718 brings the Isle of
+Orleans and the delta, with Natchez above them; the Company of the Indies
+concessions of the 1720s fill the lower river, the Florida Parishes and the
+Attakapas and Opelousas country behind it, with Arkansas Post at the mouth of
+the Arkansas and the Illinois Country at Kaskaskia and Fort de Chartres, which
+was attached to Louisiana in 1717; the retrocession to the crown in 1731 adds
+the Red River road to Natchitoches, the west bank on to the Arkansas, and Sainte
+Geneviève. Those six steps are settlement, and Cliopatria's figures are what
+they are drawn to: about 2,700 km² in 1700, 51,000 by 1721, 55,000 by 1734.
+
+The last two steps are the claim rather than the settlement, because that is
+what actually changed hands. Fort de Cavagnial on the Missouri in 1744, after
+Fort Orleans and the Mallet brothers' road to Santa Fe, takes the colony out
+over the eastern half of the basin; by 1752 it is the whole of it. Both shapes
+are cut from `louisiana-purchase` itself rather than drawn freehand, so their
+eastern edge is already the Mississippi, and 1763 is a change of flag with
+nothing moving on the map — the ground Spain takes at Fontainebleau, sells back
+in 1800 and the United States buys in 1803 is the ground France is already
+drawn holding. Cliopatria still records only about 57,000 km² of settled ground
+inside it, which is what the six earlier steps show.
+
+Two pieces of ground had to leave `florida` for that to be drawable, because
+Spain did not hold either of them while the French were there: the Gulf coast
+from the Pearl to the Perdido, which is Biloxi and Mobile and then the western
+half of British West Florida, and the Florida Parishes, which are French until
+1763, British until 1783 and Spanish only after that. Both are now parts of
+their own, handed on with `florida` from 1763. The Mississippi delta's outer
+passes moved the other way, into the Louisiana Purchase, so the whole delta
+belongs to the river rather than to Florida.
 
 New Spain grows the same way and from the same source: the central Mexican
 domain Spain took from the Triple Alliance in 1521, west and south by 1526, the
@@ -93,9 +152,7 @@ that annexed it to Newfoundland, and the Arctic islands from the 1820s
 voyages that claimed them. Each part is now its own span with its own date,
 which is what lets them start at different times.
 
-Where a Cliopatria extent and this map's parts disagree — the French Gulf coast
-against the West Florida part — the part wins and the file says so. Where
-Cliopatria lets two claims overlap and this map cannot, the file says that too:
+Where Cliopatria lets two claims overlap and this map cannot, the file says so:
 the Haudenosaunee are drawn at the homeland extent recorded for 1450 and again
 after 1701, because the Beaver Wars extent of the 1670s and 1680s would have to
 run through French and English ground of the same years.
@@ -243,6 +300,24 @@ from being read as political boundaries.
 
 The approximate shape is intentional. Do not give these entries a `status`:
 `controlled`, `disputed`, and `contested` describe political possession.
+Cultural regions are the one kind the overlap check skips entirely, on both
+sides — against polities and against each other — which is what lets Comanche country
+sit inside New Spain, and Choctaw and Chickasaw country meet along a frontier
+neither of them drew as a line.
+
+That exemption is also the only discipline this layer has, so the honesty has
+to come from the sourcing instead. Two rules keep it from becoming a way to
+draw whatever the polity layer refuses: a cultural region is the extent of a
+people, never a claim or a military reach dressed up as one — the Haudenosaunee
+Beaver Wars conquests are still not drawn, because they were a political extent
+and belong in the polity layer or nowhere. And its span is the life of the
+country, dated at both ends to something that happened: a treaty, a removal, a
+dissolution. Regions are named by the form a reader is most likely to know —
+Navajo country rather than Diné Bikéyah — with the people's own name for it in
+the `source`. Fifteen North American homelands are drawn on this basis; the
+continent-wide culture areas of the standard schemes are deliberately not, since
+ten shapes covering everything would fill in exactly the blanks this map keeps
+on purpose.
 
 ## Vassals
 

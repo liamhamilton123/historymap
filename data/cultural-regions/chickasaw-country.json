@@ -1,0 +1,9 @@
+{
+  "name": "Chickasaw country",
+  "color": "#a86f8a",
+  "features": [
+    { "from": "1600", "to": "1832-10-20",
+      "geometry": {"type":"Polygon","coordinates":[[[-90.5,35.4],[-90.2,34.2],[-88.4,33.8],[-87.6,34.6],[-87.641,34.766],[-87.7,34.773],[-87.661,34.814],[-87.654,34.816],[-87.953,36.013],[-87.975,35.945],[-88.041,35.949],[-87.983,36.099],[-87.985,36.142],[-88,36.2],[-90.3,36.4],[-90.5,35.4]]]},
+      "source": "The Chickasaw country above the Choctaw, astride the Mississippi bluffs and the trace to the Tennessee — the nation that kept the French from ever holding the road between Louisiana and the Illinois Country. Drawn to the Treaty of Pontotoc Creek in October 1832." }
+  ]
+}

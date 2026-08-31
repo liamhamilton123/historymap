@@ -1,0 +1,9 @@
+{
+  "name": "Choctaw country",
+  "color": "#7f9c8a",
+  "features": [
+    { "from": "1600", "to": "1830-09-27",
+      "geometry": {"type":"Polygon","coordinates":[[[-90.9,32.8],[-90.3,31.5],[-88.6,30.9],[-87.9,32.2],[-88.2,34],[-90.6,34],[-90.9,32.8]]]},
+      "source": "The Choctaw towns of east central Mississippi, drawn to the Treaty of Dancing Rabbit Creek in September 1830, the first removal treaty carried out under the act of that year." }
+  ]
+}

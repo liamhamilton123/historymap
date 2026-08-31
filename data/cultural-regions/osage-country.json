@@ -1,0 +1,9 @@
+{
+  "name": "Osage country",
+  "color": "#8f9c5a",
+  "features": [
+    { "from": "1700", "to": "1825-06-02",
+      "geometry": {"type":"Polygon","coordinates":[[[-96.5,39],[-96,35.8],[-93,35.2],[-90.8,36.2],[-91,38],[-93.5,39],[-96.5,39]]]},
+      "source": "The Osage held the country between the Missouri and the Arkansas and controlled the trade across it through the whole French and Spanish period, drawn to the cession of 1825 that moved them to Kansas." }
+  ]
+}

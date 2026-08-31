@@ -1,0 +1,9 @@
+{
+  "name": "Blackfoot country",
+  "color": "#8f6f9c",
+  "features": [
+    { "from": "1700", "to": "1877-09-22",
+      "geometry": {"type":"Polygon","coordinates":[[[-115.5,50.5],[-114.5,48.5],[-112.5,46.8],[-110.5,47.5],[-109.5,49],[-109.5,52],[-112,53.5],[-115.5,52.5],[-115.5,50.5]]]},
+      "source": "The Siksika, Kainai and Piikani country on the northwestern plains, drawn from about 1700 to Treaty 7 in September 1877. Britain claims it as part of Rupert's Land from 1713 and Canada from 1870; neither had any presence on it before the whisky posts of the 1860s." }
+  ]
+}

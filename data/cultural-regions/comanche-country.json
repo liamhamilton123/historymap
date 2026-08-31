@@ -1,0 +1,9 @@
+{
+  "name": "Comanche country",
+  "color": "#a8665f",
+  "features": [
+    { "from": "1750", "to": "1875-06-02",
+      "geometry": {"type":"Polygon","coordinates":[[[-105,34.5],[-104.5,32],[-103,30.5],[-101.5,29.5],[-101.262,29.56],[-101.261,29.562],[-101.269,29.578],[-101.28,29.585],[-101.302,29.584],[-101.312,29.603],[-101.31,29.622],[-101.305,29.634],[-101.275,29.648],[-101.214,29.603],[-101.181,29.58],[-99.5,30],[-98,31.5],[-97,33.5],[-97.5,35.2],[-99,36.8],[-101.5,37.5],[-104.5,37.2],[-105,34.5]]]},
+      "source": "The southern plains — Comanchería in the Spanish and Mexican records — which the Comanche held in fact from about 1750, when they had driven the Apache off them, until the surrender at Fort Sill in June 1875 ended the Red River War. Spain, Mexico and then the United States each claimed this ground on paper throughout, which is why it cannot be a polity here: the claim and the control belonged to different people for a century and a quarter." }
+  ]
+}

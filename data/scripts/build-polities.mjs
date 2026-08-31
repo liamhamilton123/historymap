@@ -414,9 +414,10 @@ for (const f of features) {
   list.push(f.properties);
   byPolity.set(f.properties.polity, list);
 }
-const unclaimedCount = new Set(
-  features.filter((f) => f.properties.kind === 'unclaimed').map((f) => f.properties.polity),
-).size;
+const countOfKind = (kind) =>
+  new Set(features.filter((f) => f.properties.kind === kind).map((f) => f.properties.polity)).size;
+const unclaimedCount = countOfKind('unclaimed');
+const culturalRegionCount = countOfKind('cultural-region');
 
 const claims = features.map((f, index) => {
   const partKeys = featureParts[index];
@@ -632,7 +633,8 @@ const labelSize = (await import('node:fs/promises').then((fs) => fs.stat(labelsO
 console.log(
   `\npolity tiles · ${features.length} features · ${tileResult.tiles} tiles` +
     ` · ${(tileResult.bytes / 1024).toFixed(0)} KB` +
-    ` · ${byPolity.size - unclaimedCount} polities · ${unclaimedCount} unclaimed region(s)` +
+    ` · ${byPolity.size - unclaimedCount - culturalRegionCount} polities` +
+    ` · ${unclaimedCount} unclaimed region(s) · ${culturalRegionCount} cultural region(s)` +
     `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB` +
     `\npolity-hatches.json · ${hatches.size} contested stripe pattern(s)`,
 );

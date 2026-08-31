@@ -1,0 +1,9 @@
+{
+  "name": "Muscogee (Creek) Confederacy",
+  "color": "#a3555f",
+  "features": [
+    { "from": "1700", "to": "1783-09-03",
+      "geometry": { "type": "Polygon", "coordinates": [[[-88.2,32.6],[-87.3,31.45],[-85.0,31.45],[-83.7,32.2],[-83.6,33.3],[-84.6,34.2],[-86.2,34.3],[-87.6,33.6],[-88.2,32.6]]] },
+      "source": "The Upper and Lower Creek towns on the Coosa, Tallapoosa, Alabama, Chattahoochee and Flint, drawn from about 1700, when the towns were acting together as one confederacy in their dealings with Carolina and with the French at Mobile. The southern edge stops at the West Florida boundary and the eastern edge short of Georgia; the span ends at the Treaty of Paris, which hands the ground to the United States on this map." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Pueblo country",
+  "color": "#a05f38",
+  "features": [
+    { "from": "1400", "to": "1848-02-02",
+      "geometry": {"type":"Polygon","coordinates":[[[-110.9,36.2],[-110.6,35.3],[-108.8,34.8],[-107.2,34.5],[-105.6,34.4],[-104.9,35.4],[-105.4,37],[-106.9,37],[-108.6,36.6],[-110.9,36.2]]]},
+      "source": "The pueblos of the upper Rio Grande and, to the west, Zuni and the Hopi mesas: some twenty self-governing towns speaking six unrelated languages, which is why they are a region here and not one polity. Drawn from 1400 to the cession of 1848. Spain's New Mexico and the twelve years of the Pueblo Revolt are drawn over the same ground in the polity layer." }
+  ]
+}

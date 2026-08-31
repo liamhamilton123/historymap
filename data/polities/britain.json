@@ -50,7 +50,7 @@
       "source": "The Hudson's Bay Company held its charter from 1670, but France held most of the bay until Utrecht returned it in 1713, which is where Cliopatria starts Britain in the north — about 200,000 km² in its 1713 slice against 14,000 in 1709. Drawn to Confederation-era Rupert's Land as one part." },
     { "from": "1763-02-10", "to": "1867-07-01", "label": "British North America", "parts": ["province-of-canada"],
       "source": "Quebec and the maritime colonies after the Treaty of Paris, drawn with the later provincial extents." },
-    { "from": "1763-02-10", "to": "1783-09-03", "label": "Florida (Britain)", "parts": ["florida"],
+    { "from": "1763-02-10", "to": "1783-09-03", "label": "Florida (Britain)", "parts": ["florida", "mobile-district", "florida-parishes"],
       "source": "Britain held East and West Florida between the Treaties of Paris." },
     { "from": "1763-02-10", "to": "1783-09-03", "label": "Grenada (Britain)", "parts": ["GRD"] },
     { "from": "1763-02-10", "to": "1783-09-03", "label": "Dominica (Britain)", "parts": ["DMA"] },

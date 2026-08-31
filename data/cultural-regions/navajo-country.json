@@ -1,0 +1,9 @@
+{
+  "name": "Navajo country",
+  "color": "#c08a5a",
+  "features": [
+    { "from": "1600", "to": "1868-06-01",
+      "geometry": {"type":"Polygon","coordinates":[[[-111.6,37],[-111.5,35.6],[-110,34.8],[-108,34.6],[-107,35.3],[-107.3,36.5],[-108.8,37.2],[-111.178,37.03],[-111.189,37.023],[-111.307,37.016],[-111.382,36.977],[-111.455,36.919],[-111.473,36.932],[-111.516,37.006],[-111.6,37]]]},
+      "source": "Navajo country between the four sacred mountains — Diné Bikéyah — drawn from about 1600, by when the Diné had taken up sheep and were established across the Chuska and Canyon de Chelly country, to the treaty of June 1868 that ended the imprisonment at Bosque Redondo and set the reservation." }
+  ]
+}

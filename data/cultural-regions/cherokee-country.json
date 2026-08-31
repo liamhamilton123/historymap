@@ -1,0 +1,9 @@
+{
+  "name": "Cherokee country",
+  "color": "#8f7f3f",
+  "features": [
+    { "from": "1450", "to": "1838-05-26",
+      "geometry": {"type":"Polygon","coordinates":[[[-85.6,35.9],[-84.9,34.2],[-83.6,33.9],[-82.6,34.4],[-81.9,35.5],[-82.6,36.3],[-83.6,36.8],[-85,36.6],[-85.6,35.9]]]},
+      "source": "The Cherokee towns from before contact to the beginning of removal in May 1838 — the whole life of the country, where the polity layer can only hold the years between the treaty of 1730 and the Treaty of Paris in 1783. Drawn a little wider than the polity, over the Carolina and Georgia settlements that the political shape has to stop short of." }
+  ]
+}
