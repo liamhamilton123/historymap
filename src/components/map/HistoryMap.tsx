@@ -38,6 +38,7 @@ import PolityInfo, { type PolitySelection } from './PolityInfo';
 const MAX_VIEW_WIDTH_METERS = 750_000;
 const EARTH_CIRCUMFERENCE_METERS = 40_075_016.68557849;
 const MAP_TILE_SIZE = 512;
+const MIN_ZOOM = 1.3;
 
 function systemColorScheme(): 'light' | 'dark' {
   return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
@@ -50,7 +51,7 @@ function maxZoomForViewWidth(width: number, latitude: number) {
     (width * EARTH_CIRCUMFERENCE_METERS * latitudeScale) /
       (MAP_TILE_SIZE * MAX_VIEW_WIDTH_METERS),
   );
-  return Math.min(22, Math.max(0.8, zoom));
+  return Math.min(22, Math.max(MIN_ZOOM, zoom));
 }
 
 const HATCHES_URL = '/data/polity-hatches.json';
@@ -190,11 +191,10 @@ export default function HistoryMap() {
         style: buildStyle(view.t, systemColorScheme(), useMapStore.getState().historicalThemes),
         center: [view.lng, view.lat],
         zoom: view.zoom,
-        minZoom: 0.8,
+        minZoom: MIN_ZOOM,
         maxZoom,
-        // Keep one continuous world on the flat projection. At wide views,
-        // repeating copies of the basemap make land appear twice.
-        renderWorldCopies: false,
+        // Wrap the flat map at the antimeridian.
+        renderWorldCopies: true,
         // Rotation is noise on this kind of map; dragging should pan, always.
         dragRotate: false,
         pitchWithRotate: false,
