@@ -26,15 +26,22 @@ const styleFor = (label: PolityLabel) =>
       : POLITY_STATUS[label.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
 
 /**
- * Held ground is named in upright capitals, unclaimed ground in italic. That is
- * the old atlas convention — upright for what a state administers, italic for
- * what is merely a place — and it is doing real work here, because the name of
- * an unclaimed region must not be mistaken for the name of an owner.
+ * Held ground is named in upright capitals, unclaimed ground and cultural
+ * regions in italic. That is the old atlas convention — upright for what a
+ * state administers, italic for what is merely a place — and it is doing real
+ * work here, because the name of an unclaimed region must not be mistaken for
+ * the name of an owner.
+ *
+ * Italic carries that distinction on its own, so a cultural region's name is
+ * set in full ink rather than dimmed: its label is the one that has to be read
+ * *through* a polity fill drawn over it, and dim ink at 12px under a colour
+ * wash was simply unreadable. The size and weight are the compensation for the
+ * fill it competes with, not a claim to rank above a state.
  */
 const TYPE = {
-  polity: 'font-semibold tracking-[0.05em] uppercase text-ink',
-  unclaimed: 'font-medium italic tracking-[0.02em] text-ink-dim',
-  'cultural-region': 'font-medium italic tracking-[0.02em] text-ink-dim',
+  polity: 'text-[12px] font-semibold tracking-[0.05em] uppercase text-ink',
+  unclaimed: 'text-[12px] font-medium italic tracking-[0.02em] text-ink-dim',
+  'cultural-region': 'text-[13px] font-semibold italic tracking-[0.03em] text-ink',
 } as const;
 
 function labelElement(label: PolityLabel): HTMLElement {
@@ -42,8 +49,7 @@ function labelElement(label: PolityLabel): HTMLElement {
   // Labels are decoration over the map; they must never eat a drag or a click.
   // No halo, plate or shadow: the names carry on colour alone, so legibility
   // is the fill palette's job rather than an effect layered over it.
-  element.className =
-    'pointer-events-none block whitespace-nowrap text-[12px] ' + TYPE[label.kind];
+  element.className = 'pointer-events-none block whitespace-nowrap ' + TYPE[label.kind];
   element.textContent = label.text;
   // MapLibre puts will-change:transform on every marker, which promotes each
   // label to its own compositing layer — the text is then rasterised into a

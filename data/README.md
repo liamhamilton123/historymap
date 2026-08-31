@@ -301,7 +301,7 @@ from being read as political boundaries.
 The approximate shape is intentional. Do not give these entries a `status`:
 `controlled`, `disputed`, and `contested` describe political possession.
 Cultural regions are the one kind the overlap check skips entirely, on both
-sides — against polities and against each other — which is what lets Comanche country
+sides — against polities and against each other — which is what lets the Comanche
 sit inside New Spain, and Choctaw and Chickasaw country meet along a frontier
 neither of them drew as a line.
 
@@ -312,9 +312,15 @@ people, never a claim or a military reach dressed up as one — the Haudenosaune
 Beaver Wars conquests are still not drawn, because they were a political extent
 and belong in the polity layer or nowhere. And its span is the life of the
 country, dated at both ends to something that happened: a treaty, a removal, a
-dissolution. Regions are named by the form a reader is most likely to know —
-Navajo country rather than Diné Bikéyah — with the people's own name for it in
-the `source`. Fifteen North American homelands are drawn on this basis; the
+dissolution. Regions are named for the people alone, in the form a
+reader is most likely to know — Navajo, not Navajo country and not Diné
+Bikéyah — with the people's own name for the country in the `source`, and the
+file is named for the entry the same way the other two kinds are. Those ids all
+share one space, so a region and a polity for the same people have to be told
+apart by their names rather than by their directories: `cherokee.json` is the
+region and `cherokee-nation.json` the polity, `powhatan.json` the region and
+`powhatan-confederacy.json` the chiefdom. The build fails on a duplicate id
+rather than quietly merging the two. Fifteen North American homelands are drawn on this basis; the
 continent-wide culture areas of the standard schemes are deliberately not, since
 ten shapes covering everything would fill in exactly the blanks this map keeps
 on purpose.

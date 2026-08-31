@@ -367,7 +367,10 @@ export const CULTURAL_REGION = {
   lineOpacity: 0.5,
   lineWidth: 0.9,
   lineDash: [2, 2.6],
-  labelOpacity: 0.78,
+  // Full strength: the fill is faint on purpose, but the name is what makes
+  // the region legible at all, and it competes with whatever polity is drawn
+  // over it.
+  labelOpacity: 1,
 } as const;
 export const CULTURAL_REGION_FILL = 'cultural-region-fill';
 export const CULTURAL_REGION_LINE = 'cultural-region-line';

@@ -1,0 +1,9 @@
+{
+  "name": "Cherokee Nation",
+  "color": "#8f7f3f",
+  "features": [
+    { "from": "1730-09-30", "to": "1783-09-03",
+      "geometry": { "type": "Polygon", "coordinates": [[[-85.0,35.3],[-84.7,34.6],[-83.8,34.5],[-83.0,34.8],[-82.3,35.4],[-82.9,36.1],[-83.8,36.5],[-84.6,36.3],[-85.0,35.3]]] },
+      "source": "The Cherokee towns acting as one body — the Cherokee Nation of the eighteenth-century treaties — drawn from the Articles of Friendship and Commerce of 1730, which the delegation to London signed on behalf of the nation as a whole — before that the Lower, Middle, Valley, Out and Overhill towns were autonomous and are drawn as a cultural region rather than as a state. The eastern edge stops short of the Carolina and Georgia settlements and then of the Proclamation Line of 1763, which the British colonies are drawn to; the span ends at the Treaty of Paris, which hands the same ground to the United States on this map, rather than at the Cherokee Nation's own end at removal in 1838." }
+  ]
+}
