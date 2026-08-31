@@ -11,7 +11,7 @@ import polylabel from 'polylabel';
 import { topology } from 'topojson-server';
 import { presimplify, simplify } from 'topojson-simplify';
 import { feature as topoFeature } from 'topojson-client';
-import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, CULTURAL_REGIONS_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
+import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, NON_STATE_PEOPLES_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
 import { simplifyGeometry } from './lib/geo.mjs';
 import { writeVectorTiles } from './lib/vector-tiles.mjs';
 
@@ -54,19 +54,19 @@ const LABEL_ZOOM_CONSTANT = 90;
 const LABEL_PRECISION = 0.05;
 
 /**
- * Corner-cutting passes applied to a cultural region's outline, and nothing
+ * Corner-cutting passes applied to a non-state people's outline, and nothing
  * else on the map. A region is an approximation, and a polygon with hard
  * corners and straight runs between them reads as a surveyed boundary however
  * faint it is drawn — the shape itself has to say that its edge is a guess.
  * Two passes is enough to turn an authored hull into curves; more starts
  * pulling the extent in noticeably.
  */
-const CULTURAL_REGION_ROUNDING = 2;
+const NON_STATE_PEOPLE_ROUNDING = 2;
 /**
  * The shortest edge worth rounding, in degrees. Above it is an edge somebody
  * drew; below it is coastline out of Natural Earth, which stays as it is.
  */
-const CULTURAL_REGION_MIN_EDGE = 0.3;
+const NON_STATE_PEOPLE_MIN_EDGE = 0.3;
 
 /**
  * How a span is drawn. The styling itself lives in one place, POLITY_STATUS in
@@ -238,10 +238,10 @@ function namesOwner(label, spec, entry) {
 }
 
 /**
- * Land and lakes, kept only to hold rounded cultural regions on dry ground —
+ * Land and lakes, kept only to hold rounded non-state peoples on dry ground —
  * the same 1:50m layers the basemap is built from, so a region's edge and the
  * coast it stops at are the same line rather than two that nearly agree.
- * Loaded lazily: a build with no cultural regions in it never reads them.
+ * Loaded lazily: a build with no non-state peoples in it never reads them.
  */
 let physical = null;
 async function coastline() {
@@ -323,7 +323,7 @@ for (const [id, spec] of Object.entries(partSpec)) {
 const SOURCES = [
   { dir: POLITIES_DIR, kind: 'polity' },
   { dir: UNCLAIMED_DIR, kind: 'unclaimed' },
-  { dir: CULTURAL_REGIONS_DIR, kind: 'cultural-region' },
+  { dir: NON_STATE_PEOPLES_DIR, kind: 'non-state-people' },
 ];
 const specs = [];
 const used = new Set();
@@ -331,7 +331,7 @@ const seenIds = new Map();
 /** Part keys that came from an inline `geometry` rather than the parts bin. */
 const inlineParts = new Set();
 /**
- * Cultural region shapes waiting to be rounded. Collected rather than rounded
+ * Non-state people shapes waiting to be rounded. Collected rather than rounded
  * where they are found, because rounding reads the coastline off disk and the
  * walk that finds them is synchronous.
  */
@@ -351,8 +351,8 @@ for (const { dir, kind } of SOURCES) {
   if (kind === 'unclaimed' && spec.color) {
     problems.push(`${file}: unclaimed ground cannot have a colour — it has no owner to be coloured by`);
   }
-  if (kind === 'cultural-region' && !spec.color) {
-    problems.push(`${file}: a cultural region needs a colour`);
+  if (kind === 'non-state-people' && !spec.color) {
+    problems.push(`${file}: a non-state people needs a colour`);
   }
   specs.push(spec);
   spec.entries.forEach((entry, index) => {
@@ -360,14 +360,14 @@ for (const { dir, kind } of SOURCES) {
       // Inline shapes join the topology too, so one drawn to meet a
       // neighbour's coordinates keeps meeting it after simplification.
       const key = `${id}#${index}`;
-      // A cultural region is rounded here rather than in its file, so the file
+      // A non-state people is rounded here rather than in its file, so the file
       // keeps the plain hull that is easy to author and to check against a
       // source, and every region — including ones added later — is imprecise
       // in the same way and to the same degree. Nothing else is touched: a
       // border that a treaty fixed is not ours to soften.
       const shape = polygonsOf(entry.geometry);
       parts.set(key, shape);
-      if (kind === 'cultural-region') rounding.push({ key, shape });
+      if (kind === 'non-state-people') rounding.push({ key, shape });
       entry.partKeys = [key];
       used.add(key);
       // Drawn freehand rather than carved out of a source, so nothing
@@ -388,7 +388,7 @@ for (const { dir, kind } of SOURCES) {
 // Rounded here rather than inside the walk above: one read of the coastline
 // serves all of them, and nothing has consumed the parts bin yet.
 for (const { key, shape } of rounding) {
-  parts.set(key, await roundPolygons(shape, CULTURAL_REGION_ROUNDING, CULTURAL_REGION_MIN_EDGE));
+  parts.set(key, await roundPolygons(shape, NON_STATE_PEOPLE_ROUNDING, NON_STATE_PEOPLE_MIN_EDGE));
 }
 
 // --- simplify every part at once, on a shared topology ---------------------
@@ -443,13 +443,13 @@ for (const spec of specs) {
     // this map means identity — nor a status, which only says how an owner
     // holds something. Saying otherwise in the file is a mistake worth naming.
     const unclaimed = spec.kind === 'unclaimed';
-    const culturalRegion = spec.kind === 'cultural-region';
+    const nonStatePeople = spec.kind === 'non-state-people';
     const relationship = entry.relationship ?? spec.relationship ?? null;
     const overlord = relationship ? entry.overlord ?? spec.overlord ?? spec.name ?? spec.id : null;
     let status = entry.status ?? spec.status ?? DEFAULT_STATUS;
-    if (unclaimed || culturalRegion) {
+    if (unclaimed || nonStatePeople) {
       if (entry.status ?? spec.status) {
-        problems.push(`${spec.file}: ${unclaimed ? 'unclaimed ground' : 'a cultural region'} cannot have a status`);
+        problems.push(`${spec.file}: ${unclaimed ? 'unclaimed ground' : 'a non-state people'} cannot have a status`);
       }
       status = null;
     } else if (!STATUSES.includes(status)) {
@@ -458,8 +458,8 @@ for (const spec of specs) {
     if (relationship && !RELATIONSHIPS.includes(relationship)) {
       problems.push(`${spec.file}: ${entry.from} has unknown relationship "${relationship}"`);
     }
-    if ((unclaimed || culturalRegion) && relationship) {
-      problems.push(`${spec.file}: ${unclaimed ? 'unclaimed ground' : 'a cultural region'} cannot have a relationship`);
+    if ((unclaimed || nonStatePeople) && relationship) {
+      problems.push(`${spec.file}: ${unclaimed ? 'unclaimed ground' : 'a non-state people'} cannot have a relationship`);
     }
 
     // A label replaces the polity's name on the map, which is exactly where a
@@ -468,7 +468,7 @@ for (const spec of specs) {
     // the way history already does it — "British North America", "New Spain" —
     // or by saying so outright, "Louisiana (France)". Unclaimed ground is
     // exempt: it has no owner to name.
-    if (!unclaimed && !culturalRegion && entry.label && !namesOwner(entry.label, spec, entry)) {
+    if (!unclaimed && !nonStatePeople && entry.label && !namesOwner(entry.label, spec, entry)) {
       problems.push(
         `${spec.file}: "${entry.label}" does not say whose it is — name the owner,` +
           ` as "${entry.label} (${spec.name ?? spec.id})" or with "${spec.adjective ?? spec.name ?? spec.id}"`,
@@ -544,7 +544,7 @@ for (const f of features) {
 const countOfKind = (kind) =>
   new Set(features.filter((f) => f.properties.kind === kind).map((f) => f.properties.polity)).size;
 const unclaimedCount = countOfKind('unclaimed');
-const culturalRegionCount = countOfKind('cultural-region');
+const nonStatePeopleCount = countOfKind('non-state-people');
 
 const claims = features.map((f, index) => {
   const partKeys = featureParts[index];
@@ -584,9 +584,9 @@ for (let i = 0; i < claims.length; i++) {
     if (b.props.from >= a.props.to) break;
     coexisting++;
 
-    // A cultural region is an associated extent, not an exclusive claim. Its
-    // overlap with a polity (or another cultural region) is expected.
-    if (a.props.kind === 'cultural-region' || b.props.kind === 'cultural-region') continue;
+    // A non-state people is an associated extent, not an exclusive claim. Its
+    // overlap with a polity (or another non-state people) is expected.
+    if (a.props.kind === 'non-state-people' || b.props.kind === 'non-state-people') continue;
 
     const common = [...a.parts].filter((key) => b.parts.has(key));
     // Disjoint parts, nothing drawn freehand: they cannot overlap. This is
@@ -736,8 +736,8 @@ const labelSize = (await import('node:fs/promises').then((fs) => fs.stat(labelsO
 console.log(
   `\npolity tiles · ${features.length} features · ${tileResult.tiles} tiles` +
     ` · ${(tileResult.bytes / 1024).toFixed(0)} KB` +
-    ` · ${byPolity.size - unclaimedCount - culturalRegionCount} polities` +
-    ` · ${unclaimedCount} unclaimed region(s) · ${culturalRegionCount} cultural region(s)` +
+    ` · ${byPolity.size - unclaimedCount - nonStatePeopleCount} polities` +
+    ` · ${unclaimedCount} unclaimed region(s) · ${nonStatePeopleCount} non-state people(s)` +
     `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB` +
     `\npolity-hatches.json · ${hatches.size} contested stripe pattern(s)`,
 );

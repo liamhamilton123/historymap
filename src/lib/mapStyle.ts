@@ -361,16 +361,16 @@ export const UNCLAIMED_FILL = 'unclaimed-fill';
 export const UNCLAIMED_LINE = 'unclaimed-line';
 
 /**
- * A broad cultural association, intentionally not a political boundary.
+ * A people with an approximate associated extent, not a political boundary.
  *
- * Nothing of it is drawn until it is selected — not the fill, not the outline.
+ * Nothing of one is drawn until it is selected — not the fill, not the outline.
  * A dozen of these overlapping each other and the states over them turned the
  * map into a wash no single extent could be read out of, and drawn faintly
  * enough to avoid that they were just noise along the edges. So a region at
  * rest is its italic label, and shape becomes the answer to a click.
  */
-export const CULTURAL_REGION = {
-  title: 'Cultural region',
+export const NON_STATE_PEOPLE = {
+  title: 'People',
   /** Nothing is drawn at rest: the italic label is the whole of it. */
   fillOpacity: 0,
   /**
@@ -387,9 +387,9 @@ export const CULTURAL_REGION = {
   // legible at all, and it competes with whatever polity is drawn over it.
   labelOpacity: 1,
 } as const;
-export const CULTURAL_REGION_FILL = 'cultural-region-fill';
-export const CULTURAL_REGION_LINE = 'cultural-region-line';
-export const CULTURAL_REGION_SELECTED_FILL = 'cultural-region-selected-fill';
+export const NON_STATE_PEOPLE_FILL = 'non-state-people-fill';
+export const NON_STATE_PEOPLE_LINE = 'non-state-people-line';
+export const NON_STATE_PEOPLE_SELECTED_FILL = 'non-state-people-selected-fill';
 
 /** The blurred echo under the coastline, and the one under polity borders. */
 export const COAST_GLOW = 'theme-coastline-glow';
@@ -466,7 +466,7 @@ export const TIMED_LAYERS: { id: string; filter: (t: number) => FilterSpecificat
   })),
   { id: UNCLAIMED_FILL, filter: unclaimedFilter },
   { id: UNCLAIMED_LINE, filter: unclaimedFilter },
-  { id: CULTURAL_REGION_FILL, filter: culturalRegionFilter },
+  { id: NON_STATE_PEOPLE_FILL, filter: nonStatePeopleFilter },
 ];
 
 /** The outline drawn around whichever polity the reader has clicked. */
@@ -517,21 +517,21 @@ export function unclaimedFilter(t: number): FilterSpecification {
 }
 
 /**
- * The fill for the one cultural region the reader has clicked. It is a separate
+ * The fill for the one non-state people the reader has clicked. It is a separate
  * layer rather than a paint expression because selection here is a filter, not
  * feature state, and it has to exclude polities: `selectionFilter` matches on
  * the id alone, and a polity reaching this layer would be painted twice.
  */
-export function culturalRegionSelectionFilter(t: number, polity: string | null): FilterSpecification {
+export function nonStatePeopleSelectionFilter(t: number, polity: string | null): FilterSpecification {
   if (!polity) return ['boolean', false] as FilterSpecification;
-  return ['all', culturalRegionFilter(t), ['==', ['get', 'polity'], polity]] as FilterSpecification;
+  return ['all', nonStatePeopleFilter(t), ['==', ['get', 'polity'], polity]] as FilterSpecification;
 }
 
-/** The time-bounded, deliberately imprecise regions associated with cultures. */
-export function culturalRegionFilter(t: number): FilterSpecification {
+/** The time-bounded, deliberately imprecise extents associated with non-state peoples. */
+export function nonStatePeopleFilter(t: number): FilterSpecification {
   return [
     'all', ['<=', ['get', 'from'], t], ['>', ['get', 'to'], t],
-    ['==', ['get', 'kind'], 'cultural-region'],
+    ['==', ['get', 'kind'], 'non-state-people'],
   ] as FilterSpecification;
 }
 
@@ -623,15 +623,15 @@ export function themePaint(
         work.line.width,
       ),
     },
-    [CULTURAL_REGION_FILL]: { 'fill-opacity': CULTURAL_REGION.fillOpacity * work.fill },
-    [CULTURAL_REGION_SELECTED_FILL]: {
+    [NON_STATE_PEOPLE_FILL]: { 'fill-opacity': NON_STATE_PEOPLE.fillOpacity * work.fill },
+    [NON_STATE_PEOPLE_SELECTED_FILL]: {
       // Clamped, unlike the other fills: the era multipliers reach 1.6, which
       // is harmless against a 0.13 wash and out of range against this.
-      'fill-opacity': Math.min(1, CULTURAL_REGION.selectedFillOpacity * work.fill),
+      'fill-opacity': Math.min(1, NON_STATE_PEOPLE.selectedFillOpacity * work.fill),
     },
-    [CULTURAL_REGION_LINE]: {
-      'line-opacity': CULTURAL_REGION.lineOpacity * work.line.opacity,
-      'line-width': byZoom([0.6 * CULTURAL_REGION.lineWidth, 1.6 * CULTURAL_REGION.lineWidth], work.line.width),
+    [NON_STATE_PEOPLE_LINE]: {
+      'line-opacity': NON_STATE_PEOPLE.lineOpacity * work.line.opacity,
+      'line-width': byZoom([0.6 * NON_STATE_PEOPLE.lineWidth, 1.6 * NON_STATE_PEOPLE.lineWidth], work.line.width),
     },
     [SELECTED_LAYER]: { 'line-color': colors.select },
     lakes: { 'fill-color': colors.water },
@@ -719,15 +719,15 @@ export function buildStyle(
       // Painted at zero opacity: this layer is the region's hit target, not its
       // appearance. queryRenderedFeatures consults visibility and zoom range
       // but never paint, so an invisible fill still answers a click — which is
-      // what lets a cultural region be selected at all now that its resting
+      // what lets a non-state people be selected at all now that its resting
       // state draws nothing but an outline.
       {
-        id: CULTURAL_REGION_FILL,
+        id: NON_STATE_PEOPLE_FILL,
         type: 'fill',
         source: POLITY_SOURCE,
         'source-layer': 'polities',
-        filter: culturalRegionFilter(t),
-        paint: { 'fill-color': ['get', 'color'], ...paint.layers[CULTURAL_REGION_FILL] },
+        filter: nonStatePeopleFilter(t),
+        paint: { 'fill-color': ['get', 'color'], ...paint.layers[NON_STATE_PEOPLE_FILL] },
       },
       {
         id: 'polity-fill',
@@ -813,29 +813,29 @@ export function buildStyle(
           ...paint.layers[UNCLAIMED_LINE],
         },
       },
-      // The one cultural region that breaks the rule about drawing beneath
+      // The one non-state people that breaks the rule about drawing beneath
       // polities, and only while it is selected. Underneath a polity fill its
       // colour is multiplied through another colour and stops being its own,
       // which defeats the point of showing it: the reader clicked to see this
       // extent, so for as long as the panel is open this is the shape on top.
       {
-        id: CULTURAL_REGION_SELECTED_FILL,
+        id: NON_STATE_PEOPLE_SELECTED_FILL,
         type: 'fill',
         source: POLITY_SOURCE,
         'source-layer': 'polities',
-        filter: culturalRegionSelectionFilter(t, null),
-        paint: { 'fill-color': ['get', 'color'], ...paint.layers[CULTURAL_REGION_SELECTED_FILL] },
+        filter: nonStatePeopleSelectionFilter(t, null),
+        paint: { 'fill-color': ['get', 'color'], ...paint.layers[NON_STATE_PEOPLE_SELECTED_FILL] },
       },
       {
-        id: CULTURAL_REGION_LINE,
+        id: NON_STATE_PEOPLE_LINE,
         type: 'line',
         source: POLITY_SOURCE,
         'source-layer': 'polities',
-        filter: culturalRegionSelectionFilter(t, null),
+        filter: nonStatePeopleSelectionFilter(t, null),
         paint: {
           'line-color': ['get', 'color'],
-          'line-dasharray': [...CULTURAL_REGION.lineDash],
-          ...paint.layers[CULTURAL_REGION_LINE],
+          'line-dasharray': [...NON_STATE_PEOPLE.lineDash],
+          ...paint.layers[NON_STATE_PEOPLE_LINE],
         },
       },
       // Sits above every polity layer so the highlight is never half-hidden

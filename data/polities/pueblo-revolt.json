@@ -4,6 +4,6 @@
   "features": [
     { "from": "1680-08-21", "to": "1692-09-13",
       "geometry": { "type": "Polygon", "coordinates": [[[-108.5,33.2],[-105,33],[-104.8,35.5],[-105.5,36.9],[-107.5,36.7],[-108.5,35],[-108.5,33.2]]] },
-      "source": "The twelve years between the revolt of August 1680, when the Spanish abandoned Santa Fe and withdrew to El Paso, and Vargas's return in September 1692; the resettlement that made the reconquest real followed in December 1693. It is drawn on the same shape New Mexico is drawn on, so the ground hands over exactly. Only these years are drawn as a polity: the pueblos were some twenty self-governing towns speaking six languages, and the coordination Popé achieved in 1680 had loosened well before Vargas came back. The towns themselves are a cultural region." }
+      "source": "The twelve years between the revolt of August 1680, when the Spanish abandoned Santa Fe and withdrew to El Paso, and Vargas's return in September 1692; the resettlement that made the reconquest real followed in December 1693. It is drawn on the same shape New Mexico is drawn on, so the ground hands over exactly. Only these years are drawn as a polity: the pueblos were some twenty self-governing towns speaking six languages, and the coordination Popé achieved in 1680 had loosened well before Vargas came back. The towns themselves are shown as a non-state people." }
   ]
 }

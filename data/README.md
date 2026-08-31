@@ -28,7 +28,7 @@ The Indigenous nations of the Americas are drawn in two layers, because they
 are two different facts. One with a government speaking for the ground is a
 polity, for the years this map can hold it — a colonial claim drawn on the same
 ground ends the span, since the two cannot share it. Everything else is a
-cultural region: a confederacy of self-governing towns, a people whose bands
+non-state people: a confederacy of self-governing towns, a people whose bands
 governed themselves, or a country held in fact under someone else's claim.
 Which of the two an entry is, and why its span ends where it does, belongs in
 that entry's `source`.
@@ -181,19 +181,19 @@ spans themselves are the only place that intent is written down.
 BC. `to: null` means "still current". Dates are exclusive at the end, so one
 span ending on the day the next begins leaves no gap.
 
-## Cultural regions
+## Non-state peoples
 
-`data/cultural-regions/` is for a broad **Cultural region**: an approximate
-area associated with a culture or society, not a state territory. These may
+`data/non-state-peoples/` is for a broad **Non-state people**: an approximate
+area associated with a people, not a state territory. These may
 overlap polities and one another, which is why nothing of one is drawn until it
 is selected: a dozen overlapping washes read as noise, and faint enough to fix
-that they said nothing. At rest a region is its italic label. Selected, it gets
+that they said nothing. At rest a people is its italic label. Selected, it gets
 its outline and a near-solid fill, drawn above the polities so its colour is its
 own.
 
 ```json
 {
-  "name": "Example cultural region",
+  "name": "Example people",
   "color": "#8f6e4a",
   "features": [
     { "from": "-1000", "to": "500", "geometry": { "type": "Polygon", "coordinates": [] },
@@ -202,11 +202,11 @@ own.
 }
 ```
 
-The approximate shape is intentional and the build makes it look so: a region's
-outline is rounded by `CULTURAL_REGION_ROUNDING` passes of corner cutting in
+The approximate shape is intentional and the build makes it look so: a people's
+outline is rounded by `NON_STATE_PEOPLE_ROUNDING` passes of corner cutting in
 `build-polities.mjs`, so an authored hull arrives as curves rather than as a
 surveyed boundary. Author the plain hull and let the build soften it. Only
-corners whose edges are longer than `CULTURAL_REGION_MIN_EDGE` are cut, which
+corners whose edges are longer than `NON_STATE_PEOPLE_MIN_EDGE` are cut, which
 leaves a clipped coastline where Natural Earth put it, and the rounded shape is
 then cut against land and lakes — corner cutting bulges outward at concave
 corners, and a bay is a concave corner.
@@ -216,7 +216,7 @@ soften.
 
 Do not give these entries a `status`: `controlled`, `disputed` and `contested`
 describe political possession. They are also the one kind the overlap check
-skips, on both sides, so a region may sit inside a state that claimed the same
+skips, on both sides, so a people may sit inside a state that claimed the same
 ground.
 
 That exemption is the only discipline the layer has, so two rules keep it from
@@ -225,10 +225,10 @@ of a people, never a claim or a military reach dressed up as one — conquests
 belong in the polity layer or nowhere. And its span is dated at both ends to
 something that happened: a treaty, a removal, a dissolution.
 
-Regions are named for the people alone, in the form a reader is most likely to
+Non-state peoples are named for the people alone, in the form a reader is most likely to
 know — `Navajo`, not "Navajo country" and not "Diné Bikéyah" — with the
 people's own name in the `source`. Ids share one space with polities, so a
-region and a polity for the same people need distinct file names; the build
+people and a polity for the same people need distinct file names; the build
 fails on a duplicate. Keep to homelands that can be dated and sourced: the
 continent-wide culture areas of the standard schemes are deliberately not
 drawn, since a handful of shapes covering everything would fill in exactly the

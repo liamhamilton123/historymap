@@ -16,7 +16,7 @@ export const UNCLAIMED_DIR = join(ROOT, 'data', 'unclaimed');
  * Broad, deliberately imprecise spatial associations. Unlike polities these
  * may overlap one another and held ground.
  */
-export const CULTURAL_REGIONS_DIR = join(ROOT, 'data', 'cultural-regions');
+export const NON_STATE_PEOPLES_DIR = join(ROOT, 'data', 'non-state-peoples');
 export const PARTS_FILE = join(ROOT, 'data', 'parts.json');
 
 /** Physical layers, drawn as the basemap. */

@@ -19,10 +19,10 @@ import {
   themePaint,
   TIMED_LAYERS,
   UNCLAIMED_FILL,
-  CULTURAL_REGION_FILL,
-  CULTURAL_REGION_SELECTED_FILL,
-  CULTURAL_REGION_LINE,
-  culturalRegionSelectionFilter,
+  NON_STATE_PEOPLE_FILL,
+  NON_STATE_PEOPLE_SELECTED_FILL,
+  NON_STATE_PEOPLE_LINE,
+  nonStatePeopleSelectionFilter,
   POLITY_STATUS,
   STATIC_HATCHES,
   SELECTED_LAYER,
@@ -109,7 +109,7 @@ function registerHatches(instance: MapLibreMap) {
 /** The layers clicks are tested against: between them the two fills cover every
  *  piece of ground on screen, held or not, and hatches and outlines only ever
  *  sit on top of one of them. */
-const PICK_LAYERS = ['polity-fill', UNCLAIMED_FILL, CULTURAL_REGION_FILL];
+const PICK_LAYERS = ['polity-fill', UNCLAIMED_FILL, NON_STATE_PEOPLE_FILL];
 
 /** Show only the ground that existed at `t`, held or not. */
 function applyInstant(instance: MapLibreMap, t: number) {
@@ -117,14 +117,14 @@ function applyInstant(instance: MapLibreMap, t: number) {
 }
 
 /**
- * Outline the selected polity, or nothing when the panel is closed. A cultural
- * region draws nothing at all until it is selected, so selection is also what
+ * Outline the selected polity, or nothing when the panel is closed. A non-state
+ * people draws nothing at all until it is selected, so selection is also what
  * gives it its fill and its outline — the click is the only way to see one.
  */
 function applySelection(instance: MapLibreMap, t: number, polity: string | null) {
   instance.setFilter(SELECTED_LAYER, selectionFilter(t, polity));
-  for (const layer of [CULTURAL_REGION_SELECTED_FILL, CULTURAL_REGION_LINE]) {
-    instance.setFilter(layer, culturalRegionSelectionFilter(t, polity));
+  for (const layer of [NON_STATE_PEOPLE_SELECTED_FILL, NON_STATE_PEOPLE_LINE]) {
+    instance.setFilter(layer, nonStatePeopleSelectionFilter(t, polity));
   }
 }
 

@@ -1,11 +1,11 @@
 import { Marker, type Map as MapLibreMap } from 'maplibre-gl';
-import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, CULTURAL_REGION, type PolityStatus } from '~/lib/mapStyle';
+import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, NON_STATE_PEOPLE, type PolityStatus } from '~/lib/mapStyle';
 
 /** One row of public/data/polity-labels.json, written by the data build. */
 type PolityLabel = {
   polity: string;
   /** 'polity' for ground with an owner, 'unclaimed' for ground with only a name. */
-  kind: 'polity' | 'unclaimed' | 'cultural-region';
+  kind: 'polity' | 'unclaimed' | 'non-state-people';
   text: string;
   color: string | null;
   status: string | null;
@@ -21,18 +21,18 @@ const LABELS_URL = '/data/polity-labels.json';
 const styleFor = (label: PolityLabel) =>
   label.kind === 'unclaimed'
     ? UNCLAIMED
-    : label.kind === 'cultural-region'
-      ? CULTURAL_REGION
+    : label.kind === 'non-state-people'
+      ? NON_STATE_PEOPLE
       : POLITY_STATUS[label.status as PolityStatus] ?? POLITY_STATUS[DEFAULT_STATUS];
 
 /**
- * Held ground is named in upright capitals, unclaimed ground and cultural
- * regions in italic. That is the old atlas convention — upright for what a
+ * Held ground is named in upright capitals, unclaimed ground and non-state
+ * peoples in italic. That is the old atlas convention — upright for what a
  * state administers, italic for what is merely a place — and it is doing real
  * work here, because the name of an unclaimed region must not be mistaken for
  * the name of an owner.
  *
- * Italic carries that distinction on its own, so a cultural region's name is
+ * Italic carries that distinction on its own, so a non-state people's name is
  * set in full ink rather than dimmed: its label is the one that has to be read
  * *through* a polity fill drawn over it, and dim ink at 12px under a colour
  * wash was simply unreadable. The size and weight are the compensation for the
@@ -41,7 +41,7 @@ const styleFor = (label: PolityLabel) =>
 const TYPE = {
   polity: 'text-[12px] font-semibold tracking-[0.05em] uppercase text-ink',
   unclaimed: 'text-[12px] font-medium italic tracking-[0.02em] text-ink-dim',
-  'cultural-region': 'text-[13px] font-semibold italic tracking-[0.03em] text-ink',
+  'non-state-people': 'text-[13px] font-semibold italic tracking-[0.03em] text-ink',
 } as const;
 
 function labelElement(label: PolityLabel): HTMLElement {
