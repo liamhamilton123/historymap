@@ -1,0 +1,7 @@
+{
+  "name": "Bolivia",
+  "color": "#8b8051",
+  "features": [
+    { "from": "1825-08-06", "to": null, "parts": ["BOL"], "source": "The republic declared independence after the collapse of Spanish rule in Upper Peru." }
+  ]
+}

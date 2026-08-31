@@ -4,7 +4,7 @@
   "relationship": "vassal",
   "overlord": "Russian Empire",
   "features": [
-    { "from": "1784-08-14", "to": "1867-10-18", "parts": ["alaska", "aleutians-west"],
+    { "from": "1750", "to": "1867-10-18", "parts": ["alaska", "aleutians-west"],
       "source": "From the first permanent settlement on Kodiak to the sale to the United States. Russian control was in practice a scatter of coastal posts; the interior is drawn with it because no other state held it either." }
   ]
 }

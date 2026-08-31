@@ -1,0 +1,8 @@
+{
+  "name": "Venezuela",
+  "color": "#b57d4b",
+  "features": [
+    { "from": "1811-07-05", "to": "1821-11-28", "parts": ["VEN"], "source": "Venezuelan independence, shown from the first declaration through union in Gran Colombia." },
+    { "from": "1830-05-13", "to": null, "parts": ["VEN"], "source": "Venezuela separated from Gran Colombia." }
+  ]
+}

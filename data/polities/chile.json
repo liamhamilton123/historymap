@@ -1,0 +1,7 @@
+{
+  "name": "Chile",
+  "color": "#b16a58",
+  "features": [
+    { "from": "1818-02-12", "to": null, "parts": ["CHL"], "source": "Chile's declaration of independence." }
+  ]
+}

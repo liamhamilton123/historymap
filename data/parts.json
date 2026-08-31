@@ -2,6 +2,12 @@
   "note": "Pieces of Natural Earth's modern countries that changed hands inside the period, split out so a polity can be assembled from them. A part is taken out of its source and the source keeps the remainder, so nothing is ever in two parts at once. `within` takes whole polygons falling inside [west, south, east, north]; `clip` cuts against a drawn shape. Carves are applied in the order written here, each cutting from whatever its source has left — so a later carve may be drawn generously where it abuts ground an earlier one already took. Referenced by id from the files in data/polities/.",
 
   "parts": {
+    "french-guiana": {
+      "name": "French Guiana",
+      "source": "FRA",
+      "within": [-55.1, 1.8, -51.5, 6.1],
+      "why": "Natural Earth stores French Guiana with France. Splitting the separate mainland polygon lets the colonial and modern territory be represented without drawing metropolitan France."
+    },
     "crimea": {
       "name": "Crimea",
       "source": "RUS",

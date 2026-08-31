@@ -1,0 +1,7 @@
+{
+  "name": "Falkland Islands",
+  "features": [
+    { "from": "1811", "to": "1820", "parts": ["FLK"],
+      "source": "Spain evacuated Puerto Soledad in 1811; no state maintained an administration until Argentina's 1820 claim." }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Peru",
+  "color": "#ae665f",
+  "features": [
+    { "from": "1821-07-28", "to": null, "parts": ["PER"], "source": "Independence proclaimed in Lima." }
+  ]
+}

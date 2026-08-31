@@ -2,8 +2,10 @@
   "name": "Colombia",
   "color": "#b0a04a",
   "features": [
-    { "from": "1821-11-28", "to": "1903-11-03", "parts": ["COL", "PAN"],
-      "source": "Panama joined the new republic on independence from Spain and stayed with it through Gran Colombia and New Granada. Only Colombia's own ground is drawn here; the rest of South America is outside this map's coverage." },
+    { "from": "1821-11-28", "to": "1830-05-13", "parts": ["COL", "PAN", "VEN", "ECU"], "label": "Gran Colombia",
+      "source": "The republic united Colombia, Panama, Venezuela and Ecuador after independence from Spain." },
+    { "from": "1830-05-13", "to": "1903-11-03", "parts": ["COL", "PAN"],
+      "source": "New Granada after Venezuela and Ecuador separated; Panama remained part of Colombia." },
     { "from": "1903-11-03", "to": null, "parts": ["COL"],
       "source": "Panama gone." }
   ]

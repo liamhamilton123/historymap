@@ -1,0 +1,9 @@
+{
+  "name": "Argentina",
+  "color": "#6c91ae",
+  "features": [
+    { "from": "1820", "to": "1833-01-03", "parts": ["FLK"], "label": "Falkland Islands (Argentina)",
+      "source": "Argentina asserted and exercised a short-lived administration before Britain re-established control." },
+    { "from": "1816-07-09", "to": null, "parts": ["ARG"], "source": "Independence declared by the United Provinces at Tucumán." }
+  ]
+}

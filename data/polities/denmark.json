@@ -4,9 +4,9 @@
   "adjective": "Danish",
   "relationship": "vassal",
   "features": [
-    { "from": "1783-09-03", "to": null, "parts": ["GRL"], "label": "Greenland (Denmark)",
+    { "from": "1750", "to": null, "parts": ["GRL"], "label": "Greenland (Denmark)",
       "source": "Danish-Norwegian until 1814 and Danish since; self-governing within the kingdom from 1979." },
-    { "from": "1783-09-03", "to": "1917-03-31", "parts": ["VIR"], "label": "Danish West Indies",
+    { "from": "1750", "to": "1917-03-31", "parts": ["VIR"], "label": "Danish West Indies",
       "source": "Sold to the United States for 25 million dollars in gold." }
   ]
 }

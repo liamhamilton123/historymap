@@ -9,16 +9,14 @@
 
 ## Coverage
 
-Two regions, drawn at whatever depth the sources support. Everything outside
+Three regions, drawn at whatever depth the sources support. Everything outside
 them is simply absent, not empty:
 
 | | |
 | --- | --- |
-| **North America** | 1783 to now. From the Treaty of Paris, so no colonial empire has to be drawn back to its founding. Covers the mainland, Central America, the Caribbean and Greenland. |
+| **North America** | 1750 to now. Covers the mainland, Central America, the Caribbean and Greenland; the 1750–83 colonial spans use the same modern-boundary approximation as the later territorial data. |
+| **South America** | 1750 to now. Colonial viceroyalties and Guianas transition to modern republics, using modern boundaries as the baseline where period frontiers are not separately carved. |
 | **Post-Soviet Eurasia** | 1922 to now. The USSR and its successor states. |
-
-Colombia is the one polity outside both: it is drawn only so Panama has
-somewhere to come from in 1903. South America otherwise has no coverage.
 
 The Pacific Northwest is drawn as the unclaimed Oregon Country from 1783 until
 the Oregon Treaty of 1846 — claimed by four powers and then occupied jointly by

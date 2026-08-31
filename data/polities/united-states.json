@@ -3,6 +3,8 @@
   "color": "#4a7fa8",
   "adjective": "U.S.",
   "features": [
+    { "from": "1776-07-04", "to": "1783-09-03", "parts": ["USA", "confederacy-east", "west-virginia"],
+      "source": "The thirteen states from the Declaration of Independence to the Treaty of Paris; the later territorial baseline is used as the dataset's modern-boundary approximation." },
     { "from": "1783-09-03", "to": "1803-12-20", "parts": ["USA", "confederacy-east", "west-virginia"],
       "source": "The Treaty of Paris: the thirteen states and the land west to the Mississippi." },
     { "from": "1803-12-20", "to": "1821-02-22", "parts": ["USA", "confederacy-east", "west-virginia", "louisiana-purchase", "confederacy-west"],

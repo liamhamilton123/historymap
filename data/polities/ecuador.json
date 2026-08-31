@@ -1,0 +1,7 @@
+{
+  "name": "Ecuador",
+  "color": "#b39a46",
+  "features": [
+    { "from": "1830-05-13", "to": null, "parts": ["ECU"], "source": "Ecuador separated from Gran Colombia." }
+  ]
+}

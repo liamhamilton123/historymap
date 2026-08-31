@@ -1,7 +1,7 @@
 {
   "name": "Oregon Country",
   "features": [
-    { "from": "1783-09-03", "to": "1818-10-20",
+    { "from": "1750", "to": "1818-10-20",
       "parts": ["oregon-country", "oregon-country-north"],
       "source": "Claimed at once by Spain, Russia, Britain and the United States, and settled by none of them. The Nootka conventions of the 1790s left Spain conceding access rather than sovereignty, so the coast stayed open." },
     { "from": "1818-10-20", "to": "1846-06-15",
