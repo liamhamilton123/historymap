@@ -4,7 +4,7 @@
 | --- | --- |
 | `npm run data:fetch` | Downloads Natural Earth into `data/sources/` (gitignored). Cached; `--force` to redownload. |
 | `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap/` vector tiles. |
-| `npm run data:polities` | Builds vector tiles, labels, hatches, and `unmapped.json` from the historical data directories. |
+| `npm run data:polities` | Builds vector tiles, labels, and hatches from the historical data directories. |
 | `npm run data:build` | All three, in order. |
 
 ## Coverage
@@ -248,22 +248,6 @@ existing territory and colour while the panel makes the dependency explicit.
 An existing span may instead carry `"relationship": "occupation"`. This
 does not change its geometry; it records that the named parent held the area
 by occupation, and the panel says “Occupied by …”.
-
-## Unmapped societies
-
-`data/unmapped/` is for an **Unmapped** society: one that belongs in chronology
-and search but has no geographic extent we can responsibly render. Its file
-has no colour, parts, features, or geometry; the build writes its spans to
-`public/data/unmapped.json` for timeline UI.
-
-```json
-{
-  "name": "Example unmapped society",
-  "spans": [
-    { "from": "-8000", "to": "-5000", "source": "Brief citation or evidence note." }
-  ]
-}
-```
 
 ## Parts
 
