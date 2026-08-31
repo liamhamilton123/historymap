@@ -155,6 +155,9 @@ export default function HistoryMap() {
         zoom: view.zoom,
         minZoom: 0.8,
         maxZoom,
+        // Keep one continuous world on the flat projection. At wide views,
+        // repeating copies of the basemap make land appear twice.
+        renderWorldCopies: false,
         // Rotation is noise on this kind of map; dragging should pan, always.
         dragRotate: false,
         pitchWithRotate: false,
