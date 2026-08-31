@@ -47,9 +47,15 @@ const SQ_DEG_TO_SQ_KM = 111 * 111;
  * Sets how early a label appears: a polity shows its name once its extent is
  * roughly a fixed fraction of the viewport, so Russia is labelled from the
  * first zoom level and Armenia only once you are looking at the Caucasus.
- * Raise it to label more at once, at the cost of crowding.
+ * Raise it to show labels later, reducing crowding.
  */
-const LABEL_ZOOM_CONSTANT = 90;
+const LABEL_ZOOM_CONSTANT = 30;
+/** Labels up to this many characters need no extra room. */
+const LABEL_LENGTH_REFERENCE = 12;
+/** Extra viewport room requested per character beyond the reference length. */
+const LABEL_LENGTH_SCALE = 0.04;
+/** Keep a very long name from being delayed by more than about half a zoom. */
+const LABEL_LENGTH_MAX_MULTIPLIER = 1.4;
 /** Precision of the label anchor search, in degrees. */
 const LABEL_PRECISION = 0.05;
 
@@ -684,6 +690,11 @@ features.sort((a, b) => a.properties.from - b.properties.from);
 // Kept out of the polygon file and resolved here rather than in the browser:
 // placing a name needs the pole of inaccessibility of the polity's largest
 // piece, which is the one point guaranteed to be inside a concave shape.
+function labelLengthMultiplier(text) {
+  const extraCharacters = Math.max(0, [...text].length - LABEL_LENGTH_REFERENCE);
+  return Math.min(LABEL_LENGTH_MAX_MULTIPLIER, 1 + extraCharacters * LABEL_LENGTH_SCALE);
+}
+
 const labels = features.flatMap((f) => {
   // Contested ground is named once. The name belongs to the place, not to
   // whichever claimant happens to be drawn first, and one label per claimant
@@ -693,17 +704,20 @@ const labels = features.flatMap((f) => {
   const largest = polygons.reduce((a, b) => (areaOf([a]) >= areaOf([b]) ? a : b));
   const [lng, lat] = polylabel(largest, LABEL_PRECISION);
   const extent = Math.sqrt(areaOf(polygons));
+  const text = f.properties.label ?? f.properties.name;
   return [{
     polity: f.properties.polity,
     kind: f.properties.kind,
-    text: f.properties.label ?? f.properties.name,
+    text,
     color: f.properties.color,
     status: f.properties.status,
     from: f.properties.from,
     to: f.properties.to,
     anchor: [Number(lng.toFixed(3)), Number(lat.toFixed(3))],
     minZoom: Number(
-      Math.max(0, Math.min(8, Math.log2(LABEL_ZOOM_CONSTANT / extent))).toFixed(2),
+      Math.max(0, Math.min(8, Math.log2(
+        (LABEL_ZOOM_CONSTANT * labelLengthMultiplier(text)) / extent,
+      ))).toFixed(2),
     ),
   }];
 });

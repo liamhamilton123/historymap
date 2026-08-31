@@ -283,8 +283,9 @@ neighbour's coordinates keeps meeting it.
 The build also writes `public/data/polity-labels.json`: one anchor per span, at
 the pole of inaccessibility of the polity's largest piece, which is the one
 point guaranteed to fall inside a concave shape. Each carries a `minZoom`
-derived from the polity's extent, so Russia is named at the first zoom level and
-Armenia only once you are looking at the Caucasus. `LABEL_ZOOM_CONSTANT` in
+derived from the polity's extent and its label length, so Russia is named at the
+first zoom level and Armenia only once you are looking at the Caucasus. Long
+names wait for a little more room. `LABEL_ZOOM_CONSTANT` in
 `build-polities.mjs` trades labels shown against crowding.
 
 A span may set `label` to be named something other than its polity — useful
