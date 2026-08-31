@@ -14,16 +14,91 @@ them is simply absent, not empty:
 
 | | |
 | --- | --- |
-| **North America** | 1750 to now. Covers the mainland, Central America, the Caribbean and Greenland; the 1750–83 colonial spans use the same modern-boundary approximation as the later territorial data. |
-| **South America** | 1750 to now. Colonial viceroyalties and Guianas transition to modern republics, using modern boundaries as the baseline where period frontiers are not separately carved. |
+| **North America** | 1400 to now. The mainland, Central America, the Caribbean and Greenland: Indigenous polities, the colonial empires as they grew, and the states that followed them. |
+| **South America** | 1400 to now. The Andean empires, then the colonial viceroyalties and Guianas, then the modern republics. |
 | **Post-Soviet Eurasia** | 1922 to now. The USSR and its successor states. |
 
-The Pacific Northwest is drawn as the unclaimed Oregon Country from 1783 until
-the Oregon Treaty of 1846 — claimed by four powers and then occupied jointly by
+The Pacific Northwest is drawn as the unclaimed Oregon Country from the Nootka
+convention of 1790 until the Oregon Treaty of 1846 — claimed by four powers and then occupied jointly by
 two, held by none of them throughout — so no boundary runs through it and the
-49th parallel appears only on the day the treaty drew it. Hawaii before
-Kamehameha unified the islands in 1795 is the one remaining blank, and is
-deliberate rather than missing.
+49th parallel appears only on the day the treaty drew it. Ground no polity is drawn on
+is blank rather than filled with a continent-sized approximation: the many
+Indigenous nations of the Americas appear as the polities that can be drawn as
+polities — the Triple Alliance, the Inca, the Chimú, the Maya, the
+Haudenosaunee — and the rest is left open until an evidence-backed shape exists
+for it. Three blanks are deliberate in the same way: Hawaii before Kamehameha
+unified the islands in 1795, the Falkland Islands before France founded Port
+Louis in 1764, and the country west of the Rockies between 1783 and the
+Hudson's Bay Company licence of 1821.
+
+## Historical research policy
+
+When adding or correcting polity names, dates, relationships, or boundaries,
+use [Cliopatria / Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria)
+as a primary chronological reference. Its public GeoJSON release is the
+canonical place to inspect its `Name`, `FromYear`, `ToYear`, `Components`, and
+`MemberOf` fields.
+
+**Do not import Cliopatria geometry or copy its full dataset into this
+repository.** Keep the map's geometry authored from its own parts and inline
+shapes, and use Cliopatria to research and verify those entries. The global
+attribution in the information panel and the Source section below are the only
+required citation; do not add per-polity Cliopatria citations unless a user
+specifically asks for them.
+
+### Colonial growth in the Americas
+
+The mainland colonies grow in steps rather than appearing at full extent. Each
+step is keyed to a Cliopatria slice — the year its area changes — and the shape
+is authored here to match the area Cliopatria records for that slice inside
+North America. Every drawn shape is then cut against the same Natural Earth
+coastline the basemap is built from, so a colony's seaward edge is the real
+coast and its bays are water rather than territory; only the inland frontier is
+authored.
+
+England opens in 1609 with Virginia alone and reaches roughly 150,000 km² by
+1683; Britain inherits that in May 1707 and grows to about 500,000 by the
+Proclamation of 1763, which is where the seaboard stops until the Treaty of
+Paris hands the same shape to the United States. New France starts as
+Champlain's habitation at Quebec at about 1,600 km² and reaches roughly 90,000
+along the St Lawrence, the Ottawa and the north shores of the lakes by the
+1750s; its valley spans are deliberately left uncut so the river they were
+built on stays inside them. New Netherland and New Sweden are drawn for the
+years they existed, which is why the English seaboard is two separate footholds
+until 1664. French Louisiana is the lower valley west of the Mississippi, the
+ground France actually administered from the Gulf, rather than the whole later
+Purchase, which is only what Spain takes over in 1763.
+
+New Spain grows the same way and from the same source: the central Mexican
+domain Spain took from the Triple Alliance in 1521, west and south by 1526, the
+silver country by 1534, Yucatán and Chiapas once the last Mayan city-states fell
+in 1546, the northern mining frontier from 1595, and Sonora and Nuevo León by
+1687 — at which point Cliopatria has New Spain holding effectively all of modern
+Mexico, and the modern-boundary parts take over. Texas joins in 1716, Alta
+California in 1769, and New Mexico is drawn separately from 1598 because the
+part it sits in does not become Spanish in fact until 1769. Central America
+follows its conquests: the Guatemalan highlands from 1524 but not the Petén,
+which the Itza held until 1697; El Salvador, Honduras and Nicaragua from 1524;
+Costa Rica from 1563; Panama from 1519. On the Plata the dates are the first
+lasting settlements — Asunción in 1537, Santiago del Estero in 1553, Soriano in
+1624 — rather than the year the Spanish Empire itself begins.
+
+The Inca are staged the same way, from the 9,000 km² around Cusco that
+Cliopatria records for 1440 to the 2.1 million of Tawantinsuyu at its height
+after 1497, and then the Vilcabamba remnant to 1572.
+
+In the north, Rupert's Land is British from Utrecht in 1713 rather than 1763,
+Quebec and the maritime colonies from 1763, Labrador only from the Proclamation
+that annexed it to Newfoundland, and the Arctic islands from the 1820s
+voyages that claimed them. Each part is now its own span with its own date,
+which is what lets them start at different times.
+
+Where a Cliopatria extent and this map's parts disagree — the French Gulf coast
+against the West Florida part — the part wins and the file says so. Where
+Cliopatria lets two claims overlap and this map cannot, the file says that too:
+the Haudenosaunee are drawn at the homeland extent recorded for 1450 and again
+after 1701, because the Beaver Wars extent of the 1670s and 1680s would have to
+run through French and English ground of the same years.
 
 Known simplifications, all noted in the file that makes them: the Confederacy
 is drawn at its eleven-state extent from the founding of the provisional
@@ -118,6 +193,7 @@ by one polity, or by none and then named. That makes the check do double duty �
 ground drawn as unclaimed that some polity turns out to hold is reported as
 exactly that, which is how the Oregon Country's dates stay honest against the
 Oregon Treaty.
+
 
 Features carry a `kind` of `polity` or `unclaimed` to keep the two apart in the
 style: unclaimed ground is drawn in the theme's neutral with a dotted outline
@@ -238,7 +314,10 @@ Armenia only once you are looking at the Caucasus. `LABEL_ZOOM_CONSTANT` in
 `build-polities.mjs` trades labels shown against crowding.
 
 A span may set `label` to be named something other than its polity — useful
-where "Russia" over Crimea would read worse than "Crimea".
+where "Russia" over Crimea would read worse than "Crimea". A span may also set
+`name` when one authored file covers successive historical entities, such as
+the Crown of Castile followed by the Spanish Empire; that name is used in the
+map feature and information panel for just that span.
 
 **A label has to say who holds the ground**, and the build fails if it does
 not. A renamed span is exactly where a possession stops looking like one:
@@ -251,8 +330,8 @@ works —
 { "label": "Louisiana (France)" }      // or say it outright
 ```
 
-— because the check accepts the polity's name, its id, or the `adjective` it
-declares for its possessions:
+- because the check accepts the span's name, the polity's name or id, or the
+`adjective` it declares for its possessions:
 
 ```json
 { "name": "Britain", "adjective": "British", "features": [ ... ] }
@@ -323,3 +402,7 @@ should stay near zero, rising only with the number of inline shapes.
 
 Each feature is tagged with a `kind` (`land`, `lake`, `river`) so the map style
 can drive all three from one source.
+
+[Cliopatria / Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria)
+is used as a historical reference when researching and checking the authored
+polity data; its geometries are not imported into this map.

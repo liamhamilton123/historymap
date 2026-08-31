@@ -4,7 +4,9 @@
   "adjective": "Portuguese",
   "relationship": "vassal",
   "features": [
-    { "from": "1750", "to": "1822-09-07", "parts": ["BRA"], "label": "Brazil (Portugal)",
+    { "from": "1500", "to": "1502", "parts": ["BRA"], "name": "Kingdom of Portugal", "label": "Brazil (Kingdom of Portugal)",
+      "source": "Portuguese possession after Cabral's arrival, represented with Brazil's modern boundary." },
+    { "from": "1502", "to": "1822-09-07", "parts": ["BRA"], "name": "Portuguese Empire", "label": "Brazil (Portuguese Empire)",
       "source": "Colonial Brazil, represented with Brazil's modern boundary." },
     { "from": "1816-08-28", "to": "1822-09-07", "parts": ["URY"], "label": "Cisplatina (Portugal)",
       "source": "Portuguese occupation of the Banda Oriental, later incorporated into Brazil." }

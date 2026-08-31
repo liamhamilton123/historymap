@@ -1,0 +1,9 @@
+{
+  "name": "Haudenosaunee",
+  "color": "#7462a3",
+  "features": [
+    { "from": "1450", "to": "1783",
+      "geometry": { "type": "Polygon", "coordinates": [[[-79.3,41.95],[-76,41.9],[-75.2,42.3],[-74.8,43],[-75.3,43.6],[-77.3,42.95],[-79.1,42.75],[-79.3,41.95]]]  },
+      "source": "The Haudenosaunee polity series runs from 1450 to 1782 in Cliopatria; it is drawn here to the Treaty of Paris. The shape is the homeland between the Finger Lakes and the Mohawk that Cliopatria records at about 71,500 km² in 1450 and again from 1702 to 1762; the drawn shape is smaller, about 43,000 km², because it has to stop short of Lake Ontario's Canadian shore to the north and of the New York colony to the east; Cliopatria lets those claims overlap and this map does not. The Beaver Wars expansion — 560,000 km² across the Ohio country by 1683, back to the homeland after the Great Peace of Montreal in 1701 — is deliberately not drawn: it would have to overlap the French and English claims of the same years, which this map does not allow." }
+  ]
+}

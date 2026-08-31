@@ -1,0 +1,11 @@
+{
+  "name": "Sweden",
+  "color": "#4f9ab5",
+  "adjective": "Swedish",
+  "relationship": "vassal",
+  "features": [
+    { "from": "1638", "to": "1655-09-15", "name": "New Sweden", "label": "New Sweden",
+      "geometry": { "type": "MultiPolygon", "coordinates": [[[[-75.85,39.75],[-75.6,39.3],[-75.481,39.359],[-75.574,39.477],[-75.588,39.641],[-75.401,39.832],[-75.28,39.873],[-75.35,40],[-75.85,39.75]]],[[[-75.524,39.49],[-75.414,39.393],[-75.1,39.55],[-75.265,39.848],[-75.353,39.83],[-75.472,39.712],[-75.524,39.49]]]]  },
+      "source": "Fort Christina on the Delaware and the settlements along the river, about 2,800 km² in Cliopatria; taken by New Netherland in September 1655." }
+  ]
+}

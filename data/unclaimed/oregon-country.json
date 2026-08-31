@@ -1,9 +1,9 @@
 {
   "name": "Oregon Country",
   "features": [
-    { "from": "1750", "to": "1818-10-20",
+    { "from": "1790-10-28", "to": "1818-10-20",
       "parts": ["oregon-country", "oregon-country-north"],
-      "source": "Claimed at once by Spain, Russia, Britain and the United States, and settled by none of them. The Nootka conventions of the 1790s left Spain conceding access rather than sovereignty, so the coast stayed open." },
+      "source": "Drawn from the first Nootka convention of October 1790, in which Spain conceded access rather than sovereignty and the coast became open ground four powers claimed — Spain, Russia, Britain and the United States — and none of them settled. Before Nootka there is nothing to draw: the first European landings on this coast were in the 1770s, and the region is left blank rather than dated to the map's old 1750 baseline." },
     { "from": "1818-10-20", "to": "1846-06-15",
       "parts": ["oregon-country", "oregon-country-north"],
       "source": "Occupied jointly by Britain and the United States under the convention of 1818, which said in as many words that neither party's claim was prejudiced. Neither state held it, so it is drawn as belonging to neither — the boundary at the 49th parallel is drawn from the Oregon Treaty of 1846 and not a day earlier." }

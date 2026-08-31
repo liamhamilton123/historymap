@@ -1,0 +1,9 @@
+{
+  "name": "Aztec Triple Alliance",
+  "color": "#9b573e",
+  "features": [
+    { "from": "1429", "to": "1521-08-13",
+      "geometry": { "type": "Polygon", "coordinates": [[[-102.3,19],[-101.2,18.2],[-98.3,18.1],[-97.2,19.5],[-97.3,20.8],[-98.8,21.7],[-101,21.4],[-102.3,20.2],[-102.3,19]]]  },
+      "source": "The Triple Alliance polity series begins in 1429 and ends with the fall of Tenochtitlan in 1521; the drawn extent is an authored approximation of its central Mexican domain." }
+  ]
+}

@@ -147,9 +147,9 @@ const km2 = (sqDeg) => `${(sqDeg * SQ_DEG_TO_SQ_KM).toFixed(0)} km²`;
  * "British North America" counts as saying Britain without having to spell it
  * "North America (Britain)".
  */
-function namesOwner(label, spec) {
+function namesOwner(label, spec, entry) {
   const text = label.toLowerCase();
-  return [spec.name, spec.id, spec.adjective]
+  return [entry.name, spec.name, spec.id, spec.adjective]
     .filter(Boolean)
     .some((form) => text.includes(String(form).toLowerCase()));
 }
@@ -341,7 +341,7 @@ for (const spec of specs) {
     // the way history already does it — "British North America", "New Spain" —
     // or by saying so outright, "Louisiana (France)". Unclaimed ground is
     // exempt: it has no owner to name.
-    if (!unclaimed && !culturalRegion && entry.label && !namesOwner(entry.label, spec)) {
+    if (!unclaimed && !culturalRegion && entry.label && !namesOwner(entry.label, spec, entry)) {
       problems.push(
         `${spec.file}: "${entry.label}" does not say whose it is — name the owner,` +
           ` as "${entry.label} (${spec.name ?? spec.id})" or with "${spec.adjective ?? spec.name ?? spec.id}"`,
@@ -357,7 +357,10 @@ for (const spec of specs) {
         // The id of whatever occupies this ground: a polity, or the name given
         // to ground that no polity held.
         polity: spec.id,
-        name: spec.name ?? spec.id,
+        // A long-lived container can represent successive entities. A span
+        // name lets the map and info panel show the historical entity rather
+        // than flattening, for example, Castile into the later Spanish Empire.
+        name: entry.name ?? spec.name ?? spec.id,
         color: unclaimed ? null : spec.color ?? '#8a8a8a',
         status,
         relationship,

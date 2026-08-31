@@ -146,6 +146,17 @@ export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
           </div>
         )}
       </dl>
+      <p className="mt-3 border-t border-ink/12 pt-2.5 text-[10px] leading-relaxed text-ink-faint">
+        Historical reference data includes{' '}
+        <a
+          href="https://github.com/Seshat-Global-History-Databank/cliopatria"
+          target="_blank"
+          rel="noreferrer"
+          className="underline decoration-ink-faint/45 underline-offset-2 hover:text-ink"
+        >
+          Cliopatria / Seshat Global History Databank
+        </a>.
+      </p>
     </aside>
   );
 }

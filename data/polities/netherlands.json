@@ -5,11 +5,17 @@
   "adjective": "Dutch",
   "relationship": "vassal",
   "features": [
-    { "from": "1750", "to": "1814-08-13", "parts": ["GUY"], "label": "Dutch Guiana",
+    { "from": "1624", "to": "1655-09-15", "name": "New Netherland", "label": "New Netherland",
+      "geometry": { "type": "Polygon", "coordinates": [[[-74.55,40.6],[-74.254,40.551],[-74.025,40.756],[-73.909,40.996],[-73.97,41.25],[-73.882,41.171],[-73.872,41.055],[-73.964,40.804],[-73.8,40.95],[-73.68,42.3],[-73.75,42.85],[-74.35,42.8],[-74.5,41.6],[-74.55,40.6]]]  },
+      "source": "The Hudson between New Amsterdam and Fort Orange. Cliopatria has New Netherland at about 14,000 km² from 1626 and holding that shape until it took the Delaware." },
+    { "from": "1655-09-15", "to": "1664-09-08", "name": "New Netherland", "label": "New Netherland",
+      "geometry": { "type": "Polygon", "coordinates": [[[-75.55,40.2],[-75.524,39.698],[-75.401,39.832],[-75.173,39.895],[-75.074,39.983],[-75.154,39.871],[-75.422,39.79],[-75.519,39.611],[-75.512,39.48],[-75.144,39.214],[-75,39.2],[-74.3,40.5],[-74.187,40.648],[-74.025,40.756],[-73.927,40.914],[-73.918,41.136],[-73.97,41.25],[-73.882,41.171],[-73.872,41.055],[-73.965,40.801],[-73.8,40.95],[-73.68,42.3],[-73.75,42.85],[-74.35,42.8],[-74.5,41.6],[-75.55,40.2]]]  },
+      "source": "Stuyvesant's conquest of New Sweden added the Delaware, taking New Netherland to about 28,000 km² before it surrendered to an English fleet in September 1664." },
+    { "from": "1616", "to": "1814-08-13", "label": "Dutch Guiana", "parts": ["GUY"],
       "source": "Essequibo, Demerara and Berbice before British control was confirmed." },
-    { "from": "1750", "to": null, "parts": ["SUR"], "label": "Suriname (Netherlands)",
+    { "from": "1667", "to": null, "label": "Suriname (Netherlands)", "parts": ["SUR"],
       "source": "Dutch Guiana, later Suriname; represented with its modern boundary." },
-    { "from": "1750", "to": null, "parts": ["dutch-caribbean", "ABW", "CUW", "SXM"], "label": "Dutch Caribbean",
+    { "from": "1634", "to": null, "label": "Dutch Caribbean", "parts": ["dutch-caribbean", "ABW", "CUW", "SXM"],
       "source": "Held since the 1630s, apart from short British occupations during the Napoleonic wars, which are too brief to draw." }
   ]
 }

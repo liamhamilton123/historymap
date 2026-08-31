@@ -1,0 +1,9 @@
+{
+  "name": "Chimu Empire",
+  "color": "#a67a45",
+  "features": [
+    { "from": "1400", "to": "1475",
+      "geometry": { "type": "Polygon", "coordinates": [[[-81.1,-6],[-80.828,-6.272],[-80.11,-6.65],[-79.995,-6.769],[-79.618,-7.296],[-79.377,-7.836],[-79.012,-8.21],[-78.762,-8.617],[-78.665,-8.971],[-78.446,-9.371],[-78.095,-10.261],[-77.845,-10.661],[-77.6,-10.6],[-78.2,-8.2],[-78.9,-6],[-79.9,-4.9],[-81.1,-6]]]  },
+      "source": "The Chimú polity series is present through 1474; this coastal Peruvian approximation, about 90,000 km² against Cliopatria's 97,600 for its 1375-1474 slice, ends before its incorporation into the expanding Inca Empire." }
+  ]
+}

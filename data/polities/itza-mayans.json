@@ -1,0 +1,9 @@
+{
+  "name": "Itza Mayans",
+  "color": "#4e896a",
+  "features": [
+    { "from": "1547", "to": "1700",
+      "geometry": { "type": "Polygon", "coordinates": [[[-90.5,17.6],[-90.4,16.6],[-89.8,16.1],[-89.4,16.5],[-89.4,17.7],[-90.5,17.6]]]  },
+      "source": "The Itza Mayans polity series begins in 1547 and runs through 1699; this is an authored approximation around the central Petén lakes, kept inside the Petén so it does not claim ground New Spain holds to the west." }
+  ]
+}
