@@ -1,6 +1,7 @@
 {
   "name": "Haudenosaunee (Iroquois Confederacy)",
   "color": "#7462a3",
+  "rounded": true,
   "features": [
     { "from": "1450", "to": "1783",
       "geometry": { "type": "Polygon", "coordinates": [[[-79.3,41.95],[-76,41.9],[-75.2,42.3],[-74.8,43],[-75.3,43.6],[-77.3,42.95],[-79.1,42.75],[-79.3,41.95]]]  },

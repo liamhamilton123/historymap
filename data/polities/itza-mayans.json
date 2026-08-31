@@ -1,6 +1,7 @@
 {
   "name": "Itza Mayans",
   "color": "#4e896a",
+  "rounded": true,
   "features": [
     { "from": "1547", "to": "1700",
       "geometry": { "type": "Polygon", "coordinates": [[[-90.5,17.6],[-90.4,16.6],[-89.8,16.1],[-89.4,16.5],[-89.4,17.7],[-90.5,17.6]]]  },

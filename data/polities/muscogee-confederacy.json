@@ -1,6 +1,7 @@
 {
   "name": "Muscogee (Creek) Confederacy",
   "color": "#a3555f",
+  "rounded": true,
   "features": [
     { "from": "1700", "to": "1783-09-03",
       "geometry": { "type": "Polygon", "coordinates": [[[-88.2,32.6],[-87.3,31.45],[-85.0,31.45],[-83.7,32.2],[-83.6,33.3],[-84.6,34.2],[-86.2,34.3],[-87.6,33.6],[-88.2,32.6]]] },

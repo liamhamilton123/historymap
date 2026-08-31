@@ -60,10 +60,10 @@ const LABEL_LENGTH_MAX_MULTIPLIER = 1.4;
 const LABEL_PRECISION = 0.05;
 
 /**
- * Corner-cutting passes applied to a non-state people's outline, and nothing
- * else on the map. A region is an approximation, and a polygon with hard
- * corners and straight runs between them reads as a surveyed boundary however
- * faint it is drawn — the shape itself has to say that its edge is a guess.
+ * Corner-cutting passes applied to an intentionally approximate outline. A
+ * region is an approximation, and a polygon with hard corners and straight
+ * runs between them reads as a surveyed boundary however faint it is drawn —
+ * the shape itself has to say that its edge is a guess.
  * Two passes is enough to turn an authored hull into curves; more starts
  * pulling the extent in noticeably.
  */
@@ -337,9 +337,9 @@ const seenIds = new Map();
 /** Part keys that came from an inline `geometry` rather than the parts bin. */
 const inlineParts = new Set();
 /**
- * Non-state people shapes waiting to be rounded. Collected rather than rounded
- * where they are found, because rounding reads the coastline off disk and the
- * walk that finds them is synchronous.
+ * Intentionally approximate shapes waiting to be rounded. Collected rather
+ * than rounded where they are found, because rounding reads the coastline off
+ * disk and the walk that finds them is synchronous.
  */
 const rounding = [];
 
@@ -360,20 +360,23 @@ for (const { dir, kind } of SOURCES) {
   if (kind === 'non-state-people' && !spec.color) {
     problems.push(`${file}: a non-state people needs a colour`);
   }
+  if (spec.rounded != null && typeof spec.rounded !== 'boolean') {
+    problems.push(`${file}: "rounded" must be true or false`);
+  }
   specs.push(spec);
   spec.entries.forEach((entry, index) => {
     if (entry.geometry) {
       // Inline shapes join the topology too, so one drawn to meet a
       // neighbour's coordinates keeps meeting it after simplification.
       const key = `${id}#${index}`;
-      // A non-state people is rounded here rather than in its file, so the file
-      // keeps the plain hull that is easy to author and to check against a
-      // source, and every region — including ones added later — is imprecise
-      // in the same way and to the same degree. Nothing else is touched: a
-      // border that a treaty fixed is not ours to soften.
+      // Non-state people outlines and polities explicitly marked `rounded` are
+      // softened here rather than in their files. The source data keeps the
+      // plain hull that is easy to author and check, while the published shape
+      // signals an intentionally imprecise border. Treaty-fixed borders stay
+      // untouched unless a file opts in.
       const shape = polygonsOf(entry.geometry);
       parts.set(key, shape);
-      if (kind === 'non-state-people') rounding.push({ key, shape });
+      if (kind === 'non-state-people' || spec.rounded === true) rounding.push({ key, shape });
       entry.partKeys = [key];
       used.add(key);
       // Drawn freehand rather than carved out of a source, so nothing

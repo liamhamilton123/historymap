@@ -211,8 +211,20 @@ leaves a clipped coastline where Natural Earth put it, and the rounded shape is
 then cut against land and lakes — corner cutting bulges outward at concave
 corners, and a bay is a concave corner.
 
-Nothing else on the map is rounded: a border a treaty fixed is not ours to
-soften.
+Polities keep their authored borders by default: a border a treaty fixed is not
+ours to soften. A polity whose extent is deliberately approximate can opt into
+the identical treatment with a top-level `"rounded": true` prop:
+
+```json
+{
+  "name": "Example polity",
+  "rounded": true,
+  "features": []
+}
+```
+
+Use it only for an imprecise or reconstructed extent, never to soften a
+surveyed, treaty-defined, or hand-off-matched boundary.
 
 Do not give these entries a `status`: `controlled`, `disputed` and `contested`
 describe political possession. They are also the one kind the overlap check

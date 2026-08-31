@@ -1,6 +1,7 @@
 {
   "name": "Tiwanaku Empire",
   "color": "#6c7a83",
+  "rounded": true,
   "features": [
     { "from": "500", "to": "1100",
       "geometry": {"type":"Polygon","coordinates":[[[-71,-13.5],[-65,-13.5],[-64.5,-20.8],[-67.5,-22.5],[-70.7,-19.5],[-71,-13.5]]]},
