@@ -1,0 +1,9 @@
+{
+  "name": "Washoe",
+  "color": "#8c829c",
+  "features": [
+    { "from": "1400", "to": "1863",
+      "geometry": {"type":"Polygon","coordinates":[[[-121,40.4],[-118,40.6],[-117.5,38.2],[-119.2,37.4],[-120.7,38.4],[-121,40.4]]]},
+      "source": "The Washoe homeland around Lake Tahoe, the Sierra east slope and adjoining valleys. Washoe communities were independent rather than a state. The span ends in 1863, as federal treaty-making and settler expansion displaced people from the wider homeland." }
+  ]
+}

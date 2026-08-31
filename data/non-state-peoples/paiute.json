@@ -1,0 +1,9 @@
+{
+  "name": "Paiute",
+  "color": "#927ba0",
+  "features": [
+    { "from": "1400", "to": "1863-10-01",
+      "geometry": {"type":"Polygon","coordinates":[[[-119.5,42.5],[-114,42.4],[-113.5,38.2],[-115.5,36.2],[-118.5,36.5],[-119.5,39.5],[-119.5,42.5]]]},
+      "source": "An approximate shared extent for Northern and Southern Paiute communities of the Great Basin. These were distinct bands and communities rather than one polity. The span ends at the 1863 Treaty of Ruby Valley, marking the expanding United States claim and pressure on Great Basin homelands." }
+  ]
+}

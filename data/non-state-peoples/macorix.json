@@ -1,0 +1,9 @@
+{
+  "name": "Macorix",
+  "color": "#a98a68",
+  "features": [
+    { "from": "1400", "to": "1503",
+      "geometry": {"type":"Polygon","coordinates":[[[-72,20],[-69.5,20],[-69.2,19],[-70.3,18.6],[-71.7,19],[-72,20]]]},
+      "source": "The Macorix people of north-central Hispaniola, recorded by early Spanish observers as linguistically distinct from their Taíno neighbours. The available evidence does not support a wider political boundary, so this is a compact associated extent. The span ends in 1503 with Spanish conquest and colonial consolidation on Hispaniola." }
+  ]
+}

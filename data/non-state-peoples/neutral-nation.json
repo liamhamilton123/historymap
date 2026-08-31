@@ -1,0 +1,9 @@
+{
+  "name": "Neutral Nation",
+  "color": "#8e8191",
+  "features": [
+    { "from": "1400", "to": "1653",
+      "geometry": {"type":"Polygon","coordinates":[[[-81.2,43.7],[-78.6,43.7],[-78.4,42.4],[-79.6,42.1],[-80.9,42.6],[-81.2,43.7]]]},
+      "source": "The Neutral Nation of southern Ontario between Lakes Erie and Ontario, a name used in French records for several Iroquoian-speaking communities. The communities did not form a centralized modern state. The span ends in 1653, when Haudenosaunee warfare dispersed the remaining Neutral towns." }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "name": "Mam",
+  "color": "#778d69",
+  "features": [{ "from": "1400", "to": "1525", "geometry": {"type":"Polygon","coordinates":[[[-93.5,16.3],[-90.8,16.3],[-90.5,14.4],[-91.8,14],[-93.2,14.6],[-93.5,16.3]]]}, "source": "The Mam Maya homeland in western Guatemala and adjacent Chiapas. Its communities were locally governed rather than a single polity. The span ends in 1525 with the Spanish campaigns that subjected the western Guatemalan highlands." }] }

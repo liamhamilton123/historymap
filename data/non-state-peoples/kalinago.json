@@ -1,0 +1,9 @@
+{
+  "name": "Kalinago",
+  "color": "#a67a5c",
+  "features": [
+    { "from": "1400", "to": "1797",
+      "geometry": {"type":"Polygon","coordinates":[[[-62.1,17.8],[-60.8,17.4],[-60.5,14.8],[-61.2,12.8],[-62.3,13.1],[-62.5,15.5],[-62.1,17.8]]]},
+      "source": "An approximate extent for Kalinago communities of the Lesser Antilles, commonly called Caribs in older English sources. Island communities were independent and mobile rather than one state. The span ends in 1797, when Britain forcibly deported the Garifuna from St Vincent after the Second Carib War; it does not imply an end to Kalinago communities elsewhere in the islands." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Lucayan",
+  "color": "#ad8c66",
+  "features": [
+    { "from": "1400", "to": "1520",
+      "geometry": {"type":"Polygon","coordinates":[[[-80.8,27],[-76.8,27],[-75.5,22.3],[-77.3,20.5],[-79.8,21.5],[-80.8,24],[-80.8,27]]]},
+      "source": "The Lucayan people of the Bahamas and Turks and Caicos Islands, culturally related to Taíno communities farther south. Their island settlements did not form one state. The span ends in 1520, after Spanish slaving raids had deported and devastated the Lucayan population from the archipelago." }
+  ]
+}

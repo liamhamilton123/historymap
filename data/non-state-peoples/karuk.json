@@ -1,0 +1,9 @@
+{
+  "name": "Karuk",
+  "color": "#967762",
+  "features": [
+    { "from": "1400", "to": "1855",
+      "geometry": {"type":"Polygon","coordinates":[[[-123.2,42.2],[-121.8,42.1],[-121.6,41.3],[-122.4,41],[-123.1,41.4],[-123.2,42.2]]]},
+      "source": "The Karuk homeland of the middle Klamath River. Karuk villages were self-governing and the river was their central corridor. The span ends with the Klamath River Reservation established in 1855, after which federal reservation policy constrained the wider homeland." }
+  ]
+}

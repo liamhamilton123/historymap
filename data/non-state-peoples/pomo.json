@@ -1,0 +1,9 @@
+{
+  "name": "Pomo",
+  "color": "#9c7c68",
+  "features": [
+    { "from": "1400", "to": "1851",
+      "geometry": {"type":"Polygon","coordinates":[[[-124.5,39.7],[-122.4,40.2],[-121.8,39],[-122.2,38.1],[-123.4,38.2],[-124.5,39.7]]]},
+      "source": "The Pomo peoples of the North Coast Ranges and Clear Lake country. Their many village communities were independent. The span ends with the 1851 California treaty negotiations and the rapid dispossession that followed, not with the disappearance of Pomo people." }
+  ]
+}

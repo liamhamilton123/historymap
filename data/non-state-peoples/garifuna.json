@@ -1,0 +1,12 @@
+{
+  "name": "Garifuna",
+  "color": "#a5775c",
+  "features": [
+    { "from": "1670", "to": "1797-03-11",
+      "geometry": {"type":"Polygon","coordinates":[[[-61.45,13.45],[-60.95,13.5],[-60.75,12.9],[-61.2,12.6],[-61.5,12.9],[-61.45,13.45]]]},
+      "source": "The Garifuna people emerged on St Vincent in the late seventeenth century from Caribbean Indigenous and African ancestry. Their communities were not a state. This first extent ends with Britain's 1797 deportation of most Garifuna people from St Vincent after the Second Carib War." },
+    { "from": "1797-04-12", "to": "1900",
+      "geometry": {"type":"Polygon","coordinates":[[[-88.9,16.8],[-86.2,16.8],[-85.2,15.1],[-86.4,14.5],[-88.4,15.2],[-88.9,16.8]]]},
+      "source": "After deportation from St Vincent, Garifuna communities were established along the Caribbean coast of Honduras and then spread into Belize and Guatemala. The span ends at 1900, by when national borders and settlement had displaced the continuous coastal extent drawn here into separate communities." }
+  ]
+}

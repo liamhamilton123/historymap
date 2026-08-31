@@ -1,0 +1,9 @@
+{
+  "name": "Taíno",
+  "color": "#a98460",
+  "features": [
+    { "from": "1400", "to": "1533",
+      "geometry": {"type":"Polygon","coordinates":[[[-77.2,21.8],[-74.5,20],[-71.5,18.7],[-67.1,18.1],[-65.1,18.4],[-65.6,19.4],[-68.5,19.2],[-70.2,20.1],[-73.5,20.5],[-76.7,20.8],[-77.2,21.8]]]},
+      "source": "An approximate extent for Taíno communities across the Greater Antilles and Puerto Rico. Their many cacicazgos were separate chiefdoms, not one polity. The span ends in 1533, after Spanish conquest, forced labour, disease and flight had destroyed the political order represented here; it does not imply an end to Taíno descendants or heritage." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Tongva",
+  "color": "#a36f63",
+  "features": [
+    { "from": "1400", "to": "1834",
+      "geometry": {"type":"Polygon","coordinates":[[[-119.2,34.4],[-117.2,34.7],[-117.1,33.4],[-118,33.1],[-119,33.5],[-119.2,34.4]]]},
+      "source": "The Tongva people of the Los Angeles Basin and southern Channel Islands, historically called Gabrielino in many English records. Their villages were independent. The span ends with Mexican secularization of the missions in 1834, a milestone in the disruption of the mission system imposed on Tongva communities." }
+  ]
+}

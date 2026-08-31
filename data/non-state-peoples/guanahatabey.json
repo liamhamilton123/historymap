@@ -1,0 +1,9 @@
+{
+  "name": "Guanahatabey",
+  "color": "#a28a6e",
+  "features": [
+    { "from": "1400", "to": "1510",
+      "geometry": {"type":"Polygon","coordinates":[[[-85.2,23.5],[-82.5,23.6],[-81.7,22.3],[-82.8,21.7],[-84.7,22],[-85.2,23.5]]]},
+      "source": "The Guanahatabey of western Cuba, known from the earliest Spanish accounts as distinct from the island's Taíno-speaking population. The evidence for their precise extent and later history is limited, so this is deliberately small and contact-era only. The span ends in 1510 with the beginning of Spanish conquest and settlement in Cuba." }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "name": "Lenca",
+  "color": "#738b70",
+  "features": [{ "from": "1400", "to": "1537", "geometry": {"type":"Polygon","coordinates":[[[-89.8,15.4],[-86.2,15.5],[-86,13.2],[-87.5,12.8],[-89.5,13.6],[-89.8,15.4]]]}, "source": "The Lenca peoples of western Honduras and eastern El Salvador. Their towns and chiefdoms were independent rather than a unified state. The span ends in 1537 with the defeat of Lenca resistance under Lempira and the extension of Spanish colonial control." }] }

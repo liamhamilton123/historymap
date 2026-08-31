@@ -1,0 +1,9 @@
+{
+  "name": "Yokuts",
+  "color": "#9f8568",
+  "features": [
+    { "from": "1400", "to": "1851",
+      "geometry": {"type":"Polygon","coordinates":[[[-121.5,37.7],[-118.4,38.2],[-117.8,35.2],[-119.2,34.8],[-121.2,35.5],[-121.5,37.7]]]},
+      "source": "The Yokuts peoples of the San Joaquin Valley and adjoining foothills. This approximate extent represents many independent communities, not a single polity. The span ends with the 1851 California treaty negotiations and the accelerating removal, violence and settlement that followed." }
+  ]
+}

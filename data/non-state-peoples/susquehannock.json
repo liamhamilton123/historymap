@@ -1,0 +1,9 @@
+{
+  "name": "Susquehannock",
+  "color": "#967565",
+  "features": [
+    { "from": "1400", "to": "1675",
+      "geometry": {"type":"Polygon","coordinates":[[[-78.5,41.8],[-75.5,42],[-75,39.8],[-76.5,39.2],[-78.2,40.1],[-78.5,41.8]]]},
+      "source": "The Susquehannock homeland of the lower Susquehanna River valley. Their fortified towns formed a powerful trading network but not a territory with fixed modern borders. The span ends in 1675, after disease, war and the siege of Susquehannock Fort broke their hold on the river country." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Tsimshian",
+  "color": "#678a82",
+  "features": [
+    { "from": "1400", "to": "1871-07-20",
+      "geometry": {"type":"Polygon","coordinates":[[[-131.6,55.6],[-128.6,55.7],[-128,54.5],[-128.8,53.8],[-130.8,54],[-131.6,55.6]]]},
+      "source": "The Tsimshian peoples of the lower Skeena River, Prince Rupert area and adjacent coast. Their villages and house groups were autonomous. The span ends when British Columbia entered Canada in 1871, changing the map's state-claim layer rather than ending Tsimshian presence." }
+  ]
+}

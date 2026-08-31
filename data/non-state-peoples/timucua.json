@@ -1,0 +1,9 @@
+{
+  "name": "Timucua",
+  "color": "#a1796b",
+  "features": [
+    { "from": "1400", "to": "1763-02-10",
+      "geometry": {"type":"Polygon","coordinates":[[[-84.5,31.5],[-80.8,31.5],[-80.7,28.2],[-82.2,27.5],[-84.2,28.6],[-84.5,31.5]]]},
+      "source": "The Timucua peoples of north and north-central Florida. Their chiefdoms were distinct and did not constitute one state. The span ends at the Treaty of Paris in 1763: disease, missionisation, slavery and war had already devastated Timucua communities, and the remaining population was dispersed or absorbed during the colonial transition." }
+  ]
+}

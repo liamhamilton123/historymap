@@ -1,0 +1,9 @@
+{
+  "name": "Hupa",
+  "color": "#8e735f",
+  "features": [
+    { "from": "1400", "to": "1864-06-23",
+      "geometry": {"type":"Polygon","coordinates":[[[-124.2,41.8],[-122.8,42.1],[-122.6,40.8],[-123.4,40.4],[-124.1,40.8],[-124.2,41.8]]]},
+      "source": "The Hupa homeland along the lower Trinity River and nearby Klamath country. Hupa villages were locally governed. The span ends with the creation of the Hoopa Valley Reservation in June 1864, which confined the mapped extent without ending Hupa presence." }
+  ]
+}

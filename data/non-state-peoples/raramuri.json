@@ -1,0 +1,9 @@
+{
+  "name": "Tarahumara",
+  "color": "#9b705c",
+  "features": [
+    { "from": "1400", "to": "1767",
+      "geometry": {"type":"Polygon","coordinates":[[[-109.5,29.5],[-105.5,29.6],[-105.4,26.2],[-107.2,25.2],[-109.2,26.2],[-109.5,29.5]]]},
+      "source": "The Rarámuri people of the Sierra Madre Occidental in Chihuahua, commonly called Tarahumara in older Spanish and English records. Their dispersed communities were not a state. The span ends with the expulsion of the Jesuits from New Spain in 1767, a major break in the colonial mission system that had reshaped this country." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Nuu-chah-nulth",
+  "color": "#638b91",
+  "features": [
+    { "from": "1400", "to": "1854",
+      "geometry": {"type":"Polygon","coordinates":[[[-128.5,50.4],[-126.4,50.7],[-125.3,49.5],[-125.2,48.5],[-126.4,48.3],[-127.6,49.2],[-128.5,50.4]]]},
+      "source": "The Nuu-chah-nulth peoples of Vancouver Island's west coast, long called Nootka in English records. Their local communities were independent. The span ends with the last of the Douglas Treaties in 1854, which began ceding portions of Vancouver Island under the colonial regime." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Wampanoag",
+  "color": "#a07b65",
+  "features": [
+    { "from": "1400", "to": "1676",
+      "geometry": {"type":"Polygon","coordinates":[[[-71.5,42.3],[-69.5,42.1],[-69.4,41.2],[-70.1,41],[-71.3,41.3],[-71.5,42.3]]]},
+      "source": "The Wampanoag homeland of southeastern Massachusetts, Cape Cod and nearby islands. Wampanoag communities were autonomous under local sachems, not one state. The span ends in 1676 with the defeat of the Wampanoag-led resistance known as King Philip's War, which broke the wider homeland shown here." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Mohegan",
+  "color": "#957968",
+  "features": [
+    { "from": "1400", "to": "1705",
+      "geometry": {"type":"Polygon","coordinates":[[[-73.4,42],[-71.7,42.1],[-71.5,41.3],[-72.2,41.1],[-73.2,41.4],[-73.4,42]]]},
+      "source": "The Mohegan homeland of eastern Connecticut and the Thames River valley. Mohegan communities were locally governed under sachems. The span ends in 1705, after colonial land transactions and settlement had reduced the broader country represented here to isolated reserves and communities." }
+  ]
+}

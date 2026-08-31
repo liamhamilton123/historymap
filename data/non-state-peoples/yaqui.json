@@ -1,0 +1,9 @@
+{
+  "name": "Yaqui",
+  "color": "#a27563",
+  "features": [
+    { "from": "1400", "to": "1887",
+      "geometry": {"type":"Polygon","coordinates":[[[-110.3,29.4],[-108.5,29.5],[-108.2,27],[-109.2,26.5],[-110.1,27.2],[-110.3,29.4]]]},
+      "source": "The Yaqui homeland along the Yaqui River in Sonora; Yaqui people also call themselves Yoeme. Their pueblos acted independently rather than as a state. The span ends in 1887, after the Mexican army defeated Yaqui resistance under Cajeme and expanded direct control over the river valley." }
+  ]
+}

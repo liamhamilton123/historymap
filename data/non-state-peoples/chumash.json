@@ -1,0 +1,9 @@
+{
+  "name": "Chumash",
+  "color": "#a07662",
+  "features": [
+    { "from": "1400", "to": "1834",
+      "geometry": {"type":"Polygon","coordinates":[[[-121.8,35.2],[-118.2,35.1],[-118,34.2],[-119.4,34],[-120.6,34.4],[-121.8,35.2]]]},
+      "source": "The Chumash homeland along the central and southern California coast and northern Channel Islands. Villages were autonomous, linked by trade and ceremony rather than a state. The span ends with Mexican secularization of the missions in 1834, after missionisation had already devastated the older village order." }
+  ]
+}

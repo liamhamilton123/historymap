@@ -1,0 +1,9 @@
+{
+  "name": "Inuit",
+  "color": "#668fa3",
+  "features": [
+    { "from": "1400", "to": "1880",
+      "geometry": {"type":"Polygon","coordinates":[[[-141,69],[-126,69],[-112,67],[-96,68],[-78,70],[-60,66],[-53,62],[-58,73],[-69,79],[-92,81],[-117,78],[-141,72],[-141,69]]]},
+      "source": "The Inuit homelands across the Arctic coast and islands of what is now Alaska and Canada, shown as an approximate northern extent rather than a single state. Inuit communities remained locally governed. The span ends with Britain's transfer of the remaining Arctic islands to Canada in 1880; it records a change in the map's claim layer, not an end to Inuit connection with this country." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Alabama people",
+  "color": "#9a7569",
+  "features": [
+    { "from": "1400", "to": "1700",
+      "geometry": {"type":"Polygon","coordinates":[[[-88.8,33.8],[-85.7,34],[-85.2,31.5],[-86.7,30.5],[-88.5,31.2],[-88.8,33.8]]]},
+      "source": "The Alabama-speaking towns along the middle Alabama River. This is an approximate extent for related autonomous towns, not a claim that they formed one polity. The span ends around 1700, when the Muscogee Confederacy becomes the map's more appropriate political representation for much of this ground." }
+  ]
+}

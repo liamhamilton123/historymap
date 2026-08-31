@@ -1,0 +1,9 @@
+{
+  "name": "Narragansett",
+  "color": "#9a7664",
+  "features": [
+    { "from": "1400", "to": "1676",
+      "geometry": {"type":"Polygon","coordinates":[[[-72.1,42.1],[-70.7,42.1],[-70.6,41.3],[-71.1,41],[-71.9,41.2],[-72.1,42.1]]]},
+      "source": "The Narragansett homeland of Rhode Island and the Narragansett Bay country. Their towns were connected through sachem authority but were not a modern state. The span ends in 1676, after the Great Swamp Fight and King Philip's War shattered Narragansett power over the wider homeland." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Gitxsan",
+  "color": "#748d83",
+  "features": [
+    { "from": "1400", "to": "1871-07-20",
+      "geometry": {"type":"Polygon","coordinates":[[[-130.2,56.3],[-127.5,56.3],[-126.5,55.2],[-127.5,54.4],[-129.5,54.8],[-130.2,56.3]]]},
+      "source": "The Gitxsan homeland of the upper Skeena River and its tributaries. Houses and wilp held authority over particular territories; this is not a single political boundary. The span ends when British Columbia entered Canada in 1871, changing the map's state-claim layer." }
+  ]
+}

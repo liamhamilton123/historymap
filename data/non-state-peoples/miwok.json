@@ -1,0 +1,9 @@
+{
+  "name": "Miwok",
+  "color": "#a0826a",
+  "features": [
+    { "from": "1400", "to": "1852",
+      "geometry": {"type":"Polygon","coordinates":[[[-122.7,39],[-120.3,39.4],[-119.7,38.1],[-120.6,37.4],[-122.1,37.6],[-122.7,39]]]},
+      "source": "The Miwok peoples of the central Sierra foothills, Sacramento–San Joaquin delta and nearby coast. This is an approximate shared extent for independent communities. The span ends in 1852, after the California treaty process and the Gold Rush had dispossessed much of this country." }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "name": "Totonac",
+  "color": "#a96f5c",
+  "features": [{ "from": "1400", "to": "1521-08-13", "geometry": {"type":"Polygon","coordinates":[[[-98.5,21.2],[-96.1,21.3],[-95.8,19.2],[-96.8,18.7],[-98.2,19.5],[-98.5,21.2]]]}, "source": "The Totonac peoples of the Gulf coast and Sierra Norte de Puebla, known collectively as the Totonacapan. Their towns were independent and some allied with the Spanish against the Aztec Empire. The span ends with the fall of Tenochtitlan in 1521, which inaugurated the colonial order." }] }

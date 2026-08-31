@@ -1,0 +1,9 @@
+{
+  "name": "Kwakwaka'wakw",
+  "color": "#6f8f89",
+  "features": [
+    { "from": "1400", "to": "1871-07-20",
+      "geometry": {"type":"Polygon","coordinates":[[[-128.5,52],[-126.2,52.2],[-125.5,51],[-125.8,50],[-127,50],[-128.2,50.8],[-128.5,52]]]},
+      "source": "The Kwakwaka'wakw peoples of northern Vancouver Island and the adjacent mainland inlets. Their communities were politically independent, not a single state. The span ends when British Columbia entered Canada in 1871, a change in the map's claim layer." }
+  ]
+}

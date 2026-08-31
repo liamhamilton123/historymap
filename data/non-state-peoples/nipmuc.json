@@ -1,0 +1,9 @@
+{
+  "name": "Nipmuc",
+  "color": "#9e8068",
+  "features": [
+    { "from": "1400", "to": "1676",
+      "geometry": {"type":"Polygon","coordinates":[[[-73.4,42.6],[-71.1,42.7],[-70.9,41.8],[-72.3,41.5],[-73.3,41.9],[-73.4,42.6]]]},
+      "source": "The Nipmuc peoples of central Massachusetts, northeastern Connecticut and adjacent Rhode Island. Their villages were independent communities, not a single polity. The span ends in 1676 with the defeat and dispersal that followed King Philip's War." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Algonquin",
+  "color": "#82949a",
+  "features": [
+    { "from": "1400", "to": "1763-02-10",
+      "geometry": {"type":"Polygon","coordinates":[[[-79.5,47.5],[-73.5,47.5],[-73,44.8],[-75,44.4],[-78,45],[-79.5,47.5]]]},
+      "source": "The Algonquin homeland of the Ottawa River watershed, centred on the people also known as Anishinàbeg Algonquin. The label names a people, not the wider Algonquian language family. The span ends at the Treaty of Paris in 1763, when the map's French claim gave way to British rule." }
+  ]
+}

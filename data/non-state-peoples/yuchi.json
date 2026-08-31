@@ -1,0 +1,9 @@
+{
+  "name": "Yuchi",
+  "color": "#98726f",
+  "features": [
+    { "from": "1400", "to": "1715",
+      "geometry": {"type":"Polygon","coordinates":[[[-84.7,35.6],[-81.7,35.6],[-81.4,33.4],[-82.8,32.7],[-84.4,33.5],[-84.7,35.6]]]},
+      "source": "The Yuchi homeland of the upper Savannah and Tennessee watershed before the disruptions of the early eighteenth-century southern wars. Yuchi towns were independent, not a single state. The span ends in 1715, by which time warfare, slaving and migration had displaced many communities westward." }
+  ]
+}

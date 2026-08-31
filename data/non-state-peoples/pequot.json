@@ -1,0 +1,9 @@
+{
+  "name": "Pequot",
+  "color": "#9b7761",
+  "features": [
+    { "from": "1400", "to": "1638",
+      "geometry": {"type":"Polygon","coordinates":[[[-72.5,42],[-71.4,42],[-71.3,41.2],[-71.8,41.1],[-72.4,41.4],[-72.5,42]]]},
+      "source": "The Pequot homeland of southeastern Connecticut and the Thames estuary. Pequot villages were locally governed, though linked by a powerful sachemship. The span ends with the Treaty of Hartford in 1638, which partitioned survivors and prohibited a separate Pequot polity after the Pequot War." }
+  ]
+}

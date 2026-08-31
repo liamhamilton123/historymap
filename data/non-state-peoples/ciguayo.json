@@ -1,0 +1,9 @@
+{
+  "name": "Ciguayo",
+  "color": "#a68164",
+  "features": [
+    { "from": "1400", "to": "1503",
+      "geometry": {"type":"Polygon","coordinates":[[[-70.5,19.4],[-68.4,19.7],[-68.2,18.3],[-69.2,18.1],[-70.4,18.5],[-70.5,19.4]]]},
+      "source": "The Ciguayo people of the Samaná Peninsula and eastern Hispaniola, described in early Spanish accounts as distinct from neighbouring Taíno chiefdoms. Their local communities were not a state. The span ends in 1503, following Spanish conquest of the eastern end of Hispaniola." }
+  ]
+}

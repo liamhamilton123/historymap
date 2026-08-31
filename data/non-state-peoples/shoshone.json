@@ -1,0 +1,9 @@
+{
+  "name": "Shoshone",
+  "color": "#8b7c9d",
+  "features": [
+    { "from": "1400", "to": "1863-10-01",
+      "geometry": {"type":"Polygon","coordinates":[[[-116.5,43.5],[-110,44.5],[-108.5,41.5],[-110.5,39.2],[-114.5,39],[-117,40.5],[-116.5,43.5]]]},
+      "source": "An approximate extent for Shoshone bands across the northern and central Great Basin and Snake River country; the bands did not form one state. The span ends with the Treaty of Ruby Valley in October 1863, a major federal assertion over western Shoshone country." }
+  ]
+}

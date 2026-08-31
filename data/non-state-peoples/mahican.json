@@ -1,0 +1,9 @@
+{
+  "name": "Mahican",
+  "color": "#9d826d",
+  "features": [
+    { "from": "1400", "to": "1730",
+      "geometry": {"type":"Polygon","coordinates":[[[-75,43.2],[-72.7,43.1],[-72.7,41.7],[-73.5,41.3],[-74.7,41.8],[-75,43.2]]]},
+      "source": "The Mahican, commonly called Mohican, homeland of the upper Hudson Valley and western Massachusetts. Their communities were independent, not a single state. The span ends around 1730, as colonial land loss and migration concentrated many Mahican people at Stockbridge and beyond the Hudson Valley." }
+  ]
+}

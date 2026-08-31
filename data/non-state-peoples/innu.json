@@ -1,0 +1,9 @@
+{
+  "name": "Innu",
+  "color": "#7d8fa8",
+  "features": [
+    { "from": "1400", "to": "1763-02-10",
+      "geometry": {"type":"Polygon","coordinates":[[[-73,55],[-65,57],[-57,55],[-55,51],[-58,49],[-65,49],[-71,51],[-73,55]]]},
+      "source": "Nitassinan, the Innu homeland of the Labrador and Quebec interior. Innu bands governed themselves and followed seasonal routes across this country. The span ends at the Treaty of Paris in 1763, when France ceded Canada to Britain and the colonial claim on the map changes." }
+  ]
+}

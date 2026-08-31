@@ -1,0 +1,9 @@
+{
+  "name": "O'odham",
+  "color": "#9d7861",
+  "features": [
+    { "from": "1400", "to": "1853-12-30",
+      "geometry": {"type":"Polygon","coordinates":[[[-114.5,34.5],[-109.5,34.6],[-108.5,31.2],[-110.5,30.6],[-113.5,31.3],[-114.5,34.5]]]},
+      "source": "The O'odham peoples of the Sonoran Desert, including river and desert communities that Spanish records called Pima and Papago. Their villages were autonomous. The span ends with the Gadsden Purchase in December 1853, which split the homeland between the United States and Mexico on the map's state-claim layer." }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Dene peoples",
+  "color": "#758ca0",
+  "features": [
+    { "from": "1400", "to": "1870-07-15",
+      "geometry": {"type":"Polygon","coordinates":[[[-141,69],[-128,70],[-113,69],[-99,66],[-97,60],[-108,55],[-122,55],[-135,59],[-141,64],[-141,69]]]},
+      "source": "An approximate extent for the many Dene-speaking peoples of the northwest interior, including distinct nations such as the Chipewyan, Slavey and Tłı̨chǫ; it is not a claim that they formed one polity. The span ends with the 1870 transfer of Rupert's Land and the North-Western Territory to Canada, a change in the map's claim layer." }
+  ]
+}

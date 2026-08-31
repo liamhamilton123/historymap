@@ -1,0 +1,9 @@
+{
+  "name": "Natchez",
+  "color": "#a0706b",
+  "features": [
+    { "from": "1400", "to": "1731",
+      "geometry": {"type":"Polygon","coordinates":[[[-92.2,32.8],[-89.5,32.8],[-89.2,31.1],[-90.5,30.7],[-91.9,31.2],[-92.2,32.8]]]},
+      "source": "The Natchez homeland on the Mississippi bluffs and its eastern tributaries. Natchez towns were led through a hereditary chiefly order, but this is an associated homeland rather than a modern-style state boundary. The span ends in 1731, after the French campaign following the Natchez revolt dispersed the remaining towns from this country." }
+  ]
+}

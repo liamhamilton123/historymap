@@ -1,0 +1,9 @@
+{
+  "name": "Goshute",
+  "color": "#847594",
+  "features": [
+    { "from": "1400", "to": "1863-10-12",
+      "geometry": {"type":"Polygon","coordinates":[[[-114.5,42],[-111.2,42],[-110.8,39.2],[-112.2,38.4],[-114.2,39.5],[-114.5,42]]]},
+      "source": "The Goshute homeland in western Utah and eastern Nevada. Goshute bands were self-governing; this is an associated homeland, not a political boundary. The span ends with the Treaty of Deep Creek in October 1863, after which federal control and settlement increasingly constrained the country shown." }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "name": "Zapotec",
+  "color": "#ad765e",
+  "features": [{ "from": "1400", "to": "1521-08-13", "geometry": {"type":"Polygon","coordinates":[[[-98.5,18.2],[-94.8,18.5],[-94.8,16],[-96.5,15.6],[-98.2,16.5],[-98.5,18.2]]]}, "source": "An approximate extent for Zapotec communities of the central valleys, Sierra and Isthmus of Oaxaca. The communities and lordships were not one state. The span ends with the fall of the Aztec capital in 1521, after which Spanish conquest and colonial claims reshaped the region." }] }

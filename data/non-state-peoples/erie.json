@@ -1,0 +1,9 @@
+{
+  "name": "Erie",
+  "color": "#897c91",
+  "features": [
+    { "from": "1400", "to": "1656",
+      "geometry": {"type":"Polygon","coordinates":[[[-81,43.3],[-77.5,43.3],[-77.2,41.5],[-78.8,41.1],[-80.8,41.7],[-81,43.3]]]},
+      "source": "The Erie people of the south shore of Lake Erie, chiefly in what are now northwestern Pennsylvania and western New York. Their towns were Iroquoian-speaking but separate from the Haudenosaunee. The span ends in 1656, after Haudenosaunee campaigns dispersed or absorbed Erie communities." }
+  ]
+}

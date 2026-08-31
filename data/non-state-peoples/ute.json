@@ -1,0 +1,9 @@
+{
+  "name": "Ute",
+  "color": "#88769a",
+  "features": [
+    { "from": "1400", "to": "1868-03-02",
+      "geometry": {"type":"Polygon","coordinates":[[[-112.5,41.2],[-106.5,41],[-105.8,38.2],[-108,37],[-111.5,37.2],[-112.5,41.2]]]},
+      "source": "Ute country across the central Rockies and eastern Great Basin, represented as an approximate extent for autonomous bands. The span ends with the 1868 treaty that established the Uintah Reservation and marked a decisive contraction of the wider country shown here." }
+  ]
+}
