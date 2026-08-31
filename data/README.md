@@ -3,8 +3,8 @@
 | Command | Does |
 | --- | --- |
 | `npm run data:fetch` | Downloads Natural Earth into `data/sources/` (gitignored). Cached; `--force` to redownload. |
-| `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap.geojson`. |
-| `npm run data:polities` | Builds `public/data/polities.topojson`, `polity-labels.json` and `polity-hatches.json` from `data/polities/` and `data/unclaimed/`. |
+| `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap/` vector tiles. |
+| `npm run data:polities` | Builds `public/data/polities/` vector tiles, `polity-labels.json` and `polity-hatches.json` from `data/polities/` and `data/unclaimed/`. |
 | `npm run data:build` | All three, in order. |
 
 ## Coverage
@@ -220,37 +220,18 @@ per polity: give two neighbours their own tolerances and their shared border
 simplifies two ways, leaving a sliver along every frontier. Per-polity
 `minArea` is safe and is supported as a field on a polity file.
 
-## Why the output is TopoJSON
+## Why the output is vector tiles
 
-Every span is dissolved out of the same parts bin, so spans repeat each other's
-outlines wholesale: Canada's Pacific coast is identical across all six of its
-spans, and Britain's across all twenty-two. Written as GeoJSON, each of those
-is a separate copy of the same coordinates.
+The basemap and historical spans are generated as static Mapbox vector tiles
+under `public/data/{basemap,polities}/{z}/{x}/{y}.pbf`. MapLibre loads only the
+tiles in the viewport, so startup no longer fetches a worldwide GeoJSON file or
+converts a whole historical topology on the main thread.
 
-TopoJSON stores each shared outline once as an *arc* and has every span that
-uses it hold a reference. The 120 spans currently reduce to 703 arcs — and the
-76 parts alone already account for 690 of them, so topology extraction is
-rediscovering the parts bin on its own.
-
-That is what stops the file growing as history is added. **A span that
-recombines ground already drawn costs references, not coordinates.** Measured
-on this data, going from 120 spans to 235 over the same parts grows the
-GeoJSON by 202% and the TopoJSON by 1%; the current file is 435 KB against
-2.3 MB, and 158 KB against 728 KB gzipped.
-
-Two things this rests on, both easy to break:
-
-- **The parts must be simplified together, as one topology, before they are
-  dissolved.** That is what makes shared outlines come out bit-identical, and
-  identical coordinates are exactly what arc matching keys on. Simplify per
-  polity and the arcs stop matching and the file triples.
-- **Quantisation is sized from `PRECISION`**, the same grid `simplifyGeometry`
-  already rounds to, so it discards nothing that survived rounding. Coordinates
-  come back out of the file unchanged.
-
-MapLibre cannot read TopoJSON, so `src/lib/polities.ts` fetches and converts it
-before handing it to the source with `setData` — about 20 ms, once, cached
-across the style reloads a light/dark switch causes.
+The underlying parts are still simplified together as one topology before
+spans are assembled. That keeps neighbouring borders identical and prevents
+seams; the final tile step clips and simplifies that shared geometry for each
+zoom level. The pyramid is generated through zoom 6, after which MapLibre
+overscales the highest-detail tiles for the map's constrained close views.
 
 ## Checks
 

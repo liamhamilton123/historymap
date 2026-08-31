@@ -28,8 +28,6 @@ src/
                       and UNCLAIMED, the same for ground with no owner
   lib/hatch.ts        Generates the diagonal stripe patterns for disputed and
                       contested land, in either lean and any colour
-  lib/polities.ts     Fetches polities.topojson and converts it to GeoJSON,
-                      which MapLibre needs and cannot do itself
   lib/time.ts         Instants as decimal years; ISO dates in and out
   lib/years.ts        Timeline scale and BC/AD formatting
   lib/store.ts        Zustand store
@@ -40,15 +38,13 @@ data/polities/        One file per polity — see data/README.md
 data/unclaimed/       One file per named piece of ground nobody held
 data/                 Basemap pipeline — see data/README.md
 public/data/          Generated. Gitignored. Rebuild with `npm run data:build`.
-                      basemap.geojson, polities.topojson, polity-labels.json,
+                      basemap/ and polities/ vector tiles, polity-labels.json,
                       polity-hatches.json
 ```
 
-The polities ship as TopoJSON because spans repeat each other's outlines —
-every span is dissolved from the same parts bin — and topology extraction
-stores each shared outline once. It is 4.5x smaller gzipped than the
-equivalent GeoJSON and, more to the point, barely grows as history is added.
-See "Why the output is TopoJSON" in `data/README.md`.
+Both map datasets ship as static vector tiles. MapLibre requests only the
+tiles covering the current viewport, rather than downloading and parsing a
+worldwide GeoJSON document or converting historical TopoJSON in the browser.
 
 ## Notes
 

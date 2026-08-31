@@ -4,7 +4,7 @@
 //
 // It ships as TopoJSON so that the outlines those features share are stored
 // once rather than once per span — see the write step at the bottom.
-import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, readdir, rm } from 'node:fs/promises';
 import { join, basename } from 'node:path';
 import polygonClipping from 'polygon-clipping';
 import polylabel from 'polylabel';
@@ -13,6 +13,7 @@ import { presimplify, simplify } from 'topojson-simplify';
 import { feature as topoFeature } from 'topojson-client';
 import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
 import { simplifyGeometry } from './lib/geo.mjs';
+import { writeVectorTiles } from './lib/vector-tiles.mjs';
 
 /**
  * Visvalingam weight, in square degrees. Simplification is deliberately global
@@ -557,30 +558,17 @@ const labels = features.flatMap((f) => {
 });
 
 // --- write -----------------------------------------------------------------
-// Shipped as TopoJSON, not GeoJSON. Spans are dissolved out of a shared parts
-// bin, so a span that keeps ground its predecessor held repeats that outline
-// coordinate for coordinate: Canada's Pacific coast is identical across all
-// six of its spans, and the whole of Britain's is identical across twenty-two.
-// Topology extraction stores each such outline once and has every span
-// reference it, which is what stops the file growing as history is added —
-// adding a span that recombines ground already drawn costs references, not
-// coordinates.
-//
-// This works only because the parts were simplified together as one topology
-// above. That makes shared outlines come out bit-identical, and identical
-// coordinates are exactly what arc matching keys on. Simplify per polity
-// instead and the arcs stop matching and the file triples.
+// The shared topology above still keeps neighbouring borders aligned during
+// simplification. At runtime, these features are served as vector tiles, so
+// MapLibre only requests the geographic area currently on screen.
 await mkdir(OUT_DIR, { recursive: true });
-const out = join(OUT_DIR, 'polities.topojson');
-// Quantisation snaps coordinates to a grid before delta-encoding them. Sized
-// from the data's own extent so the grid lands on PRECISION — the same step
-// simplifyGeometry already rounds to, so this discards nothing that survived
-// it. TopoJSON scales each axis independently, so the longer one sets the step.
-const bounds = bboxOf(features.flatMap((f) => polygonsOf(f.geometry)));
-const quantization =
-  Math.ceil(Math.max(bounds[2] - bounds[0], bounds[3] - bounds[1]) / PRECISION) + 1;
-const topojson = topology({ polities: { type: 'FeatureCollection', features } }, quantization);
-await writeFile(out, JSON.stringify(topojson));
+const tileResult = await writeVectorTiles(
+  { type: 'FeatureCollection', features },
+  join(OUT_DIR, 'polities'),
+  'polities',
+);
+// The client no longer consumes the monolithic TopoJSON source.
+await rm(join(OUT_DIR, 'polities.topojson'), { force: true });
 const labelsOut = join(OUT_DIR, 'polity-labels.json');
 await writeFile(labelsOut, JSON.stringify(labels));
 // The stripe images the map has to generate before it can draw shared ground.
@@ -588,19 +576,15 @@ await writeFile(labelsOut, JSON.stringify(labels));
 // list is emitted rather than guessed at in the browser.
 const hatchesOut = join(OUT_DIR, 'polity-hatches.json');
 await writeFile(hatchesOut, JSON.stringify([...hatches.values()]));
-const { size } = await import('node:fs/promises').then((fs) => fs.stat(out));
 
 if (problems.length) {
   console.log(`\n${problems.length} problem(s):`);
   for (const problem of problems) console.log(`  ! ${problem}`);
 }
 const labelSize = (await import('node:fs/promises').then((fs) => fs.stat(labelsOut))).size;
-// Arcs against features is the number worth watching: it says how much of the
-// map is shared outline rather than fresh coastline. It should stay close to
-// the part count as spans are added, and climb only when new ground is drawn.
 console.log(
-  `\npolities.topojson · ${features.length} features · ${topojson.arcs.length} arcs` +
-    ` · ${(size / 1024).toFixed(0)} KB` +
+  `\npolity tiles · ${features.length} features · ${tileResult.tiles} tiles` +
+    ` · ${(tileResult.bytes / 1024).toFixed(0)} KB` +
     ` · ${byPolity.size - unclaimedCount} polities · ${unclaimedCount} unclaimed region(s)` +
     `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB` +
     `\npolity-hatches.json · ${hatches.size} contested stripe pattern(s)`,

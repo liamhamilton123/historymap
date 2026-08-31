@@ -4,7 +4,6 @@ import type {
   LayerSpecification,
   StyleSpecification,
 } from 'maplibre-gl';
-import type { FeatureCollection } from 'geojson';
 import { POLITY_COLOR, type HatchSpec } from './hatch';
 
 type ColorScheme = 'light' | 'dark';
@@ -243,14 +242,8 @@ const fillOpacityByStatus = [
   POLITY_STATUS[DEFAULT_STATUS].fillOpacity,
 ] as unknown as ExpressionSpecification;
 
-/**
- * The source every polity layer draws from. Its data arrives after the style
- * does — see loadPolities — so the id has to be nameable from outside.
- */
+/** The source every polity layer draws from. */
 export const POLITY_SOURCE = 'polities';
-
-/** What the polity source holds until the converted TopoJSON arrives. */
-const EMPTY: FeatureCollection = { type: 'FeatureCollection', features: [] };
 
 /** Physical basemap from Natural Earth, with polity fills on top of the land. */
 export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleSpecification {
@@ -266,18 +259,16 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
     },
     sources: {
       basemap: {
-        type: 'geojson',
-        data: '/data/basemap.geojson',
+        type: 'vector',
+        tiles: ['/data/basemap/{z}/{x}/{y}.pbf'],
+        maxzoom: 6,
         attribution:
           'Physical data © <a href="https://www.naturalearthdata.com/">Natural Earth</a>',
       },
-      // Starts empty and is filled by setData once loadPolities has fetched
-      // and converted the TopoJSON, which MapLibre cannot read itself. The
-      // layers below are declared against it either way; they simply draw
-      // nothing until the data lands, a few milliseconds later.
       [POLITY_SOURCE]: {
-        type: 'geojson',
-        data: EMPTY,
+        type: 'vector',
+        tiles: ['/data/polities/{z}/{x}/{y}.pbf'],
+        maxzoom: 6,
       },
     },
     layers: [
@@ -286,6 +277,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: 'land',
         type: 'fill',
         source: 'basemap',
+        'source-layer': 'basemap',
         filter: ['==', ['get', 'kind'], 'land'],
         paint: { 'fill-color': colors.land },
       },
@@ -293,6 +285,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: 'polity-fill',
         type: 'fill',
         source: POLITY_SOURCE,
+        'source-layer': 'polities',
         filter: polityFilter(t),
         paint: {
           'fill-color': ['get', 'color'],
@@ -306,6 +299,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
           id: `polity-hatch-${status}`,
           type: 'fill',
           source: POLITY_SOURCE,
+          'source-layer': 'polities',
           filter: polityFilter(t, status),
           paint: { 'fill-pattern': imageId },
         }),
@@ -318,6 +312,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
           id: `polity-hatch-${status}`,
           type: 'fill',
           source: POLITY_SOURCE,
+          'source-layer': 'polities',
           filter: polityFilter(t, status),
           paint: { 'fill-pattern': ['get', 'hatch'] },
         }),
@@ -327,6 +322,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
           id: `polity-line-${status}`,
           type: 'line',
           source: POLITY_SOURCE,
+          'source-layer': 'polities',
           filter: polityFilter(t, status),
           paint: {
             'line-color': ['get', 'color'],
@@ -350,6 +346,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: UNCLAIMED_FILL,
         type: 'fill',
         source: POLITY_SOURCE,
+        'source-layer': 'polities',
         filter: unclaimedFilter(t),
         paint: { 'fill-color': colors.unclaimed, 'fill-opacity': UNCLAIMED.fillOpacity },
       },
@@ -357,6 +354,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: UNCLAIMED_LINE,
         type: 'line',
         source: POLITY_SOURCE,
+        'source-layer': 'polities',
         filter: unclaimedFilter(t),
         paint: {
           'line-color': colors.unclaimed,
@@ -380,6 +378,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: SELECTED_LAYER,
         type: 'line',
         source: POLITY_SOURCE,
+        'source-layer': 'polities',
         filter: selectionFilter(t, null),
         paint: {
           'line-color': colors.select,
@@ -391,6 +390,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: 'lakes',
         type: 'fill',
         source: 'basemap',
+        'source-layer': 'basemap',
         filter: ['==', ['get', 'kind'], 'lake'],
         paint: { 'fill-color': colors.water },
       },
@@ -398,6 +398,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: 'rivers',
         type: 'line',
         source: 'basemap',
+        'source-layer': 'basemap',
         filter: ['==', ['get', 'kind'], 'river'],
         minzoom: 2.5,
         paint: {
@@ -409,6 +410,7 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         id: 'coastline',
         type: 'line',
         source: 'basemap',
+        'source-layer': 'basemap',
         filter: ['==', ['get', 'kind'], 'land'],
         paint: {
           'line-color': colors.landStroke,

@@ -10,3 +10,4 @@ public/data/*.geojson
 public/data/*.topojson
 public/data/*.json
 public/data/*.pmtiles
+public/data/**/*.pbf
