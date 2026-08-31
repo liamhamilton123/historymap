@@ -1,0 +1,9 @@
+{
+  "name": "Chorrera",
+  "color": "#a08469",
+  "features": [
+    { "from": "-1300", "to": "-300",
+      "geometry": {"type":"Polygon","coordinates":[[[-81,0.5],[-77.8,0.8],[-77.5,-4.3],[-79.7,-4.7],[-80.8,-2.8],[-81,0.5]]]},
+      "source": "An archaeological tradition of the Ecuadorian coast and adjacent lowlands during the Formative period. The name denotes a ceramic and settlement tradition, not a unified people, state or fixed territorial boundary." }
+  ]
+}

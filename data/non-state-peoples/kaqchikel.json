@@ -1,4 +1,4 @@
 {
   "name": "Kaqchikel",
   "color": "#7e8d65",
-  "features": [{ "from": "1400", "to": "1524", "geometry": {"type":"Polygon","coordinates":[[[-92.3,15.4],[-89.7,15.5],[-89.5,14],[-90.8,13.8],[-92.1,14.3],[-92.3,15.4]]]}, "source": "The Kaqchikel Maya homeland around the central Guatemalan highlands. Kaqchikel communities were not a single modern-style state. The span ends in 1524, when the alliance with the Spanish that helped defeat the Quiché gave way to direct colonial rule." }] }
+  "features": [{ "from": "1400", "to": null, "geometry": {"type":"Polygon","coordinates":[[[-92.3,15.4],[-89.7,15.5],[-89.5,14],[-90.8,13.8],[-92.1,14.3],[-92.3,15.4]]]}, "source": "The Kaqchikel Maya homeland around the central Guatemalan highlands. Kaqchikel communities were not a single modern-style state; the 1524 alliance and subsequent colonial rule did not end Kaqchikel continuity." }] }

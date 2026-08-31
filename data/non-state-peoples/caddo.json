@@ -2,7 +2,7 @@
   "name": "Caddo",
   "color": "#9c7f4a",
   "features": [
-    { "from": "1500", "to": "1835-07-01",
+    { "from": "-500", "to": "1835-07-01",
       "geometry": {"type":"Polygon","coordinates":[[[-97,34.2],[-96.3,32],[-94.3,31],[-92.6,31.6],[-92.5,33.4],[-94.5,34.3],[-97,34.2]]]},
       "source": "The Hasinai, Kadohadacho and Natchitoches confederacies of the Red River and its tributaries — the people the French posts at Natchitoches and the Spanish presidio at Los Adaes were both built to trade with. Drawn to the treaty of 1835." }
   ]

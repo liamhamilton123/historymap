@@ -1,4 +1,4 @@
 {
   "name": "Mixtec",
   "color": "#af7e5e",
-  "features": [{ "from": "1400", "to": "1521-08-13", "geometry": {"type":"Polygon","coordinates":[[[-100,18.5],[-96.2,18.7],[-96.1,16.5],[-97.5,16.2],[-99.6,17],[-100,18.5]]]}, "source": "An approximate extent for Mixtec lordships and communities across the Mixteca of Oaxaca, Puebla and Guerrero. The many communities were not a unified polity. The span ends with the collapse of the Aztec imperial order in 1521 and the beginning of Spanish colonial rule." }] }
+  "features": [{ "from": "-500", "to": null, "geometry": {"type":"Polygon","coordinates":[[[-100,18.5],[-96.2,18.7],[-96.1,16.5],[-97.5,16.2],[-99.6,17],[-100,18.5]]]}, "source": "An approximate extent for Mixtec lordships and communities across the Mixteca of Oaxaca, Puebla and Guerrero. The -500 start is a regional-continuity estimate, not a claim of an unchanged political boundary; colonial rule did not end Mixtec continuity." }] }

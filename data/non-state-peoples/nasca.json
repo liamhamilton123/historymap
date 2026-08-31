@@ -1,0 +1,9 @@
+{
+  "name": "Nasca",
+  "color": "#a67658",
+  "features": [
+    { "from": "-200", "to": "800",
+      "geometry": {"type":"Polygon","coordinates":[[[-76.8,-13.5],[-74.2,-13.2],[-74,-16.5],[-75.5,-17],[-76.6,-15.5],[-76.8,-13.5]]]},
+      "source": "An archaeological tradition of the south coast of Peru. Nasca is mapped from its late pre-CE emergence through the period in which its geoglyphs, ritual landscapes and distinctive material culture flourished; it is not a single political boundary." }
+  ]
+}

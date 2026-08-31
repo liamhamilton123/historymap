@@ -1,0 +1,9 @@
+{
+  "name": "Southwest Archaic traditions",
+  "color": "#907b83",
+  "features": [
+    { "from": "-7000", "to": "500",
+      "geometry": {"type":"Polygon","coordinates":[[[-115,38],[-103,38.5],[-102.5,30],[-107,29],[-113.5,31.5],[-115,38]]]},
+      "source": "An approximate umbrella for archaeological traditions including Cochise, Oshara and San Dieguito–Pinto across the Southwest and northern Mexico. The label describes material traditions, not a single people or political unit. It ends as regional agricultural and village traditions become the more useful archaeological frame." }
+  ]
+}

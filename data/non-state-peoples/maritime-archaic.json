@@ -1,0 +1,9 @@
+{
+  "name": "Maritime Archaic peoples",
+  "color": "#7f94a0",
+  "features": [
+    { "from": "-5500", "to": "-1500",
+      "geometry": {"type":"Polygon","coordinates":[[[-69,53.5],[-55,54.5],[-53,49],[-57,45],[-65,44.5],[-68,47],[-69,53.5]]]},
+      "source": "An archaeological tradition of maritime hunter-gatherers in Atlantic Canada, Labrador and adjoining Maine, dated about 7500–3500 years before present. This is not a living people's earlier name or a claim of direct descent; it maps a recognisable archaeological tradition whose coastal extent is necessarily approximate." }
+  ]
+}

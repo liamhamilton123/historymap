@@ -1,4 +1,4 @@
 {
   "name": "Purépecha (Tarascan)",
   "color": "#a66859",
-  "features": [{ "from": "1400", "to": "1530", "geometry": {"type":"Polygon","coordinates":[[[-103.2,20.8],[-100.3,20.9],[-100.1,18.8],[-101.6,18.2],[-102.9,19],[-103.2,20.8]]]}, "source": "The Purépecha people of the Lake Pátzcuaro basin and western highlands, commonly called Tarascan in older English histories. Their state is not separately reconstructed here; this is an associated homeland. The span ends in 1530, when Spanish forces completed the conquest of the Tarascan state." }] }
+  "features": [{ "from": "1400", "to": null, "geometry": {"type":"Polygon","coordinates":[[[-103.2,20.8],[-100.3,20.9],[-100.1,18.8],[-101.6,18.2],[-102.9,19],[-103.2,20.8]]]}, "source": "The Purépecha people of the Lake Pátzcuaro basin and western highlands, commonly called Tarascan in older English histories. Their state is not separately reconstructed here; Spanish conquest in 1530 changed political control, not Purépecha continuity." }] }

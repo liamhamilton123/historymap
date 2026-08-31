@@ -1,0 +1,9 @@
+{
+  "name": "Paleo-Inuit",
+  "color": "#7393a2",
+  "features": [
+    { "from": "-2500", "to": "-800",
+      "geometry": {"type":"Polygon","coordinates":[[[-122,73],[-104,76],[-82,76],[-62,70],[-67,63],[-89,65],[-111,68],[-122,73]]]},
+      "source": "The early Arctic archaeological traditions often called Paleo-Inuit or Pre-Dorset. This is not an earlier label for Inuit: these populations were distinct from the later Thule Inuit expansion. The approximate span and extent follow the archaeological record across the Canadian Arctic." }
+  ]
+}

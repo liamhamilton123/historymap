@@ -1,4 +1,4 @@
 {
   "name": "Otomi",
   "color": "#a57367",
-  "features": [{ "from": "1400", "to": "1521-08-13", "geometry": {"type":"Polygon","coordinates":[[[-101,21.5],[-98.3,21.6],[-98.1,19.2],[-99.6,18.8],[-100.8,19.5],[-101,21.5]]]}, "source": "An approximate extent for Otomi communities of the central Mexican highlands, including the Mezquital and northern Valley of Mexico. Otomi towns belonged to different political systems rather than one nation-state. The span ends with the fall of Tenochtitlan in 1521 and the onset of Spanish rule." }] }
+  "features": [{ "from": "-500", "to": null, "geometry": {"type":"Polygon","coordinates":[[[-101,21.5],[-98.3,21.6],[-98.1,19.2],[-99.6,18.8],[-100.8,19.5],[-101,21.5]]]}, "source": "An approximate extent for Otomi communities of the central Mexican highlands, including the Mezquital and northern Valley of Mexico. The -500 start is a regional-continuity estimate, not a claim of an unchanged political boundary; Spanish rule did not end Otomi continuity." }] }

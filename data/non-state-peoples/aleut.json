@@ -2,8 +2,8 @@
   "name": "Aleut",
   "color": "#6c89a0",
   "features": [
-    { "from": "1400", "to": "1867-10-18",
+    { "from": "-7000", "to": null,
       "geometry": {"type":"Polygon","coordinates":[[[-166,55],[-162,54],[-158,54],[-154,55],[-151,57],[-153,59],[-160,58],[-166,56],[-166,55]]]},
-      "source": "The Aleut people of the Aleutian Islands and Alaska Peninsula, whose self-name is Unangax̂. Their island communities were autonomous; the Russian fur trade profoundly disrupted them after 1741. The span ends with the Alaska Purchase in October 1867, which changes the state-claim layer rather than ending Aleut life or identity." }
+      "source": "The Aleut people of the Aleutian Islands and Alaska Peninsula, whose self-name is Unangax̂. The -7000 start is a regional-continuity estimate: the Aleutian archaeological record documents ancestors of the Unangax̂ by about 9000 years ago, not a fixed early political boundary. Their island communities were autonomous; the Russian fur trade profoundly disrupted them after 1741 without ending Aleut life or identity." }
   ]
 }

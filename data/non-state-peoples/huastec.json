@@ -1,4 +1,4 @@
 {
   "name": "Huastec",
   "color": "#a97b65",
-  "features": [{ "from": "1400", "to": "1521-08-13", "geometry": {"type":"Polygon","coordinates":[[[-100.5,23.5],[-97,23.5],[-96.4,21.1],[-97.8,20.8],[-99.8,21.4],[-100.5,23.5]]]}, "source": "The Huastec peoples of the Huasteca in the northern Gulf lowlands and adjacent highlands. Their communities were locally governed and did not form one polity. The span ends with the 1521 Spanish conquest of central Mexico, after which colonial claims spread into the region." }] }
+  "features": [{ "from": "-500", "to": null, "geometry": {"type":"Polygon","coordinates":[[[-100.5,23.5],[-97,23.5],[-96.4,21.1],[-97.8,20.8],[-99.8,21.4],[-100.5,23.5]]]}, "source": "The Huastec peoples of the Huasteca in the northern Gulf lowlands and adjacent highlands. The -500 start is a regional-continuity estimate, not a claim of an unchanged political boundary; Spanish conquest changed political control, not Huastec continuity." }] }

@@ -2,7 +2,7 @@
   "name": "Haida",
   "color": "#5c8390",
   "features": [
-    { "from": "1400", "to": "1871-07-20",
+    { "from": "-500", "to": "1871-07-20",
       "geometry": {"type":"Polygon","coordinates":[[[-133.8,54],[-130.5,54.2],[-130.2,52.3],[-131.5,51.6],[-133.5,52.2],[-133.8,54]]]},
       "source": "The Haida homeland centred on Haida Gwaii and its adjacent coast. Haida villages and clans did not constitute a state. The span ends when British Columbia entered Canada in 1871, a change in the map's claim layer rather than an end to Haida title, presence or governance." }
   ]

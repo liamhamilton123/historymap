@@ -34,10 +34,14 @@ const MONTHS = [
 
 /** `YYYY[-MM[-DD]]` as prose, at whatever precision the data gives. */
 function formatDate(iso: string): string {
-  const [year, month, day] = iso.split('-');
-  if (!month) return year!;
+  const match = /^(-?\d+)(?:-(\d{2}))?(?:-(\d{2}))?$/.exec(iso);
+  if (!match) return iso;
+  const [, rawYear, month, day] = match;
+  const year = Number(rawYear);
+  const label = year < 0 ? `${-year} BCE` : rawYear!;
+  if (!month) return label;
   const name = MONTHS[Number(month) - 1] ?? month;
-  return day ? `${Number(day)} ${name} ${year}` : `${name} ${year}`;
+  return day ? `${Number(day)} ${name} ${label}` : `${name} ${label}`;
 }
 
 /** Whole years between two instants, floored — "lasted 68 years". */

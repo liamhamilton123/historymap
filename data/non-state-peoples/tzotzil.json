@@ -1,4 +1,4 @@
 {
   "name": "Tzotzil",
   "color": "#91885f",
-  "features": [{ "from": "1400", "to": "1540", "geometry": {"type":"Polygon","coordinates":[[[-93.6,18],[-91.5,18],[-91.4,16.4],[-92.4,16],[-93.4,16.6],[-93.6,18]]]}, "source": "The Tzotzil Maya communities of the Chiapas highlands. Their towns were autonomous and were not one state. The span ends in 1540, as Spanish conquest and settlement consolidated in Chiapas." }] }
+  "features": [{ "from": "1400", "to": null, "geometry": {"type":"Polygon","coordinates":[[[-93.6,18],[-91.5,18],[-91.4,16.4],[-92.4,16],[-93.4,16.6],[-93.6,18]]]}, "source": "The Tzotzil Maya communities of the Chiapas highlands. Their towns were autonomous and were not one state; Spanish conquest and settlement did not end Tzotzil continuity." }] }

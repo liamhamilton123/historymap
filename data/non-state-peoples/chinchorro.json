@@ -1,0 +1,9 @@
+{
+  "name": "Chinchorro",
+  "color": "#8d8a76",
+  "features": [
+    { "from": "-5000", "to": "-500",
+      "geometry": {"type":"Polygon","coordinates":[[[-74, -16],[-68.5,-16],[-68.3,-20.5],[-70.5,-21],[-73.5,-19.5],[-74,-16]]]},
+      "source": "An archaeological tradition of coastal hunter-gatherer communities in the Atacama Desert of northern Chile and southern Peru, noted for its early mortuary practices. This is a cultural-archaeological extent, not a modern people's earlier name or a fixed political boundary." }
+  ]
+}

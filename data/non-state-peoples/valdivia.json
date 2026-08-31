@@ -1,0 +1,9 @@
+{
+  "name": "Valdivia",
+  "color": "#9e886d",
+  "features": [
+    { "from": "-3500", "to": "-1500",
+      "geometry": {"type":"Polygon","coordinates":[[[-81.3,1],[-78.8,1],[-78.5,-3.2],[-80,-3.8],[-81.2,-2.2],[-81.3,1]]]},
+      "source": "An archaeological tradition of early settled coastal communities in what is now Ecuador, especially associated with distinctive ceramics. This approximate extent names a material-cultural tradition, not a political unit or an asserted direct identity for later peoples." }
+  ]
+}

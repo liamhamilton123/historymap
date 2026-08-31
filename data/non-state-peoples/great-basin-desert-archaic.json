@@ -1,0 +1,9 @@
+{
+  "name": "Great Basin Desert Archaic",
+  "color": "#887e94",
+  "features": [
+    { "from": "-7000", "to": "500",
+      "geometry": {"type":"Polygon","coordinates":[[[-121,43],[-109,43.5],[-108,37],[-111,34.5],[-117,35],[-120.5,38.5],[-121,43]]]},
+      "source": "An archaeological tradition of mobile hunter-gatherer communities in the Great Basin, dated broadly from about 9000 to 1500 years before present. It is deliberately not labeled Shoshone, Paiute or another later people: the archaeological record does not justify projecting those identities unchanged into this span." }
+  ]
+}

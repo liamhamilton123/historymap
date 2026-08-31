@@ -14,8 +14,8 @@ them is simply absent, not empty:
 
 | | |
 | --- | --- |
-| **North America** | 1400 to now. The mainland, Central America, the Caribbean and Greenland: Indigenous polities, the colonial empires as they grew, and the states that followed them. |
-| **South America** | 1400 to now. The Andean empires, then the colonial viceroyalties and Guianas, then the modern republics. |
+| **North America** | 7000 BCE to now. The mainland, Central America, the Caribbean and Greenland: Indigenous peoples and polities, the colonial empires as they grew, and the states that followed them. |
+| **South America** | 5000 BCE to now. The Andean empires, then the colonial viceroyalties and Guianas, then the modern republics. |
 | **Post-Soviet Eurasia** | 1922 to now. The USSR and its successor states. |
 
 Ground no polity is drawn on is blank rather than filled with a

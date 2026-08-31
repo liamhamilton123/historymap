@@ -1,0 +1,9 @@
+{
+  "name": "Paracas",
+  "color": "#aa8061",
+  "features": [
+    { "from": "-800", "to": "200",
+      "geometry": {"type":"Polygon","coordinates":[[[-77.6,-12.5],[-74.5,-12.2],[-74.2,-15.5],[-76,-16.2],[-77.4,-14.8],[-77.6,-12.5]]]},
+      "source": "An archaeological tradition of the south coast of Peru, particularly associated with Paracas textiles, funerary practices and early geoglyph traditions. It is a cultural designation, not a claim of a unified ancient polity." }
+  ]
+}

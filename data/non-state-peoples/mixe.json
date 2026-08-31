@@ -1,4 +1,4 @@
 {
   "name": "Mixe",
   "color": "#a87a64",
-  "features": [{ "from": "1400", "to": "1521-08-13", "geometry": {"type":"Polygon","coordinates":[[[-96.8,18],[-94.8,18.1],[-94.7,16.6],[-95.7,16.3],[-96.7,16.9],[-96.8,18]]]}, "source": "The Mixe peoples of Oaxaca's eastern highlands. Their communities governed themselves and successfully resisted many outside powers; this is not a state boundary. The span ends in 1521 as the map's colonial-era claim layer begins to supersede the pre-conquest political setting." }] }
+  "features": [{ "from": "-500", "to": null, "geometry": {"type":"Polygon","coordinates":[[[-96.8,18],[-94.8,18.1],[-94.7,16.6],[-95.7,16.3],[-96.7,16.9],[-96.8,18]]]}, "source": "The Mixe peoples of Oaxaca's eastern highlands. The -500 start is a regional-continuity estimate, not a claim of an unchanged political boundary; colonial claims changed political control, not Mixe continuity." }] }

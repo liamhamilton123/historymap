@@ -1,0 +1,9 @@
+{
+  "name": "Olmec",
+  "color": "#9c7055",
+  "features": [
+    { "from": "-1300", "to": "-400",
+      "geometry": {"type":"Polygon","coordinates":[[[-96.5,19],[-92.5,19.2],[-92.3,17],[-94.3,16.8],[-96.2,17.5],[-96.5,19]]]},
+      "source": "An approximate extent for the Middle Formative Olmec civilisation of the southern Gulf coast, centred on San Lorenzo, La Venta and Tres Zapotes. Olmec material culture crossed language and political boundaries, so this is an archaeological-cultural extent rather than a single nation-state." }
+  ]
+}

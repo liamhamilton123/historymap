@@ -1,0 +1,9 @@
+{
+  "name": "Dorset",
+  "color": "#77919d",
+  "features": [
+    { "from": "-800", "to": "1200",
+      "geometry": {"type":"Polygon","coordinates":[[[-112,74],[-94,77],[-72,75],[-51,67],[-57,61],[-79,64],[-101,68],[-112,74]]]},
+      "source": "The Dorset archaeological tradition of the eastern Canadian Arctic and Greenland. It is represented separately from Inuit because Dorset populations predated and were not simply an earlier phase of Thule Inuit. The span ends when Dorset material traditions disappear from the archaeological record." }
+  ]
+}

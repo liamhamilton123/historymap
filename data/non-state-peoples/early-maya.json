@@ -1,0 +1,9 @@
+{
+  "name": "Early Maya",
+  "color": "#688969",
+  "features": [
+    { "from": "-1000", "to": "1400",
+      "geometry": {"type":"Polygon","coordinates":[[[-92.8,20.8],[-86.5,21.2],[-86,16],[-88.5,14.5],[-91.8,15.5],[-92.8,20.8]]]},
+      "source": "An archaeological-cultural extent for early Maya societies of the lowlands and adjacent highlands, before the map's more specific Later Mayan City-States entry begins. It is not an assertion that all Maya peoples formed a single polity. The span ends at 1400 to hand the same broad area to the map's existing late-period Maya political representation." }
+  ]
+}
