@@ -102,7 +102,7 @@ function registerHatches(instance: MapLibreMap) {
     })
     .catch((error) => {
       // A torn-down map throws from hasImage; that is not worth reporting.
-      console.error('[atlas] contested stripe patterns failed', error);
+      console.error('[policarta] contested stripe patterns failed', error);
     });
 }
 
@@ -216,7 +216,7 @@ export default function HistoryMap() {
         attributionControl: false,
       });
     } catch (error) {
-      console.error('[atlas] map failed to initialise', error);
+      console.error('[policarta] map failed to initialise', error);
       setFailed('init');
       return;
     }
@@ -283,7 +283,7 @@ export default function HistoryMap() {
         labels.current = attached;
         attached.update(useMapStore.getState().t);
       })
-      .catch((error) => console.error('[atlas] polity labels failed to load', error));
+      .catch((error) => console.error('[policarta] polity labels failed to load', error));
 
     // The island can mount before Vite has applied the global Tailwind sheet.
     // MapLibre snapshots its canvas size during construction, so observe the
@@ -301,26 +301,26 @@ export default function HistoryMap() {
 
     // Surface style/source failures. Without this MapLibre swallows them into
     // an unhandled 'error' event and the map just stays empty.
-    instance.on('error', (event) => console.error('[atlas] map error:', event.error ?? event));
+    instance.on('error', (event) => console.error('[policarta] map error:', event.error ?? event));
     if (import.meta.env.DEV) {
       (window as unknown as Record<string, unknown>).__map = instance;
-      console.info('[atlas] map initialising', {
+      console.info('[policarta] map initialising', {
         view,
         canvasSize: { width: container.current.clientWidth, height: container.current.clientHeight },
         webgl2: hasWebGL2(),
       });
       instance.on('style.load', () => {
-        console.info('[atlas] style loaded', {
+        console.info('[policarta] style loaded', {
           layers: instance.getStyle().layers?.map((layer) => layer.id),
           source: instance.getSource('basemap') ? 'registered' : 'missing',
         });
       });
       instance.on('sourcedataloading', (event) => {
-        if (event.sourceId === 'basemap') console.info('[atlas] basemap source loading');
+        if (event.sourceId === 'basemap') console.info('[policarta] basemap source loading');
       });
       instance.on('sourcedata', (event) => {
         if (event.sourceId === 'basemap') {
-          console.info('[atlas] basemap source data event', {
+          console.info('[policarta] basemap source data event', {
             sourceLoaded: event.isSourceLoaded,
             dataType: event.dataType,
           });
@@ -328,7 +328,7 @@ export default function HistoryMap() {
       });
       instance.on('idle', () => {
         const features = instance.querySourceFeatures('basemap');
-        console.info('[atlas] map idle', {
+        console.info('[policarta] map idle', {
           zoom: instance.getZoom(),
           center: instance.getCenter().toArray(),
           basemapFeaturesInLoadedTiles: features.length,
@@ -368,7 +368,7 @@ export default function HistoryMap() {
     instance.on('moveend', syncUrl);
     instance.on('moveend', updateMaxZoom);
     instance.on('zoomend', updateMaxZoom);
-    window.addEventListener('atlas:history-start', beginMapHistory);
+    window.addEventListener('policarta:history-start', beginMapHistory);
     window.addEventListener('popstate', restoreFromHistory);
 
     return () => {
@@ -386,7 +386,7 @@ export default function HistoryMap() {
       instance.off('moveend', syncUrl);
       instance.off('moveend', updateMaxZoom);
       instance.off('zoomend', updateMaxZoom);
-      window.removeEventListener('atlas:history-start', beginMapHistory);
+      window.removeEventListener('policarta:history-start', beginMapHistory);
       window.removeEventListener('popstate', restoreFromHistory);
       instance.remove();
       map.current = null;

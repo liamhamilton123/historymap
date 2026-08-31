@@ -1,4 +1,4 @@
-# Atlas
+# Policarta
 
 An interactive map, built as an Astro site with a single MapLibre island.
 

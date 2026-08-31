@@ -43,7 +43,7 @@ export default function Timeline() {
   const era = HISTORICAL_THEME_TITLE[historicalThemeForYear(t)];
 
   const fraction = tToFraction(t);
-  const beginHistory = () => window.dispatchEvent(new Event('atlas:history-start'));
+  const beginHistory = () => window.dispatchEvent(new Event('policarta:history-start'));
   const step = (direction: 1 | -1, amount = 1) => {
     beginHistory();
     setT(clampT(Math.floor(t) + direction * amount));
