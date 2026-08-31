@@ -243,8 +243,24 @@ export default function HistoryMap() {
     const handleClick = (event: MapMouseEvent) => {
       const layers = PICK_LAYERS.filter((id) => instance.getLayer(id));
       if (!layers.length) return;
-      const hits = instance.queryRenderedFeatures(event.point, { layers });
-      const [feature] = hits;
+      // A click on or near a label belongs to the named entity, even when
+      // another polity's fill is drawn over that ground. The label's anchor
+      // is the pole of inaccessibility — inside the entity's own shape by
+      // construction — so the feature is looked up there, not at the click.
+      const labelHit = labels.current?.pick(event.point);
+      let hits = instance.queryRenderedFeatures(
+        labelHit ? instance.project(labelHit.anchor) : event.point,
+        { layers },
+      );
+      let feature = labelHit
+        ? hits.find((hit) => hit.properties.polity === labelHit.polity)
+        : hits[0];
+      if (labelHit && !feature) {
+        // The named entity yielded nothing (it should not happen); treat the
+        // click as an ordinary one on the ground it landed on.
+        hits = instance.queryRenderedFeatures(event.point, { layers });
+        feature = hits[0];
+      }
       if (!feature) return setSelection(null);
       const properties = feature.properties as PolitySelection;
       // Contested ground carries a feature per claimant, all of them under the

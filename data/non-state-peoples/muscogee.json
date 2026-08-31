@@ -2,8 +2,11 @@
   "name": "Muscogee (Creek)",
   "color": "#a3555f",
   "features": [
-    { "from": "1600", "to": "1836-05-01",
+    { "from": "1600", "to": "1700",
       "geometry": {"type":"Polygon","coordinates":[[[-88.6,33.9],[-88.4,32.4],[-87.2,31],[-84.8,30.9],[-83.3,31.6],[-83.2,33.2],[-84.6,34.4],[-86.5,34.6],[-88.6,33.9]]]},
-      "source": "The Upper and Lower Creek towns and the country between them, from before the confederacy was acting as one to the removal that followed the Creek War of 1836. It runs past the polity's 1783 end and reaches south over the Florida boundary the political shape stops at." }
+      "source": "The Upper and Lower Creek towns and the country between them, before the confederacy was acting as one — from 1700 the polity layer holds the name. It reaches south over the Florida boundary the political shape stops at." },
+    { "from": "1783-09-03", "to": "1836-05-01",
+      "geometry": {"type":"Polygon","coordinates":[[[-88.6,33.9],[-88.4,32.4],[-87.2,31],[-84.8,30.9],[-83.3,31.6],[-83.2,33.2],[-84.6,34.4],[-86.5,34.6],[-88.6,33.9]]]},
+      "source": "The same country from the Treaty of Paris, where the confederacy span ends, to the removal that followed the Creek War of 1836. The gap between the two features is the confederacy's years as a polity — one ground, one name at a time." }
   ]
 }

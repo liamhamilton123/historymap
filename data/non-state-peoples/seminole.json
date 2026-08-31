@@ -3,7 +3,7 @@
   "color": "#6f9166",
   "features": [
     { "from": "1750", "to": "1858",
-      "geometry": {"type":"Polygon","coordinates":[[[-85,30.8],[-82.4,30.9],[-80.7,30.2],[-80.2,28.8],[-80.3,27],[-80.7,25.2],[-81.4,24.5],[-82.6,24.6],[-83.4,25.5],[-83.9,26.8],[-84.4,28.2],[-85,29.8],[-85,30.8]]]},
-      "source": "Seminole country in the Florida peninsula, formed as Creek migrants and others moved south in the eighteenth century. The span ends with the Third Seminole War in 1858, after which the United States forced most Seminoles west; people who remained found refuge in the Everglades. The bands did not constitute a state, even while Spain and then the United States claimed Florida." }
+      "geometry": {"type":"Polygon","coordinates":[[[-84.9,30.5],[-83.5,30.3],[-82.3,30.4],[-81.6,30],[-81.2,28.8],[-80.9,27.5],[-80.9,26.3],[-81.3,25.6],[-81.9,25.9],[-82.3,27],[-82.7,28.3],[-83.5,29.5],[-84.9,30.5]]]},
+      "source": "Seminole country as the interior of the peninsula rather than its coastline: the Apalachee and Alachua prairies where Creek migrants and others settled from the mid-eighteenth century, running down the central ridge to Big Cypress and the Everglades margin that later became the refuge. Deliberately drawn inside the colonial Florida shape, which follows the coast — the people and the claim are not the same boundary. The span ends with the Third Seminole War in 1858, after which the United States forced most Seminoles west; people who remained found refuge in the Everglades. The bands did not constitute a state, even while Spain and then the United States claimed Florida." }
   ]
 }
