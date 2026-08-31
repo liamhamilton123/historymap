@@ -8,7 +8,7 @@ import { POLITY_COLOR, type HatchSpec } from './hatch';
 
 type ColorScheme = 'light' | 'dark';
 
-const COLORS: Record<ColorScheme, {
+type Palette = {
   ocean: string;
   land: string;
   landStroke: string;
@@ -18,7 +18,10 @@ const COLORS: Record<ColorScheme, {
   horizon: string;
   select: string;
   unclaimed: string;
-}> = {
+};
+
+/** The original palette, retained exactly when historical themes are disabled. */
+const DEFAULT_COLORS: Record<ColorScheme, Palette> = {
   dark: {
     ocean: '#0b1a26', land: '#222c38', landStroke: 'rgba(150, 175, 200, 0.22)',
     water: '#0d2231', river: 'rgba(120, 170, 210, 0.35)', sky: '#0a1620', horizon: '#16303f',
@@ -30,6 +33,50 @@ const COLORS: Record<ColorScheme, {
     water: '#c8dfe8', river: 'rgba(67, 126, 157, 0.52)', sky: '#c8e0ea', horizon: '#e8f0ed',
     select: '#8a6124',
     unclaimed: '#69767d',
+  },
+};
+
+export type HistoricalTheme =
+  | 'age-of-exploration'
+  | 'industrial-era'
+  | 'world-wars'
+  | 'cold-war'
+  | 'internet-age';
+
+/** Choose the visual era independently of the historical data on the map. */
+export function historicalThemeForYear(t: number): HistoricalTheme {
+  if (t >= 1990) return 'internet-age';
+  if (t >= 1945) return 'cold-war';
+  if (t >= 1910) return 'world-wars';
+  if (t >= 1800) return 'industrial-era';
+  return 'age-of-exploration';
+}
+
+/**
+ * A first-pass set of era palettes. Keeping these as plain MapLibre colours
+ * makes later additions such as paper textures or animated water independent
+ * of the timeline and easy to add per era.
+ */
+const HISTORICAL_COLORS: Record<HistoricalTheme, Record<ColorScheme, Palette>> = {
+  'age-of-exploration': {
+    dark: { ...DEFAULT_COLORS.dark, ocean: '#132b35', land: '#40392c', water: '#1b3b45', river: 'rgba(161, 189, 173, 0.38)', sky: '#172a2d', horizon: '#405149' },
+    light: { ...DEFAULT_COLORS.light, ocean: '#b9d3d2', land: '#ded1ab', water: '#a9ced0', river: 'rgba(73, 130, 132, 0.54)', sky: '#d8e2cf', horizon: '#f0e5c9' },
+  },
+  'industrial-era': {
+    dark: { ...DEFAULT_COLORS.dark, ocean: '#182a36', land: '#343735', water: '#203b48', river: 'rgba(142, 174, 190, 0.38)', sky: '#202d35', horizon: '#46525a' },
+    light: { ...DEFAULT_COLORS.light, ocean: '#c4d5d8', land: '#cec9b9', water: '#b6d2d8', river: 'rgba(77, 125, 145, 0.5)', sky: '#d7e0dc', horizon: '#e3e0d3' },
+  },
+  'world-wars': {
+    dark: { ...DEFAULT_COLORS.dark, ocean: '#252522', land: '#4a473e', landStroke: 'rgba(220, 209, 176, 0.3)', water: '#373a36', river: 'rgba(190, 189, 166, 0.38)', sky: '#292825', horizon: '#58564c', select: '#e0d0a4' },
+    light: { ...DEFAULT_COLORS.light, ocean: '#d4d0c1', land: '#e4dcc8', landStroke: 'rgba(66, 60, 48, 0.52)', water: '#c8cfbf', river: 'rgba(73, 86, 78, 0.52)', sky: '#ded9ca', horizon: '#eee6d2', select: '#564131' },
+  },
+  'cold-war': {
+    dark: { ...DEFAULT_COLORS.dark, ocean: '#1a272d', land: '#3d433b', landStroke: 'rgba(190, 177, 139, 0.3)', water: '#293c42', river: 'rgba(153, 181, 180, 0.42)', sky: '#20292d', horizon: '#4a5553', select: '#e0b56c' },
+    light: { ...DEFAULT_COLORS.light, ocean: '#d0dad4', land: '#d6cfbd', landStroke: 'rgba(102, 105, 87, 0.4)', water: '#c2d7d7', river: 'rgba(82, 124, 125, 0.52)', sky: '#d9ddd5', horizon: '#e7dfcc', select: '#986e2b' },
+  },
+  'internet-age': {
+    dark: { ...DEFAULT_COLORS.dark, ocean: '#062b4a', land: '#21434d', landStroke: 'rgba(106, 230, 247, 0.48)', water: '#075276', river: 'rgba(83, 222, 245, 0.66)', sky: '#061d36', horizon: '#0b6b93', select: '#67edff' },
+    light: { ...DEFAULT_COLORS.light, ocean: '#b7eaf5', land: '#d0e4da', landStroke: 'rgba(12, 135, 167, 0.5)', water: '#91e0f1', river: 'rgba(0, 156, 197, 0.66)', sky: '#c2eff7', horizon: '#e3fbf2', select: '#007ba9' },
   },
 };
 
@@ -246,8 +293,30 @@ const fillOpacityByStatus = [
 export const POLITY_SOURCE = 'polities';
 
 /** Physical basemap from Natural Earth, with polity fills on top of the land. */
-export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleSpecification {
-  const colors = COLORS[colorScheme];
+export function buildStyle(
+  t: number,
+  colorScheme: ColorScheme = 'dark',
+  historicalThemes = true,
+): StyleSpecification {
+  const historicalTheme = historicalThemes ? historicalThemeForYear(t) : null;
+  const colors = historicalTheme
+    ? HISTORICAL_COLORS[historicalTheme][colorScheme]
+    : DEFAULT_COLORS[colorScheme];
+  const coastGlowLayer: LayerSpecification | null = historicalTheme
+    ? {
+        id: 'theme-coastline-glow',
+        type: 'line',
+        source: 'basemap',
+        'source-layer': 'basemap',
+        filter: ['==', ['get', 'kind'], 'land'] as FilterSpecification,
+        paint: {
+          'line-color': colors.river,
+          'line-opacity': 0.22,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 1, 1.5, 6, 3],
+          'line-blur': 2,
+        },
+      }
+    : null;
   return {
     version: 8,
     sky: {
@@ -281,6 +350,10 @@ export function buildStyle(t: number, colorScheme: ColorScheme = 'dark'): StyleS
         filter: ['==', ['get', 'kind'], 'land'],
         paint: { 'fill-color': colors.land },
       },
+      // A low, blurred coastline echo gives every historical theme a little
+      // depth using only the physical land already in the basemap. It is left
+      // out entirely when themes are disabled, preserving the original style.
+      ...(coastGlowLayer ? [coastGlowLayer] : []),
       {
         id: 'polity-fill',
         type: 'fill',

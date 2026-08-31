@@ -43,14 +43,14 @@ export default function Timeline() {
   });
 
   return (
-    <div className="absolute bottom-3 left-1/2 z-[5] w-[min(940px,calc(100%-32px))] -translate-x-1/2 rounded-xl border border-ink/12 bg-panel/55 px-3.5 pt-3 pb-2 shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%] sm:bottom-[22px] sm:px-5 sm:pt-3.5 sm:pb-2.5">
+    <div className="timeline-panel absolute bottom-3 left-1/2 z-[5] w-[min(940px,calc(100%-32px))] -translate-x-1/2 rounded-xl border border-ink/12 bg-panel/55 px-3.5 pt-3 pb-2 shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%] sm:bottom-[22px] sm:px-5 sm:pt-3.5 sm:pb-2.5">
       <div className="mb-3 flex items-center justify-center gap-2 sm:gap-3">
         <div className="flex gap-1">
           <StepButton direction="left" years={50} onClick={() => step(-1, 50)} />
           <StepButton direction="left" years={5} onClick={() => step(-1, 5)} />
           <StepButton direction="left" years={1} onClick={() => step(-1, 1)} />
         </div>
-        <span className="min-w-22 rounded-xl border border-accent/25 bg-accent/10 px-2 py-2 text-center font-serif text-[22px] leading-[1.1] tracking-[0.01em] text-accent tabular-nums shadow-[inset_0_1px_rgba(255,255,255,0.08)] sm:min-w-24 sm:text-[28px]">{formatYear(t)}</span>
+        <span className="timeline-year min-w-22 rounded-xl border border-accent/25 bg-accent/10 px-2 py-2 text-center font-serif text-[22px] leading-[1.1] tracking-[0.01em] text-accent tabular-nums shadow-[inset_0_1px_rgba(255,255,255,0.08)] sm:min-w-24 sm:text-[28px]">{formatYear(t)}</span>
         <div className="flex gap-1">
           <StepButton direction="right" years={1} onClick={() => step(1, 1)} />
           <StepButton direction="right" years={5} onClick={() => step(1, 5)} />

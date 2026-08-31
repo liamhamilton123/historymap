@@ -14,6 +14,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 import {
   buildStyle,
+  historicalThemeForYear,
   selectionFilter,
   TIMED_LAYERS,
   UNCLAIMED_FILL,
@@ -129,6 +130,9 @@ export default function HistoryMap() {
 
   const globe = useMapStore((state) => state.globe);
   const t = useMapStore((state) => state.t);
+  const historicalThemes = useMapStore((state) => state.historicalThemes);
+  const historicalTheme = historicalThemeForYear(t);
+  const activeTheme = historicalThemes ? historicalTheme : 'default';
   const styleReady = useRef(false);
   const labels = useRef<PolityLabels | null>(null);
 
@@ -150,7 +154,7 @@ export default function HistoryMap() {
     try {
       instance = new MapLibreMap({
         container: container.current,
-        style: buildStyle(view.t, systemColorScheme()),
+        style: buildStyle(view.t, systemColorScheme(), useMapStore.getState().historicalThemes),
         center: [view.lng, view.lat],
         zoom: view.zoom,
         minZoom: 0.8,
@@ -351,8 +355,8 @@ export default function HistoryMap() {
   useEffect(() => {
     if (!map.current) return;
     styleReady.current = false;
-    map.current.setStyle(buildStyle(useMapStore.getState().t, colorScheme));
-  }, [colorScheme]);
+    map.current.setStyle(buildStyle(useMapStore.getState().t, colorScheme, historicalThemes));
+  }, [colorScheme, historicalTheme, historicalThemes]);
 
   useEffect(() => {
     if (!map.current) return;
@@ -391,7 +395,7 @@ export default function HistoryMap() {
   if (failed) return <MapUnavailable reason={failed} />;
 
   return (
-    <div className="fixed inset-0 h-dvh w-screen overflow-hidden">
+    <div className="map-theme fixed inset-0 h-dvh w-screen overflow-hidden" data-map-theme={activeTheme}>
       <div
         ref={container}
         className="absolute inset-0"
@@ -399,6 +403,7 @@ export default function HistoryMap() {
         // available even before a client-only island's stylesheet settles.
         style={{ width: '100vw', height: '100vh' }}
       />
+      <div className="map-theme-atmosphere pointer-events-none absolute inset-0 z-[1]" aria-hidden="true" />
       <a
         href="/"
         className="absolute top-4 left-4 z-[5] inline-flex size-10 items-center justify-center rounded-xl border border-ink/12 bg-panel/55 text-ink shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%] transition-colors hover:border-ink/20 hover:bg-panel/75 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"

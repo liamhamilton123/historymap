@@ -39,6 +39,86 @@
 
 /* MapLibre owns this markup, so Tailwind's @apply is used for its chrome. */
 @layer components {
+  /* Shared visual vocabulary for the map canvas and its custom chrome. These
+     effects use no geographic dataset, so every historical era can have its
+     own atmosphere while the theme toggle still has a true neutral state. */
+  .map-theme {
+    --map-theme-accent: var(--color-accent);
+    --map-theme-tint: transparent;
+    --map-theme-ui-font: ui-sans-serif, system-ui, sans-serif;
+    --map-theme-display-font: var(--font-serif);
+  }
+  .map-theme-atmosphere { opacity: 0; transition: opacity 240ms ease, background 240ms ease; }
+  .map-control-panel, .polity-info-panel {
+    border-color: color-mix(in srgb, var(--map-theme-accent) 28%, transparent) !important;
+    box-shadow: 0 12px 40px color-mix(in srgb, var(--map-theme-accent) 13%, transparent), var(--shadow-panel) !important;
+  }
+  .map-control-panel { background-color: color-mix(in srgb, var(--color-panel) 90%, var(--map-theme-accent)) !important; }
+  .polity-info-panel { background-color: color-mix(in srgb, var(--color-panel) 84%, var(--map-theme-accent)) !important; }
+  .map-control-panel, .polity-info-panel, .timeline-panel { font-family: var(--map-theme-ui-font); }
+  .map-control-panel > p, .polity-info-panel h2, .timeline-year { font-family: var(--map-theme-display-font) !important; }
+
+  .map-theme[data-map-theme="age-of-exploration"] {
+    --map-theme-accent: #d0a85c;
+    --map-theme-ui-font: Georgia, "Times New Roman", serif;
+    --map-theme-display-font: Georgia, "Times New Roman", serif;
+  }
+  .map-theme[data-map-theme="age-of-exploration"] .map-theme-atmosphere {
+    opacity: .12;
+    background: repeating-linear-gradient(0deg, rgba(126, 86, 34, .12) 0 1px, transparent 1px 5px), radial-gradient(ellipse at center, transparent 42%, rgba(105, 66, 20, .16));
+    mix-blend-mode: multiply;
+  }
+  .map-theme[data-map-theme="industrial-era"] {
+    --map-theme-accent: #a7b2a6;
+    --map-theme-ui-font: "Avenir Next", Avenir, "Gill Sans", sans-serif;
+    --map-theme-display-font: Georgia, "Times New Roman", serif;
+  }
+  .map-theme[data-map-theme="industrial-era"] .map-theme-atmosphere {
+    opacity: .1;
+    background: radial-gradient(ellipse at 50% 0%, rgba(175, 188, 183, .22), transparent 55%), linear-gradient(rgba(43, 48, 48, .06), rgba(43, 48, 48, .06));
+  }
+  .map-theme[data-map-theme="world-wars"] {
+    --map-theme-accent: #624a36;
+    --map-theme-ui-font: ui-monospace, "SF Mono", Menlo, monospace;
+    --map-theme-display-font: ui-monospace, "SF Mono", Menlo, monospace;
+    --color-panel: #e8dfca;
+    --color-ink: #2f2b24;
+    --color-ink-dim: #5b5143;
+    --color-ink-faint: #756b5b;
+    --color-accent: #624a36;
+    --shadow-panel: 0 12px 40px rgba(50, 41, 30, .22);
+  }
+  .map-theme[data-map-theme="world-wars"] .map-theme-atmosphere {
+    opacity: .24;
+    background: repeating-linear-gradient(0deg, rgba(52, 45, 35, .14) 0 1px, transparent 1px 4px), radial-gradient(rgba(61, 54, 43, .22) .7px, transparent .8px), linear-gradient(135deg, rgba(119, 100, 74, .16), transparent 45%, rgba(78, 87, 74, .12));
+    background-size: auto, 4px 4px, auto;
+    mix-blend-mode: multiply;
+  }
+  .map-theme[data-map-theme="world-wars"] .map-control-panel,
+  .map-theme[data-map-theme="world-wars"] .polity-info-panel,
+  .map-theme[data-map-theme="world-wars"] .timeline-panel {
+    background-image: repeating-linear-gradient(0deg, rgba(74, 58, 39, .035) 0 1px, transparent 1px 4px);
+  }
+  .map-theme[data-map-theme="cold-war"] {
+    --map-theme-accent: #d0ac6b;
+    --map-theme-ui-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --map-theme-display-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .map-theme[data-map-theme="cold-war"] .map-theme-atmosphere {
+    opacity: .09;
+    background: linear-gradient(90deg, rgba(71, 176, 207, .14), transparent 38%, rgba(113, 156, 191, .12));
+  }
+  .map-theme[data-map-theme="internet-age"] {
+    --map-theme-accent: #62e5ff;
+    --map-theme-ui-font: ui-sans-serif, system-ui, "Helvetica Neue", sans-serif;
+    --map-theme-display-font: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .map-theme[data-map-theme="internet-age"] .map-theme-atmosphere {
+    opacity: .22;
+    background: repeating-linear-gradient(0deg, rgba(102, 220, 247, .24) 0 1px, transparent 1px 48px), repeating-linear-gradient(90deg, rgba(102, 220, 247, .24) 0 1px, transparent 1px 48px), radial-gradient(circle at 50% 50%, transparent 35%, rgba(28, 124, 158, .2));
+    mix-blend-mode: screen;
+  }
+
   .maplibregl-ctrl-group { @apply !border !border-ink/12 !bg-panel/82 !shadow-panel backdrop-blur-[8px] backdrop-saturate-[140%]; }
   .maplibregl-ctrl-group button + button { @apply !border-t-ink/12; }
   .maplibregl-ctrl-group button .maplibregl-ctrl-icon { @apply ![filter:opacity(.65)]; }

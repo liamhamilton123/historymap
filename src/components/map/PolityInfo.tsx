@@ -69,7 +69,7 @@ export default function PolityInfo({ selection, onClose }: PolityInfoProps) {
 
   return (
     <aside
-      className="absolute top-16 left-4 z-[5] w-[min(19rem,calc(100vw-2rem))] max-h-[calc(100dvh-16rem)] overflow-y-auto rounded-xl border border-ink/12 bg-panel/72 p-4 shadow-panel backdrop-blur-[10px] backdrop-saturate-[140%]"
+      className="polity-info-panel absolute top-16 left-4 z-[5] w-[min(19rem,calc(100vw-2rem))] max-h-[calc(100dvh-16rem)] overflow-y-auto rounded-xl border border-ink/12 bg-panel/72 p-4 shadow-panel backdrop-blur-[10px] backdrop-saturate-[140%]"
       aria-label={`About ${title}`}
     >
       <div className="flex items-start gap-2.5">
