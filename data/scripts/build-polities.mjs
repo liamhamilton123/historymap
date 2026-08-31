@@ -54,6 +54,21 @@ const LABEL_ZOOM_CONSTANT = 90;
 const LABEL_PRECISION = 0.05;
 
 /**
+ * Corner-cutting passes applied to a cultural region's outline, and nothing
+ * else on the map. A region is an approximation, and a polygon with hard
+ * corners and straight runs between them reads as a surveyed boundary however
+ * faint it is drawn — the shape itself has to say that its edge is a guess.
+ * Two passes is enough to turn an authored hull into curves; more starts
+ * pulling the extent in noticeably.
+ */
+const CULTURAL_REGION_ROUNDING = 2;
+/**
+ * The shortest edge worth rounding, in degrees. Above it is an edge somebody
+ * drew; below it is coastline out of Natural Earth, which stays as it is.
+ */
+const CULTURAL_REGION_MIN_EDGE = 0.3;
+
+/**
  * How a span is drawn. The styling itself lives in one place, POLITY_STATUS in
  * src/lib/mapStyle.ts — this list only exists so a typo is a build failure
  * rather than a territory that silently renders as undisputed. Keep in step.
@@ -100,6 +115,74 @@ function polygonsOf(geometry) {
   if (geometry.type === 'Polygon') return [geometry.coordinates];
   if (geometry.type === 'MultiPolygon') return geometry.coordinates;
   return [];
+}
+
+/**
+ * Chaikin's corner cutting, once around a closed ring: a corner is replaced by
+ * the points a quarter and three quarters along the edges that meet there, and
+ * repeating it converges on a curve.
+ *
+ * With one condition — a corner is only cut when both edges meeting at it are
+ * longer than `minEdge`. That is what lets a rounded region keep the coastline
+ * it was clipped against: an authored edge runs for degrees and rounds into an
+ * arc, while a coast is a chain of segments a hair long, and every corner along
+ * it is left exactly where Natural Earth put it. It also removes the need to
+ * trim the result back inside the original shape, which is the operation that
+ * matters: corner cutting bulges outward at concave corners, and the concave
+ * corners of these shapes are their bays and lake shores. Leave those corners
+ * alone and nothing can bulge into the water.
+ */
+function chaikinRing(ring, minEdge) {
+  // A ring repeats its first point last; work on the open list and re-close.
+  const open = ring.slice(0, -1);
+  if (open.length < 3) return ring;
+  const long = open.map(([ax, ay], i) => {
+    const [bx, by] = open[(i + 1) % open.length];
+    return Math.hypot(bx - ax, by - ay) >= minEdge;
+  });
+  const out = [];
+  for (let i = 0; i < open.length; i++) {
+    const a = open[i];
+    const b = open[(i + 1) % open.length];
+    // Cut this edge only if it and both its neighbours are long enough that
+    // the corners at either end are ours to round.
+    const cut = long[i] && (long[(i - 1 + open.length) % open.length] || long[(i + 1) % open.length]);
+    if (!cut) {
+      out.push(a);
+      continue;
+    }
+    out.push([a[0] * 0.75 + b[0] * 0.25, a[1] * 0.75 + b[1] * 0.25]);
+    out.push([a[0] * 0.25 + b[0] * 0.75, a[1] * 0.25 + b[1] * 0.75]);
+  }
+  out.push(out[0]);
+  return out;
+}
+
+/**
+ * Round a region's outline and hold the result on dry land.
+ *
+ * Leaving short-edge corners uncut keeps the rounding off the coastline almost
+ * everywhere, but not quite: a concave corner between two long authored edges
+ * still bulges outward, and if a bay sits in that notch the bulge crosses it.
+ * Measured across the fifteen regions drawn today that came to about 50 km² of
+ * sea under Wabanaki and 70 km² of Lake Superior under Ojibwe — small, and
+ * still wrong, since a region drawn over open water is a claim about the water.
+ * So the rounded shape is cut against land and against the lakes, and the
+ * question stops being how much it leaks.
+ */
+async function roundPolygons(polygons, passes, minEdge) {
+  const rounded = polygons.map((polygon) => polygon.map((ring) => {
+    let out = ring;
+    for (let pass = 0; pass < passes; pass++) out = chaikinRing(out, minEdge);
+    return out;
+  }));
+  const { land, lakes } = await coastline();
+  const bounds = bboxOf(rounded);
+  // Only the coast nearby can matter, and intersecting against every landmass
+  // on earth to find that out is the slow way round.
+  const dry = polygonClipping.intersection(rounded, nearBounds(land, bounds));
+  const near = nearBounds(lakes, bounds);
+  return near.length ? polygonClipping.difference(dry, near) : dry;
 }
 
 /** True when every vertex of a polygon's outer ring is inside [w, s, e, n]. */
@@ -152,6 +235,31 @@ function namesOwner(label, spec, entry) {
   return [entry.name, spec.name, spec.id, spec.adjective]
     .filter(Boolean)
     .some((form) => text.includes(String(form).toLowerCase()));
+}
+
+/**
+ * Land and lakes, kept only to hold rounded cultural regions on dry ground —
+ * the same 1:50m layers the basemap is built from, so a region's edge and the
+ * coast it stops at are the same line rather than two that nearly agree.
+ * Loaded lazily: a build with no cultural regions in it never reads them.
+ */
+let physical = null;
+async function coastline() {
+  if (physical) return physical;
+  const layer = async (file) =>
+    JSON.parse(await readFile(join(SOURCES_DIR, 'naturalearth', `${file}.geojson`), 'utf8'))
+      .features.flatMap((f) => polygonsOf(f.geometry));
+  physical = { land: await layer('ne_50m_land'), lakes: await layer('ne_50m_lakes') };
+  return physical;
+}
+
+/** The polygons of `set` whose bounds come within a degree of `bounds`. */
+function nearBounds(set, bounds) {
+  const [w, s, e, n] = bounds;
+  return set.filter((polygon) => {
+    const [pw, ps, pe, pn] = bboxOf([polygon]);
+    return !(pe < w - 1 || pw > e + 1 || pn < s - 1 || ps > n + 1);
+  });
 }
 
 // --- the parts bin: modern countries, then the pieces carved out of them ----
@@ -222,6 +330,12 @@ const used = new Set();
 const seenIds = new Map();
 /** Part keys that came from an inline `geometry` rather than the parts bin. */
 const inlineParts = new Set();
+/**
+ * Cultural region shapes waiting to be rounded. Collected rather than rounded
+ * where they are found, because rounding reads the coastline off disk and the
+ * walk that finds them is synchronous.
+ */
+const rounding = [];
 
 for (const { dir, kind } of SOURCES) {
   const files = (await readdir(dir).catch(() => [])).filter((name) => name.endsWith('.json')).sort();
@@ -246,7 +360,14 @@ for (const { dir, kind } of SOURCES) {
       // Inline shapes join the topology too, so one drawn to meet a
       // neighbour's coordinates keeps meeting it after simplification.
       const key = `${id}#${index}`;
-      parts.set(key, polygonsOf(entry.geometry));
+      // A cultural region is rounded here rather than in its file, so the file
+      // keeps the plain hull that is easy to author and to check against a
+      // source, and every region — including ones added later — is imprecise
+      // in the same way and to the same degree. Nothing else is touched: a
+      // border that a treaty fixed is not ours to soften.
+      const shape = polygonsOf(entry.geometry);
+      parts.set(key, shape);
+      if (kind === 'cultural-region') rounding.push({ key, shape });
       entry.partKeys = [key];
       used.add(key);
       // Drawn freehand rather than carved out of a source, so nothing
@@ -262,6 +383,12 @@ for (const { dir, kind } of SOURCES) {
     }
   });
   }
+}
+
+// Rounded here rather than inside the walk above: one read of the coastline
+// serves all of them, and nothing has consumed the parts bin yet.
+for (const { key, shape } of rounding) {
+  parts.set(key, await roundPolygons(shape, CULTURAL_REGION_ROUNDING, CULTURAL_REGION_MIN_EDGE));
 }
 
 // --- simplify every part at once, on a shared topology ---------------------

@@ -15,7 +15,7 @@
       "source": "French Saint Vincent before Britain acquired the island at the Treaty of Paris." },
     { "from": "1609", "to": "1634", "name": "New France", "label": "New France",
       "geometry": { "type": "Polygon", "coordinates": [[[-71.9,46.773],[-71.2,46.923],[-70.6,47.223],[-70.6,47.077],[-71.2,46.777],[-71.9,46.627],[-71.9,46.773]]] },
-      "source": "Champlain's habitation at Quebec and the river below it: Cliopatria puts New France at about 1,600 km² of mainland at its 1609 slice." },
+      "source": "Champlain's habitation at Quebec and the river below it: Cliopatria puts New France at about 1,600 km² of mainland at its 1609 slice. The New France spans are left uncut against the coastline, unlike the seaboard colonies, so the rivers they were built on stay inside them." },
     { "from": "1634", "to": "1642", "name": "New France", "label": "New France",
       "geometry": { "type": "MultiPolygon", "coordinates": [[[[-72.8,46.021],[-71.9,46.471],[-71.2,46.621],[-70.6,46.971],[-70.6,47.429],[-71.2,47.079],[-71.9,46.929],[-72.8,46.479],[-72.8,46.021]]],[[[-66.156,44.233],[-66.05,44],[-65.35,43.75],[-64.8,44.35],[-65.2,44.95],[-65.26,44.95],[-65.657,44.76],[-65.728,44.697],[-65.502,44.76],[-65.52,44.733],[-65.682,44.651],[-65.917,44.615],[-66.022,44.562],[-66.146,44.436],[-65.942,44.576],[-65.868,44.569],[-66.1,44.367],[-66.156,44.233]]]] },
       "source": "Trois-Rivières and the first Acadian settlements around the Bay of Fundy; about 17,000 km² across the two in Cliopatria's 1632 slice." },

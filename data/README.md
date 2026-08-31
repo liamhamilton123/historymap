@@ -18,43 +18,20 @@ them is simply absent, not empty:
 | **South America** | 1400 to now. The Andean empires, then the colonial viceroyalties and Guianas, then the modern republics. |
 | **Post-Soviet Eurasia** | 1922 to now. The USSR and its successor states. |
 
-The Pacific Northwest is drawn as the unclaimed Oregon Country from the Nootka
-convention of 1790 until the Oregon Treaty of 1846 — claimed by four powers and then occupied jointly by
-two, held by none of them throughout — so no boundary runs through it and the
-49th parallel appears only on the day the treaty drew it. Ground no polity is drawn on
-is blank rather than filled with a continent-sized approximation: the many
-Indigenous nations of the Americas are drawn in two layers, because they are
-two different facts.
+Ground no polity is drawn on is blank rather than filled with a
+continent-sized approximation, and blank is a claim in itself: it says no
+evidence-backed shape exists here yet, not that nothing was here. Ground that
+several powers claimed and none held is an unclaimed region with a name, not a
+border drawn down the middle of it.
 
-Those that had a government speaking for the ground are polities: the Triple
-Alliance, the Inca, the Chimú, the Maya, the Haudenosaunee, the
-Huron-Wendat Confederacy, the Powhatan paramount chiefdom, the Muscogee
-(Creek) Confederacy, the
-Cherokee under the treaty of 1730, and the Pueblo Revolt. Each is drawn only
-for the years this map can hold it, because a colonial claim is drawn on the
-same ground from a known date and the two cannot share it: the Wendat to the
-dispersal of 1650; the Powhatan to 1609, where the Virginia colony begins,
-rather than to the chiefdom's own end in 1646; the Cherokee and the Muscogee to
-the Treaty of Paris in 1783, which hands their country to the United States
-here, rather than to removal in the 1830s. Every one of those cut-offs is
-written into the span's own `source`.
-
-Everything else is a cultural region, and that is not a lesser answer — it is
-the accurate one twice over. Most of these nations were confederacies of
-self-governing towns or autonomous bands rather than states: the pueblos were
-twenty towns speaking six languages, the Apache and the Anishinaabe governed
-themselves band by band, and drawing any of them as one polity would invent a
-government that did not exist. And the ones that did hold their ground in fact
-mostly held it *under someone else's claim* — Comanche, Apache, Sioux and
-Blackfoot country all lie inside Spanish, Mexican, British or United States
-territory as this map draws it, for the whole of their lives.
-The polity layer cannot say that, because it lets exactly one holder onto a
-piece of ground. The cultural region layer can, and the gap it opens between
-the claim and the control is the point of it: the United States buys the
-northern plains in 1803 and does not hold them until the 1870s. Three blanks are deliberate in the same way: Hawaii before Kamehameha
-unified the islands in 1795, the Falkland Islands before France founded Port
-Louis in 1764, and the country west of the Rockies between 1783 and the
-Hudson's Bay Company licence of 1821.
+The Indigenous nations of the Americas are drawn in two layers, because they
+are two different facts. One with a government speaking for the ground is a
+polity, for the years this map can hold it — a colonial claim drawn on the same
+ground ends the span, since the two cannot share it. Everything else is a
+cultural region: a confederacy of self-governing towns, a people whose bands
+governed themselves, or a country held in fact under someone else's claim.
+Which of the two an entry is, and why its span ends where it does, belongs in
+that entry's `source`.
 
 ## Historical research policy
 
@@ -71,99 +48,24 @@ attribution in the information panel and the Source section below are the only
 required citation; do not add per-polity Cliopatria citations unless a user
 specifically asks for them.
 
-### Colonial growth in the Americas
+### Growth in steps
 
-The mainland colonies grow in steps rather than appearing at full extent. Each
-step is keyed to a Cliopatria slice — the year its area changes — and the shape
-is authored here to match the area Cliopatria records for that slice inside
-North America. Every drawn shape is then cut against the same Natural Earth
-coastline the basemap is built from, so a colony's seaward edge is the real
-coast and its bays are water rather than territory; only the inland frontier is
-authored.
+Colonies and empires grow in steps rather than appearing at full extent. Each
+step is a span keyed to a Cliopatria slice — the year its area changes — and
+the shape is authored to match the area recorded for that slice inside the
+region drawn. Drawn shapes are cut against the same Natural Earth coastline the
+basemap is built from, so a colony's seaward edge is the real coast and its
+bays are water; only the inland frontier is authored. River-valley colonies are
+the exception and are left uncut, so the river stays inside them.
 
-England opens in 1609 with Virginia alone and reaches roughly 150,000 km² by
-1683; Britain inherits that in May 1707 and grows to about 500,000 by the
-Proclamation of 1763, which is where the seaboard stops until the Treaty of
-Paris hands the same shape to the United States. New France starts as
-Champlain's habitation at Quebec at about 1,600 km² and reaches roughly 90,000
-along the St Lawrence, the Ottawa and the north shores of the lakes by the
-1750s; its valley spans are deliberately left uncut so the river they were
-built on stays inside them. New Netherland and New Sweden are drawn for the
-years they existed, which is why the English seaboard is two separate footholds
-until 1664.
+Everything particular to one entry — which year each step is, what it is drawn
+to, why a span starts late or stops early, and any simplification it makes —
+goes in that span's `source`, and the reasons a part exists go in its `why`.
+None of it belongs here: this file describes the rules, and there is no version
+of it that stays true while the data grows.
 
-French Louisiana grows the same way, in eight steps keyed to the same source,
-and is drawn as rivers and coast rather than as anything a later state line
-follows. Fort Maurepas at Biloxi in 1699 is the whole colony for three years;
-Fort Louis on the Mobile in 1702 makes the Gulf district, which runs from the
-Pearl to the Perdido and stops there because Spain held Pensacola throughout;
-Natchitoches on the Red in 1714 is the first ground away from the coast, facing
-the Spanish presidio at Los Adaes; New Orleans in 1718 brings the Isle of
-Orleans and the delta, with Natchez above them; the Company of the Indies
-concessions of the 1720s fill the lower river, the Florida Parishes and the
-Attakapas and Opelousas country behind it, with Arkansas Post at the mouth of
-the Arkansas and the Illinois Country at Kaskaskia and Fort de Chartres, which
-was attached to Louisiana in 1717; the retrocession to the crown in 1731 adds
-the Red River road to Natchitoches, the west bank on to the Arkansas, and Sainte
-Geneviève. Those six steps are settlement, and Cliopatria's figures are what
-they are drawn to: about 2,700 km² in 1700, 51,000 by 1721, 55,000 by 1734.
-
-The last two steps are the claim rather than the settlement, because that is
-what actually changed hands. Fort de Cavagnial on the Missouri in 1744, after
-Fort Orleans and the Mallet brothers' road to Santa Fe, takes the colony out
-over the eastern half of the basin; by 1752 it is the whole of it. Both shapes
-are cut from `louisiana-purchase` itself rather than drawn freehand, so their
-eastern edge is already the Mississippi, and 1763 is a change of flag with
-nothing moving on the map — the ground Spain takes at Fontainebleau, sells back
-in 1800 and the United States buys in 1803 is the ground France is already
-drawn holding. Cliopatria still records only about 57,000 km² of settled ground
-inside it, which is what the six earlier steps show.
-
-Two pieces of ground had to leave `florida` for that to be drawable, because
-Spain did not hold either of them while the French were there: the Gulf coast
-from the Pearl to the Perdido, which is Biloxi and Mobile and then the western
-half of British West Florida, and the Florida Parishes, which are French until
-1763, British until 1783 and Spanish only after that. Both are now parts of
-their own, handed on with `florida` from 1763. The Mississippi delta's outer
-passes moved the other way, into the Louisiana Purchase, so the whole delta
-belongs to the river rather than to Florida.
-
-New Spain grows the same way and from the same source: the central Mexican
-domain Spain took from the Triple Alliance in 1521, west and south by 1526, the
-silver country by 1534, Yucatán and Chiapas once the last Mayan city-states fell
-in 1546, the northern mining frontier from 1595, and Sonora and Nuevo León by
-1687 — at which point Cliopatria has New Spain holding effectively all of modern
-Mexico, and the modern-boundary parts take over. Texas joins in 1716, Alta
-California in 1769, and New Mexico is drawn separately from 1598 because the
-part it sits in does not become Spanish in fact until 1769. Central America
-follows its conquests: the Guatemalan highlands from 1524 but not the Petén,
-which the Itza held until 1697; El Salvador, Honduras and Nicaragua from 1524;
-Costa Rica from 1563; Panama from 1519. On the Plata the dates are the first
-lasting settlements — Asunción in 1537, Santiago del Estero in 1553, Soriano in
-1624 — rather than the year the Spanish Empire itself begins.
-
-The Inca are staged the same way, from the 9,000 km² around Cusco that
-Cliopatria records for 1440 to the 2.1 million of Tawantinsuyu at its height
-after 1497, and then the Vilcabamba remnant to 1572.
-
-In the north, Rupert's Land is British from Utrecht in 1713 rather than 1763,
-Quebec and the maritime colonies from 1763, Labrador only from the Proclamation
-that annexed it to Newfoundland, and the Arctic islands from the 1820s
-voyages that claimed them. Each part is now its own span with its own date,
-which is what lets them start at different times.
-
-Where Cliopatria lets two claims overlap and this map cannot, the file says so:
-the Haudenosaunee are drawn at the homeland extent recorded for 1450 and again
-after 1701, because the Beaver Wars extent of the 1670s and 1680s would have to
-run through French and English ground of the same years.
-
-Known simplifications, all noted in the file that makes them: the Confederacy
-is drawn at its eleven-state extent from the founding of the provisional
-government rather than state by state as the secessions came in, and Kentucky
-and Missouri are Union throughout because the Confederacy claimed them but
-never held them; the Republic of Texas is drawn as the ground it held rather
-than the wider claim it never controlled; Ontario's and Quebec's growth after
-1870 is internal to Canada and so changes nothing here.
+Where Cliopatria lets two claims overlap and this map cannot, the span says
+which extent was drawn and what was given up to draw it.
 
 ## Polities
 
@@ -282,10 +184,12 @@ span ending on the day the next begins leaves no gap.
 ## Cultural regions
 
 `data/cultural-regions/` is for a broad **Cultural region**: an approximate
-area associated with a culture or society, not a state territory. Cultural
-regions deliberately may overlap polities and one another. They draw beneath
-polities with a low-opacity fill and dashed outline; italic labels keep them
-from being read as political boundaries.
+area associated with a culture or society, not a state territory. These may
+overlap polities and one another, which is why nothing of one is drawn until it
+is selected: a dozen overlapping washes read as noise, and faint enough to fix
+that they said nothing. At rest a region is its italic label. Selected, it gets
+its outline and a near-solid fill, drawn above the polities so its colour is its
+own.
 
 ```json
 {
@@ -298,32 +202,37 @@ from being read as political boundaries.
 }
 ```
 
-The approximate shape is intentional. Do not give these entries a `status`:
-`controlled`, `disputed`, and `contested` describe political possession.
-Cultural regions are the one kind the overlap check skips entirely, on both
-sides — against polities and against each other — which is what lets the Comanche
-sit inside New Spain, and Choctaw and Chickasaw country meet along a frontier
-neither of them drew as a line.
+The approximate shape is intentional and the build makes it look so: a region's
+outline is rounded by `CULTURAL_REGION_ROUNDING` passes of corner cutting in
+`build-polities.mjs`, so an authored hull arrives as curves rather than as a
+surveyed boundary. Author the plain hull and let the build soften it. Only
+corners whose edges are longer than `CULTURAL_REGION_MIN_EDGE` are cut, which
+leaves a clipped coastline where Natural Earth put it, and the rounded shape is
+then cut against land and lakes — corner cutting bulges outward at concave
+corners, and a bay is a concave corner.
 
-That exemption is also the only discipline this layer has, so the honesty has
-to come from the sourcing instead. Two rules keep it from becoming a way to
-draw whatever the polity layer refuses: a cultural region is the extent of a
-people, never a claim or a military reach dressed up as one — the Haudenosaunee
-Beaver Wars conquests are still not drawn, because they were a political extent
-and belong in the polity layer or nowhere. And its span is the life of the
-country, dated at both ends to something that happened: a treaty, a removal, a
-dissolution. Regions are named for the people alone, in the form a
-reader is most likely to know — Navajo, not Navajo country and not Diné
-Bikéyah — with the people's own name for the country in the `source`, and the
-file is named for the entry the same way the other two kinds are. Those ids all
-share one space, so a region and a polity for the same people have to be told
-apart by their names rather than by their directories: `cherokee.json` is the
-region and `cherokee-nation.json` the polity, `powhatan.json` the region and
-`powhatan-confederacy.json` the chiefdom. The build fails on a duplicate id
-rather than quietly merging the two. Fifteen North American homelands are drawn on this basis; the
-continent-wide culture areas of the standard schemes are deliberately not, since
-ten shapes covering everything would fill in exactly the blanks this map keeps
-on purpose.
+Nothing else on the map is rounded: a border a treaty fixed is not ours to
+soften.
+
+Do not give these entries a `status`: `controlled`, `disputed` and `contested`
+describe political possession. They are also the one kind the overlap check
+skips, on both sides, so a region may sit inside a state that claimed the same
+ground.
+
+That exemption is the only discipline the layer has, so two rules keep it from
+becoming a way to draw whatever the polity layer refuses. A region is the extent
+of a people, never a claim or a military reach dressed up as one — conquests
+belong in the polity layer or nowhere. And its span is dated at both ends to
+something that happened: a treaty, a removal, a dissolution.
+
+Regions are named for the people alone, in the form a reader is most likely to
+know — `Navajo`, not "Navajo country" and not "Diné Bikéyah" — with the
+people's own name in the `source`. Ids share one space with polities, so a
+region and a polity for the same people need distinct file names; the build
+fails on a duplicate. Keep to homelands that can be dated and sourced: the
+continent-wide culture areas of the standard schemes are deliberately not
+drawn, since a handful of shapes covering everything would fill in exactly the
+blanks this map keeps on purpose.
 
 ## Vassals
 

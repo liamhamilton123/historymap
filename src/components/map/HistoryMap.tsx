@@ -20,6 +20,9 @@ import {
   TIMED_LAYERS,
   UNCLAIMED_FILL,
   CULTURAL_REGION_FILL,
+  CULTURAL_REGION_SELECTED_FILL,
+  CULTURAL_REGION_LINE,
+  culturalRegionSelectionFilter,
   POLITY_STATUS,
   STATIC_HATCHES,
   SELECTED_LAYER,
@@ -113,9 +116,16 @@ function applyInstant(instance: MapLibreMap, t: number) {
   for (const layer of TIMED_LAYERS) instance.setFilter(layer.id, layer.filter(t));
 }
 
-/** Outline the selected polity, or nothing when the panel is closed. */
+/**
+ * Outline the selected polity, or nothing when the panel is closed. A cultural
+ * region draws nothing at all until it is selected, so selection is also what
+ * gives it its fill and its outline — the click is the only way to see one.
+ */
 function applySelection(instance: MapLibreMap, t: number, polity: string | null) {
   instance.setFilter(SELECTED_LAYER, selectionFilter(t, polity));
+  for (const layer of [CULTURAL_REGION_SELECTED_FILL, CULTURAL_REGION_LINE]) {
+    instance.setFilter(layer, culturalRegionSelectionFilter(t, polity));
+  }
 }
 
 /** The paint property names setPaintProperty accepts, across all layer types. */
