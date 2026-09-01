@@ -226,6 +226,10 @@ the identical treatment with a top-level `"rounded": true` prop:
 Use it only for an imprecise or reconstructed extent, never to soften a
 surveyed, treaty-defined, or hand-off-matched boundary.
 
+Every inline geometry is cut against the same Natural Earth land and lake
+layers as the basemap. Author the inland edge only; the build keeps the shape
+out of the sea and lakes automatically.
+
 Do not give these entries a `status`: `controlled`, `disputed` and `contested`
 describe political possession. They are also the one kind the overlap check
 skips, on both sides, so a people may sit inside a state that claimed the same

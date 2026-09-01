@@ -182,11 +182,16 @@ async function roundPolygons(polygons, passes, minEdge) {
     for (let pass = 0; pass < passes; pass++) out = chaikinRing(out, minEdge);
     return out;
   }));
+  return clipPolygonsToLand(rounded);
+}
+
+/** Keep an authored extent on dry land without otherwise changing its edge. */
+async function clipPolygonsToLand(polygons) {
   const { land, lakes } = await coastline();
-  const bounds = bboxOf(rounded);
+  const bounds = bboxOf(polygons);
   // Only the coast nearby can matter, and intersecting against every landmass
   // on earth to find that out is the slow way round.
-  const dry = polygonClipping.intersection(rounded, nearBounds(land, bounds));
+  const dry = polygonClipping.intersection(polygons, nearBounds(land, bounds));
   const near = nearBounds(lakes, bounds);
   return near.length ? polygonClipping.difference(dry, near) : dry;
 }
@@ -337,11 +342,11 @@ const seenIds = new Map();
 /** Part keys that came from an inline `geometry` rather than the parts bin. */
 const inlineParts = new Set();
 /**
- * Intentionally approximate shapes waiting to be rounded. Collected rather
- * than rounded where they are found, because rounding reads the coastline off
- * disk and the walk that finds them is synchronous.
+ * Inline shapes waiting for a coast-aware transform. Collected rather than
+ * transformed where they are found, because coastline data is loaded lazily
+ * and the walk that finds them is synchronous.
  */
-const rounding = [];
+const coastlineTransforms = [];
 
 for (const { dir, kind } of SOURCES) {
   const files = (await readdir(dir).catch(() => [])).filter((name) => name.endsWith('.json')).sort();
@@ -369,14 +374,14 @@ for (const { dir, kind } of SOURCES) {
       // Inline shapes join the topology too, so one drawn to meet a
       // neighbour's coordinates keeps meeting it after simplification.
       const key = `${id}#${index}`;
-      // Non-state people outlines and polities explicitly marked `rounded` are
-      // softened here rather than in their files. The source data keeps the
-      // plain hull that is easy to author and check, while the published shape
-      // signals an intentionally imprecise border. Treaty-fixed borders stay
-      // untouched unless a file opts in.
+      // Every authored shape is clipped to land here, just like the country
+      // parts it can sit beside. Non-state people outlines and polities marked
+      // `rounded` are also softened. The source data stays easy to author and
+      // check, while the published map cannot paint an accidental sea claim.
       const shape = polygonsOf(entry.geometry);
       parts.set(key, shape);
-      if (kind === 'non-state-people' || spec.rounded === true) rounding.push({ key, shape });
+      const rounded = kind === 'non-state-people' || spec.rounded === true;
+      coastlineTransforms.push({ key, shape, rounded });
       entry.partKeys = [key];
       used.add(key);
       // Drawn freehand rather than carved out of a source, so nothing
@@ -394,10 +399,15 @@ for (const { dir, kind } of SOURCES) {
   }
 }
 
-// Rounded here rather than inside the walk above: one read of the coastline
+// Transformed here rather than inside the walk above: one read of the coastline
 // serves all of them, and nothing has consumed the parts bin yet.
-for (const { key, shape } of rounding) {
-  parts.set(key, await roundPolygons(shape, NON_STATE_PEOPLE_ROUNDING, NON_STATE_PEOPLE_MIN_EDGE));
+for (const { key, shape, rounded } of coastlineTransforms) {
+  parts.set(
+    key,
+    rounded
+      ? await roundPolygons(shape, NON_STATE_PEOPLE_ROUNDING, NON_STATE_PEOPLE_MIN_EDGE)
+      : await clipPolygonsToLand(shape),
+  );
 }
 
 // --- simplify every part at once, on a shared topology ---------------------
