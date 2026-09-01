@@ -91,6 +91,8 @@
     { "from": "1650", "to": null, "label": "British West Indies", "parts": ["AIA", "CYM", "MSR", "TCA", "VGB"] },
     { "from": "1612", "to": null, "label": "Bermuda (Britain)", "parts": ["BMU"] },
     { "from": "1833-01-03", "to": null, "label": "Falkland Islands (Britain)", "parts": ["FLK"],
-      "source": "Britain re-established administration in 1833 and has administered the islands since." }
+      "source": "Britain re-established administration in 1833 and has administered the islands since." },
+    { "from": "2026", "to": null, "parts": ["GBR"],
+      "source": "United Kingdom at the map's 2026 modern-Europe snapshot." }
   ]
 }

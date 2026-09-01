@@ -16,6 +16,8 @@
     { "from": "1667", "to": null, "label": "Suriname (Netherlands)", "parts": ["SUR"],
       "source": "Dutch Guiana, later Suriname; represented with its modern boundary." },
     { "from": "1634", "to": null, "label": "Dutch Caribbean", "parts": ["dutch-caribbean", "ABW", "CUW", "SXM"],
-      "source": "Held since the 1630s, apart from short British occupations during the Napoleonic wars, which are too brief to draw." }
+      "source": "Held since the 1630s, apart from short British occupations during the Napoleonic wars, which are too brief to draw." },
+    { "from": "2026", "to": null, "parts": ["NLD"],
+      "source": "Netherlands at the map's 2026 modern-Europe snapshot." }
   ]
 }

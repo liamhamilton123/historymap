@@ -7,6 +7,8 @@
     { "from": "1734", "to": null, "parts": ["GRL"], "label": "Greenland (Denmark)",
       "source": "Danish-Norwegian until 1814 and Danish since; self-governing within the kingdom from 1979." },
     { "from": "1672", "to": "1917-03-31", "parts": ["VIR"], "label": "Danish West Indies",
-      "source": "Sold to the United States for 25 million dollars in gold." }
+      "source": "Sold to the United States for 25 million dollars in gold." },
+    { "from": "2026", "to": null, "parts": ["DNK"],
+      "source": "Denmark at the map's 2026 modern-Europe snapshot." }
   ]
 }

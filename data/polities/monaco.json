@@ -1,0 +1,1 @@
+{ "name": "Monaco", "color": "#b95d74", "minArea": 0.000001, "hitSlop": 12, "features": [{ "from": "2026", "to": null, "parts": ["MCO"], "source": "Monaco at the map's 2026 modern-Europe snapshot." }] }

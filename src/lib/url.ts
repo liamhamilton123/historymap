@@ -6,7 +6,7 @@ export type ViewState = { t: number; lng: number; lat: number; zoom: number };
 
 // Start with the complete world centred in the flat-map view. Individual links
 // can still supply a closer camera position through the URL.
-export const DEFAULT_VIEW: ViewState = { t: 1980, lng: 0, lat: 20, zoom: 0.8 };
+export const DEFAULT_VIEW: ViewState = { t: 2026, lng: 0, lat: 20, zoom: 0.8 };
 
 export function readView(): ViewState {
   if (typeof window === 'undefined') return DEFAULT_VIEW;

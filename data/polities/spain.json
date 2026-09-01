@@ -302,6 +302,8 @@
     { "from": "1861-03-18", "to": "1865-07-11", "label": "Santo Domingo (Spain)", "parts": ["DOM"], "relationship": "occupation",
       "source": "Annexed at the Dominican president's invitation and abandoned after the War of Restoration." },
     { "from": "1592", "to": "1797-02-18", "name": "Spanish Empire", "label": "Trinidad (Spain)", "parts": ["TTO"],
-      "source": "Claimed since Columbus but only durably settled with San José de Oruña in 1592; taken by a British expedition and kept at Amiens." }
+      "source": "Claimed since Columbus but only durably settled with San José de Oruña in 1592; taken by a British expedition and kept at Amiens." },
+    { "from": "2026", "to": null, "parts": ["ESP"],
+      "source": "Spain at the map's 2026 modern-Europe snapshot." }
   ]
 }

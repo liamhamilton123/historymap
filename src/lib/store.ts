@@ -13,7 +13,7 @@ type MapState = {
 };
 
 export const useMapStore = create<MapState>((set) => ({
-  t: 1980,
+  t: 2026,
   globe: false,
   historicalThemes: true,
   setT: (t) => set({ t }),

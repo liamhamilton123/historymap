@@ -1,0 +1,1 @@
+{ "name": "Andorra", "color": "#8c6bb1", "minArea": 0.000001, "hitSlop": 12, "features": [{ "from": "2026", "to": null, "parts": ["AND"], "source": "Andorra at the map's 2026 modern-Europe snapshot." }] }

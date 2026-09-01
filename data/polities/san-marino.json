@@ -1,0 +1,1 @@
+{ "name": "San Marino", "color": "#6397ad", "minArea": 0.000001, "hitSlop": 12, "features": [{ "from": "2026", "to": null, "parts": ["SMR"], "source": "San Marino at the map's 2026 modern-Europe snapshot." }] }

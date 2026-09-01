@@ -1,0 +1,12 @@
+{
+  "name": "Turkey",
+  "color": "#b86658",
+  "features": [
+    {
+      "from": "2026",
+      "to": null,
+      "parts": ["TUR"],
+      "source": "Turkey at the map's 2026 modern-state snapshot."
+    }
+  ]
+}

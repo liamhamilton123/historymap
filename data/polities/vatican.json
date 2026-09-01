@@ -1,0 +1,15 @@
+{
+  "name": "Vatican City",
+  "color": "#ae9a54",
+  "minArea": 0.000001,
+  "hitSlop": 12,
+  "preserveDetail": true,
+  "features": [
+    {
+      "from": "2026",
+      "to": null,
+      "parts": ["VAT"],
+      "source": "Vatican City, the territorial state of the Holy See, at the map's 2026 modern-Europe snapshot."
+    }
+  ]
+}

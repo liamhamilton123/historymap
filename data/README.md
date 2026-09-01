@@ -17,6 +17,7 @@ them is simply absent, not empty:
 | **North America** | 7000 BCE to now. The mainland, Central America, the Caribbean and Greenland: Indigenous peoples and polities, the colonial empires as they grew, and the states that followed them. |
 | **South America** | 5000 BCE to now. The Andean empires, then the colonial viceroyalties and Guianas, then the modern republics. |
 | **Post-Soviet Eurasia** | 1922 to now. The USSR and its successor states. |
+| **Europe** | A modern-state snapshot from 2026. It adds the present-day European countries alongside the deeper regional histories already drawn. |
 
 Ground no polity is drawn on is blank rather than filled with a
 continent-sized approximation, and blank is a claim in itself: it says no

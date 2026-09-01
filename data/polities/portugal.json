@@ -71,6 +71,8 @@
     { "from": "1750", "to": "1822-09-07", "name": "Portuguese Empire", "label": "Brazil (Portuguese Empire)", "parts": ["BRA"],
       "source": "The Treaty of Madrid of 1750 recognised Portuguese possession of the interior on uti possidetis, after the bandeirantes, Minas, Goiás and Cuiabá had carried settlement far inland; from here colonial Brazil is represented with the modern boundary until independence." },
     { "from": "1816-08-28", "to": "1822-09-07", "label": "Cisplatina (Portugal)", "parts": ["URY"],
-      "source": "Portuguese occupation of the Banda Oriental, later incorporated into Brazil." }
+      "source": "Portuguese occupation of the Banda Oriental, later incorporated into Brazil." },
+    { "from": "2026", "to": null, "parts": ["PRT"],
+      "source": "Portugal at the map's 2026 modern-Europe snapshot." }
   ]
 }

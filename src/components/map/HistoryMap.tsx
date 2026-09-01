@@ -110,6 +110,8 @@ function registerHatches(instance: MapLibreMap) {
  *  piece of ground on screen, held or not, and hatches and outlines only ever
  *  sit on top of one of them. */
 const PICK_LAYERS = ['polity-fill', UNCLAIMED_FILL, NON_STATE_PEOPLE_FILL];
+/** Only opt-in tiny polities use this much extra room around their true shape. */
+const TINY_POLITY_PICK_RADIUS = 12;
 
 /** Show only the ground that existed at `t`, held or not. */
 function applyInstant(instance: MapLibreMap, t: number) {
@@ -259,6 +261,23 @@ export default function HistoryMap() {
         // The named entity yielded nothing (it should not happen); treat the
         // click as an ordinary one on the ground it landed on.
         hits = instance.queryRenderedFeatures(event.point, { layers });
+        feature = hits[0];
+      }
+      // The visible outline remains geographically exact, but a small state
+      // can be too narrow to tap at ordinary zoom. Only entries that opt in
+      // through their generated hitSlop property are eligible here, and an
+      // exact hit always wins above.
+      if (!labelHit && !feature) {
+        const radius = TINY_POLITY_PICK_RADIUS;
+        const point = event.point;
+        const nearby = instance.queryRenderedFeatures(
+          [
+            [point.x - radius, point.y - radius],
+            [point.x + radius, point.y + radius],
+          ],
+          { layers },
+        );
+        hits = nearby.filter((hit) => Number(hit.properties.hitSlop) > 0);
         feature = hits[0];
       }
       if (!feature) return setSelection(null);

@@ -1,0 +1,1 @@
+{ "name": "Liechtenstein", "color": "#7f6ab0", "minArea": 0.000001, "hitSlop": 12, "features": [{ "from": "2026", "to": null, "parts": ["LIE"], "source": "Liechtenstein at the map's 2026 modern-Europe snapshot." }] }

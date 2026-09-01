@@ -21,6 +21,8 @@ export type PolitySelection = {
   toDate: string | null;
   label: string | null;
   source: string | null;
+  /** Extra screen-pixel click radius for a tiny polity; not shown in the panel. */
+  hitSlop?: number;
   /** The other polities claiming this same ground, when the status is
    *  contested. Collected from the click rather than written by the build,
    *  because it is a fact about a place, not about any one span. */

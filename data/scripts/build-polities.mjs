@@ -338,6 +338,8 @@ const SOURCES = [
 ];
 const specs = [];
 const used = new Set();
+/** Parts small enough that global simplification would erase a real polity. */
+const preserveDetail = new Set();
 const seenIds = new Map();
 /** Part keys that came from an inline `geometry` rather than the parts bin. */
 const inlineParts = new Set();
@@ -393,7 +395,10 @@ for (const { dir, kind } of SOURCES) {
     entry.partKeys = entry.parts ?? [];
     for (const code of entry.partKeys) {
       if (!parts.has(code)) problems.push(`${file}: no part "${code}"`);
-      else used.add(code);
+      else {
+        used.add(code);
+        if (spec.preserveDetail === true) preserveDetail.add(code);
+      }
     }
   });
   }
@@ -416,6 +421,11 @@ for (const id of used) objects[id] = { type: 'MultiPolygon', coordinates: parts.
 const topo = simplify(presimplify(topology(objects)), SIMPLIFY_WEIGHT);
 const simplified = new Map();
 for (const id of used) simplified.set(id, polygonsOf(topoFeature(topo, topo.objects[id]).geometry));
+// A country may be smaller than the global simplification threshold yet still
+// be a sovereign polity worth keeping. Preserve the source shape in that rare
+// case; it is intentionally opt-in, because bypassing shared simplification
+// for ordinary borders would risk seams with their neighbours.
+for (const id of preserveDetail) simplified.set(id, parts.get(id));
 const countVertices = (map) =>
   [...map.values()].reduce((n, polys) => n + polys.reduce((m, p) => m + p.reduce((k, r) => k + r.length, 0), 0), 0);
 const before = countVertices(new Map([...used].map((id) => [id, parts.get(id)])));
@@ -457,6 +467,10 @@ for (const spec of specs) {
     const from = toInstant(entry.from);
     const to = toInstant(entry.to);
     if (!(to > from)) problems.push(`${spec.file}: ${entry.from} ends (${entry.to}) before it starts`);
+    const hitSlop = entry.hitSlop ?? spec.hitSlop ?? 0;
+    if (!Number.isFinite(hitSlop) || hitSlop < 0) {
+      problems.push(`${spec.file}: ${entry.from} has an invalid hitSlop`);
+    }
 
     // An unclaimed region has no owner, so it has neither a colour — colour on
     // this map means identity — nor a status, which only says how an owner
@@ -522,6 +536,9 @@ for (const spec of specs) {
         // panel. It is the only prose the data carries, so it travels with the
         // feature rather than being looked up from the spec at runtime.
         source: entry.source ?? null,
+        // Extra screen pixels around a very small polity that count as a
+        // click. It affects picking only; its visible boundary stays exact.
+        hitSlop,
       },
       geometry,
     });

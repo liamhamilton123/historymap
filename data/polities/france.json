@@ -67,6 +67,8 @@
       "source": "Martinique and Guadeloupe were settled in 1635; the later Saint-Barthélemy and Saint-Martin holdings are drawn with them from the same date." },
     { "from": "1604", "to": null, "label": "St-Pierre (France)", "parts": ["SPM"] },
     { "from": "1764-02-05", "to": "1765", "label": "Falkland Islands (France)", "parts": ["FLK"],
-      "source": "France established Port Louis in February 1764 and gave the settlement up to Spain; Britain's Port Egmont on the far side of the islands is too brief and too small to draw separately." }
+      "source": "France established Port Louis in February 1764 and gave the settlement up to Spain; Britain's Port Egmont on the far side of the islands is too brief and too small to draw separately." },
+    { "from": "2026", "to": null, "parts": ["FRA"],
+      "source": "Metropolitan France at the map's 2026 modern-Europe snapshot." }
   ]
 }
