@@ -8,6 +8,18 @@ npm run data:build   # downloads + builds the basemap. Required once.
 npm run dev
 ```
 
+## Deployment
+
+This repository is configured for Netlify. Connect the GitHub repository in
+Netlify; it will run `npm run data:build && npm run build` and publish `dist/`.
+The generated map tiles are rebuilt during every deploy, so they do not need to
+be committed.
+
+In the site's **Domain management** settings, add `policarta.io` as the primary
+domain and follow Netlify's displayed DNS instructions at the domain registrar.
+Also add `www.policarta.io` and redirect it to the apex domain. The production
+site URL is set to `https://policarta.io` for canonical metadata.
+
 ## Stack
 
 | | |

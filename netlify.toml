@@ -1,0 +1,21 @@
+[build]
+  # The generated vector tiles are intentionally not committed. Recreate them
+  # in Netlify before producing Astro's static output.
+  command = "npm run data:build && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    # Vector tiles are requested independently as the map viewport changes.
+    # Cache them at the CDN and browser without making content updates sticky.
+    Cache-Control = "public, max-age=86400, s-maxage=604800"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
