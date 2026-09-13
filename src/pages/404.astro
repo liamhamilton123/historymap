@@ -1,0 +1,34 @@
+---
+import Base from '~/layouts/Base.astro';
+---
+
+<Base
+  title="Page not found — Policarta"
+  description="That page does not exist. Head back to the map or the home page."
+  noindex
+>
+  <main class="mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-6 py-20 text-center sm:px-10">
+    <p class="font-mono text-sm tracking-[0.2em] text-ink-faint uppercase">404</p>
+    <h1 class="mt-5 font-serif text-5xl leading-[1.05] tracking-tight sm:text-7xl">
+      Off the edge of the map
+    </h1>
+    <p class="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-ink-dim">
+      That page does not exist — or it never did.
+    </p>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a
+        href="/map"
+        class="inline-flex items-center rounded-lg bg-accent px-5 py-3 text-sm font-medium text-ocean-deep transition-colors hover:bg-[#f0ca84] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      >
+        Open the map
+        <span aria-hidden="true" class="ml-2">→</span>
+      </a>
+      <a
+        href="/"
+        class="inline-flex items-center rounded-lg px-5 py-3 text-sm font-medium text-ink-dim transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      >
+        Home
+      </a>
+    </div>
+  </main>
+</Base>

@@ -3,7 +3,11 @@ import Base from '~/layouts/Base.astro';
 import HistoryMap from '~/components/map/HistoryMap';
 ---
 
-<Base title="Policarta Map" description="An interactive historical map." fullBleed>
+<Base
+  title="Interactive Historical World Map — Policarta"
+  description="Pan, zoom and scrub through time on a vector world map showing the territorial extent of historical nations, empires and polities."
+  fullBleed
+>
   {/* MapLibre needs a real canvas and window, so this is the sole client-only island. */}
   <HistoryMap client:only="react" />
 

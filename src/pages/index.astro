@@ -1,10 +1,37 @@
 ---
 import Base from '~/layouts/Base.astro';
+
+const site = Astro.site!.origin;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${site}/#website`,
+    name: 'Policarta',
+    url: `${site}/`,
+    description:
+      'An interactive historical world map tracing the territorial extent of nations, empires and polities from antiquity to the present.',
+    inLanguage: 'en',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Policarta',
+    url: `${site}/map/`,
+    applicationCategory: 'EducationalApplication',
+    browserRequirements: 'Requires JavaScript and WebGL2.',
+    operatingSystem: 'Any',
+    isPartOf: { '@id': `${site}/#website` },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  },
+];
 ---
 
 <Base
-  title="Policarta"
-  description="Explore history through an interactive map."
+  title="Policarta — Interactive Historical World Map"
+  description="Trace the rise and fall of nations, empires and polities on an interactive world map spanning antiquity to the present."
+  jsonLd={schema}
 >
   <main class="mx-auto flex min-h-dvh max-w-5xl flex-col justify-center px-6 py-20 text-center sm:px-10">
     <h1 class="font-serif text-6xl leading-[1.02] tracking-tight sm:text-8xl">

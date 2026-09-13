@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Generated vector tiles and label indexes. Thousands of binary files with no
+# standalone meaning; crawling them only burns crawl budget.
+Disallow: /data/
+
+Sitemap: https://policarta.io/sitemap-index.xml

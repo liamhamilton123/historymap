@@ -46,6 +46,8 @@ src/
   lib/url.ts          View state in the URL
   pages/index.astro   Landing page
   pages/map.astro     The interactive map
+  pages/404.astro     Not found
+  layouts/Base.astro  Head metadata: canonical, Open Graph, Twitter, JSON-LD
 data/polities/        One file per polity — see data/README.md
 data/unclaimed/       One file per named piece of ground nobody held
 data/                 Basemap pipeline — see data/README.md
@@ -59,6 +61,10 @@ tiles covering the current viewport, rather than downloading and parsing a
 worldwide GeoJSON document or converting historical TopoJSON in the browser.
 
 ## Notes
+
+- `public/og.png` is committed, not built. Regenerate it from its source with
+  `rsvg-convert -w 1200 -h 630 data/brand/og.svg -o public/og.png` (Netlify has
+  no `rsvg-convert`).
 
 - The map renders physical geography only: land, lakes, rivers, coastlines.
 - The timeline is **UI only**. Moving it updates the year in the store and in the

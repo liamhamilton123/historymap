@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="78%" cy="50%" r="62%">
+      <stop offset="0%" stop-color="#0e2534"/>
+      <stop offset="100%" stop-color="#071219"/>
+    </radialGradient>
+    <clipPath id="globe">
+      <circle cx="905" cy="315" r="196"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- The favicon's globe, enlarged and set as a faint plate on the right. -->
+  <g stroke="#e0b872" fill="none" opacity="0.34">
+    <circle cx="905" cy="315" r="196" stroke-width="2.6"/>
+    <g clip-path="url(#globe)" stroke-width="1.5" opacity="0.72">
+      <ellipse cx="905" cy="315" rx="83" ry="196"/>
+      <ellipse cx="905" cy="315" rx="158" ry="196"/>
+      <path d="M709 315h392"/>
+      <path d="M736 216h338"/>
+      <path d="M736 414h338"/>
+      <path d="M772 137h266"/>
+      <path d="M772 493h266"/>
+    </g>
+  </g>
+
+  <g fill="#e8eef5" font-family="Iowan Old Style, Palatino, Georgia, serif">
+    <text x="96" y="286" font-size="104" letter-spacing="-2">Policarta</text>
+  </g>
+  <text x="99" y="352" fill="#9aa9bb" font-size="35"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    Interactive historical world map
+  </text>
+  <rect x="99" y="398" width="72" height="3" fill="#e0b872"/>
+  <text x="99" y="466" fill="#e0b872" font-size="27"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif" letter-spacing="1.5">
+    policarta.io
+  </text>
+</svg>
