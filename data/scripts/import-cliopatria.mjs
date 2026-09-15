@@ -285,8 +285,9 @@ function serialise(spec) {
       .join(', ');
     return (
       `    { ${head},\n` +
-      `      "geometry": ${JSON.stringify(span.geometry)},\n` +
-      `      "source": ${JSON.stringify(span.source)} }`
+      `      "geometry": ${JSON.stringify(span.geometry)}` +
+      (span.source ? `,\n      "source": ${JSON.stringify(span.source)}` : '') +
+      ' }'
     );
   });
   return (
@@ -329,13 +330,14 @@ for (const entry of SLICE) {
       // promoting one to a span name is a hand edit afterwards.
       if (entry.status) span.status = entry.status;
       span.geometry = slice.geometry;
-      span.source =
-        `Cliopatria slice "${slice.sourceName}" ${slice.from}–${slice.to}` +
-        (open ? ', still current' : '') +
-        `. Whole-year dates: the span ends on 1 January ${slice.to + 1}` +
-        ` because the databank records ${slice.to} as the last year of this extent.` +
-        (slice.cut ? ' Cut to the region this map draws; ground outside it is not shown.' : '') +
-        (slice.wikidata ? ` Wikidata ${slice.wikidata}.` : '');
+      // No `source`. That field is the one-line reason *this* span's dates are
+      // what they are, and it is the only prose the data carries into the
+      // info panel — so generated boilerplate restating the whole-year rule,
+      // which is true of every imported span alike, is worse than nothing:
+      // 548 spans saying the same thing, in the place a reader looks for the
+      // thing particular to the one they clicked. The rule is documented once
+      // in data/README.md, and which Cliopatria name built a file is in SLICE.
+      // A real note written by hand still belongs here.
       return span;
     }),
   };

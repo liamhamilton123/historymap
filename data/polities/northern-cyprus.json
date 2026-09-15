@@ -3,10 +3,8 @@
   "color": "#b07f6a",
   "features": [
     { "from": "1976", "to": "2024", "status": "disputed",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[33.9382,35.5],[34.3869,35.5],[34.5294,35.5802],[34.5421,35.7089],[34.3098,35.7089],[33.9382,35.5]]]]},
-      "source": "Cliopatria slice \"Turkish Republic of Northern Cyprus\" 1976–2023. Whole-year dates: the span ends on 1 January 2024 because the databank records 2023 as the last year of this extent. Wikidata Q23681." },
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[33.9382,35.5],[34.3869,35.5],[34.5294,35.5802],[34.5421,35.7089],[34.3098,35.7089],[33.9382,35.5]]]]} },
     { "from": "2024", "to": null, "status": "disputed",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[33.9382,35.5],[34.3869,35.5],[34.5294,35.5802],[34.5421,35.7089],[34.3098,35.7089],[33.9382,35.5]]]]},
-      "source": "Cliopatria slice \"Turkish Republic of Northern Cyprus\" 2024–2024, still current. Whole-year dates: the span ends on 1 January 2025 because the databank records 2024 as the last year of this extent. Wikidata Q23681." }
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[33.9382,35.5],[34.3869,35.5],[34.5294,35.5802],[34.5421,35.7089],[34.3098,35.7089],[33.9382,35.5]]]]} }
   ]
 }

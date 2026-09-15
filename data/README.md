@@ -92,14 +92,19 @@ the databank runs one name past the point another takes over.
 `CLIP` is the region. Every imported shape is cut to it, because a Cliopatria
 polity is its *whole* extent: `Kingdom of Portugal` includes Angola and
 `Free French` is entirely African. Importing those whole would paint isolated
-blobs across continents this map does not otherwise cover. 103 shapes were cut;
-a span whose shape lost anything says so in its `source`.
+blobs across continents this map does not otherwise cover. 103 shapes were cut,
+and the importer reports the count on every run.
 
 What the import costs, all of it visible in the generated files:
 
 - **Whole-year dates.** Cliopatria's `ToYear` is inclusive, so a span ends on
   1 January of the following year — the USSR dissolves on 1992-01-01, not on
-  1991-12-26. Every span says so in its `source`.
+  1991-12-26. This is true of every imported span alike, which is why none of
+  them says so: the importer writes no `source`. That field is the one-line
+  reason a particular span's dates are what they are, and it is the only prose
+  the data carries into the info panel, so filling all 548 with the same
+  sentence would put boilerplate exactly where a reader looks for the thing
+  particular to what they clicked. Writing one by hand still works.
 - **Inline geometry.** These extents are drawn per polity rather than carved
   from a shared bin — which is why the parts bin is gone; nothing is left that
   could use it. The importer simplifies everything it writes on one shared

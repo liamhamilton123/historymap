@@ -3,7 +3,6 @@
   "color": "#5f9cae",
   "features": [
     { "from": "1961", "to": "1976",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[33.9382,35.5],[34.3869,35.5],[34.5294,35.5802],[34.5421,35.7089],[34.3098,35.7089],[33.9382,35.5]]]]},
-      "source": "Cliopatria slice \"Republic of Cyprus\" 1961–1975. Whole-year dates: the span ends on 1 January 1976 because the databank records 1975 as the last year of this extent. Wikidata Q229." }
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[33.9382,35.5],[34.3869,35.5],[34.5294,35.5802],[34.5421,35.7089],[34.3098,35.7089],[33.9382,35.5]]]]} }
   ]
 }

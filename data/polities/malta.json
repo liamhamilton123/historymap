@@ -3,10 +3,8 @@
   "color": "#c17255",
   "features": [
     { "from": "1967", "to": "2024",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[14.3368,35.8377],[14.5682,35.7733],[14.5712,35.9664],[14.4171,36.0308],[14.3396,36.0308],[14.3368,35.8377]]]]},
-      "source": "Cliopatria slice \"Malta\" 1967–2023. Whole-year dates: the span ends on 1 January 2024 because the databank records 2023 as the last year of this extent. Wikidata Q233." },
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[14.3368,35.8377],[14.5682,35.7733],[14.5712,35.9664],[14.4171,36.0308],[14.3396,36.0308],[14.3368,35.8377]]]]} },
     { "from": "2024", "to": null,
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[14.3368,35.8377],[14.5682,35.7733],[14.5712,35.9664],[14.4171,36.0308],[14.3396,36.0308],[14.3368,35.8377]]]]},
-      "source": "Cliopatria slice \"Malta\" 2024–2024, still current. Whole-year dates: the span ends on 1 January 2025 because the databank records 2024 as the last year of this extent. Wikidata Q233." }
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[14.3368,35.8377],[14.5682,35.7733],[14.5712,35.9664],[14.4171,36.0308],[14.3396,36.0308],[14.3368,35.8377]]]]} }
   ]
 }

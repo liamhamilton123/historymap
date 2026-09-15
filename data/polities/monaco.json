@@ -3,19 +3,14 @@
   "color": "#b95d74",
   "features": [
     { "from": "1900", "to": "1936",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.1528,43.6027],[7.2334,43.6027],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]},
-      "source": "Cliopatria slice \"Kingdom of Monaco\" 1848–1935. Whole-year dates: the span ends on 1 January 1936 because the databank records 1935 as the last year of this extent. Wikidata Q235." },
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.1528,43.6027],[7.2334,43.6027],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]} },
     { "from": "1936", "to": "1939",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]},
-      "source": "Cliopatria slice \"Kingdom of Monaco\" 1936–1938. Whole-year dates: the span ends on 1 January 1939 because the databank records 1938 as the last year of this extent. Wikidata Q235." },
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]} },
     { "from": "1939", "to": "1940",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]},
-      "source": "Cliopatria slice \"Kingdom of Monaco\" 1939–1939. Whole-year dates: the span ends on 1 January 1940 because the databank records 1939 as the last year of this extent. Wikidata Q235." },
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]} },
     { "from": "1945", "to": "2024",
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.1528,43.6027],[7.2334,43.6027],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]},
-      "source": "Cliopatria slice \"Principality of Monaco\" 1945–2023. Whole-year dates: the span ends on 1 January 2024 because the databank records 2023 as the last year of this extent. Wikidata Q235." },
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.1528,43.6027],[7.2334,43.6027],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]} },
     { "from": "2024", "to": null,
-      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.1528,43.6027],[7.2334,43.6027],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]},
-      "source": "Cliopatria slice \"Principality of Monaco\" 2024–2024, still current. Whole-year dates: the span ends on 1 January 2025 because the databank records 2024 as the last year of this extent. Wikidata Q235." }
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.1502,43.733],[7.1515,43.6678],[7.1528,43.6027],[7.2334,43.6027],[7.2321,43.6678],[7.2308,43.733],[7.1502,43.733]]]]} }
   ]
 }
