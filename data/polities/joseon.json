@@ -1,6 +1,6 @@
 {
   "name": "Joseon",
-  "color": "#9f5088",
+  "color": "#54849c",
   "cliopatria": {"name":"Joseon","wikipedia":"Joseon","wikidata":"Q28405","seshat":"kr_joseon","memberOf":null},
   "features": [
     { "from": "1395", "to": "1415",

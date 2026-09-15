@@ -1,6 +1,6 @@
 {
   "name": "Empire of Haiti",
-  "color": "#859f50",
+  "color": "#4646aa",
   "cliopatria": {"name":"Empire of Haiti","wikipedia":"First Empire of Haiti","wikidata":"Q2006756","seshat":null,"memberOf":null},
   "features": [
     { "from": "1805", "to": "1809",

@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Arles",
-  "color": "#8c509f",
+  "color": "#54849c",
   "cliopatria": {"name":"Kingdom of Arles","wikipedia":"Kingdom of Arles","wikidata":"Q3271735","seshat":"fr_arles_k","memberOf":null},
   "features": [
     { "from": "936", "to": "960",

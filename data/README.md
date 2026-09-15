@@ -6,21 +6,18 @@
 | `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap/` vector tiles. |
 | `npm run data:polities` | Builds vector tiles, labels, and hatches from the historical data directories. |
 | `npm run data:build` | All three, in order. |
-| `npm run data:import-cliopatria` | One-off. Rewrites the post-Soviet polity files from Cliopatria — not part of a build. |
+| `npm run data:import-cliopatria` | By hand. **Overwrites all of `data/polities/`** with a mechanical dump of Cliopatria — not part of a build. |
+| `npm run data:curate` | By hand. Applies `data/curation.json` to that dump in place. Idempotent; re-run after editing the rules. |
 
 ## Coverage
 
-Everything outside these is simply absent, not empty:
+The polity layer is the whole of Cliopatria: **1,526 polities, 12,042 spans,
+3400 BCE to 2024**, worldwide. Nothing is selected by region or era. It arrives
+as a mechanical dump and is then curated — see The dump and the curation below.
 
-| | |
-| --- | --- |
-| **Europe and northern Eurasia** | 1900 to now, imported from Cliopatria. 71 polities, 548 spans: the empires that opened the century, the states that came out of the two wars, the Soviet Union year by year, and the successor states. |
-| **The Americas** | 7000 BCE to now, but **only the non-state peoples layer and two unclaimed regions.** The polities that used to cover both continents — the Indigenous nations with governments, the colonial empires, the republics that followed — were hand-authored, and were removed with the move to Cliopatria. The databank has no equivalent to re-import them from. |
-
-The Americas are the hole this leaves, and it is the largest thing this map is
-missing. `data/non-state-peoples/` still draws 126 Indigenous peoples there and
-`data/unclaimed/` still names the Oregon Country and the Falklands, but no
-polity is drawn on either continent.
+The two hand-authored layers remain, because the databank has no equivalent for
+either: `data/non-state-peoples/` draws 126 Indigenous peoples, and
+`data/unclaimed/` names the Oregon Country and the Falklands.
 
 Ground no polity is drawn on is blank rather than filled with a
 continent-sized approximation, and blank is a claim in itself: it says no
@@ -46,9 +43,11 @@ canonical place to inspect its `Name`, `FromYear`, `ToYear`, `Components`, and
 `MemberOf` fields.
 
 **The polity layer is imported from Cliopatria**, not authored here — see
-Importing Cliopatria below. The hand-authored layers that remain are
-`data/non-state-peoples/` and `data/unclaimed/`, which the databank has no
-equivalent for.
+The dump and the curation below. A correction to it belongs in
+`data/curation.json` wherever the rules can express it, because a hand edit to
+a generated file survives only until the next dump. The hand-authored layers
+that remain are `data/non-state-peoples/` and `data/unclaimed/`, which the
+databank has no equivalent for.
 
 The global attribution in the information panel and the Source section below
 are the only required citation; do not add per-polity Cliopatria citations
@@ -56,68 +55,142 @@ unless a user specifically asks for them.
 
 ### Growth in steps
 
-Colonies and empires grow in steps rather than appearing at full extent. Each
-step is a span keyed to a Cliopatria slice — the year its area changes — and
-the shape is authored to match the area recorded for that slice inside the
-region drawn. Drawn shapes are cut against the same Natural Earth coastline the
-basemap is built from, so a colony's seaward edge is the real coast and its
-bays are water; only the inland frontier is authored. River-valley colonies are
-the exception and are left uncut, so the river stays inside them.
-
-Everything particular to one entry — which year each step is, what it is drawn
-to, why a span starts late or stops early, and any simplification it makes —
-goes in that span's `source`, and the reasons a part exists go in its `why`.
-None of it belongs here: this file describes the rules, and there is no version
-of it that stays true while the data grows.
+Colonies and empires grow in steps rather than appearing at full extent: each
+span is one Cliopatria slice, the year the recorded area changes. That shape is
+the databank's, not ours. Every inline geometry is cut against the same Natural
+Earth coastline the basemap is built from, so a seaward edge is the real coast
+and the bays are water.
 
 Where Cliopatria lets two claims overlap and this map cannot, the span says
 which extent was drawn and what was given up to draw it.
 
-## Importing Cliopatria
+## The dump and the curation
 
-`npm run data:import-cliopatria` writes **every file in `data/polities/`** —
-71 of them, 548 spans, Europe and northern Eurasia from 1900. It is run by
-hand, never as part of a build; what it writes is committed and then read like
-any hand-authored file, so a generated file can be corrected in place as long
-as the next import is not expected to preserve the correction.
+The polity layer is built in two stages, run by hand and never as part of a
+build. What they write is committed and then read like any other data file.
 
-`SLICE` at the top of `data/scripts/import-cliopatria.mjs` is the whole
-configuration: which Cliopatria `Name`s become which file, under what name,
-adjective and colour. A file may name several, where the databank splits by
-regime what this map holds as one continuing identity — Bulgaria's
-principality, kingdom, people's republic and republic are four names for the
-ground one file draws. A name may carry its own year window for the cases where
-the databank runs one name past the point another takes over.
-
-`CLIP` is the region. Every imported shape is cut to it, because a Cliopatria
-polity is its *whole* extent: `Kingdom of Portugal` includes Angola and
-`Free French` is entirely African. Importing those whole would paint isolated
-blobs across continents this map does not otherwise cover. 103 shapes were cut,
-and the importer reports the count on every run.
-
-What the import costs, all of it visible in the generated files:
+**`npm run data:import-cliopatria` is mechanical and makes no editorial
+decisions.** One Cliopatria `Name` becomes one file, under the databank's own
+name, its slices become that file's spans, and its colour is derived from its
+id. Nothing is selected, merged, renamed, recoloured or clipped. It
+**overwrites the whole directory**, because a name that disappears upstream has
+to disappear here too. Its cost, all of it visible in what it writes:
 
 - **Whole-year dates.** Cliopatria's `ToYear` is inclusive, so a span ends on
   1 January of the following year — the USSR dissolves on 1992-01-01, not on
   1991-12-26. This is true of every imported span alike, which is why none of
   them says so: the importer writes no `source`. That field is the one-line
   reason a particular span's dates are what they are, and it is the only prose
-  the data carries into the info panel, so filling all 548 with the same
+  the data carries into the info panel, so filling all 12,042 with the same
   sentence would put boilerplate exactly where a reader looks for the thing
   particular to what they clicked. Writing one by hand still works.
 - **Inline geometry.** These extents are drawn per polity rather than carved
   from a shared bin — which is why the parts bin is gone; nothing is left that
   could use it. The importer simplifies everything it writes on one shared
-  topology, which keeps the imported polities aligned with each other.
+  topology, so the imported polities stay aligned with each other.
 - **Real dual claims survive as dual claims.** Cliopatria draws Crimea inside
-  both Russia and Ukraine after 2014, Nazi Germany over occupied Norway, and
-  Britain over its occupation zone in Austria. Those are warnings rather than
-  build failures, which is what makes the import possible at all. So are the
-  ~200 small slivers where two extents were digitised to nearly-but-not-quite
-  the same frontier; the build lists them by size.
+  both Russia and Ukraine after 2014, and Nazi Germany over occupied Norway.
+  Those are warnings rather than build failures, which is what makes the import
+  possible at all. So are the slivers where two extents were digitised to
+  nearly-but-not-quite the same frontier; the build lists them by size.
 - **Microstates vanish.** Liechtenstein, San Marino and the Vatican are not in
-  the databank at any date, so they are not on the map. Andorra, Monaco, Malta
-  and Luxembourg are.
+  the databank at any date, so they are not on the map.
+
+**`npm run data:curate` is where the judgement lives.** It applies
+`data/curation.json` to the dump, in place. Grouping the four Bulgarias into
+one country, deciding "Kingdom of Great Britain" should read as "Britain",
+giving neighbours colours that tell them apart, reading the databank's
+`MemberOf` as a vassalage — none of it is derivable from the source, all of it
+is revisable, and all of it happens against files already in the repository
+rather than against a 158 MB GeoJSON.
+
+It is **idempotent**, which is what makes the rules editable. A curated file
+still carries its provenance — `cliopatria` holds the databank record, becoming
+an array once several are merged, and a merged span carries the databank name
+it came from as its own `name` — so the dump is reconstructed from what is on
+disk and the rules applied to it afresh. Edit a colour, re-run, and the result
+is byte-identical to importing and curating from scratch. `drop` is the one
+exception: it deletes the file, and undoing a drop needs the dump back.
+
+### What curation.json says
+
+Every key is a judgement the databank cannot make for itself. JSON has no
+comments, so notes live beside what they explain under keys beginning with `$`,
+which are skipped everywhere.
+
+`polities` is keyed by the id of the file to write:
+
+```json
+"bulgaria": {
+  "name": "Bulgaria",
+  "adjective": "Bulgarian",
+  "merge": ["principality-of-bulgaria", "kingdom-of-bulgaria",
+            "people-s-republic-of-bulgaria", "republic-of-bulgaria"]
+}
+```
+
+`merge` folds several dump files into one, because the databank splits by
+regime what this map holds as one continuing identity. Each span keeps its
+databank name as its own `name`, so the panel still says "People's Republic of
+Bulgaria" while the colour, the label and the identity are one. **Merging
+cannot be inferred**: Later Liang, Northern Liang and Southern Liang look
+exactly like a succession to any heuristic and are three different states.
+
+Without `merge` the key is itself a dump id, being renamed or recoloured.
+`adjective` is what the span-label check accepts in place of the polity's name,
+so "British North America" can stand as written — see Labels.
+
+`overlords` reads Cliopatria's `MemberOf`, which 264 polities carry:
+
+```json
+"(Holy Roman Empire)": {
+  "name": "the Holy Roman Empire",
+  "except": ["holy-roman-empire", "holy-roman-empire-minor-states"]
+}
+```
+
+Every span of a member becomes `relationship: "vassal"` with that overlord. Two
+things keep it honest. `except` names the polities that **are** the overlord,
+and `groupings` lists the `MemberOf` values that are a historian's collective
+noun rather than a ruler — `(Taifas of Iberia)`, `(Mahajanapadas)`,
+`(Spring and Autumn States)` — which would otherwise invent a state that never
+existed. Anything in neither list is reported on every run, so a parent nobody
+has classified cannot pass quietly.
+
+The databank also counts an empire's core among its own members: the Bourbon
+Kingdom of France is `MemberOf` "(Bourbon Kingdom of France)". Read literally
+that makes a state its own vassal, so a record naming **itself** as a parent is
+recognised as the core and takes no overlord. That check runs across every
+parent rather than the first, which is what leaves the Margraviate of Moravia —
+`MemberOf` the Holy Roman Empire and Bohemia, and neither of them itself — a
+vassal as it should be.
+
+### Colour
+
+A polity's colour is assigned by the curation run, not written down. Two
+polities may share one freely as long as they are never on screen together, so
+the run builds the graph of polities that **coexist in time and whose extents
+are near each other**, and colours it so no two neighbours match.
+
+Nearness is measured per polygon rather than per span. One bounding box around
+a colonial empire spans the globe and would make it a neighbour of everything;
+per polygon, the British Colonial Empire's degree falls from 563 to 136 and the
+graph needs 11 colours rather than hundreds. The palette holds 36, in the same
+muted band throughout, and the pass takes the colour furthest round the wheel
+from the neighbours a polity already has — so adjacent states are told apart at
+a glance rather than merely being different in the file.
+
+A `color` in `curation.json` overrides the assignment and is treated as fixed
+while everything around it is coloured.
+
+### What the run reports
+
+1,500 files cannot be reviewed by reading them, so the run says where judgement
+is still missing: gaps inside a merged polity (which are usually right — the
+databank has no extent for those years — but are also how a merge that folded
+two different states together shows itself), `MemberOf` values classified as
+neither an overlord nor a grouping, rules that matched nothing, and the largest
+polities no rule has touched.
 
 Attribution is not optional here. Cliopatria is CC BY 4.0, so the panel in
 `MapControls.tsx` names it, links the licence, and says the geometry is
@@ -318,6 +391,10 @@ When a span belongs to a parent polity's file, the parent is inferred; set
 `overlord` only when it should name a different parent. This preserves the
 existing territory and colour while the panel makes the dependency explicit.
 
+On the polity layer this is written by the curation run rather than by hand,
+from Cliopatria's `MemberOf` and the `overlords` rules — see What curation.json
+says.
+
 ```json
 { "label": "Jamaica (Britain)", "relationship": "vassal" }
 ```
@@ -416,7 +493,7 @@ overscales the highest-detail tiles for the map's constrained close views.
 
 The build exits non-zero on any of:
 
-- a span with no `geometry` — including one still written with `parts`
+- a span with no `geometry`
 - a span that ends before it starts, or one using an unknown `status`
 - **one polity claiming the same ground twice at one instant**, which means a
   duplicated span
@@ -471,7 +548,7 @@ can drive all three from one source.
 
 [Cliopatria / Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria),
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Used as a historical
-reference when researching and checking the authored polity data, and imported
-directly for the post-Soviet region — see Importing Cliopatria above. The
+reference when researching and checking the hand-authored layers, and the
+source of the polity layer in full — see The dump and the curation above. The
 release is downloaded by `npm run data:fetch` into `data/sources/cliopatria/`
 (gitignored), which only the importer reads.

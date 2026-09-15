@@ -1,6 +1,6 @@
 {
   "name": "Strathclyde",
-  "color": "#9f8c50",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Strathclyde","wikipedia":"Strathclyde","wikidata":"Q124661","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "644", "to": "647",

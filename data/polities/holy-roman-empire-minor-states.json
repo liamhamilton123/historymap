@@ -1,6 +1,6 @@
 {
   "name": "Holy Roman Empire Minor States",
-  "color": "#9f7350",
+  "color": "#549c54",
   "cliopatria": {"name":"Holy Roman Empire Minor States","wikipedia":"Holy Roman Empire","wikidata":"Q12548","seshat":"de_empire_3","memberOf":"(Holy Roman Empire)"},
   "features": [
     { "from": "1260", "to": "1272",

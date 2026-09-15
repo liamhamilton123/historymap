@@ -1,6 +1,6 @@
 {
   "name": "Republic of Korea",
-  "color": "#9f505f",
+  "color": "#aa8946",
   "cliopatria": {"name":"Republic of Korea","wikipedia":"South Korea","wikidata":"Q423","seshat":"ko_korean_rep","memberOf":null},
   "features": [
     { "from": "1948", "to": "1953",

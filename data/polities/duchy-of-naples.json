@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Naples",
-  "color": "#9f5064",
+  "color": "#54549c",
   "cliopatria": {"name":"Duchy of Naples","wikipedia":"Duchy of Naples","wikidata":"Q1051600","seshat":null,"memberOf":null},
   "features": [
     { "from": "763", "to": "840",

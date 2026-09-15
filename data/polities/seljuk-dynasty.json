@@ -1,6 +1,6 @@
 {
   "name": "Seljuk Dynasty",
-  "color": "#9f5250",
+  "color": "#9c549c",
   "cliopatria": {"name":"Seljuk Dynasty","wikipedia":"Seljuk dynasty","wikidata":"Q3708255","seshat":null,"memberOf":null},
   "features": [
     { "from": "990", "to": "1000",

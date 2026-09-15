@@ -1,6 +1,6 @@
 {
   "name": "Kediri Kingdom",
-  "color": "#9f8a50",
+  "color": "#9c549c",
   "cliopatria": {"name":"Kediri Kingdom","wikipedia":"Kediri Kingdom","wikidata":"Q756895","seshat":null,"memberOf":null},
   "features": [
     { "from": "1046", "to": "1056",

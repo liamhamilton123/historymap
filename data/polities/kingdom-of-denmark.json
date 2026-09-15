@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Denmark",
-  "color": "#889f50",
+  "color": "#aa4689",
   "cliopatria": {"name":"Kingdom of Denmark","wikipedia":"Danish Realm","wikidata":"Q756617","seshat":null,"memberOf":"(Kingdom of Denmark)"},
   "features": [
     { "from": "936", "to": "947",

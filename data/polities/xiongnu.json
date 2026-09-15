@@ -1,6 +1,6 @@
 {
   "name": "Xiongnu",
-  "color": "#9d9f50",
+  "color": "#4667aa",
   "cliopatria": {"name":"Xiongnu","wikipedia":"Xiongnu","wikidata":"Q188836","seshat":"mn_hunnu_emp","memberOf":null},
   "features": [
     { "from": "-208", "to": "-206",

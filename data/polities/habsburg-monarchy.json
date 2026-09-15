@@ -1,6 +1,6 @@
 {
   "name": "Habsburg Monarchy",
-  "color": "#639f50",
+  "color": "#549c84",
   "cliopatria": {"name":"Habsburg Monarchy","wikipedia":"Habsburg Austria","wikidata":"Q66504140","seshat":"at_habsburg_1","memberOf":"(Habsburg Monarchy)"},
   "features": [
     { "from": "1487", "to": "1492",

@@ -1,6 +1,6 @@
 {
   "name": "Livonian Conference",
-  "color": "#9f5057",
+  "color": "#6c549c",
   "cliopatria": {"name":"Livonian Conference","wikipedia":"Livonian language","wikidata":"Q33698","seshat":null,"memberOf":null},
   "features": [
     { "from": "1422", "to": "1512",

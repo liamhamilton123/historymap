@@ -1,6 +1,6 @@
 {
   "name": "Rustamid dynasty",
-  "color": "#889f50",
+  "color": "#aa4646",
   "cliopatria": {"name":"Rustamid dynasty","wikipedia":"Rustamid dynasty","wikidata":"Q940123","seshat":"dz_rustamid_imamate","memberOf":null},
   "features": [
     { "from": "778", "to": "900",

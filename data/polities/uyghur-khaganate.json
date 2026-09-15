@@ -1,6 +1,6 @@
 {
   "name": "Uyghur Khaganate",
-  "color": "#9f7950",
+  "color": "#46aa89",
   "cliopatria": {"name":"Uyghur Khaganate","wikipedia":"Uyghur Khaganate","wikidata":"Q831218","seshat":"mn_uygur_khaganate","memberOf":null},
   "features": [
     { "from": "750", "to": "755",

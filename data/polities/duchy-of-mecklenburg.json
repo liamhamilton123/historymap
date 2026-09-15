@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Mecklenburg",
-  "color": "#50799f",
+  "color": "#84549c",
   "cliopatria": {"name":"Duchy of Mecklenburg","wikipedia":"Duchy of Mecklenburg","wikidata":"Q109252949","seshat":null,"memberOf":null},
   "features": [
     { "from": "1806", "to": "1809",

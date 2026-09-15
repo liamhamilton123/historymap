@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Nassau",
-  "color": "#9f5077",
+  "color": "#46aa89",
   "cliopatria": {"name":"Duchy of Nassau","wikipedia":"Duchy of Nassau","wikidata":"Q836680","seshat":null,"memberOf":null},
   "features": [
     { "from": "1806", "to": "1807",

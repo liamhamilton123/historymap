@@ -1,6 +1,6 @@
 {
   "name": "Principality of Transylvania",
-  "color": "#9f8650",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Principality of Transylvania","wikipedia":"Principality of Transylvania (1570-1711)","wikidata":"Q655621","seshat":"ro_transylvania_principality","memberOf":null},
   "features": [
     { "from": "1572", "to": "1595",

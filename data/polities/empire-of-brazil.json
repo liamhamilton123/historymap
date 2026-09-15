@@ -1,6 +1,6 @@
 {
   "name": "Empire of Brazil",
-  "color": "#509f86",
+  "color": "#aa8946",
   "cliopatria": {"name":"Empire of Brazil","wikipedia":"Empire of Brazil","wikidata":"Q217230","seshat":"br_brazil_emp","memberOf":null},
   "features": [
     { "from": "1822", "to": "1824",

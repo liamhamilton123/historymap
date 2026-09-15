@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Wrocław",
-  "color": "#50659f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Duchy of Wrocław","wikipedia":"Duchy of Wrocław","wikidata":"Q568638","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1169", "to": "1177",

@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Silesia",
-  "color": "#509f85",
+  "color": "#84549c",
   "cliopatria": {"name":"Duchy of Silesia","wikipedia":"Duchy of Silesia","wikidata":"Q568638","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1139", "to": "1147",

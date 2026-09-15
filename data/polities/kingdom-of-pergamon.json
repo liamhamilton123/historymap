@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Pergamon",
-  "color": "#9b509f",
+  "color": "#aa4646",
   "cliopatria": {"name":"Kingdom of Pergamon","wikipedia":"Kingdom of Pergamon","wikidata":"Q2022162","seshat":"tr_pergamon_k","memberOf":null},
   "features": [
     { "from": "-279", "to": "-225",

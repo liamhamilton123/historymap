@@ -1,6 +1,6 @@
 {
   "name": "Ethiopia",
-  "color": "#50649f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Ethiopia","wikipedia":"Ethiopia","wikidata":"Q115","seshat":null,"memberOf":null},
   "features": [
     { "from": "1942", "to": "1953",

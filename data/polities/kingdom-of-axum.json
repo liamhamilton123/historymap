@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Axum",
-  "color": "#9f7e50",
+  "color": "#46aa67",
   "cliopatria": {"name":"Kingdom of Axum","wikipedia":"Kingdom of Aksum","wikidata":"Q139377","seshat":"et_aksum_emp_1","memberOf":null},
   "features": [
     { "from": "-50", "to": "238",

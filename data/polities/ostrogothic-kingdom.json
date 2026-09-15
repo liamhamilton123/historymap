@@ -1,6 +1,6 @@
 {
   "name": "Ostrogothic Kingdom",
-  "color": "#9f5084",
+  "color": "#546c9c",
   "cliopatria": {"name":"Ostrogothic Kingdom","wikipedia":"Ostrogothic Kingdom","wikidata":"Q583038","seshat":"it_ostrogoth_k","memberOf":null},
   "features": [
     { "from": "500", "to": "510",

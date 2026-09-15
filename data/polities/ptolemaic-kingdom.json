@@ -1,6 +1,6 @@
 {
   "name": "Ptolemaic Kingdom",
-  "color": "#659f50",
+  "color": "#8946aa",
   "cliopatria": {"name":"Ptolemaic Kingdom","wikipedia":"Ptolemaic Kingdom","wikidata":"Q2320005","seshat":null,"memberOf":null},
   "features": [
     { "from": "-331", "to": "-326",

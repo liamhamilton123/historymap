@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Kent",
-  "color": "#9f5075",
+  "color": "#9c549c",
   "cliopatria": {"name":"Kingdom of Kent","wikipedia":"Kingdom of Kent","wikidata":"Q328818","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "490", "to": "534",

@@ -1,6 +1,6 @@
 {
   "name": "State of Eritrea",
-  "color": "#9f9f50",
+  "color": "#849c54",
   "cliopatria": {"name":"State of Eritrea","wikipedia":"Eritrea","wikidata":"Q986","seshat":null,"memberOf":null},
   "features": [
     { "from": "1992", "to": "2024",

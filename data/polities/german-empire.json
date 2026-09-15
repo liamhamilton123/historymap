@@ -1,6 +1,6 @@
 {
   "name": "German Empire",
-  "color": "#509f74",
+  "color": "#9c6c54",
   "cliopatria": {"name":"German Empire","wikipedia":"German Empire","wikidata":"Q43287","seshat":"de_hohenzollern_3","memberOf":null},
   "features": [
     { "from": "1871", "to": "1873",

@@ -1,6 +1,6 @@
 {
   "name": "Scandinavian minor kingdoms",
-  "color": "#9f8550",
+  "color": "#546c9c",
   "cliopatria": {"name":"Scandinavian minor kingdoms","wikipedia":"Vendel Period","wikidata":"Q1275225","seshat":"sv_scandinavian_minor_k","memberOf":null},
   "features": [
     { "from": "500", "to": "523",

@@ -1,6 +1,6 @@
 {
   "name": "Kuomintang",
-  "color": "#508c9f",
+  "color": "#9c8454",
   "cliopatria": {"name":"Kuomintang","wikipedia":"Kuomintang","wikidata":"Q31113","seshat":"cn_chinese_rep","memberOf":null},
   "features": [
     { "from": "1917", "to": "1918",

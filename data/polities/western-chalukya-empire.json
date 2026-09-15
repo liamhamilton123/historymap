@@ -1,6 +1,6 @@
 {
   "name": "Western Chalukya Empire",
-  "color": "#509f85",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Western Chalukya Empire","wikipedia":"Western Chalukya Empire","wikidata":"Q14624218","seshat":"in_kalyani_chalukya_emp","memberOf":null},
   "features": [
     { "from": "980", "to": "990",

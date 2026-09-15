@@ -1,6 +1,6 @@
 {
   "name": "Qi Kingdom",
-  "color": "#9f5088",
+  "color": "#9c8454",
   "cliopatria": {"name":"Qi Kingdom","wikipedia":"Qi (Li Maozhen's state)","wikidata":"Q1319681","seshat":"cn_five_dyn","memberOf":"(Five Dynasties and Ten Kingdoms)"},
   "features": [
     { "from": "911", "to": "922",

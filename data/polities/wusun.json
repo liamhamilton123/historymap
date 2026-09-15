@@ -1,6 +1,6 @@
 {
   "name": "Wusun",
-  "color": "#9f8d50",
+  "color": "#9c549c",
   "cliopatria": {"name":"Wusun","wikipedia":"Wusun","wikidata":"Q854062","seshat":null,"memberOf":null},
   "features": [
     { "from": "-170", "to": "-144",

@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Sweden",
-  "color": "#7a9f50",
+  "color": "#549c9c",
   "cliopatria": {"name":"Kingdom of Sweden","wikipedia":"Sweden","wikidata":"Q34","seshat":"sv_swedish_k_1","memberOf":null},
   "features": [
     { "from": "980", "to": "1000",

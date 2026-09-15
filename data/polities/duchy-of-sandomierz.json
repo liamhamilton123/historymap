@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Sandomierz",
-  "color": "#509f92",
+  "color": "#549c9c",
   "cliopatria": {"name":"Duchy of Sandomierz","wikipedia":"Duchy of Sandomierz","wikidata":"Q16933165","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1139", "to": "1147",

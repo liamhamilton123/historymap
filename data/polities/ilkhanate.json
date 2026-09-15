@@ -1,6 +1,6 @@
 {
   "name": "Ilkhanate",
-  "color": "#9f507e",
+  "color": "#9c5454",
   "cliopatria": {"name":"Ilkhanate","wikipedia":"Ilkhanate","wikidata":"Q178084","seshat":"ir_il_khanate","memberOf":null},
   "features": [
     { "from": "1294", "to": "1305",

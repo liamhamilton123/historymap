@@ -1,6 +1,6 @@
 {
   "name": "Roman Republic",
-  "color": "#509f60",
+  "color": "#54849c",
   "cliopatria": {"name":"Roman Republic","wikipedia":"Roman Republic","wikidata":"Q175881","seshat":"it_roman_rep_1","memberOf":null},
   "features": [
     { "from": "-500", "to": "-480",

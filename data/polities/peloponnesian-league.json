@@ -1,6 +1,6 @@
 {
   "name": "Peloponnesian League",
-  "color": "#89509f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Peloponnesian League","wikipedia":"Peloponnesian League","wikidata":"Q208742","seshat":null,"memberOf":null},
   "features": [
     { "from": "-550", "to": "-480",

@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Belgium",
-  "color": "#9f5091",
+  "color": "#aa4689",
   "cliopatria": {"name":"Kingdom of Belgium","wikipedia":"Belgium","wikidata":"Q31","seshat":null,"memberOf":null},
   "features": [
     { "from": "1830", "to": "1834",

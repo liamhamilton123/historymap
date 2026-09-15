@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Brunswick",
-  "color": "#509f70",
+  "color": "#aa4646",
   "cliopatria": {"name":"Duchy of Brunswick","wikipedia":"Duchy of Brunswick","wikidata":"Q326029","seshat":null,"memberOf":null},
   "features": [
     { "from": "1814", "to": "1820",

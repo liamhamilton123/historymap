@@ -1,6 +1,6 @@
 {
   "name": "Great Mongol State",
-  "color": "#9f8050",
+  "color": "#549c84",
   "cliopatria": {"name":"Great Mongol State","wikipedia":"Yuan dynasty","wikidata":"Q7313","seshat":null,"memberOf":null},
   "features": [
     { "from": "1912", "to": "1914",

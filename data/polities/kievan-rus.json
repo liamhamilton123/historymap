@@ -1,6 +1,6 @@
 {
   "name": "Kievan Rus'",
-  "color": "#509f99",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Kievan Rus'","wikipedia":"Kievan Rus'","wikidata":"Q1108445","seshat":"ua_kievan_rus","memberOf":null},
   "features": [
     { "from": "882", "to": "884",

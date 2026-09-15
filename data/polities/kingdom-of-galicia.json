@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Galicia",
-  "color": "#509f50",
+  "color": "#4646aa",
   "cliopatria": {"name":"Kingdom of Galicia","wikipedia":"Kingdom of Galicia","wikidata":"Q303421","seshat":"es_galicia_k","memberOf":null},
   "features": [
     { "from": "911", "to": "922",

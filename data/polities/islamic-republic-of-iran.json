@@ -1,6 +1,6 @@
 {
   "name": "Islamic Republic of Iran",
-  "color": "#9f509a",
+  "color": "#4689aa",
   "cliopatria": {"name":"Islamic Republic of Iran","wikipedia":"Iran","wikidata":"Q794","seshat":null,"memberOf":null},
   "features": [
     { "from": "1979", "to": "1983",

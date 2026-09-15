@@ -1,6 +1,6 @@
 {
   "name": "Western Jin",
-  "color": "#506b9f",
+  "color": "#549c9c",
   "cliopatria": {"name":"Western Jin","wikipedia":"Jin dynasty (266-420)","wikidata":"Q7352","seshat":"cn_western_jin_dyn","memberOf":null},
   "features": [
     { "from": "265", "to": "283",

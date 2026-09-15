@@ -1,6 +1,6 @@
 {
   "name": "County of Tripoli",
-  "color": "#80509f",
+  "color": "#46aaaa",
   "cliopatria": {"name":"County of Tripoli","wikipedia":"County of Tripoli","wikidata":"Q272033","seshat":null,"memberOf":null},
   "features": [
     { "from": "1111", "to": "1126",

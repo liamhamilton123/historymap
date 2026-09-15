@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Masovia",
-  "color": "#50589f",
+  "color": "#46aa46",
   "cliopatria": {"name":"Duchy of Masovia","wikipedia":"Duchy of Masovia","wikidata":"Q2361927","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1139", "to": "1147",

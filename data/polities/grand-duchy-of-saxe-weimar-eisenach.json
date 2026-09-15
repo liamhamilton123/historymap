@@ -1,6 +1,6 @@
 {
   "name": "Grand Duchy of Saxe-Weimar-Eisenach",
-  "color": "#67509f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Grand Duchy of Saxe-Weimar-Eisenach","wikipedia":"Saxe-Weimar-Eisenach","wikidata":"Q155570","seshat":null,"memberOf":null},
   "features": [
     { "from": "1806", "to": "1807",

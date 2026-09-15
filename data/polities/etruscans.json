@@ -1,6 +1,6 @@
 {
   "name": "Etruscans",
-  "color": "#509f60",
+  "color": "#9c549c",
   "cliopatria": {"name":"Etruscans","wikipedia":"Etruscan civilization","wikidata":"Q17161","seshat":null,"memberOf":null},
   "features": [
     { "from": "-750", "to": "-650",

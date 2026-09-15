@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Urartu",
-  "color": "#9f5f50",
+  "color": "#84549c",
   "cliopatria": {"name":"Kingdom of Urartu","wikipedia":"Urartu","wikidata":"Q185068","seshat":"tr_urartu_k","memberOf":null},
   "features": [
     { "from": "-800", "to": "-750",

@@ -1,6 +1,6 @@
 {
   "name": "Venezuela",
-  "color": "#849f50",
+  "color": "#8946aa",
   "cliopatria": {"name":"Venezuela","wikipedia":"Venezuela","wikidata":"Q717","seshat":"ve_venezuela_rep_1","memberOf":null},
   "features": [
     { "from": "1834", "to": "1853",

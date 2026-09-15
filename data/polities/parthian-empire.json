@@ -1,6 +1,6 @@
 {
   "name": "Parthian Empire",
-  "color": "#9f8550",
+  "color": "#849c54",
   "cliopatria": {"name":"Parthian Empire","wikipedia":"Parthian Empire","wikidata":"Q1986139","seshat":"ir_parthian_emp_1","memberOf":null},
   "features": [
     { "from": "-239", "to": "-223",

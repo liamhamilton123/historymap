@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Courland",
-  "color": "#9f5090",
+  "color": "#46aa67",
   "cliopatria": {"name":"Duchy of Courland","wikipedia":"Duchy of Courland and Semigallia","wikidata":"Q156038","seshat":null,"memberOf":null},
   "features": [
     { "from": "1734", "to": "1772",

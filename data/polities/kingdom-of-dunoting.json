@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Dunoting",
-  "color": "#9f5095",
+  "color": "#9c8454",
   "cliopatria": {"name":"Kingdom of Dunoting","wikipedia":"Dunoding","wikidata":"Q2264840","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "592", "to": "623",

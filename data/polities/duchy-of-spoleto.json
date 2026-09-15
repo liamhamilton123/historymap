@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Spoleto",
-  "color": "#509f7d",
+  "color": "#4689aa",
   "cliopatria": {"name":"Duchy of Spoleto","wikipedia":"Duchy of Spoleto","wikidata":"Q2829270","seshat":null,"memberOf":null},
   "features": [
     { "from": "577", "to": "587",

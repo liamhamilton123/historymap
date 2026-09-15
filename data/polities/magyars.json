@@ -1,6 +1,6 @@
 {
   "name": "Magyars",
-  "color": "#569f50",
+  "color": "#84549c",
   "cliopatria": {"name":"Magyars","wikipedia":"Hungarians","wikidata":"Q133032","seshat":null,"memberOf":null},
   "features": [
     { "from": "840", "to": "860",

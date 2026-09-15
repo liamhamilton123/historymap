@@ -1,6 +1,6 @@
 {
   "name": "Vandal Kingdom",
-  "color": "#9f5078",
+  "color": "#6746aa",
   "cliopatria": {"name":"Vandal Kingdom","wikipedia":"Vandal Kingdom","wikidata":"Q10416611","seshat":"dz_vandal_k","memberOf":null},
   "features": [
     { "from": "439", "to": "441",

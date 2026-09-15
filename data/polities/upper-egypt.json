@@ -1,6 +1,6 @@
 {
   "name": "Upper Egypt",
-  "color": "#85509f",
+  "color": "#aa4646",
   "cliopatria": {"name":"Upper Egypt","wikipedia":"Old Kingdom of Egypt","wikidata":"Q203751","seshat":"eg_old_k_2","memberOf":null},
   "features": [
     { "from": "-2200", "to": "-2100",

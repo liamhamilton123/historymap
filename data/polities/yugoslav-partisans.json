@@ -1,6 +1,6 @@
 {
   "name": "Yugoslav Partisans",
-  "color": "#9f8d50",
+  "color": "#4646aa",
   "cliopatria": {"name":"Yugoslav Partisans","wikipedia":"Yugoslav Partisans","wikidata":"Q155198","seshat":null,"memberOf":null},
   "features": [
     { "from": "1944", "to": "1945",

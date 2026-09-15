@@ -1,6 +1,6 @@
 {
   "name": "First Hellenic Republic",
-  "color": "#509f9f",
+  "color": "#aaaa46",
   "cliopatria": {"name":"First Hellenic Republic","wikipedia":"First Hellenic Republic","wikidata":"Q528546","seshat":null,"memberOf":null},
   "features": [
     { "from": "1822", "to": "1824",

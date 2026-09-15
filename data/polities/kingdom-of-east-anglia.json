@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of East Anglia",
-  "color": "#50889f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Kingdom of East Anglia","wikipedia":"Kingdom of East Anglia","wikidata":"Q837998","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "534", "to": "666",

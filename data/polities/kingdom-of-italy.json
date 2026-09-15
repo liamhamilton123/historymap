@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Italy",
-  "color": "#509f84",
+  "color": "#549c6c",
   "cliopatria": {"name":"Kingdom of Italy","wikipedia":"Kingdom of Italy","wikidata":"Q172579","seshat":null,"memberOf":null},
   "features": [
     { "from": "587", "to": "602",

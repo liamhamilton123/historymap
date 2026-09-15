@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Morgannwg",
-  "color": "#6d509f",
+  "color": "#549c9c",
   "cliopatria": {"name":"Kingdom of Morgannwg","wikipedia":"Kingdom of Morgannwg","wikidata":"Q13131807","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "540", "to": "947",

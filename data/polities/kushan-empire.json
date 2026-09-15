@@ -1,6 +1,6 @@
 {
   "name": "Kushan Empire",
-  "color": "#9e9f50",
+  "color": "#9c5454",
   "cliopatria": {"name":"Kushan Empire","wikipedia":"Kushan Empire","wikidata":"Q25979","seshat":"af_kushan_emp","memberOf":null},
   "features": [
     { "from": "43", "to": "51",

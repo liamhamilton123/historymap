@@ -1,6 +1,6 @@
 {
   "name": "Vandals",
-  "color": "#64509f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Vandals","wikipedia":"Vandals","wikidata":"Q42211","seshat":null,"memberOf":null},
   "features": [
     { "from": "337", "to": "358",

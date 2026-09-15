@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Castile",
-  "color": "#919f50",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Kingdom of Castile","wikipedia":"Kingdom of Castile","wikidata":"Q179293","seshat":null,"memberOf":null},
   "features": [
     { "from": "961", "to": "1010",

@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Thuringia",
-  "color": "#50699f",
+  "color": "#549c84",
   "cliopatria": {"name":"Duchy of Thuringia","wikipedia":"Duchy of Thuringia","wikidata":"Q5311389","seshat":null,"memberOf":null},
   "features": [
     { "from": "567", "to": "633",

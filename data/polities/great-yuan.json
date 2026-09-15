@@ -1,6 +1,6 @@
 {
   "name": "Great Yuan",
-  "color": "#9f5079",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Great Yuan","wikipedia":"Yuan dynasty","wikidata":"Q7313","seshat":null,"memberOf":null},
   "features": [
     { "from": "-110", "to": "-63",

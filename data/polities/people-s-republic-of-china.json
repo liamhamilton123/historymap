@@ -1,6 +1,6 @@
 {
   "name": "People's Republic of China",
-  "color": "#68509f",
+  "color": "#546c9c",
   "cliopatria": {"name":"People's Republic of China","wikipedia":"China","wikidata":"Q148","seshat":"cn_chinese_peoples_rep","memberOf":null},
   "features": [
     { "from": "1950", "to": "1953",

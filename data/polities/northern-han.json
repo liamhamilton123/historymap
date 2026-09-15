@@ -1,6 +1,6 @@
 {
   "name": "Northern Han",
-  "color": "#509f80",
+  "color": "#4667aa",
   "cliopatria": {"name":"Northern Han","wikipedia":"Northern Han","wikidata":"Q1141471","seshat":"cn_five_dyn","memberOf":"(Five Dynasties and Ten Kingdoms)"},
   "features": [
     { "from": "960", "to": "970",

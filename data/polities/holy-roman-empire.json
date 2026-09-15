@@ -1,6 +1,6 @@
 {
   "name": "Holy Roman Empire",
-  "color": "#899f50",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Holy Roman Empire","wikipedia":"Holy Roman Empire","wikidata":"Q12548","seshat":"de_empire_1","memberOf":"(Holy Roman Empire)"},
   "features": [
     { "from": "962", "to": "970",

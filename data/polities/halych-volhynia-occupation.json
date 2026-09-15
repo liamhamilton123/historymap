@@ -1,6 +1,6 @@
 {
   "name": "Halych-Volhynia occupation",
-  "color": "#9f5650",
+  "color": "#89aa46",
   "cliopatria": {"name":"Halych-Volhynia occupation","wikipedia":"Kingdom of Galicia-Volhynia","wikidata":"Q239502","seshat":null,"memberOf":null},
   "features": [
     { "from": "1056", "to": "1066",

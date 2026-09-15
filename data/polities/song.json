@@ -1,6 +1,6 @@
 {
   "name": "Song",
-  "color": "#9f9650",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Song","wikipedia":"Song (state)","wikidata":"Q7462","seshat":null,"memberOf":"(Spring and Autumn States)"},
   "features": [
     { "from": "-750", "to": "-480",

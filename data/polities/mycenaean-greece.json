@@ -1,6 +1,6 @@
 {
   "name": "Mycenaean Greece",
-  "color": "#50799f",
+  "color": "#54849c",
   "cliopatria": {"name":"Mycenaean Greece","wikipedia":"Mycenaean Greece","wikidata":"Q181264","seshat":null,"memberOf":null},
   "features": [
     { "from": "-1500", "to": "-1400",

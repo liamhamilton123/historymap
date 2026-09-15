@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Kuyavia",
-  "color": "#50659f",
+  "color": "#546c9c",
   "cliopatria": {"name":"Duchy of Kuyavia","wikipedia":"Duchy of Kuyavia","wikidata":"Q11750543","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1188", "to": "1202",

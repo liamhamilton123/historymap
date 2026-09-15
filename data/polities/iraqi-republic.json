@@ -1,6 +1,6 @@
 {
   "name": "Iraqi Republic",
-  "color": "#9f7c50",
+  "color": "#9c546c",
   "cliopatria": {"name":"Iraqi Republic","wikipedia":"Iraq","wikidata":"Q796","seshat":"iq_iraq_rep","memberOf":null},
   "features": [
     { "from": "1960", "to": "1983",

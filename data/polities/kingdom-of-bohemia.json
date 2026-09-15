@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Bohemia",
-  "color": "#84509f",
+  "color": "#6c549c",
   "cliopatria": {"name":"Kingdom of Bohemia","wikipedia":"Kingdom of Bohemia","wikidata":"Q42585","seshat":"cz_bohemian_k_1","memberOf":"(Holy Roman Empire);(Kingdom of Bohemia)"},
   "features": [
     { "from": "1202", "to": "1216",

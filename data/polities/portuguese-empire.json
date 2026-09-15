@@ -1,6 +1,6 @@
 {
   "name": "Portuguese Empire",
-  "color": "#80509f",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Portuguese Empire","wikipedia":"Portuguese Empire","wikidata":"Q200464","seshat":"pt_portuguese_emp_1","memberOf":"(Portuguese Empire)"},
   "features": [
     { "from": "1502", "to": "1507",

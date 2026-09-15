@@ -1,6 +1,6 @@
 {
   "name": "Visigothic Kingdom",
-  "color": "#9f7750",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Visigothic Kingdom","wikipedia":"Visigothic Kingdom","wikidata":"Q126936","seshat":"es_visigothic_k","memberOf":null},
   "features": [
     { "from": "426", "to": "455",

@@ -1,6 +1,6 @@
 {
   "name": "Ostrogoths",
-  "color": "#9f5058",
+  "color": "#aa8946",
   "cliopatria": {"name":"Ostrogoths","wikipedia":"Ostrogoths","wikidata":"Q103122","seshat":null,"memberOf":null},
   "features": [
     { "from": "455", "to": "476",

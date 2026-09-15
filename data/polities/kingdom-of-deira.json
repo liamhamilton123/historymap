@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Deira",
-  "color": "#506c9f",
+  "color": "#546c9c",
   "cliopatria": {"name":"Kingdom of Deira","wikipedia":"Deira","wikidata":"Q506008","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "534", "to": "546",

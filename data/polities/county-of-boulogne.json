@@ -1,13 +1,13 @@
 {
   "name": "County of Boulogne",
-  "color": "#509f97",
+  "color": "#67aa46",
   "cliopatria": {"name":"County of Boulogne","wikipedia":"County of Boulogne","wikidata":"Q1431527","seshat":"fr_capetian_k_2","memberOf":"(Kingdom of France)"},
   "features": [
-    { "from": "1188", "to": "1236",
+    { "from": "1188", "to": "1236", "relationship": "vassal", "overlord": "France",
       "geometry": {"type":"MultiPolygon","coordinates":[[[[1.496,50.9122],[1.5047,50.7788],[1.509,50.7121],[1.4247,50.7121],[1.4334,50.5789],[1.686,50.5789],[1.8461,50.7121],[1.5804,50.9122],[1.496,50.9122]]]]} },
-    { "from": "1241", "to": "1250",
+    { "from": "1241", "to": "1250", "relationship": "vassal", "overlord": "France",
       "geometry": {"type":"MultiPolygon","coordinates":[[[[1.496,50.9122],[1.509,50.7121],[1.4247,50.7121],[1.5176,50.5789],[1.6018,50.5789],[1.8419,50.7788],[1.5804,50.9122],[1.496,50.9122]]]]} },
-    { "from": "1250", "to": "1260",
+    { "from": "1250", "to": "1260", "relationship": "vassal", "overlord": "France",
       "geometry": {"type":"MultiPolygon","coordinates":[[[[1.496,50.9122],[1.509,50.7121],[1.4247,50.7121],[1.5176,50.5789],[1.6018,50.5789],[1.8419,50.7788],[1.5804,50.9122],[1.496,50.9122]]]]} }
   ]
 }

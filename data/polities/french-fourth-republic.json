@@ -1,6 +1,6 @@
 {
   "name": "French Fourth Republic",
-  "color": "#9f8a50",
+  "color": "#aa8946",
   "cliopatria": {"name":"French Fourth Republic","wikipedia":"French Fourth Republic","wikidata":"Q69829","seshat":null,"memberOf":"(French Fourth Republic)"},
   "features": [
     { "from": "1945", "to": "1946",

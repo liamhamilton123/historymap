@@ -1,6 +1,6 @@
 {
   "name": "Emirate of Crete",
-  "color": "#7e9f50",
+  "color": "#46aa67",
   "cliopatria": {"name":"Emirate of Crete","wikipedia":"Emirate of Crete","wikidata":"Q603771","seshat":"gr_crete_emirate","memberOf":null},
   "features": [
     { "from": "830", "to": "960",

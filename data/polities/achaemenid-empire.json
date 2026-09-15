@@ -1,6 +1,6 @@
 {
   "name": "Achaemenid Empire",
-  "color": "#789f50",
+  "color": "#549c9c",
   "cliopatria": {"name":"Achaemenid Empire","wikipedia":"Achaemenid Empire","wikidata":"Q389688","seshat":"ir_achaemenid_emp","memberOf":null},
   "features": [
     { "from": "-550", "to": "-540",

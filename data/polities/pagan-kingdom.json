@@ -1,6 +1,6 @@
 {
   "name": "Pagan Kingdom",
-  "color": "#50999f",
+  "color": "#549c6c",
   "cliopatria": {"name":"Pagan Kingdom","wikipedia":"Pagan Kingdom","wikidata":"Q888574","seshat":null,"memberOf":null},
   "features": [
     { "from": "850", "to": "860",

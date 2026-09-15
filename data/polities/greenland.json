@@ -1,6 +1,6 @@
 {
   "name": "Greenland",
-  "color": "#82509f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Greenland","wikipedia":"Greenland","wikidata":"Q223","seshat":null,"memberOf":null},
   "features": [
     { "from": "1734", "to": "1738",

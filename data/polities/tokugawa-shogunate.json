@@ -1,6 +1,6 @@
 {
   "name": "Tokugawa Shogunate",
-  "color": "#9f7a50",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Tokugawa Shogunate","wikipedia":"Tokugawa shogunate","wikidata":"Q205662","seshat":null,"memberOf":null},
   "features": [
     { "from": "1600", "to": "1602",

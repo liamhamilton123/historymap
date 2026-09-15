@@ -1,6 +1,6 @@
 {
   "name": "French Third Republic",
-  "color": "#96509f",
+  "color": "#4667aa",
   "cliopatria": {"name":"French Third Republic","wikipedia":"French Third Republic","wikidata":"Q70802","seshat":"fr_france_modern_1","memberOf":"(French Third Republic)"},
   "features": [
     { "from": "1871", "to": "1873",

@@ -1,6 +1,6 @@
 {
   "name": "Kathmandu",
-  "color": "#50849f",
+  "color": "#546c9c",
   "cliopatria": {"name":"Kathmandu","wikipedia":"Kathmandu","wikidata":"Q3037","seshat":null,"memberOf":null},
   "features": [
     { "from": "1202", "to": "1744",

@@ -1,6 +1,6 @@
 {
   "name": "Grand Duchy of Tuscany",
-  "color": "#7a509f",
+  "color": "#46aa46",
   "cliopatria": {"name":"Grand Duchy of Tuscany","wikipedia":"Grand Duchy of Tuscany","wikidata":"Q154849","seshat":null,"memberOf":null},
   "features": [
     { "from": "1797", "to": "1799",

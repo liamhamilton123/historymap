@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Alba",
-  "color": "#97509f",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Kingdom of Alba","wikipedia":"Kingdom of Alba","wikidata":"Q1991742","seshat":"gb_alba_k","memberOf":null},
   "features": [
     { "from": "900", "to": "960",

@@ -1,6 +1,6 @@
 {
   "name": "Ashanti Empire",
-  "color": "#509f71",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Ashanti Empire","wikipedia":"Ashanti Empire","wikidata":"Q722071","seshat":"gh_ashanti_emp","memberOf":null},
   "features": [
     { "from": "1702", "to": "1727",

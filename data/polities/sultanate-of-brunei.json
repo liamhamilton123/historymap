@@ -1,6 +1,6 @@
 {
   "name": "Sultanate of Brunei",
-  "color": "#509f9b",
+  "color": "#9c5454",
   "cliopatria": {"name":"Sultanate of Brunei","wikipedia":"Bruneian Sultanate (1368-1888)","wikidata":"Q887803","seshat":null,"memberOf":null},
   "features": [
     { "from": "1363", "to": "1492",

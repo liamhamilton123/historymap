@@ -1,6 +1,6 @@
 {
   "name": "Kutai Kingdom",
-  "color": "#9f5085",
+  "color": "#9c8454",
   "cliopatria": {"name":"Kutai Kingdom","wikipedia":"Kutai","wikidata":"Q1794655","seshat":null,"memberOf":null},
   "features": [
     { "from": "1648", "to": "1727",

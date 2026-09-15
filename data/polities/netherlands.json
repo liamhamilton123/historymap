@@ -1,6 +1,6 @@
 {
   "name": "Netherlands",
-  "color": "#50709f",
+  "color": "#8946aa",
   "cliopatria": {"name":"Netherlands","wikipedia":"Netherlands","wikidata":"Q55","seshat":"nl_dutch_emp_2","memberOf":"(Netherlands)"},
   "features": [
     { "from": "1815", "to": "1820",

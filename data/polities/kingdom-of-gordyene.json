@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Gordyene",
-  "color": "#71509f",
+  "color": "#4646aa",
   "cliopatria": {"name":"Kingdom of Gordyene","wikipedia":"Corduene","wikidata":"Q29237","seshat":null,"memberOf":null},
   "features": [
     { "from": "-63", "to": "114",

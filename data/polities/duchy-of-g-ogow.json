@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Głogów",
-  "color": "#9f6850",
+  "color": "#9c5484",
   "cliopatria": {"name":"Duchy of Głogów","wikipedia":"Duchy of Głogów","wikidata":"Q684501","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1250", "to": "1260",

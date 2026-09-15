@@ -1,6 +1,6 @@
 {
   "name": "Carthage",
-  "color": "#9f5a50",
+  "color": "#549c54",
   "cliopatria": {"name":"Carthage","wikipedia":"Ancient Carthage","wikidata":"Q2429397","seshat":"tn_carthage_emp","memberOf":null},
   "features": [
     { "from": "-650", "to": "-630",

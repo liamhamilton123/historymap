@@ -1,6 +1,6 @@
 {
   "name": "Achaean League",
-  "color": "#6c509f",
+  "color": "#6c549c",
   "cliopatria": {"name":"Achaean League","wikipedia":"Achaean League","wikidata":"Q244796","seshat":null,"memberOf":null},
   "features": [
     { "from": "-279", "to": "-272",

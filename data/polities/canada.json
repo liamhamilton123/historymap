@@ -1,6 +1,6 @@
 {
   "name": "Canada",
-  "color": "#78509f",
+  "color": "#54549c",
   "cliopatria": {"name":"Canada","wikipedia":"Canada","wikidata":"Q16","seshat":"ca_canada_dominion","memberOf":null},
   "features": [
     { "from": "1932", "to": "1949",

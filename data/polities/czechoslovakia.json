@@ -1,6 +1,6 @@
 {
   "name": "Czechoslovakia",
-  "color": "#50929f",
+  "color": "#549c6c",
   "cliopatria": {"name":"Czechoslovakia","wikipedia":"Czechoslovakia","wikidata":"Q33946","seshat":"cz_czechoslovakia","memberOf":null},
   "features": [
     { "from": "1919", "to": "1920",

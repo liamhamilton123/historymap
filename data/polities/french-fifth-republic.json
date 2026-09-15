@@ -1,6 +1,6 @@
 {
   "name": "French Fifth Republic",
-  "color": "#9f5094",
+  "color": "#46aa89",
   "cliopatria": {"name":"French Fifth Republic","wikipedia":"French Fifth Republic","wikidata":"Q200686","seshat":"fr_france_modern_2","memberOf":null},
   "features": [
     { "from": "1958", "to": "1960",

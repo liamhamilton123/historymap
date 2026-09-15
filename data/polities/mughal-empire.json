@@ -1,6 +1,6 @@
 {
   "name": "Mughal Empire",
-  "color": "#9f6c50",
+  "color": "#9c546c",
   "cliopatria": {"name":"Mughal Empire","wikipedia":"Mughal Empire","wikidata":"Q33296","seshat":"in_mughal_emp","memberOf":null},
   "features": [
     { "from": "1529", "to": "1534",

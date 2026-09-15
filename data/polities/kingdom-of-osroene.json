@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Osroene",
-  "color": "#9f5086",
+  "color": "#aa4667",
   "cliopatria": {"name":"Kingdom of Osroene","wikipedia":"Osroene","wikidata":"Q237234","seshat":null,"memberOf":null},
   "features": [
     { "from": "-63", "to": "-40",

@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Anhalt",
-  "color": "#506d9f",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Duchy of Anhalt","wikipedia":"Duchy of Anhalt","wikidata":"Q16550783","seshat":null,"memberOf":null},
   "features": [
     { "from": "1806", "to": "1809",

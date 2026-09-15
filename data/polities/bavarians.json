@@ -1,6 +1,6 @@
 {
   "name": "Bavarians",
-  "color": "#509f61",
+  "color": "#9c5484",
   "cliopatria": {"name":"Bavarians","wikipedia":"Bavarians","wikidata":"Q13048507","seshat":null,"memberOf":null},
   "features": [
     { "from": "540", "to": "546",

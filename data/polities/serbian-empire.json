@@ -1,6 +1,6 @@
 {
   "name": "Serbian Empire",
-  "color": "#50699f",
+  "color": "#6c549c",
   "cliopatria": {"name":"Serbian Empire","wikipedia":"Serbian Empire","wikidata":"Q1406298","seshat":"rs_serbia_k","memberOf":null},
   "features": [
     { "from": "1352", "to": "1363",

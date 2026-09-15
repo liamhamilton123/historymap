@@ -1,6 +1,6 @@
 {
   "name": "Free City of Frankfurt",
-  "color": "#509f6d",
+  "color": "#aa4646",
   "cliopatria": {"name":"Free City of Frankfurt","wikipedia":"Free City of Frankfurt","wikidata":"Q704300","seshat":null,"memberOf":null},
   "features": [
     { "from": "1820", "to": "1865",

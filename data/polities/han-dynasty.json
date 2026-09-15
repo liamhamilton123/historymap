@@ -1,6 +1,6 @@
 {
   "name": "Han Dynasty",
-  "color": "#9f9050",
+  "color": "#aa8946",
   "cliopatria": {"name":"Han Dynasty","wikipedia":"Han dynasty","wikidata":"Q1068371","seshat":"cn_western_han_dyn","memberOf":null},
   "features": [
     { "from": "-202", "to": "-197",

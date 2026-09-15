@@ -1,6 +1,6 @@
 {
   "name": "Republic of Hawai'i",
-  "color": "#9f5054",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Republic of Hawai'i","wikipedia":"Republic of Hawaii","wikidata":"Q1057542","seshat":null,"memberOf":null},
   "features": [
     { "from": "1895", "to": "1898",

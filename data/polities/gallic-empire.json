@@ -1,6 +1,6 @@
 {
   "name": "Gallic Empire",
-  "color": "#50549f",
+  "color": "#9c549c",
   "cliopatria": {"name":"Gallic Empire","wikipedia":"Gallic Empire","wikidata":"Q273025","seshat":null,"memberOf":null},
   "features": [
     { "from": "261", "to": "270",

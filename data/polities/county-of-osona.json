@@ -1,6 +1,6 @@
 {
   "name": "County of Osona",
-  "color": "#9f8950",
+  "color": "#aaaa46",
   "cliopatria": {"name":"County of Osona","wikipedia":"County of Osona","wikidata":"Q1541779","seshat":null,"memberOf":null},
   "features": [
     { "from": "990", "to": "1000",

@@ -1,6 +1,6 @@
 {
   "name": "Second Mexican Empire",
-  "color": "#89509f",
+  "color": "#9c549c",
   "cliopatria": {"name":"Second Mexican Empire","wikipedia":"Second Mexican Empire","wikidata":"Q371334","seshat":"mx_mexico_1","memberOf":null},
   "features": [
     { "from": "1865", "to": "1866",

@@ -1,6 +1,6 @@
 {
   "name": "Nieuwe Republiek",
-  "color": "#508e9f",
+  "color": "#6c549c",
   "cliopatria": {"name":"Nieuwe Republiek","wikipedia":"Nieuwe Republiek","wikidata":"Q552157","seshat":null,"memberOf":null},
   "features": [
     { "from": "1885", "to": "1890",

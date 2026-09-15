@@ -1,6 +1,6 @@
 {
   "name": "State of Israel",
-  "color": "#9f9250",
+  "color": "#aa6746",
   "cliopatria": {"name":"State of Israel","wikipedia":"Israel","wikidata":"Q801","seshat":null,"memberOf":null},
   "features": [
     { "from": "1948", "to": "1949",

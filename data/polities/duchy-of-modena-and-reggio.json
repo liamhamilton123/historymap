@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Modena and Reggio",
-  "color": "#68509f",
+  "color": "#549c9c",
   "cliopatria": {"name":"Duchy of Modena and Reggio","wikipedia":"Duchy of Modena and Reggio","wikidata":"Q252580","seshat":null,"memberOf":null},
   "features": [
     { "from": "1815", "to": "1848",

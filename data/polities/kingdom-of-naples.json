@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Naples",
-  "color": "#9f506f",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Kingdom of Naples","wikipedia":"Kingdom of Naples","wikidata":"Q173065","seshat":"it_naples_k","memberOf":null},
   "features": [
     { "from": "1285", "to": "1450",

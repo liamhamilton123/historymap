@@ -1,6 +1,6 @@
 {
   "name": "First Bulgarian Empire",
-  "color": "#9f6f50",
+  "color": "#54549c",
   "cliopatria": {"name":"First Bulgarian Empire","wikipedia":"First Bulgarian Empire","wikidata":"Q203817","seshat":"bg_bulgaria_early","memberOf":null},
   "features": [
     { "from": "682", "to": "705",

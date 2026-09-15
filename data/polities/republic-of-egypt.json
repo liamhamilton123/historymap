@@ -1,6 +1,6 @@
 {
   "name": "Republic of Egypt",
-  "color": "#505d9f",
+  "color": "#4646aa",
   "cliopatria": {"name":"Republic of Egypt","wikipedia":"Egypt","wikidata":"Q79","seshat":"eg_egypt_modern_2","memberOf":null},
   "features": [
     { "from": "1953", "to": "1956",

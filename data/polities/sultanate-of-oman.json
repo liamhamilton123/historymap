@@ -1,6 +1,6 @@
 {
   "name": "Sultanate of Oman",
-  "color": "#869f50",
+  "color": "#aa4667",
   "cliopatria": {"name":"Sultanate of Oman","wikipedia":"Oman","wikidata":"Q842","seshat":"om_busaidi_imamate_1","memberOf":null},
   "features": [
     { "from": "1744", "to": "1748",

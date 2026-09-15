@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Gascony",
-  "color": "#509f56",
+  "color": "#54849c",
   "cliopatria": {"name":"Duchy of Gascony","wikipedia":"Duchy of Gascony","wikidata":"Q2295939","seshat":null,"memberOf":null},
   "features": [
     { "from": "768", "to": "772",

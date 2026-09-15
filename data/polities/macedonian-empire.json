@@ -1,6 +1,6 @@
 {
   "name": "Macedonian Empire",
-  "color": "#50509f",
+  "color": "#849c54",
   "cliopatria": {"name":"Macedonian Empire","wikipedia":"Macedonia (ancient kingdom)","wikidata":"Q83958","seshat":null,"memberOf":"(Macedonian Empire)"},
   "features": [
     { "from": "-675", "to": "-550",

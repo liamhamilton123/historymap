@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Essex",
-  "color": "#9f5650",
+  "color": "#9c5484",
   "cliopatria": {"name":"Kingdom of Essex","wikipedia":"Kingdom of Essex","wikidata":"Q110888","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "534", "to": "628",

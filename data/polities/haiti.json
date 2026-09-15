@@ -1,6 +1,6 @@
 {
   "name": "Haiti",
-  "color": "#9f505f",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Haiti","wikipedia":"Haiti","wikidata":"Q2006756","seshat":null,"memberOf":null},
   "features": [
     { "from": "1792", "to": "1800",

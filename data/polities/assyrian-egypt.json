@@ -1,6 +1,6 @@
 {
   "name": "Assyrian Egypt",
-  "color": "#979f50",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Assyrian Egypt","wikipedia":"Assyrian conquest of Egypt","wikidata":"Q97357417","seshat":null,"memberOf":null},
   "features": [
     { "from": "-650", "to": "-630",

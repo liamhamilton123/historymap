@@ -1,6 +1,6 @@
 {
   "name": "Fatimid Caliphate",
-  "color": "#9f5082",
+  "color": "#9c5454",
   "cliopatria": {"name":"Fatimid Caliphate","wikipedia":"Fatimid Caliphate","wikidata":"Q160307","seshat":"tn_fatimid_cal","memberOf":null},
   "features": [
     { "from": "911", "to": "922",

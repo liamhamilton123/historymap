@@ -1,6 +1,6 @@
 {
   "name": "Huns",
-  "color": "#50829f",
+  "color": "#8946aa",
   "cliopatria": {"name":"Huns","wikipedia":"Huns","wikidata":"Q45813","seshat":null,"memberOf":null},
   "features": [
     { "from": "106", "to": "371",

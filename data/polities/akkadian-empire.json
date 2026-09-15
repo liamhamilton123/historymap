@@ -1,6 +1,6 @@
 {
   "name": "Akkadian Empire",
-  "color": "#509f6f",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Akkadian Empire","wikipedia":"Akkadian Empire","wikidata":"Q4461035","seshat":null,"memberOf":null},
   "features": [
     { "from": "-2300", "to": "-2250",

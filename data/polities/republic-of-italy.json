@@ -1,6 +1,6 @@
 {
   "name": "Republic of Italy",
-  "color": "#9f8250",
+  "color": "#549c54",
   "cliopatria": {"name":"Republic of Italy","wikipedia":"Italy","wikidata":"Q38","seshat":null,"memberOf":null},
   "features": [
     { "from": "1946", "to": "1973",

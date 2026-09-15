@@ -1,6 +1,6 @@
 {
   "name": "Federal League",
-  "color": "#9f5a50",
+  "color": "#4689aa",
   "cliopatria": {"name":"Federal League","wikipedia":"Federal League (1815-1820)","wikidata":"Q2625228","seshat":null,"memberOf":null},
   "features": [
     { "from": "1814", "to": "1815",

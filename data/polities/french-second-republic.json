@@ -1,6 +1,6 @@
 {
   "name": "French Second Republic",
-  "color": "#9f7350",
+  "color": "#549c6c",
   "cliopatria": {"name":"French Second Republic","wikipedia":"French Second Republic","wikidata":"Q58326","seshat":"fr_france_napoleonic","memberOf":"(French Second Republic)"},
   "features": [
     { "from": "1848", "to": "1849",

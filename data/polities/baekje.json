@@ -1,6 +1,6 @@
 {
   "name": "Baekje",
-  "color": "#50859f",
+  "color": "#67aa46",
   "cliopatria": {"name":"Baekje","wikipedia":"Baekje","wikidata":"Q28428","seshat":null,"memberOf":null},
   "features": [
     { "from": "347", "to": "392",

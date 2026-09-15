@@ -1,6 +1,6 @@
 {
   "name": "Eastern Wu",
-  "color": "#9f8e50",
+  "color": "#aa4689",
   "cliopatria": {"name":"Eastern Wu","wikipedia":"Eastern Wu","wikidata":"Q274488","seshat":null,"memberOf":null},
   "features": [
     { "from": "207", "to": "238",

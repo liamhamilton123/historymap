@@ -1,6 +1,6 @@
 {
   "name": "Italian Nationalists",
-  "color": "#50859f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Italian Nationalists","wikipedia":"Italian nationalism","wikidata":"Q6093359","seshat":null,"memberOf":null},
   "features": [
     { "from": "1848", "to": "1849",

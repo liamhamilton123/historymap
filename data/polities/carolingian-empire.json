@@ -1,6 +1,6 @@
 {
   "name": "Carolingian Empire",
-  "color": "#6b9f50",
+  "color": "#54849c",
   "cliopatria": {"name":"Carolingian Empire","wikipedia":"Francia","wikidata":"Q146246","seshat":null,"memberOf":"(Carolingian Empire)"},
   "features": [
     { "from": "718", "to": "724",

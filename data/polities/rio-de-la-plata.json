@@ -1,6 +1,6 @@
 {
   "name": "Río de la Plata",
-  "color": "#9f506f",
+  "color": "#9c549c",
   "cliopatria": {"name":"Río de la Plata","wikipedia":"Río de la Plata","wikidata":"Q35827","seshat":null,"memberOf":null},
   "features": [
     { "from": "1811", "to": "1812",

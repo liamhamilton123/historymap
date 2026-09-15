@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of the Gepids",
-  "color": "#739f50",
+  "color": "#aa4646",
   "cliopatria": {"name":"Kingdom of the Gepids","wikipedia":"Gepids","wikidata":"Q201706","seshat":"rs_gepid_k","memberOf":null},
   "features": [
     { "from": "510", "to": "546",

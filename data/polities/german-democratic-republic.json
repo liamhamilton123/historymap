@@ -1,6 +1,6 @@
 {
   "name": "German Democratic Republic",
-  "color": "#9f5f50",
+  "color": "#4689aa",
   "cliopatria": {"name":"German Democratic Republic","wikipedia":"East Germany","wikidata":"Q16957","seshat":null,"memberOf":null},
   "features": [
     { "from": "1949", "to": "1953",

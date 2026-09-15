@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Greater Poland",
-  "color": "#9f506f",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Duchy of Greater Poland","wikipedia":"Duchy of Greater Poland","wikidata":"Q1515009","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1139", "to": "1177",

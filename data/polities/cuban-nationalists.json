@@ -1,6 +1,6 @@
 {
   "name": "Cuban Nationalists",
-  "color": "#969f50",
+  "color": "#549c54",
   "cliopatria": {"name":"Cuban Nationalists","wikipedia":"Fidel Castro","wikidata":"Q11256","seshat":null,"memberOf":null},
   "features": [
     { "from": "1895", "to": "1898",

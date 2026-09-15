@@ -1,6 +1,6 @@
 {
   "name": "Polish Armed Forces",
-  "color": "#929f50",
+  "color": "#46aa67",
   "cliopatria": {"name":"Polish Armed Forces","wikipedia":"Polish Land Forces","wikidata":"Q248989","seshat":null,"memberOf":null},
   "features": [
     { "from": "1918", "to": "1919",

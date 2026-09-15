@@ -1,6 +1,6 @@
 {
   "name": "Brazilian Republic",
-  "color": "#5c9f50",
+  "color": "#67aa46",
   "cliopatria": {"name":"Brazilian Republic","wikipedia":"Brazil","wikidata":"Q155","seshat":null,"memberOf":null},
   "features": [
     { "from": "1890", "to": "1905",

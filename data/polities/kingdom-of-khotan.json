@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Khotan",
-  "color": "#509f5f",
+  "color": "#549c6c",
   "cliopatria": {"name":"Kingdom of Khotan","wikipedia":"Kingdom of Khotan","wikidata":"Q914898","seshat":"cn_khotan_k","memberOf":null},
   "features": [
     { "from": "888", "to": "896",

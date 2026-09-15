@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Seisyllwg",
-  "color": "#50649f",
+  "color": "#aa4646",
   "cliopatria": {"name":"Kingdom of Seisyllwg","wikipedia":"Seisyllwg","wikidata":"Q2456191","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "878", "to": "900",

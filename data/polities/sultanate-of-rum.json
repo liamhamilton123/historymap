@@ -1,6 +1,6 @@
 {
   "name": "Sultanate of Rum",
-  "color": "#9f5850",
+  "color": "#549c54",
   "cliopatria": {"name":"Sultanate of Rum","wikipedia":"Sultanate of Rum","wikidata":"Q975405","seshat":"tr_rum_sultanate","memberOf":null},
   "features": [
     { "from": "1094", "to": "1099",

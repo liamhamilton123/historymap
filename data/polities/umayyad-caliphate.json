@@ -1,6 +1,6 @@
 {
   "name": "Umayyad Caliphate",
-  "color": "#9f509d",
+  "color": "#849c54",
   "cliopatria": {"name":"Umayyad Caliphate","wikipedia":"Umayyad Caliphate","wikidata":"Q8575586","seshat":null,"memberOf":null},
   "features": [
     { "from": "656", "to": "661",

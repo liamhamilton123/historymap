@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Bytom",
-  "color": "#529f50",
+  "color": "#aa6746",
   "cliopatria": {"name":"Duchy of Bytom","wikipedia":"Duchy of Bytom","wikidata":"Q682001","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1285", "to": "1294",

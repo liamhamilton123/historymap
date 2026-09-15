@@ -1,6 +1,6 @@
 {
   "name": "Southern Xiongnu",
-  "color": "#9f5074",
+  "color": "#9c5484",
   "cliopatria": {"name":"Southern Xiongnu","wikipedia":"Xiongnu","wikidata":"Q188836","seshat":null,"memberOf":null},
   "features": [
     { "from": "51", "to": "60",

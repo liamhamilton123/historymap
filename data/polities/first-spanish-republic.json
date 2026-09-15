@@ -1,6 +1,6 @@
 {
   "name": "First Spanish Republic",
-  "color": "#9f5082",
+  "color": "#9c5454",
   "cliopatria": {"name":"First Spanish Republic","wikipedia":"First Spanish Republic","wikidata":"Q497777","seshat":"es_spanish_emp_3","memberOf":null},
   "features": [
     { "from": "1873", "to": "1877",

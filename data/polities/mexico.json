@@ -1,6 +1,6 @@
 {
   "name": "Mexico",
-  "color": "#9f8c50",
+  "color": "#9c549c",
   "cliopatria": {"name":"Mexico","wikipedia":"Mexico","wikidata":"Q5062192","seshat":"mx_mexico_1","memberOf":null},
   "features": [
     { "from": "1868", "to": "1877",

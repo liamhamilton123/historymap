@@ -1,6 +1,6 @@
 {
   "name": "Kalmar Union",
-  "color": "#5d509f",
+  "color": "#849c54",
   "cliopatria": {"name":"Kalmar Union","wikipedia":"Kalmar Union","wikidata":"Q62623","seshat":"sv_kalmar_union","memberOf":"(Kalmar Union)"},
   "features": [
     { "from": "1402", "to": "1407",

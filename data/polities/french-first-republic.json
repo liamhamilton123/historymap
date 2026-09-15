@@ -1,6 +1,6 @@
 {
   "name": "French First Republic",
-  "color": "#509f80",
+  "color": "#6c549c",
   "cliopatria": {"name":"French First Republic","wikipedia":"French First Republic","wikidata":"Q58296","seshat":"fr_bourbon_k_2","memberOf":"(French First Republic)"},
   "features": [
     { "from": "1792", "to": "1794",

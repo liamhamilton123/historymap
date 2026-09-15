@@ -1,6 +1,6 @@
 {
   "name": "County of Berga",
-  "color": "#7d9f50",
+  "color": "#4689aa",
   "cliopatria": {"name":"County of Berga","wikipedia":"Berga","wikidata":"Q15487","seshat":null,"memberOf":null},
   "features": [
     { "from": "898", "to": "922",

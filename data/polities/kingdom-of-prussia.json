@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Prussia",
-  "color": "#9f5067",
+  "color": "#9c5454",
   "cliopatria": {"name":"Kingdom of Prussia","wikipedia":"Kingdom of Prussia","wikidata":"Q27306","seshat":null,"memberOf":null},
   "features": [
     { "from": "1702", "to": "1706",

@@ -1,9 +1,9 @@
 {
   "name": "French Colony of Guiana",
-  "color": "#529f50",
+  "color": "#4667aa",
   "cliopatria": {"name":"French Colony of Guiana","wikipedia":"French Guiana","wikidata":"Q3769","seshat":"fr_bourbon_k_2","memberOf":"(Kingdom of France)"},
   "features": [
-    { "from": "1791", "to": "1792",
+    { "from": "1791", "to": "1792", "relationship": "vassal", "overlord": "France",
       "geometry": {"type":"MultiPolygon","coordinates":[[[[-52.0747,4.7858],[-51.7071,4.5286],[-51.7738,3.9501],[-52.2856,4.1429],[-53.0958,4.8501],[-53.3892,4.9787],[-53.534,4.9144],[-53.6088,5.0429],[-54.195,5.2358],[-54.2679,5.2358],[-54.0538,5.493],[-54.0587,5.7501],[-53.9858,5.7501],[-52.8875,5.493],[-52.5885,5.0429],[-52.1476,4.7858],[-52.0747,4.7858]]]]} }
   ]
 }

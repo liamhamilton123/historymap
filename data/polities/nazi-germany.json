@@ -1,6 +1,6 @@
 {
   "name": "Nazi Germany",
-  "color": "#7a9f50",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Nazi Germany","wikipedia":"Nazi Germany","wikidata":"Q7318","seshat":"de_ns_germany","memberOf":null},
   "features": [
     { "from": "1936", "to": "1938",

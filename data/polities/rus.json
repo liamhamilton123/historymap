@@ -1,6 +1,6 @@
 {
   "name": "Rus'",
-  "color": "#509f7a",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Rus'","wikipedia":"Rus","wikidata":"Q1108445","seshat":null,"memberOf":null},
   "features": [
     { "from": "880", "to": "882",

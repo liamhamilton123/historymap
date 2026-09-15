@@ -1,6 +1,6 @@
 {
   "name": "Grand Duchy of Würzburg",
-  "color": "#9f5084",
+  "color": "#54549c",
   "cliopatria": {"name":"Grand Duchy of Würzburg","wikipedia":"Grand Duchy of Würzburg","wikidata":"Q698089","seshat":null,"memberOf":null},
   "features": [
     { "from": "1806", "to": "1807",

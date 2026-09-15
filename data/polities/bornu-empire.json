@@ -1,6 +1,6 @@
 {
   "name": "Bornu Empire",
-  "color": "#509e9f",
+  "color": "#4646aa",
   "cliopatria": {"name":"Bornu Empire","wikipedia":"Kanem-Bornu Empire","wikidata":"Q1139762","seshat":"ni_bornu_emp","memberOf":null},
   "features": [
     { "from": "1385", "to": "1482",

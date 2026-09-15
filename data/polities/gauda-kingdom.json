@@ -1,6 +1,6 @@
 {
   "name": "Gauda Kingdom",
-  "color": "#9f6d50",
+  "color": "#549c84",
   "cliopatria": {"name":"Gauda Kingdom","wikipedia":"Gauda Kingdom","wikidata":"Q17076645","seshat":"in_gauda_k","memberOf":null},
   "features": [
     { "from": "602", "to": "612",

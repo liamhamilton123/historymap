@@ -1,6 +1,6 @@
 {
   "name": "Philistia",
-  "color": "#919f50",
+  "color": "#54849c",
   "cliopatria": {"name":"Philistia","wikipedia":"Philistia","wikidata":"Q7185566","seshat":null,"memberOf":null},
   "features": [
     { "from": "-1150", "to": "-1000",

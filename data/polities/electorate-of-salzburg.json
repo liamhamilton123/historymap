@@ -1,6 +1,6 @@
 {
   "name": "Electorate of Salzburg",
-  "color": "#509e9f",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Electorate of Salzburg","wikipedia":"Electorate of Salzburg","wikidata":"Q646390","seshat":null,"memberOf":null},
   "features": [
     { "from": "1803", "to": "1805",

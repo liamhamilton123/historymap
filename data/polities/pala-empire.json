@@ -1,6 +1,6 @@
 {
   "name": "Pala Empire",
-  "color": "#9f5f50",
+  "color": "#4667aa",
   "cliopatria": {"name":"Pala Empire","wikipedia":"Pala Empire","wikidata":"Q668412","seshat":"in_pala_emp","memberOf":null},
   "features": [
     { "from": "750", "to": "751",

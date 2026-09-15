@@ -1,6 +1,6 @@
 {
   "name": "Shu Han",
-  "color": "#65509f",
+  "color": "#54549c",
   "cliopatria": {"name":"Shu Han","wikipedia":"Shu Han","wikidata":"Q320925","seshat":null,"memberOf":null},
   "features": [
     { "from": "224", "to": "238",

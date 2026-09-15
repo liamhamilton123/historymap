@@ -1,6 +1,6 @@
 {
   "name": "Ba'athist Syria",
-  "color": "#50979f",
+  "color": "#549c6c",
   "cliopatria": {"name":"Ba'athist Syria","wikipedia":"Syria","wikidata":"Q858","seshat":"sy_syria_modern","memberOf":null},
   "features": [
     { "from": "1963", "to": "1967",

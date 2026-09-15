@@ -1,6 +1,6 @@
 {
   "name": "Second Spanish Republic",
-  "color": "#689f50",
+  "color": "#549c6c",
   "cliopatria": {"name":"Second Spanish Republic","wikipedia":"Second Spanish Republic","wikidata":"Q178038","seshat":null,"memberOf":null},
   "features": [
     { "from": "1932", "to": "1936",

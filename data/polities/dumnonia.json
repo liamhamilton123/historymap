@@ -1,6 +1,6 @@
 {
   "name": "Dumnonia",
-  "color": "#9f508e",
+  "color": "#9c5454",
   "cliopatria": {"name":"Dumnonia","wikipedia":"Dumnonia","wikidata":"Q313136","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "602", "to": "705",

@@ -1,6 +1,7 @@
 {
-  "name": "Kingdom of Great Britain",
-  "color": "#9f7950",
+  "name": "Britain",
+  "adjective": "British",
+  "color": "#849c54",
   "cliopatria": {"name":"Kingdom of Great Britain","wikipedia":"Great Britain","wikidata":"Q23666","seshat":"gb_british_emp_1","memberOf":"(British Empire)"},
   "features": [
     { "from": "1709", "to": "1757",

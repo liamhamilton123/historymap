@@ -1,6 +1,6 @@
 {
   "name": "Mayan City-States",
-  "color": "#9f8650",
+  "color": "#549c9c",
   "cliopatria": {"name":"Mayan City-States","wikipedia":"Maya civilization","wikidata":"Q28567","seshat":null,"memberOf":null},
   "features": [
     { "from": "-247", "to": "260",

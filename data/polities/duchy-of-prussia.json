@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Prussia",
-  "color": "#6f509f",
+  "color": "#849c54",
   "cliopatria": {"name":"Duchy of Prussia","wikipedia":"Duchy of Prussia","wikidata":"Q153091","seshat":null,"memberOf":null},
   "features": [
     { "from": "1526", "to": "1612",

@@ -1,6 +1,6 @@
 {
   "name": "Nicaean Empire",
-  "color": "#709f50",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Nicaean Empire","wikipedia":"Empire of Nicaea","wikidata":"Q181254","seshat":null,"memberOf":null},
   "features": [
     { "from": "1206", "to": "1210",

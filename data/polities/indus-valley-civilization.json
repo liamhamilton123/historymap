@@ -1,6 +1,6 @@
 {
   "name": "Indus Valley Civilization",
-  "color": "#919f50",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Indus Valley Civilization","wikipedia":"Indus Valley Civilisation","wikidata":"Q42534","seshat":"pk_kachi_pre_urban","memberOf":null},
   "features": [
     { "from": "-3000", "to": "-2700",

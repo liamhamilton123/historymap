@@ -1,6 +1,6 @@
 {
   "name": "Duchies of Poland",
-  "color": "#95509f",
+  "color": "#849c54",
   "cliopatria": {"name":"Duchies of Poland","wikipedia":"Testament of Bolesław III Wrymouth","wikidata":"Q2984183","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1279", "to": "1294",

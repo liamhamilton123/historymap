@@ -1,6 +1,6 @@
 {
   "name": "Rhodes",
-  "color": "#9f5064",
+  "color": "#6746aa",
   "cliopatria": {"name":"Rhodes","wikipedia":"Rhodes","wikidata":"Q43048","seshat":null,"memberOf":null},
   "features": [
     { "from": "-188", "to": "-170",

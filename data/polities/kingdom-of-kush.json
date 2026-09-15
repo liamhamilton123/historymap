@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Kush",
-  "color": "#7e509f",
+  "color": "#4646aa",
   "cliopatria": {"name":"Kingdom of Kush","wikipedia":"Kingdom of Kush","wikidata":"Q241790","seshat":null,"memberOf":null},
   "features": [
     { "from": "-1000", "to": "-800",

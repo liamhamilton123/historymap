@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Racibórz",
-  "color": "#63509f",
+  "color": "#849c54",
   "cliopatria": {"name":"Duchy of Racibórz","wikipedia":"Duchy of Racibórz","wikidata":"Q700117","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1285", "to": "1294",

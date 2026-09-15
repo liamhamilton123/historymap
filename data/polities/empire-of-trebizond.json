@@ -1,6 +1,6 @@
 {
   "name": "Empire of Trebizond",
-  "color": "#8a509f",
+  "color": "#84549c",
   "cliopatria": {"name":"Empire of Trebizond","wikipedia":"Empire of Trebizond","wikidata":"Q178913","seshat":"tr_trebizond_emp","memberOf":null},
   "features": [
     { "from": "1206", "to": "1210",

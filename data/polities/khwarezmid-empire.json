@@ -1,6 +1,6 @@
 {
   "name": "Khwarezmid Empire",
-  "color": "#9f5099",
+  "color": "#9c5484",
   "cliopatria": {"name":"Khwarezmid Empire","wikipedia":"Khwarazmian Empire","wikidata":"Q63134381","seshat":"tm_khwarezmid_emp","memberOf":null},
   "features": [
     { "from": "1202", "to": "1206",

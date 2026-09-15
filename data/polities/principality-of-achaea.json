@@ -1,6 +1,6 @@
 {
   "name": "Principality of Achaea",
-  "color": "#9f505b",
+  "color": "#6c549c",
   "cliopatria": {"name":"Principality of Achaea","wikipedia":"Principality of Achaea","wikidata":"Q332005","seshat":"gr_achaea_principality","memberOf":null},
   "features": [
     { "from": "1206", "to": "1210",

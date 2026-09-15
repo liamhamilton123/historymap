@@ -1,6 +1,6 @@
 {
   "name": "Denmark",
-  "color": "#589f50",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Denmark","wikipedia":"Denmark","wikidata":"Q350186","seshat":null,"memberOf":null},
   "features": [
     { "from": "1945", "to": "1946",

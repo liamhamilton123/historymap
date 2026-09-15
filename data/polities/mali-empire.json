@@ -1,6 +1,6 @@
 {
   "name": "Mali Empire",
-  "color": "#859f50",
+  "color": "#4646aa",
   "cliopatria": {"name":"Mali Empire","wikipedia":"Mali Empire","wikidata":"Q184536","seshat":null,"memberOf":null},
   "features": [
     { "from": "1236", "to": "1241",

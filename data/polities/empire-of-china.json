@@ -1,6 +1,6 @@
 {
   "name": "Empire of China",
-  "color": "#9f7350",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Empire of China","wikipedia":"Empire of China (1915–1916)","wikidata":"Q175379","seshat":null,"memberOf":null},
   "features": [
     { "from": "1916", "to": "1917",

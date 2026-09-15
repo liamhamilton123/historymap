@@ -1,6 +1,6 @@
 {
   "name": "Burma",
-  "color": "#9f7e50",
+  "color": "#aa4646",
   "cliopatria": {"name":"Burma","wikipedia":"Myanmar","wikidata":"Q836","seshat":null,"memberOf":null},
   "features": [
     { "from": "1820", "to": "1822",

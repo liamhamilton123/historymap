@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Cappadocia",
-  "color": "#506f9f",
+  "color": "#6c549c",
   "cliopatria": {"name":"Kingdom of Cappadocia","wikipedia":"Kingdom of Cappadocia","wikidata":"Q29654286","seshat":"tr_cappadocia_2","memberOf":null},
   "features": [
     { "from": "-239", "to": "-218",

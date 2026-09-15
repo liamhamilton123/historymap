@@ -1,6 +1,6 @@
 {
   "name": "Latin Empire",
-  "color": "#50749f",
+  "color": "#6746aa",
   "cliopatria": {"name":"Latin Empire","wikipedia":"Latin Empire","wikidata":"Q178897","seshat":"tr_latin_emp","memberOf":null},
   "features": [
     { "from": "1206", "to": "1210",

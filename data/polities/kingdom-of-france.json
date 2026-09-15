@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of France",
-  "color": "#507c9f",
+  "color": "#6c549c",
   "cliopatria": {"name":"Kingdom of France","wikipedia":"Kingdom of France","wikidata":"Q207162","seshat":"fr_capetian_k_1","memberOf":"(Kingdom of France)"},
   "features": [
     { "from": "990", "to": "1003",

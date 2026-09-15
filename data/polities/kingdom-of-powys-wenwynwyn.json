@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Powys Wenwynwyn",
-  "color": "#649f50",
+  "color": "#4689aa",
   "cliopatria": {"name":"Kingdom of Powys Wenwynwyn","wikipedia":"Powys Wenwynwyn","wikidata":"Q2670639","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "1169", "to": "1206",

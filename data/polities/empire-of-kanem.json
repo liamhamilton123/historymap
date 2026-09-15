@@ -1,6 +1,6 @@
 {
   "name": "Empire of Kanem",
-  "color": "#509f9e",
+  "color": "#aa4667",
   "cliopatria": {"name":"Empire of Kanem","wikipedia":"Kanem-Bornu Empire","wikidata":"Q1139762","seshat":"td_kanem","memberOf":null},
   "features": [
     { "from": "1072", "to": "1375",

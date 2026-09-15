@@ -1,6 +1,6 @@
 {
   "name": "Confederate States of America",
-  "color": "#9f5050",
+  "color": "#4646aa",
   "cliopatria": {"name":"Confederate States of America","wikipedia":"Confederate States of America","wikidata":"Q81931","seshat":null,"memberOf":null},
   "features": [
     { "from": "1861", "to": "1862",

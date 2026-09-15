@@ -1,6 +1,6 @@
 {
   "name": "Kamarupa Kingdom",
-  "color": "#9f9550",
+  "color": "#9c546c",
   "cliopatria": {"name":"Kamarupa Kingdom","wikipedia":"Kamarupa","wikidata":"Q1194765","seshat":"in_kamarupa_k","memberOf":null},
   "features": [
     { "from": "353", "to": "451",

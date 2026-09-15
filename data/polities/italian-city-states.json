@@ -1,6 +1,6 @@
 {
   "name": "Italian City-States",
-  "color": "#5c9f50",
+  "color": "#aa6746",
   "cliopatria": {"name":"Italian City-States","wikipedia":"Italian city-states","wikidata":"Q4115680","seshat":null,"memberOf":null},
   "features": [
     { "from": "-91", "to": "-87",

@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Normandy",
-  "color": "#589f50",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Duchy of Normandy","wikipedia":"Duchy of Normandy","wikidata":"Q842091","seshat":null,"memberOf":null},
   "features": [
     { "from": "922", "to": "926",

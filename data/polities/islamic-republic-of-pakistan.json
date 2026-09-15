@@ -1,6 +1,6 @@
 {
   "name": "Islamic Republic of Pakistan",
-  "color": "#9f5091",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Islamic Republic of Pakistan","wikipedia":"Pakistan","wikidata":"Q843","seshat":"pk_pakistan_islamic_rep","memberOf":null},
   "features": [
     { "from": "1947", "to": "1948",

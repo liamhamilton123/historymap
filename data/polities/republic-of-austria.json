@@ -1,6 +1,6 @@
 {
   "name": "Republic of Austria",
-  "color": "#50909f",
+  "color": "#4667aa",
   "cliopatria": {"name":"Republic of Austria","wikipedia":"Austria","wikidata":"Q40","seshat":"at_interwar_austria","memberOf":null},
   "features": [
     { "from": "1919", "to": "1920",

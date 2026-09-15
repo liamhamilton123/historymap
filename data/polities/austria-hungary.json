@@ -1,6 +1,6 @@
 {
   "name": "Austria-Hungary",
-  "color": "#9f5097",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Austria-Hungary","wikipedia":"Austria-Hungary","wikidata":"Q28513","seshat":"at_habsburg_2","memberOf":null},
   "features": [
     { "from": "1868", "to": "1871",

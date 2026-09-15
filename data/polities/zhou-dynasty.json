@@ -1,6 +1,6 @@
 {
   "name": "Zhou Dynasty",
-  "color": "#5a509f",
+  "color": "#549c6c",
   "cliopatria": {"name":"Zhou Dynasty","wikipedia":"Zhou dynasty","wikidata":"Q35216","seshat":"cn_western_zhou_dyn","memberOf":null},
   "features": [
     { "from": "-1000", "to": "-800",

@@ -1,6 +1,6 @@
 {
   "name": "Qi",
-  "color": "#9f6550",
+  "color": "#aa4689",
   "cliopatria": {"name":"Qi","wikipedia":"Qi (state)","wikidata":"Q1143524","seshat":"cn_qi_spring_autumn","memberOf":"(Spring and Autumn States)"},
   "features": [
     { "from": "-750", "to": "-550",

@@ -1,6 +1,6 @@
 {
   "name": "Cornwall",
-  "color": "#9d509f",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Cornwall","wikipedia":"Cornwall","wikidata":"Q23148","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "710", "to": "936",

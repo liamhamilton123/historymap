@@ -1,6 +1,6 @@
 {
   "name": "Southern Han",
-  "color": "#509f80",
+  "color": "#aa4646",
   "cliopatria": {"name":"Southern Han","wikipedia":"Southern Han","wikidata":"Q1198071","seshat":"cn_five_dyn","memberOf":"(Five Dynasties and Ten Kingdoms)"},
   "features": [
     { "from": "911", "to": "947",

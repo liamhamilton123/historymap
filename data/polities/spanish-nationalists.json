@@ -1,6 +1,6 @@
 {
   "name": "Spanish Nationalists",
-  "color": "#8a509f",
+  "color": "#9c5484",
   "cliopatria": {"name":"Spanish Nationalists","wikipedia":"Nationalist faction (Spanish Civil War)","wikidata":"Q2742116","seshat":null,"memberOf":null},
   "features": [
     { "from": "1936", "to": "1938",

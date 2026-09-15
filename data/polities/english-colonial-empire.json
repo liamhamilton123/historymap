@@ -1,6 +1,6 @@
 {
   "name": "English Colonial Empire",
-  "color": "#9f8450",
+  "color": "#aa6746",
   "cliopatria": {"name":"English Colonial Empire","wikipedia":"English overseas possessions","wikidata":"Q617219","seshat":"gb_tudor_stuart","memberOf":"(Kingdom of England)"},
   "features": [
     { "from": "1609", "to": "1612",

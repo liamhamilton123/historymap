@@ -1,6 +1,6 @@
 {
   "name": "French Consulate",
-  "color": "#9f5086",
+  "color": "#4689aa",
   "cliopatria": {"name":"French Consulate","wikipedia":"French Consulate","wikidata":"Q877619","seshat":"fr_bourbon_k_2","memberOf":"(French Consulate)"},
   "features": [
     { "from": "1800", "to": "1803",

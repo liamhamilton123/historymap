@@ -1,6 +1,6 @@
 {
   "name": "Mongol Khanate",
-  "color": "#819f50",
+  "color": "#9c8454",
   "cliopatria": {"name":"Mongol Khanate","wikipedia":"Mongol khanate","wikidata":"Q19927420","seshat":"mn_mongol_late","memberOf":null},
   "features": [
     { "from": "1468", "to": "1475",

@@ -1,6 +1,6 @@
 {
   "name": "Safavid Dynasty",
-  "color": "#9f5081",
+  "color": "#aa6746",
   "cliopatria": {"name":"Safavid Dynasty","wikipedia":"Safavid dynasty","wikidata":"Q161205","seshat":"ir_safavid_emp","memberOf":null},
   "features": [
     { "from": "1502", "to": "1507",

@@ -1,6 +1,6 @@
 {
   "name": "Batavian Republic",
-  "color": "#9f5750",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Batavian Republic","wikipedia":"Batavian Republic","wikidata":"Q188553","seshat":null,"memberOf":"(Batavian Republic)"},
   "features": [
     { "from": "1796", "to": "1803",

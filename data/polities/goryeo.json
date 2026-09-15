@@ -1,6 +1,6 @@
 {
   "name": "Goryeo",
-  "color": "#9f6750",
+  "color": "#4689aa",
   "cliopatria": {"name":"Goryeo","wikipedia":"Goryeo","wikidata":"Q28208","seshat":null,"memberOf":null},
   "features": [
     { "from": "922", "to": "936",

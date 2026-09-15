@@ -1,6 +1,6 @@
 {
   "name": "Tibetan Empire",
-  "color": "#5b9f50",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Tibetan Empire","wikipedia":"Tibetan Empire","wikidata":"Q2431480","seshat":"cn_tibet_k","memberOf":null},
   "features": [
     { "from": "623", "to": "627",

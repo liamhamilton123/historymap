@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Kalisz",
-  "color": "#6d509f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Duchy of Kalisz","wikipedia":"Duchy of Kalisz","wikidata":"Q16570037","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1210", "to": "1216",

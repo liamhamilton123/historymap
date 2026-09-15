@@ -1,6 +1,6 @@
 {
   "name": "Chimu Empire",
-  "color": "#61509f",
+  "color": "#549c54",
   "cliopatria": {"name":"Chimu Empire","wikipedia":"Chimor","wikidata":"Q581741","seshat":null,"memberOf":null},
   "features": [
     { "from": "1188", "to": "1202",

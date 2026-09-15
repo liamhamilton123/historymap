@@ -1,6 +1,6 @@
 {
   "name": "Burgundian Kingdom",
-  "color": "#71509f",
+  "color": "#6746aa",
   "cliopatria": {"name":"Burgundian Kingdom","wikipedia":"Kingdom of the Burgundians","wikidata":"Q13590051","seshat":"fr_burgundian_k","memberOf":null},
   "features": [
     { "from": "414", "to": "439",

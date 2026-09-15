@@ -1,6 +1,6 @@
 {
   "name": "Sultanate of Malacca",
-  "color": "#50809f",
+  "color": "#aa4646",
   "cliopatria": {"name":"Sultanate of Malacca","wikipedia":"Malacca Sultanate","wikidata":"Q46652","seshat":"my_malacca_sultanate","memberOf":null},
   "features": [
     { "from": "1459", "to": "1512",

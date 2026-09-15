@@ -1,6 +1,6 @@
 {
   "name": "Commonwealth of Australia",
-  "color": "#529f50",
+  "color": "#9c5454",
   "cliopatria": {"name":"Commonwealth of Australia","wikipedia":"Australia","wikidata":"Q408","seshat":null,"memberOf":null},
   "features": [
     { "from": "1905", "to": "1943",

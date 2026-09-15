@@ -1,6 +1,6 @@
 {
   "name": "Cyrenaica",
-  "color": "#8c9f50",
+  "color": "#4689aa",
   "cliopatria": {"name":"Cyrenaica","wikipedia":"Cyrenaica","wikidata":"Q165198","seshat":null,"memberOf":null},
   "features": [
     { "from": "-331", "to": "-291",

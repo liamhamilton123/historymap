@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Wessex",
-  "color": "#50749f",
+  "color": "#46aa89",
   "cliopatria": {"name":"Kingdom of Wessex","wikipedia":"Wessex","wikidata":"Q105313","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "534", "to": "577",

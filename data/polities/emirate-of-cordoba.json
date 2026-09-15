@@ -1,6 +1,6 @@
 {
   "name": "Emirate of Córdoba",
-  "color": "#9f507d",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Emirate of Córdoba","wikipedia":"Emirate of Córdoba","wikidata":"Q1337854","seshat":"es_cordoba_emirate","memberOf":null},
   "features": [
     { "from": "757", "to": "763",

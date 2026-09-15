@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Asturias",
-  "color": "#9f9a50",
+  "color": "#84549c",
   "cliopatria": {"name":"Kingdom of Asturias","wikipedia":"Kingdom of Asturias","wikidata":"Q231392","seshat":"es_asturias_k","memberOf":null},
   "features": [
     { "from": "724", "to": "750",

@@ -1,6 +1,6 @@
 {
   "name": "South Africa",
-  "color": "#9f508d",
+  "color": "#aa6746",
   "cliopatria": {"name":"South Africa","wikipedia":"South Africa","wikidata":"Q258","seshat":"sa_south_africa_rep","memberOf":null},
   "features": [
     { "from": "1932", "to": "1973",

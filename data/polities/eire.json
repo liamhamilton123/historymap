@@ -1,6 +1,6 @@
 {
   "name": "Éire",
-  "color": "#509f8e",
+  "color": "#6c549c",
   "cliopatria": {"name":"Éire","wikipedia":"Éire","wikidata":"Q5306909","seshat":null,"memberOf":null},
   "features": [
     { "from": "1938", "to": "1973",

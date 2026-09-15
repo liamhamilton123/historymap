@@ -1,6 +1,6 @@
 {
   "name": "Grand Duchy of Lithuania",
-  "color": "#9f5053",
+  "color": "#54549c",
   "cliopatria": {"name":"Grand Duchy of Lithuania","wikipedia":"Grand Duchy of Lithuania","wikidata":"Q49683","seshat":"lt_lithuania_grand_duc","memberOf":null},
   "features": [
     { "from": "1220", "to": "1227",

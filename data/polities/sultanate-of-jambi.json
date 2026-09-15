@@ -1,6 +1,6 @@
 {
   "name": "Sultanate of Jambi",
-  "color": "#799f50",
+  "color": "#aa4646",
   "cliopatria": {"name":"Sultanate of Jambi","wikipedia":"Jambi Sultanate","wikidata":"Q1679856","seshat":null,"memberOf":null},
   "features": [
     { "from": "1670", "to": "1822",

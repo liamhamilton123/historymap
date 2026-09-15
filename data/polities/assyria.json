@@ -1,6 +1,6 @@
 {
   "name": "Assyria",
-  "color": "#9f6850",
+  "color": "#549c54",
   "cliopatria": {"name":"Assyria","wikipedia":"Assyria","wikidata":"Q41137","seshat":null,"memberOf":null},
   "features": [
     { "from": "-1800", "to": "-1760",

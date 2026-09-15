@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Neustria",
-  "color": "#507c9f",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Kingdom of Neustria","wikipedia":"Neustria","wikidata":"Q106577","seshat":null,"memberOf":null},
   "features": [
     { "from": "724", "to": "732",

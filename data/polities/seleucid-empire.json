@@ -1,6 +1,6 @@
 {
   "name": "Seleucid Empire",
-  "color": "#509f57",
+  "color": "#9c546c",
   "cliopatria": {"name":"Seleucid Empire","wikipedia":"Seleucid dynasty","wikidata":"Q705904","seshat":null,"memberOf":null},
   "features": [
     { "from": "-318", "to": "-315",

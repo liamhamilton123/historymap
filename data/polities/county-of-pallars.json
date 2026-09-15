@@ -1,6 +1,6 @@
 {
   "name": "County of Pallars",
-  "color": "#9f5053",
+  "color": "#6c9c54",
   "cliopatria": {"name":"County of Pallars","wikipedia":"County of Pallars","wikidata":"Q1541787","seshat":null,"memberOf":null},
   "features": [
     { "from": "875", "to": "884",

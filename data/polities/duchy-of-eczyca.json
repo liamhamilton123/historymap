@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Łęczyca",
-  "color": "#9f5a50",
+  "color": "#aa6746",
   "cliopatria": {"name":"Duchy of Łęczyca","wikipedia":"Łęczyca Voivodeship","wikidata":"Q970940","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1139", "to": "1147",

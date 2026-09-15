@@ -351,10 +351,7 @@ for (const { dir, kind } of SOURCES) {
       used.add(key);
       return;
     }
-    problems.push(
-      `${file}: ${entry.from ?? `entry ${index}`} has no "geometry"` +
-        (entry.parts ? ' — "parts" is gone; see data/README.md' : ''),
-    );
+    problems.push(`${file}: ${entry.from ?? `entry ${index}`} has no "geometry"`);
     entry.shapeKey = null;
   });
   }

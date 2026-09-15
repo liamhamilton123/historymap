@@ -1,6 +1,6 @@
 {
   "name": "Merovingian Empire",
-  "color": "#9f9f50",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Merovingian Empire","wikipedia":"Francia","wikidata":"Q146246","seshat":"fr_merovingian_emp_3","memberOf":"(Merovingian Empire)"},
   "features": [
     { "from": "710", "to": "718",

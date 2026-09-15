@@ -1,6 +1,6 @@
 {
   "name": "Danelaw",
-  "color": "#689f50",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Danelaw","wikipedia":"Danelaw","wikidata":"Q339271","seshat":"gb_danelaw","memberOf":null},
   "features": [
     { "from": "878", "to": "880",

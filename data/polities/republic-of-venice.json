@@ -1,6 +1,6 @@
 {
   "name": "Republic of Venice",
-  "color": "#50649f",
+  "color": "#546c9c",
   "cliopatria": {"name":"Republic of Venice","wikipedia":"Republic of Venice","wikidata":"Q4948","seshat":null,"memberOf":null},
   "features": [
     { "from": "705", "to": "860",

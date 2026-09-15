@@ -1,6 +1,6 @@
 {
   "name": "County of Ampuria",
-  "color": "#50739f",
+  "color": "#9c549c",
   "cliopatria": {"name":"County of Ampuria","wikipedia":"County of Empúries","wikidata":"Q1541699","seshat":null,"memberOf":null},
   "features": [
     { "from": "1000", "to": "1003",

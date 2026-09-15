@@ -1,6 +1,6 @@
 {
   "name": "Greek Colonies",
-  "color": "#509e9f",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Greek Colonies","wikipedia":"Greek colonisation","wikidata":"Q828047","seshat":null,"memberOf":null},
   "features": [
     { "from": "-271", "to": "-264",

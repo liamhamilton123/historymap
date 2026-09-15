@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Numidia",
-  "color": "#949f50",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Kingdom of Numidia","wikipedia":"Jugurtha","wikidata":"Q156173","seshat":"dz_numidia","memberOf":null},
   "features": [
     { "from": "-197", "to": "-144",

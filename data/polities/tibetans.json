@@ -1,6 +1,6 @@
 {
   "name": "Tibetans",
-  "color": "#50979f",
+  "color": "#8946aa",
   "cliopatria": {"name":"Tibetans","wikipedia":"Tibetan people","wikidata":"Q187985","seshat":null,"memberOf":null},
   "features": [
     { "from": "850", "to": "860",

@@ -1,6 +1,6 @@
 {
   "name": "Göktürk Khaganate",
-  "color": "#509f7d",
+  "color": "#aa4646",
   "cliopatria": {"name":"Göktürk Khaganate","wikipedia":"First Turkic Khaganate","wikidata":"Q15146034","seshat":null,"memberOf":null},
   "features": [
     { "from": "555", "to": "561",

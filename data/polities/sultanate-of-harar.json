@@ -1,6 +1,6 @@
 {
   "name": "Sultanate of Harar",
-  "color": "#509f58",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Sultanate of Harar","wikipedia":"Adal Sultanate","wikidata":"Q2365048","seshat":null,"memberOf":null},
   "features": [
     { "from": "1547", "to": "1564",

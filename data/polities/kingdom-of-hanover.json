@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Hanover",
-  "color": "#509f81",
+  "color": "#54549c",
   "cliopatria": {"name":"Kingdom of Hanover","wikipedia":"Kingdom of Hanover","wikidata":"Q164079","seshat":null,"memberOf":null},
   "features": [
     { "from": "1803", "to": "1805",

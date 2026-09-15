@@ -1,6 +1,6 @@
 {
   "name": "Phoenicia",
-  "color": "#506d9f",
+  "color": "#9c549c",
   "cliopatria": {"name":"Phoenicia","wikipedia":"Phoenicia","wikidata":"Q41642","seshat":"lb_phoenician_emp","memberOf":"(Phoenician Empire)"},
   "features": [
     { "from": "-1150", "to": "-1000",

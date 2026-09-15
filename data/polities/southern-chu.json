@@ -1,6 +1,6 @@
 {
   "name": "Southern Chu",
-  "color": "#9f8450",
+  "color": "#6c549c",
   "cliopatria": {"name":"Southern Chu","wikipedia":"Ma Chu","wikidata":"Q1192347","seshat":"cn_five_dyn","memberOf":"(Five Dynasties and Ten Kingdoms)"},
   "features": [
     { "from": "911", "to": "926",

@@ -1,6 +1,6 @@
 {
   "name": "Late Pallava Empire",
-  "color": "#7e9f50",
+  "color": "#54549c",
   "cliopatria": {"name":"Late Pallava Empire","wikipedia":"Pallava dynasty","wikidata":"Q466803","seshat":null,"memberOf":null},
   "features": [
     { "from": "283", "to": "306",

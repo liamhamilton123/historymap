@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Alamannia",
-  "color": "#509d9f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Kingdom of Alamannia","wikipedia":"Alamannia","wikidata":"Q2208978","seshat":null,"memberOf":null},
   "features": [
     { "from": "462", "to": "469",

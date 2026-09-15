@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Spain",
-  "color": "#96509f",
+  "color": "#9c8454",
   "cliopatria": {"name":"Kingdom of Spain","wikipedia":"Spain","wikidata":"Q29","seshat":"es_spanish_emp_1","memberOf":"(Spanish Empire)"},
   "features": [
     { "from": "1516", "to": "1519",

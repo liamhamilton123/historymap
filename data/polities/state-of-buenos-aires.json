@@ -1,6 +1,6 @@
 {
   "name": "State of Buenos Aires",
-  "color": "#549f50",
+  "color": "#6c9c54",
   "cliopatria": {"name":"State of Buenos Aires","wikipedia":"State of Buenos Aires","wikidata":"Q6553448","seshat":null,"memberOf":null},
   "features": [
     { "from": "1853", "to": "1857",

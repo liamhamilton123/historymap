@@ -1,6 +1,6 @@
 {
   "name": "Bolivia",
-  "color": "#50759f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Bolivia","wikipedia":"Bolivia","wikidata":"Q750","seshat":"bo_bolivia_rep","memberOf":null},
   "features": [
     { "from": "1825", "to": "1836",

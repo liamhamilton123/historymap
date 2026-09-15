@@ -1,6 +1,6 @@
 {
   "name": "Morocco",
-  "color": "#9f505b",
+  "color": "#9c549c",
   "cliopatria": {"name":"Morocco","wikipedia":"Morocco","wikidata":"Q1028","seshat":null,"memberOf":null},
   "features": [
     { "from": "1670", "to": "1687",

@@ -1,6 +1,6 @@
 {
   "name": "Shunga Empire",
-  "color": "#505a9f",
+  "color": "#67aa46",
   "cliopatria": {"name":"Shunga Empire","wikipedia":"Shunga Empire","wikidata":"Q651377","seshat":"in_sunga_emp","memberOf":null},
   "features": [
     { "from": "-170", "to": "-164",

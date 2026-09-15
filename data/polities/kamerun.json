@@ -1,6 +1,6 @@
 {
   "name": "Kamerun",
-  "color": "#699f50",
+  "color": "#aa4689",
   "cliopatria": {"name":"Kamerun","wikipedia":"Kamerun","wikidata":"Q668294","seshat":null,"memberOf":null},
   "features": [
     { "from": "1868", "to": "1870",

@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Norway",
-  "color": "#92509f",
+  "color": "#aa4667",
   "cliopatria": {"name":"Kingdom of Norway","wikipedia":"Norway","wikidata":"Q20","seshat":null,"memberOf":null},
   "features": [
     { "from": "1814", "to": "1815",

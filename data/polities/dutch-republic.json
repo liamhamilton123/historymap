@@ -1,6 +1,6 @@
 {
   "name": "Dutch Republic",
-  "color": "#509f86",
+  "color": "#546c9c",
   "cliopatria": {"name":"Dutch Republic","wikipedia":"Dutch Republic","wikidata":"Q170072","seshat":null,"memberOf":"(Dutch Republic)"},
   "features": [
     { "from": "1582", "to": "1588",

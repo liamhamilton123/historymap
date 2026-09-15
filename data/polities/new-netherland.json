@@ -1,6 +1,6 @@
 {
   "name": "New Netherland",
-  "color": "#7a9f50",
+  "color": "#9c5484",
   "cliopatria": {"name":"New Netherland","wikipedia":"New Netherland","wikidata":"Q382593","seshat":null,"memberOf":null},
   "features": [
     { "from": "1622", "to": "1626",

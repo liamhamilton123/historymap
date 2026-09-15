@@ -1,6 +1,6 @@
 {
   "name": "Zapotec Civilization",
-  "color": "#50589f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Zapotec Civilization","wikipedia":"Zapotec civilization","wikidata":"Q844750","seshat":"mx_monte_alban_1_early","memberOf":null},
   "features": [
     { "from": "-500", "to": "-291",

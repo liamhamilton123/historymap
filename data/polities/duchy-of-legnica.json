@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Legnica",
-  "color": "#509f5f",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Duchy of Legnica","wikipedia":"Duchy of Legnica","wikidata":"Q570740","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1279", "to": "1305",

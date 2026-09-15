@@ -1,6 +1,6 @@
 {
   "name": "Greek City-States",
-  "color": "#509b9f",
+  "color": "#aa6746",
   "cliopatria": {"name":"Greek City-States","wikipedia":"Polis","wikidata":"Q148837","seshat":null,"memberOf":null},
   "features": [
     { "from": "-800", "to": "-750",

@@ -1,6 +1,6 @@
 {
   "name": "Khmer Rouge",
-  "color": "#9f5068",
+  "color": "#546c9c",
   "cliopatria": {"name":"Khmer Rouge","wikipedia":"Khmer Rouge","wikidata":"Q191764","seshat":null,"memberOf":null},
   "features": [
     { "from": "1976", "to": "1979",

@@ -1,6 +1,6 @@
 {
   "name": "Nanda Empire",
-  "color": "#9f7150",
+  "color": "#9c5454",
   "cliopatria": {"name":"Nanda Empire","wikipedia":"Nanda Empire","wikidata":"Q949268","seshat":"in_nanda_dyn","memberOf":null},
   "features": [
     { "from": "-333", "to": "-326",

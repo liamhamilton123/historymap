@@ -1,6 +1,6 @@
 {
   "name": "Roman Empire",
-  "color": "#8a9f50",
+  "color": "#4689aa",
   "cliopatria": {"name":"Roman Empire","wikipedia":"Roman Empire","wikidata":"Q12544","seshat":null,"memberOf":null},
   "features": [
     { "from": "-31", "to": "-30",

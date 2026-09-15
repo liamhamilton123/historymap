@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Opole",
-  "color": "#7e509f",
+  "color": "#4667aa",
   "cliopatria": {"name":"Duchy of Opole","wikipedia":"Duchy of Opole","wikidata":"Q661980","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1177", "to": "1202",

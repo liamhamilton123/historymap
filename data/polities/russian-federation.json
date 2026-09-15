@@ -1,6 +1,6 @@
 {
   "name": "Russian Federation",
-  "color": "#9f7750",
+  "color": "#46aa67",
   "cliopatria": {"name":"Russian Federation","wikipedia":"Russia","wikidata":"Q159","seshat":"ru_russian_federation","memberOf":"(Russian Federation)"},
   "features": [
     { "from": "1992", "to": "1996",

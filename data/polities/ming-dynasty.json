@@ -1,6 +1,6 @@
 {
   "name": "Ming Dynasty",
-  "color": "#659f50",
+  "color": "#aa4667",
   "cliopatria": {"name":"Ming Dynasty","wikipedia":"Ming dynasty","wikidata":"Q9903","seshat":"cn_ming_dyn","memberOf":null},
   "features": [
     { "from": "1375", "to": "1385",

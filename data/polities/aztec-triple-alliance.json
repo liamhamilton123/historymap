@@ -1,6 +1,6 @@
 {
   "name": "Aztec Triple Alliance",
-  "color": "#6d9f50",
+  "color": "#46aa46",
   "cliopatria": {"name":"Aztec Triple Alliance","wikipedia":"Aztec Empire","wikidata":"Q2608489","seshat":"mx_aztec_emp","memberOf":null},
   "features": [
     { "from": "1429", "to": "1440",

@@ -1,6 +1,6 @@
 {
   "name": "Republic of Vietnam",
-  "color": "#9f506c",
+  "color": "#54549c",
   "cliopatria": {"name":"Republic of Vietnam","wikipedia":"South Vietnam","wikidata":"Q172640","seshat":"vt_vietnam_rep","memberOf":null},
   "features": [
     { "from": "1956", "to": "1967",

@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Hungary",
-  "color": "#63509f",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Kingdom of Hungary","wikipedia":"Kingdom of Hungary","wikidata":"Q171150","seshat":"hu_arpad_dyn","memberOf":null},
   "features": [
     { "from": "1000", "to": "1003",

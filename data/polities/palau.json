@@ -1,6 +1,6 @@
 {
   "name": "Palau",
-  "color": "#9f507c",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Palau","wikipedia":"Palau","wikidata":"Q695","seshat":null,"memberOf":null},
   "features": [
     { "from": "1996", "to": "2024",

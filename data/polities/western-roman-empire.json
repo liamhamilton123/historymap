@@ -1,6 +1,6 @@
 {
   "name": "Western Roman Empire",
-  "color": "#9f5052",
+  "color": "#549c9c",
   "cliopatria": {"name":"Western Roman Empire","wikipedia":"Western Roman Empire","wikidata":"Q42834","seshat":"it_western_roman_emp","memberOf":null},
   "features": [
     { "from": "395", "to": "396",

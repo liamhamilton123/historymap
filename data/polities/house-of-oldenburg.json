@@ -1,6 +1,6 @@
 {
   "name": "House of Oldenburg",
-  "color": "#9f5091",
+  "color": "#aa4667",
   "cliopatria": {"name":"House of Oldenburg","wikipedia":"House of Oldenburg","wikidata":"Q155594","seshat":"sv_kalmar_union","memberOf":"(Kalmar Union)"},
   "features": [
     { "from": "1450", "to": "1453",

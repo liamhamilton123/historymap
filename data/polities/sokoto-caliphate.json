@@ -1,6 +1,6 @@
 {
   "name": "Sokoto Caliphate",
-  "color": "#699f50",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Sokoto Caliphate","wikipedia":"Sokoto Caliphate","wikidata":"Q600524","seshat":null,"memberOf":null},
   "features": [
     { "from": "1805", "to": "1809",

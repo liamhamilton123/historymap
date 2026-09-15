@@ -1,6 +1,6 @@
 {
   "name": "Crimean Khanate",
-  "color": "#509f92",
+  "color": "#549c9c",
   "cliopatria": {"name":"Crimean Khanate","wikipedia":"Crimean Khanate","wikidata":"Q160440","seshat":"ru_crimean_khanate","memberOf":null},
   "features": [
     { "from": "1450", "to": "1468",

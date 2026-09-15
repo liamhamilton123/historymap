@@ -1,6 +1,6 @@
 {
   "name": "Western Satraps",
-  "color": "#6c509f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Western Satraps","wikipedia":"Western Satraps","wikidata":"Q2086608","seshat":"pk_western_satraps","memberOf":null},
   "features": [
     { "from": "43", "to": "84",

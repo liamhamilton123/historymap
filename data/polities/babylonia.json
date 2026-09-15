@@ -1,6 +1,6 @@
 {
   "name": "Babylonia",
-  "color": "#50949f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Babylonia","wikipedia":"Babylonia","wikidata":"Q47690","seshat":"iq_babylonia_1","memberOf":null},
   "features": [
     { "from": "-1800", "to": "-1760",

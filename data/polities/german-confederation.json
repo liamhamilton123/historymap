@@ -1,6 +1,6 @@
 {
   "name": "German Confederation",
-  "color": "#507d9f",
+  "color": "#46aaaa",
   "cliopatria": {"name":"German Confederation","wikipedia":"German Confederation","wikidata":"Q151624","seshat":null,"memberOf":null},
   "features": [
     { "from": "1815", "to": "1820",

@@ -1,6 +1,6 @@
 {
   "name": "Hunnic Empire",
-  "color": "#50829f",
+  "color": "#aa4667",
   "cliopatria": {"name":"Hunnic Empire","wikipedia":"Huns","wikidata":"Q45813","seshat":"hu_hun_k","memberOf":null},
   "features": [
     { "from": "426", "to": "441",

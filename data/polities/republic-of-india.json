@@ -1,6 +1,6 @@
 {
   "name": "Republic of India",
-  "color": "#9f506d",
+  "color": "#9c549c",
   "cliopatria": {"name":"Republic of India","wikipedia":"India","wikidata":"Q668","seshat":null,"memberOf":null},
   "features": [
     { "from": "1947", "to": "1948",

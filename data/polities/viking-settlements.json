@@ -1,6 +1,6 @@
 {
   "name": "Viking settlements",
-  "color": "#50679f",
+  "color": "#6c549c",
   "cliopatria": {"name":"Viking settlements","wikipedia":"Vikings","wikidata":"Q12567","seshat":"no_viking_settlements","memberOf":null},
   "features": [
     { "from": "793", "to": "800",

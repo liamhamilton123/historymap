@@ -1,6 +1,6 @@
 {
   "name": "Abbasid Caliphate",
-  "color": "#9a9f50",
+  "color": "#8946aa",
   "cliopatria": {"name":"Abbasid Caliphate","wikipedia":"Abbasid Caliphate","wikidata":"Q12536","seshat":"iq_abbasid_cal_1","memberOf":null},
   "features": [
     { "from": "750", "to": "751",

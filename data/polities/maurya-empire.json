@@ -1,6 +1,6 @@
 {
   "name": "Maurya Empire",
-  "color": "#659f50",
+  "color": "#6746aa",
   "cliopatria": {"name":"Maurya Empire","wikipedia":"Maurya Empire","wikidata":"Q62943","seshat":"in_mauryan_emp","memberOf":null},
   "features": [
     { "from": "-318", "to": "-315",

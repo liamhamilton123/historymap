@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Lysimachus",
-  "color": "#929f50",
+  "color": "#4689aa",
   "cliopatria": {"name":"Kingdom of Lysimachus","wikipedia":"Lysimachian Empire","wikidata":"Q32133","seshat":"tr_lysimachus_k","memberOf":null},
   "features": [
     { "from": "-323", "to": "-318",

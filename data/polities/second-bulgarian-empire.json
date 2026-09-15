@@ -1,6 +1,6 @@
 {
   "name": "Second Bulgarian Empire",
-  "color": "#9f508c",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Second Bulgarian Empire","wikipedia":"Second Bulgarian Empire","wikidata":"Q420759","seshat":null,"memberOf":null},
   "features": [
     { "from": "1188", "to": "1192",

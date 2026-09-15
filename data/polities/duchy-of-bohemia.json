@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Bohemia",
-  "color": "#50869f",
+  "color": "#4667aa",
   "cliopatria": {"name":"Duchy of Bohemia","wikipedia":"Duchy of Bohemia","wikidata":"Q2162698","seshat":"cz_bohemian_duc","memberOf":null},
   "features": [
     { "from": "896", "to": "900",

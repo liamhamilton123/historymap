@@ -1,6 +1,6 @@
 {
   "name": "Tenochtitlan",
-  "color": "#9f9150",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Tenochtitlan","wikipedia":"Tenochtitlan","wikidata":"Q13695","seshat":"mx_basin_of_mexico_10","memberOf":null},
   "features": [
     { "from": "1326", "to": "1422",

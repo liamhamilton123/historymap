@@ -1,6 +1,6 @@
 {
   "name": "Samanid Empire",
-  "color": "#9f5063",
+  "color": "#89aa46",
   "cliopatria": {"name":"Samanid Empire","wikipedia":"Samanid Empire","wikidata":"Q486181","seshat":"uz_samanid_emp","memberOf":null},
   "features": [
     { "from": "886", "to": "888",

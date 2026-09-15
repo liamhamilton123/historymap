@@ -1,6 +1,6 @@
 {
   "name": "Shang Dynasty",
-  "color": "#50709f",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Shang Dynasty","wikipedia":"Shang dynasty","wikidata":"Q128938","seshat":"cn_erligang","memberOf":null},
   "features": [
     { "from": "-1600", "to": "-1240",

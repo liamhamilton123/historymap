@@ -1,6 +1,6 @@
 {
   "name": "State of Libya",
-  "color": "#9f5f50",
+  "color": "#67aa46",
   "cliopatria": {"name":"State of Libya","wikipedia":"Libya","wikidata":"Q1016","seshat":null,"memberOf":null},
   "features": [
     { "from": "2014", "to": "2024",

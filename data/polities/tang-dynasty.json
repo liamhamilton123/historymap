@@ -1,6 +1,6 @@
 {
   "name": "Tang Dynasty",
-  "color": "#509f52",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Tang Dynasty","wikipedia":"Tang dynasty","wikidata":"Q9683","seshat":"cn_tang_dyn_1","memberOf":null},
   "features": [
     { "from": "623", "to": "626",

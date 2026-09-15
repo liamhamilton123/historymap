@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Mercia",
-  "color": "#9f509e",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Kingdom of Mercia","wikipedia":"Mercia","wikidata":"Q105092","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "534", "to": "577",

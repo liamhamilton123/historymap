@@ -1,6 +1,6 @@
 {
   "name": "New Kingdom of Egypt",
-  "color": "#609f50",
+  "color": "#aa4646",
   "cliopatria": {"name":"New Kingdom of Egypt","wikipedia":"New Kingdom of Egypt","wikidata":"Q180568","seshat":"eg_new_k_1","memberOf":null},
   "features": [
     { "from": "-1500", "to": "-1400",

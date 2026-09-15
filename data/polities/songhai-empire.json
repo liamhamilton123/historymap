@@ -1,6 +1,6 @@
 {
   "name": "Songhai Empire",
-  "color": "#6d509f",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Songhai Empire","wikipedia":"Songhai Empire","wikidata":"Q202687","seshat":"ml_songhai_1","memberOf":null},
   "features": [
     { "from": "1463", "to": "1468",

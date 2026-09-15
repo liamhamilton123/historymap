@@ -1,6 +1,6 @@
 {
   "name": "Later Han",
-  "color": "#509f6b",
+  "color": "#9c5454",
   "cliopatria": {"name":"Later Han","wikipedia":"Later Han","wikidata":"Q957429","seshat":"cn_five_dyn","memberOf":"(Five Dynasties and Ten Kingdoms)"},
   "features": [
     { "from": "947", "to": "960",

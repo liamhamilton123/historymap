@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Saint Sava",
-  "color": "#509f67",
+  "color": "#89aa46",
   "cliopatria": {"name":"Duchy of Saint Sava","wikipedia":"Duchy of Saint Sava","wikidata":"Q106311455","seshat":null,"memberOf":null},
   "features": [
     { "from": "1453", "to": "1468",

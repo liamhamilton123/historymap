@@ -1,6 +1,6 @@
 {
   "name": "Iberian Union",
-  "color": "#50789f",
+  "color": "#67aa46",
   "cliopatria": {"name":"Iberian Union","wikipedia":"Iberian Union","wikidata":"Q377350","seshat":"es_spanish_emp_1","memberOf":"(Spanish Empire)"},
   "features": [
     { "from": "1582", "to": "1588",

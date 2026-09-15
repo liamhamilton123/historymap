@@ -1,6 +1,6 @@
 {
   "name": "Russian Republic",
-  "color": "#78509f",
+  "color": "#6746aa",
   "cliopatria": {"name":"Russian Republic","wikipedia":"Russian Republic","wikidata":"Q139319","seshat":null,"memberOf":null},
   "features": [
     { "from": "1917", "to": "1918",

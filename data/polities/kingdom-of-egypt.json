@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Egypt",
-  "color": "#9f505c",
+  "color": "#6746aa",
   "cliopatria": {"name":"Kingdom of Egypt","wikipedia":"Kingdom of Egypt","wikidata":"Q124943","seshat":"eg_egypt_modern_2","memberOf":null},
   "features": [
     { "from": "1922", "to": "1926",

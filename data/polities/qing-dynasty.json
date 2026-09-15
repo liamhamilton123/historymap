@@ -1,6 +1,6 @@
 {
   "name": "Qing Dynasty",
-  "color": "#50569f",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Qing Dynasty","wikipedia":"Qing dynasty","wikidata":"Q8733","seshat":null,"memberOf":null},
   "features": [
     { "from": "1645", "to": "1648",

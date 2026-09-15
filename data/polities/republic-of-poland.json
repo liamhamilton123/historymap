@@ -1,6 +1,6 @@
 {
   "name": "Republic of Poland",
-  "color": "#6f509f",
+  "color": "#9c546c",
   "cliopatria": {"name":"Republic of Poland","wikipedia":"Poland","wikidata":"Q36","seshat":"pl_polish_peoples_rep","memberOf":null},
   "features": [
     { "from": "1953", "to": "1969",

@@ -1,6 +1,6 @@
 {
   "name": "Teotihuacan",
-  "color": "#9f505c",
+  "color": "#9c8454",
   "cliopatria": {"name":"Teotihuacan","wikipedia":"Teotihuacan","wikidata":"Q172613","seshat":null,"memberOf":null},
   "features": [
     { "from": "-50", "to": "106",

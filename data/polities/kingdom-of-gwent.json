@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Gwent",
-  "color": "#679f50",
+  "color": "#549c54",
   "cliopatria": {"name":"Kingdom of Gwent","wikipedia":"Kingdom of Gwent","wikidata":"Q2594661","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "540", "to": "577",

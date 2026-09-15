@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Brycheiniog",
-  "color": "#9f508e",
+  "color": "#849c54",
   "cliopatria": {"name":"Kingdom of Brycheiniog","wikipedia":"Brycheiniog","wikidata":"Q954585","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "540", "to": "947",

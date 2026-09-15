@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Athens",
-  "color": "#9f5064",
+  "color": "#89aa46",
   "cliopatria": {"name":"Duchy of Athens","wikipedia":"Duchy of Athens","wikidata":"Q334714","seshat":null,"memberOf":null},
   "features": [
     { "from": "1206", "to": "1216",

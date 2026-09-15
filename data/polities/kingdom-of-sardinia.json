@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Sardinia",
-  "color": "#50849f",
+  "color": "#aa4667",
   "cliopatria": {"name":"Kingdom of Sardinia","wikipedia":"Kingdom of Sardinia (1720-1861)","wikidata":"Q2577303","seshat":null,"memberOf":null},
   "features": [
     { "from": "1721", "to": "1734",

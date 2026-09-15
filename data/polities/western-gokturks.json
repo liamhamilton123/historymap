@@ -1,6 +1,6 @@
 {
   "name": "Western Göktürks",
-  "color": "#509f52",
+  "color": "#54549c",
   "cliopatria": {"name":"Western Göktürks","wikipedia":"Göktürks","wikidata":"Q205466","seshat":"kg_western_turk_khaganate","memberOf":null},
   "features": [
     { "from": "587", "to": "592",

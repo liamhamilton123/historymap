@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Tuscia",
-  "color": "#9f5054",
+  "color": "#8946aa",
   "cliopatria": {"name":"Duchy of Tuscia","wikipedia":"Duchy of Tuscia","wikidata":"Q1054580","seshat":null,"memberOf":null},
   "features": [
     { "from": "577", "to": "587",

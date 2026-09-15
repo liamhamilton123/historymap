@@ -1,6 +1,6 @@
 {
   "name": "Liaodong",
-  "color": "#9f5a50",
+  "color": "#9c5484",
   "cliopatria": {"name":"Liaodong","wikipedia":"Eighteen Kingdoms","wikidata":"Q5349053","seshat":null,"memberOf":"(Eighteen Kingdoms)"},
   "features": [
     { "from": "-206", "to": "-203",

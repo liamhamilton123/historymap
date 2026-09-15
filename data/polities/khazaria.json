@@ -1,6 +1,6 @@
 {
   "name": "Khazaria",
-  "color": "#8e509f",
+  "color": "#aa4667",
   "cliopatria": {"name":"Khazaria","wikipedia":"Khazars","wikidata":"Q173282","seshat":"ru_khazar_emp","memberOf":null},
   "features": [
     { "from": "630", "to": "633",

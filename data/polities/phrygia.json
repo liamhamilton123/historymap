@@ -1,6 +1,6 @@
 {
   "name": "Phrygia",
-  "color": "#509f9a",
+  "color": "#46aa46",
   "cliopatria": {"name":"Phrygia","wikipedia":"Phrygia","wikidata":"Q32579","seshat":"tr_phrygian_k","memberOf":null},
   "features": [
     { "from": "-900", "to": "-750",

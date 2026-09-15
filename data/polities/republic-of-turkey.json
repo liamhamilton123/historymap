@@ -1,6 +1,7 @@
 {
-  "name": "Republic of Turkey",
-  "color": "#506c9f",
+  "name": "Turkey",
+  "adjective": "Turkish",
+  "color": "#89aa46",
   "cliopatria": {"name":"Republic of Turkey","wikipedia":"Turkey","wikidata":"Q43","seshat":"tr_turkey_rep","memberOf":null},
   "features": [
     { "from": "1924", "to": "1936",

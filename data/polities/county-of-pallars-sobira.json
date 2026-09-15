@@ -1,6 +1,6 @@
 {
   "name": "County of Pallars Sobirà",
-  "color": "#9f506f",
+  "color": "#9c5484",
   "cliopatria": {"name":"County of Pallars Sobirà","wikipedia":"Pallars Sobirà","wikidata":"Q12719","seshat":null,"memberOf":null},
   "features": [
     { "from": "1040", "to": "1192",

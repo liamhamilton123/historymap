@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Holstein",
-  "color": "#9f5070",
+  "color": "#67aa46",
   "cliopatria": {"name":"Duchy of Holstein","wikipedia":"Duchy of Holstein","wikidata":"Q704288","seshat":null,"memberOf":null},
   "features": [
     { "from": "1848", "to": "1849",

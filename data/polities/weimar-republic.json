@@ -1,6 +1,6 @@
 {
   "name": "Weimar Republic",
-  "color": "#9f5092",
+  "color": "#9c8454",
   "cliopatria": {"name":"Weimar Republic","wikipedia":"Weimar Republic","wikidata":"Q41304","seshat":"de_weimar_rep","memberOf":null},
   "features": [
     { "from": "1920", "to": "1922",

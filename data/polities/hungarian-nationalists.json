@@ -1,6 +1,6 @@
 {
   "name": "Hungarian Nationalists",
-  "color": "#9f7c50",
+  "color": "#9c5484",
   "cliopatria": {"name":"Hungarian Nationalists","wikipedia":"Austria-Hungary","wikidata":"Q28513","seshat":null,"memberOf":null},
   "features": [
     { "from": "1849", "to": "1853",

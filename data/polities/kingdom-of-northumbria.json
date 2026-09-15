@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Northumbria",
-  "color": "#799f50",
+  "color": "#54849c",
   "cliopatria": {"name":"Kingdom of Northumbria","wikipedia":"Northumbria","wikidata":"Q107299","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "612", "to": "617",

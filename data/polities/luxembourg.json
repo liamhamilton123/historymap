@@ -1,6 +1,6 @@
 {
   "name": "Luxembourg",
-  "color": "#9f6d50",
+  "color": "#67aa46",
   "cliopatria": {"name":"Luxembourg","wikipedia":"Luxembourg","wikidata":"Q2719360","seshat":null,"memberOf":null},
   "features": [
     { "from": "1890", "to": "1915",

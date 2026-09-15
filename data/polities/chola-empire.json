@@ -1,6 +1,6 @@
 {
   "name": "Chola Empire",
-  "color": "#5d509f",
+  "color": "#4646aa",
   "cliopatria": {"name":"Chola Empire","wikipedia":"Chola Empire","wikidata":"Q6806806","seshat":"in_chola_emp","memberOf":null},
   "features": [
     { "from": "850", "to": "886",

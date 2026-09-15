@@ -1,6 +1,6 @@
 {
   "name": "Goguryeo",
-  "color": "#5c9f50",
+  "color": "#84549c",
   "cliopatria": {"name":"Goguryeo","wikipedia":"Goguryeo","wikidata":"Q28370","seshat":"kr_goguryeo_k","memberOf":null},
   "features": [
     { "from": "-36", "to": "23",

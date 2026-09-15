@@ -1,6 +1,6 @@
 {
   "name": "Free City of Bremen",
-  "color": "#9d9f50",
+  "color": "#aa8946",
   "cliopatria": {"name":"Free City of Bremen","wikipedia":"History of Bremen (city)","wikidata":"Q474779","seshat":null,"memberOf":null},
   "features": [
     { "from": "1806", "to": "1807",

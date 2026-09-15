@@ -1,6 +1,6 @@
 {
   "name": "Papal States",
-  "color": "#50749f",
+  "color": "#4646aa",
   "cliopatria": {"name":"Papal States","wikipedia":"Papal States","wikidata":"Q170174","seshat":"it_st_peter_rep_1","memberOf":null},
   "features": [
     { "from": "755", "to": "757",

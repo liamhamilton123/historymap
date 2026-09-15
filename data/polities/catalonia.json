@@ -1,6 +1,6 @@
 {
   "name": "Catalonia",
-  "color": "#50509f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Catalonia","wikipedia":"Catalonia","wikidata":"Q5705","seshat":null,"memberOf":null},
   "features": [
     { "from": "1640", "to": "1642",

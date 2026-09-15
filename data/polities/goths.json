@@ -1,6 +1,6 @@
 {
   "name": "Goths",
-  "color": "#9f509b",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Goths","wikipedia":"Goths","wikidata":"Q42193","seshat":null,"memberOf":null},
   "features": [
     { "from": "30", "to": "43",

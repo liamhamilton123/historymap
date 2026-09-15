@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Brittany",
-  "color": "#5c9f50",
+  "color": "#549c54",
   "cliopatria": {"name":"Duchy of Brittany","wikipedia":"Duchy of Brittany","wikidata":"Q71747","seshat":null,"memberOf":null},
   "features": [
     { "from": "947", "to": "990",

@@ -1,6 +1,6 @@
 {
   "name": "Hungarian Republic",
-  "color": "#92509f",
+  "color": "#849c54",
   "cliopatria": {"name":"Hungarian Republic","wikipedia":"Hungary","wikidata":"Q28","seshat":null,"memberOf":null},
   "features": [
     { "from": "1919", "to": "1920",

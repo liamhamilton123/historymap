@@ -1,6 +1,6 @@
 {
   "name": "Lower Egypt",
-  "color": "#9f509b",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Lower Egypt","wikipedia":"Old Kingdom of Egypt","wikidata":"Q463871","seshat":"eg_old_k_2","memberOf":null},
   "features": [
     { "from": "-2200", "to": "-2100",

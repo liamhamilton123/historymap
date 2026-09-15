@@ -1,6 +1,6 @@
 {
   "name": "Byzantine Empire",
-  "color": "#6c509f",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Byzantine Empire","wikipedia":"Byzantine Empire","wikidata":"Q112039853","seshat":"tr_byzantine_emp_1","memberOf":null},
   "features": [
     { "from": "633", "to": "634",

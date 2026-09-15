@@ -1,6 +1,6 @@
 {
   "name": "First Mexican Empire",
-  "color": "#509f64",
+  "color": "#54549c",
   "cliopatria": {"name":"First Mexican Empire","wikipedia":"First Mexican Empire","wikidata":"Q285658","seshat":"mx_mexico_1","memberOf":null},
   "features": [
     { "from": "1822", "to": "1824",

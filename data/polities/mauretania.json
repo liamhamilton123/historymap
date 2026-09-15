@@ -1,6 +1,6 @@
 {
   "name": "Mauretania",
-  "color": "#509f61",
+  "color": "#84549c",
   "cliopatria": {"name":"Mauretania","wikipedia":"Mauretania","wikidata":"Q309272","seshat":null,"memberOf":null},
   "features": [
     { "from": "-212", "to": "-197",

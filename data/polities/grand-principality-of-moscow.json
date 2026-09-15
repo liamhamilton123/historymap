@@ -1,6 +1,6 @@
 {
   "name": "Grand Principality of Moscow",
-  "color": "#9f5060",
+  "color": "#aa6746",
   "cliopatria": {"name":"Grand Principality of Moscow","wikipedia":"Principality of Moscow","wikidata":"Q170770","seshat":"ru_moskva_mongolian_period","memberOf":null},
   "features": [
     { "from": "1294", "to": "1305",

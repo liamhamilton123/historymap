@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Gwynedd",
-  "color": "#509f6b",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Kingdom of Gwynedd","wikipedia":"Kingdom of Gwynedd","wikidata":"Q816814","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "540", "to": "592",

@@ -1,9 +1,9 @@
 {
   "name": "Earldom of Ulster",
-  "color": "#506d9f",
+  "color": "#9c549c",
   "cliopatria": {"name":"Earldom of Ulster","wikipedia":"Earldom of Ulster","wikidata":"Q19872858","seshat":"gb_england_plantagenet","memberOf":"(Kingdom of England)"},
   "features": [
-    { "from": "1326", "to": "1333",
+    { "from": "1326", "to": "1333", "relationship": "vassal", "overlord": "England",
       "geometry": {"type":"MultiPolygon","coordinates":[[[[-5.9291,54.9531],[-6.1904,54.9531],[-6.1536,54.6811],[-6.0667,54.6811],[-6.0304,54.4095],[-5.6659,54.2739],[-5.4233,54.4095],[-5.4407,54.5453],[-5.842,54.9531],[-5.9291,54.9531]]]]} }
   ]
 }

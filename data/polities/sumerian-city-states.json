@@ -1,6 +1,6 @@
 {
   "name": "Sumerian City-States",
-  "color": "#509f96",
+  "color": "#46aa46",
   "cliopatria": {"name":"Sumerian City-States","wikipedia":"History of Sumer","wikidata":"Q2345840","seshat":null,"memberOf":null},
   "features": [
     { "from": "-3400", "to": "-3200",

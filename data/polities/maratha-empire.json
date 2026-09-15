@@ -1,6 +1,6 @@
 {
   "name": "Maratha Empire",
-  "color": "#5a509f",
+  "color": "#4667aa",
   "cliopatria": {"name":"Maratha Empire","wikipedia":"Maratha Empire","wikidata":"Q83618","seshat":"in_maratha_emp","memberOf":null},
   "features": [
     { "from": "1677", "to": "1687",

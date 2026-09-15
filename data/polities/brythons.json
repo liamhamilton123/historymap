@@ -1,6 +1,6 @@
 {
   "name": "Brythons",
-  "color": "#9f8450",
+  "color": "#67aa46",
   "cliopatria": {"name":"Brythons","wikipedia":"Celtic Britons","wikidata":"Q849967","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "439", "to": "441",

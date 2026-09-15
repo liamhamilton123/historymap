@@ -1,6 +1,6 @@
 {
   "name": "Comtat Venaissin",
-  "color": "#6c509f",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Comtat Venaissin","wikipedia":"Comtat Venaissin","wikidata":"Q1122980","seshat":null,"memberOf":null},
   "features": [
     { "from": "1272", "to": "1352",

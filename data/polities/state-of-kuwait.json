@@ -1,6 +1,6 @@
 {
   "name": "State of Kuwait",
-  "color": "#9f6750",
+  "color": "#8946aa",
   "cliopatria": {"name":"State of Kuwait","wikipedia":"Kuwait","wikidata":"Q817","seshat":null,"memberOf":null},
   "features": [
     { "from": "1961", "to": "1973",

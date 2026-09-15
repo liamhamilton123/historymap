@@ -1,6 +1,6 @@
 {
   "name": "Minoan civilization",
-  "color": "#9f6b50",
+  "color": "#54849c",
   "cliopatria": {"name":"Minoan civilization","wikipedia":"Minoan civilization","wikidata":"Q134178","seshat":"gr_crete_new_palace","memberOf":null},
   "features": [
     { "from": "-1600", "to": "-1500",

@@ -1,6 +1,6 @@
 {
   "name": "Duchy of Jawor",
-  "color": "#50679f",
+  "color": "#4689aa",
   "cliopatria": {"name":"Duchy of Jawor","wikipedia":"Duchy of Jawor","wikidata":"Q561204","seshat":"pl_piast_dyn_2","memberOf":"(Duchies of Poland)"},
   "features": [
     { "from": "1279", "to": "1305",

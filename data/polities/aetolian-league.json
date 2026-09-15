@@ -1,6 +1,6 @@
 {
   "name": "Aetolian League",
-  "color": "#9f5077",
+  "color": "#549c9c",
   "cliopatria": {"name":"Aetolian League","wikipedia":"Aetolian League","wikidata":"Q245273","seshat":null,"memberOf":null},
   "features": [
     { "from": "-284", "to": "-281",

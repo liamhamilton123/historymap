@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Rheged",
-  "color": "#509f74",
+  "color": "#9c546c",
   "cliopatria": {"name":"Kingdom of Rheged","wikipedia":"Rheged","wikidata":"Q633573","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "592", "to": "617",

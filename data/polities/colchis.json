@@ -1,6 +1,6 @@
 {
   "name": "Colchis",
-  "color": "#9f6450",
+  "color": "#4689aa",
   "cliopatria": {"name":"Colchis","wikipedia":"Colchis","wikidata":"Q183150","seshat":null,"memberOf":null},
   "features": [
     { "from": "-301", "to": "-281",

@@ -1,6 +1,6 @@
 {
   "name": "Anti-Kuomintang Coalition",
-  "color": "#869f50",
+  "color": "#549c9c",
   "cliopatria": {"name":"Anti-Kuomintang Coalition","wikipedia":"Central Plains War","wikidata":"Q717809","seshat":null,"memberOf":null},
   "features": [
     { "from": "1930", "to": "1932",

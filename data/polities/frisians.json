@@ -1,6 +1,6 @@
 {
   "name": "Frisians",
-  "color": "#509f74",
+  "color": "#54549c",
   "cliopatria": {"name":"Frisians","wikipedia":"Frisians","wikidata":"Q106416","seshat":null,"memberOf":null},
   "features": [
     { "from": "793", "to": "800",

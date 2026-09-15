@@ -1,6 +1,6 @@
 {
   "name": "Sacred Band of Thebes",
-  "color": "#739f50",
+  "color": "#8946aa",
   "cliopatria": {"name":"Sacred Band of Thebes","wikipedia":"Thebes, Greece","wikidata":"Q5760","seshat":null,"memberOf":null},
   "features": [
     { "from": "-366", "to": "-350",

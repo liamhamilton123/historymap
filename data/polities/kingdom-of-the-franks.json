@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of the Franks",
-  "color": "#506f9f",
+  "color": "#aa4646",
   "cliopatria": {"name":"Kingdom of the Franks","wikipedia":"Francia","wikidata":"Q146246","seshat":null,"memberOf":"(Merovingian Empire);(Kingdom of the Franks)"},
   "features": [
     { "from": "462", "to": "490",

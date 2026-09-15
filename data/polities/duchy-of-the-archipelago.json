@@ -1,6 +1,6 @@
 {
   "name": "Duchy of the Archipelago",
-  "color": "#505f9f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Duchy of the Archipelago","wikipedia":"Duchy of the Archipelago","wikidata":"Q777981","seshat":null,"memberOf":null},
   "features": [
     { "from": "1210", "to": "1305",

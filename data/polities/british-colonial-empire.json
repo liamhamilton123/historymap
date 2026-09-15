@@ -1,6 +1,6 @@
 {
   "name": "British Colonial Empire",
-  "color": "#9f5058",
+  "color": "#549c9c",
   "cliopatria": {"name":"British Colonial Empire","wikipedia":"British Empire","wikidata":"Q8680","seshat":"gb_british_emp_1","memberOf":"(British Empire)"},
   "features": [
     { "from": "1706", "to": "1709",

@@ -1,6 +1,6 @@
 {
   "name": "Yuan Dynasty",
-  "color": "#569f50",
+  "color": "#9c5484",
   "cliopatria": {"name":"Yuan Dynasty","wikipedia":"Yuan dynasty","wikidata":"Q7313","seshat":"cn_yuan_dyn","memberOf":null},
   "features": [
     { "from": "1294", "to": "1352",

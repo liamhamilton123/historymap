@@ -1,6 +1,7 @@
 {
-  "name": "Union of Soviet Socialist Republics",
-  "color": "#509f7a",
+  "name": "Soviet Union",
+  "adjective": "Soviet",
+  "color": "#6746aa",
   "cliopatria": {"name":"Union of Soviet Socialist Republics","wikipedia":"Soviet Union","wikidata":"Q15180","seshat":null,"memberOf":null},
   "features": [
     { "from": "1922", "to": "1924",

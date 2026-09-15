@@ -1,6 +1,6 @@
 {
   "name": "Yan Kingdom",
-  "color": "#9f5650",
+  "color": "#546c9c",
   "cliopatria": {"name":"Yan Kingdom","wikipedia":"Yan (Five Dynasties period)","wikidata":"Q1291919","seshat":"cn_five_dyn","memberOf":"(Five Dynasties and Ten Kingdoms)"},
   "features": [
     { "from": "911", "to": "922",

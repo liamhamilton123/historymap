@@ -1,6 +1,6 @@
 {
   "name": "Icelandic Commonwealth",
-  "color": "#6c509f",
+  "color": "#9c8454",
   "cliopatria": {"name":"Icelandic Commonwealth","wikipedia":"Icelandic Commonwealth","wikidata":"Q62389","seshat":"is_icelandic_commonwealth","memberOf":null},
   "features": [
     { "from": "936", "to": "1260",

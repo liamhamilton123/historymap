@@ -1,6 +1,6 @@
 {
   "name": "Spanish Empire",
-  "color": "#50949f",
+  "color": "#46aa46",
   "cliopatria": {"name":"Spanish Empire","wikipedia":"Spanish Empire","wikidata":"Q80702","seshat":"es_spanish_emp_1","memberOf":"(Spanish Empire)"},
   "features": [
     { "from": "1516", "to": "1519",

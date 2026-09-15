@@ -1,6 +1,6 @@
 {
   "name": "Taliban",
-  "color": "#9f505f",
+  "color": "#849c54",
   "cliopatria": {"name":"Taliban","wikipedia":"Taliban","wikidata":"Q42418","seshat":null,"memberOf":null},
   "features": [
     { "from": "1996", "to": "2000",

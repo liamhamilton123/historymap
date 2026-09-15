@@ -1,6 +1,6 @@
 {
   "name": "Principality of Hungary",
-  "color": "#7c509f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Principality of Hungary","wikipedia":"Principality of Hungary","wikidata":"Q2899771","seshat":"hu_hungary_principality","memberOf":null},
   "features": [
     { "from": "900", "to": "911",

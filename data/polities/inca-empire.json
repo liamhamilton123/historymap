@@ -1,6 +1,6 @@
 {
   "name": "Inca Empire",
-  "color": "#509f97",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Inca Empire","wikipedia":"Inca Empire","wikidata":"Q28573","seshat":"pe_inca_emp","memberOf":null},
   "features": [
     { "from": "1440", "to": "1450",

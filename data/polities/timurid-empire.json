@@ -1,6 +1,6 @@
 {
   "name": "Timurid Empire",
-  "color": "#9b509f",
+  "color": "#54849c",
   "cliopatria": {"name":"Timurid Empire","wikipedia":"Timurid Empire","wikidata":"Q484195","seshat":"uz_timurid_emp","memberOf":null},
   "features": [
     { "from": "1375", "to": "1385",

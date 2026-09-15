@@ -1,6 +1,6 @@
 {
   "name": "Eastern Roman Empire",
-  "color": "#509f96",
+  "color": "#89aa46",
   "cliopatria": {"name":"Eastern Roman Empire","wikipedia":"Byzantine Empire","wikidata":"Q12544","seshat":"tr_east_roman_emp","memberOf":null},
   "features": [
     { "from": "395", "to": "396",

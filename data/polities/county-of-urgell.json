@@ -1,6 +1,6 @@
 {
   "name": "County of Urgell",
-  "color": "#509f58",
+  "color": "#549c84",
   "cliopatria": {"name":"County of Urgell","wikipedia":"County of Urgell","wikidata":"Q1514510","seshat":null,"memberOf":null},
   "features": [
     { "from": "870", "to": "878",

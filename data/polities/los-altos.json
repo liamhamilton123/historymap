@@ -1,6 +1,6 @@
 {
   "name": "Los Altos",
-  "color": "#50509f",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Los Altos","wikipedia":"Los Altos (state)","wikidata":"Q738264","seshat":null,"memberOf":null},
   "features": [
     { "from": "1840", "to": "1842",

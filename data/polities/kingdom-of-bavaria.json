@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Bavaria",
-  "color": "#9f5056",
+  "color": "#9c8454",
   "cliopatria": {"name":"Kingdom of Bavaria","wikipedia":"Kingdom of Bavaria","wikidata":"Q154195","seshat":null,"memberOf":null},
   "features": [
     { "from": "1806", "to": "1807",

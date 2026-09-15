@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Naples (Napoleonic)",
-  "color": "#70509f",
+  "color": "#aa4689",
   "cliopatria": {"name":"Kingdom of Naples (Napoleonic)","wikipedia":"Kingdom of Naples (Napoleonic)","wikidata":"Q48779892","seshat":null,"memberOf":null},
   "features": [
     { "from": "1762", "to": "1799",

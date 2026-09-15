@@ -1,6 +1,6 @@
 {
   "name": "Ashikaga Shogunate",
-  "color": "#789f50",
+  "color": "#67aa46",
   "cliopatria": {"name":"Ashikaga Shogunate","wikipedia":"Ashikaga shogunate","wikidata":"Q1154406","seshat":"jp_ashikaga","memberOf":null},
   "features": [
     { "from": "1344", "to": "1459",

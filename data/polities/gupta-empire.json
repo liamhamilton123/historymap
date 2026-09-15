@@ -1,6 +1,6 @@
 {
   "name": "Gupta Empire",
-  "color": "#9d509f",
+  "color": "#549c84",
   "cliopatria": {"name":"Gupta Empire","wikipedia":"Gupta Empire","wikidata":"Q11774","seshat":"in_gupta_emp","memberOf":null},
   "features": [
     { "from": "324", "to": "347",

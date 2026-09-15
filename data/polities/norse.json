@@ -1,6 +1,6 @@
 {
   "name": "Norse",
-  "color": "#969f50",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Norse","wikipedia":"Norse","wikidata":"Q909583","seshat":null,"memberOf":null},
   "features": [
     { "from": "161", "to": "184",

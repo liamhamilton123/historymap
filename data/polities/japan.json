@@ -1,6 +1,6 @@
 {
   "name": "Japan",
-  "color": "#97509f",
+  "color": "#46aaaa",
   "cliopatria": {"name":"Japan","wikipedia":"Japan","wikidata":"Q188712","seshat":"jp_japan_contemporary","memberOf":null},
   "features": [
     { "from": "1953", "to": "1973",

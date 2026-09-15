@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Powys",
-  "color": "#9f507d",
+  "color": "#8946aa",
   "cliopatria": {"name":"Kingdom of Powys","wikipedia":"Kingdom of Powys","wikidata":"Q769782","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
   "features": [
     { "from": "540", "to": "617",

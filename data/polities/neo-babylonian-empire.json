@@ -1,6 +1,6 @@
 {
   "name": "Neo-Babylonian Empire",
-  "color": "#969f50",
+  "color": "#6c9c54",
   "cliopatria": {"name":"Neo-Babylonian Empire","wikipedia":"Neo-Babylonian Empire","wikidata":"Q624887","seshat":"iq_neo_babylonian_emp","memberOf":null},
   "features": [
     { "from": "-600", "to": "-550",

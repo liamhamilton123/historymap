@@ -1,6 +1,6 @@
 {
   "name": "Napoleonic Batavia Republic",
-  "color": "#9f5090",
+  "color": "#6746aa",
   "cliopatria": {"name":"Napoleonic Batavia Republic","wikipedia":"Dutch Cape Colony","wikidata":"Q4807130","seshat":null,"memberOf":null},
   "features": [
     { "from": "1803", "to": "1805",

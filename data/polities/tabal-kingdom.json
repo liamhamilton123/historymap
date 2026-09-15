@@ -1,6 +1,6 @@
 {
   "name": "Tabal Kingdom",
-  "color": "#929f50",
+  "color": "#aa4667",
   "cliopatria": {"name":"Tabal Kingdom","wikipedia":"Tabal (state)","wikidata":"Q727710","seshat":"tr_tabal_k","memberOf":null},
   "features": [
     { "from": "-900", "to": "-750",

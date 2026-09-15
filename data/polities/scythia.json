@@ -1,6 +1,6 @@
 {
   "name": "Scythia",
-  "color": "#699f50",
+  "color": "#84549c",
   "cliopatria": {"name":"Scythia","wikipedia":"Scythians","wikidata":"Q131802","seshat":null,"memberOf":null},
   "features": [
     { "from": "-650", "to": "-550",

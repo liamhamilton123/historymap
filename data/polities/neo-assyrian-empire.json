@@ -1,6 +1,6 @@
 {
   "name": "Neo-Assyrian Empire",
-  "color": "#7a9f50",
+  "color": "#4689aa",
   "cliopatria": {"name":"Neo-Assyrian Empire","wikipedia":"Neo-Assyrian Empire","wikidata":"Q10914393","seshat":"iq_neo_assyrian_emp","memberOf":null},
   "features": [
     { "from": "-900", "to": "-800",

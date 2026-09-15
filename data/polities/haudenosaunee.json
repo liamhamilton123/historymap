@@ -1,6 +1,6 @@
 {
   "name": "Haudenosaunee",
-  "color": "#9e9f50",
+  "color": "#46aa46",
   "cliopatria": {"name":"Haudenosaunee","wikipedia":"Iroquois","wikidata":"Q68518","seshat":null,"memberOf":null},
   "features": [
     { "from": "1450", "to": "1572",

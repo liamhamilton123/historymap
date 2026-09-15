@@ -1,6 +1,6 @@
 {
   "name": "Qataban",
-  "color": "#9f9d50",
+  "color": "#4667aa",
   "cliopatria": {"name":"Qataban","wikipedia":"Qataban","wikidata":"Q748595","seshat":"ye_qatabanian_commonwealth","memberOf":null},
   "features": [
     { "from": "-350", "to": "-110",

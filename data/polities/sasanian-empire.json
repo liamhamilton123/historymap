@@ -1,6 +1,6 @@
 {
   "name": "Sasanian Empire",
-  "color": "#699f50",
+  "color": "#9c6c54",
   "cliopatria": {"name":"Sasanian Empire","wikipedia":"Sasanian Empire","wikidata":"Q1661685","seshat":"ir_sassanid_emp_1","memberOf":null},
   "features": [
     { "from": "215", "to": "224",

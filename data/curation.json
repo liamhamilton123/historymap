@@ -1,0 +1,95 @@
+{
+  "$schema-note": "Rules applied by data/scripts/curate-polities.mjs to the Cliopatria dump in data/polities/. See data/README.md — Curating the dump. Everything here is a judgement the databank cannot make for itself; nothing here is derivable from the source.",
+
+  "overlords": {
+    "$note": "Cliopatria's MemberOf, for the parents that mean subordination rather than a scholarly grouping. Every span of a member becomes relationship: vassal with this overlord. `except` names the polities that ARE the overlord, so nothing is made a vassal of itself.",
+
+    "(Holy Roman Empire)": { "name": "the Holy Roman Empire", "except": ["holy-roman-empire", "holy-roman-empire-minor-states"] },
+    "(British Empire)": { "name": "Britain", "except": ["kingdom-of-great-britain", "british-empire", "british-colonial-empire"] },
+    "(Commonwealth of Nations)": { "name": "Britain", "except": [] },
+    "(Kingdom of France)": { "name": "France", "except": ["kingdom-of-france"] },
+    "(Bourbon Kingdom of France)": { "name": "France", "except": [] },
+    "(First French Empire)": { "name": "France", "except": [] },
+    "(Second French Empire)": { "name": "France", "except": [] },
+    "(French First Republic)": { "name": "France", "except": [] },
+    "(French Second Republic)": { "name": "France", "except": [] },
+    "(French Third Republic)": { "name": "France", "except": [] },
+    "(French Fourth Republic)": { "name": "France", "except": [] },
+    "(French Consulate)": { "name": "France", "except": [] },
+    "(French Directory)": { "name": "France", "except": [] },
+    "(Vichy France)": { "name": "Vichy France", "except": ["vichy-france"] },
+    "(Carolingian Empire)": { "name": "the Carolingian Empire", "except": ["carolingian-empire"] },
+    "(Merovingian Empire)": { "name": "the Merovingian Empire", "except": ["merovingian-empire"] },
+    "(Kingdom of England)": { "name": "England", "except": ["kingdom-of-england", "norman-england", "english-colonial-empire"] },
+    "(Kingdom of Denmark)": { "name": "Denmark", "except": ["kingdom-of-denmark"] },
+    "(Kalmar Union)": { "name": "the Kalmar Union", "except": ["kalmar-union", "house-of-oldenburg"] },
+    "(Spanish Empire)": { "name": "Spain", "except": ["spanish-empire", "kingdom-of-spain", "iberian-union"] },
+    "(Portuguese Empire)": { "name": "Portugal", "except": ["portuguese-empire"] },
+    "(Dutch Republic)": { "name": "the Dutch Republic", "except": ["dutch-republic"] },
+    "(Batavian Republic)": { "name": "the Batavian Republic", "except": ["batavian-republic"] },
+    "(Netherlands)": { "name": "the Netherlands", "except": ["netherlands"] },
+    "(Habsburg Monarchy)": { "name": "the Habsburg Monarchy", "except": ["habsburg-monarchy"] },
+    "(Kingdom of Bohemia)": { "name": "Bohemia", "except": ["kingdom-of-bohemia"] },
+    "(Kingdom of Poland)": { "name": "Poland", "except": ["kingdom-of-poland"] },
+    "(Russian Federation)": { "name": "Russia", "except": ["russian-federation"] },
+    "(Delhi Sultanate)": { "name": "the Delhi Sultanate", "except": [] },
+    "(Macedonian Empire)": { "name": "Macedon", "except": ["macedonian-empire"] },
+    "(Phoenician Empire)": { "name": "Phoenicia", "except": ["phoenicia"] },
+    "(Chenla)": { "name": "Chenla", "except": ["chenla"] }
+  },
+
+  "groupings": [
+    "$note: MemberOf values that are a historian's collective noun, not an overlord. Listed so the report can tell a grouping we have considered from a parent nobody has classified yet.",
+    "(Taifas of Iberia)",
+    "(Mahajanapadas)",
+    "(Five Dynasties and Ten Kingdoms)",
+    "(Spring and Autumn States)",
+    "(Warring States China)",
+    "(Duchies of Poland)",
+    "(Brythonic Kingdoms)",
+    "(Eighteen Kingdoms)",
+    "(Anglo-Saxon England)"
+  ],
+
+  "drop": [],
+
+  "polities": {
+    "$note": "Keyed by the id of the file to write. `merge` lists the dump ids folded into it, in any order; each keeps its databank name as the span name, so the panel still says which regime. Without `merge` the key is itself a dump id being renamed or recoloured.",
+
+    "bulgaria": {
+      "name": "Bulgaria",
+      "adjective": "Bulgarian",
+      "merge": ["principality-of-bulgaria", "kingdom-of-bulgaria", "people-s-republic-of-bulgaria", "republic-of-bulgaria"]
+    },
+    "afghanistan": {
+      "name": "Afghanistan",
+      "adjective": "Afghan",
+      "merge": ["emirate-of-afghanistan", "kingdom-of-afghanistan", "republic-of-afghanistan", "afghanistan"]
+    },
+    "vietnam": {
+      "name": "Vietnam",
+      "adjective": "Vietnamese",
+      "merge": ["democratic-republic-of-vietnam", "socialist-republic-of-vietnam"]
+    },
+    "portugal": {
+      "name": "Portugal",
+      "adjective": "Portuguese",
+      "merge": ["county-of-portugal", "kingdom-of-portugal", "portugal"]
+    },
+    "aragon": {
+      "name": "Aragon",
+      "adjective": "Aragonese",
+      "merge": ["county-of-aragon", "kingdom-of-aragon", "crown-of-aragon"]
+    },
+    "croatia": {
+      "name": "Croatia",
+      "adjective": "Croatian",
+      "merge": ["duchy-of-croatia", "kingdom-of-croatia", "republic-of-croatia"]
+    },
+
+    "kingdom-of-great-britain": { "name": "Britain", "adjective": "British" },
+    "united-states-of-america": { "name": "United States", "adjective": "American" },
+    "union-of-soviet-socialist-republics": { "name": "Soviet Union", "adjective": "Soviet" },
+    "republic-of-turkey": { "name": "Turkey", "adjective": "Turkish" }
+  }
+}

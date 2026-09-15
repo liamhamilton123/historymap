@@ -1,6 +1,6 @@
 {
   "name": "Kamakura Shogunate",
-  "color": "#9f5097",
+  "color": "#6c549c",
   "cliopatria": {"name":"Kamakura Shogunate","wikipedia":"Kamakura shogunate","wikidata":"Q736839","seshat":"jp_kamakura","memberOf":null},
   "features": [
     { "from": "1188", "to": "1192",

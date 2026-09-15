@@ -1,6 +1,6 @@
 {
   "name": "Qin Dynasty",
-  "color": "#5c509f",
+  "color": "#54549c",
   "cliopatria": {"name":"Qin Dynasty","wikipedia":"Qin dynasty","wikidata":"Q7183","seshat":"cn_qin_emp","memberOf":null},
   "features": [
     { "from": "-218", "to": "-212",

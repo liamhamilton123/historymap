@@ -1,6 +1,6 @@
 {
   "name": "Elam",
-  "color": "#9f7e50",
+  "color": "#6c549c",
   "cliopatria": {"name":"Elam","wikipedia":"Elam","wikidata":"Q128904","seshat":null,"memberOf":null},
   "features": [
     { "from": "-3200", "to": "-2700",

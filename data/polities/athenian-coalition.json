@@ -1,6 +1,6 @@
 {
   "name": "Athenian Coalition",
-  "color": "#7c509f",
+  "color": "#9c5484",
   "cliopatria": {"name":"Athenian Coalition","wikipedia":"Peloponnesian War","wikidata":"Q33745","seshat":null,"memberOf":null},
   "features": [
     { "from": "-323", "to": "-318",

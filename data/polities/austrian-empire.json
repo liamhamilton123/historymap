@@ -1,6 +1,6 @@
 {
   "name": "Austrian Empire",
-  "color": "#509f85",
+  "color": "#89aa46",
   "cliopatria": {"name":"Austrian Empire","wikipedia":"Austrian Empire","wikidata":"Q131964","seshat":"at_habsburg_2","memberOf":null},
   "features": [
     { "from": "1806", "to": "1809",

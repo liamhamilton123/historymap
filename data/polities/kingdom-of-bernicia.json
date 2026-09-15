@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Bernicia",
-  "color": "#77509f",
+  "color": "#549c84",
   "cliopatria": {"name":"Kingdom of Bernicia","wikipedia":"Bernicia","wikidata":"Q623751","seshat":"gb_anglo_saxon_1","memberOf":"(Anglo-Saxon England)"},
   "features": [
     { "from": "555", "to": "612",

@@ -1,6 +1,6 @@
 {
   "name": "Breton Kingdoms",
-  "color": "#9f9950",
+  "color": "#46aa46",
   "cliopatria": {"name":"Breton Kingdoms","wikipedia":"Bretons","wikidata":"Q309197","seshat":null,"memberOf":null},
   "features": [
     { "from": "587", "to": "602",

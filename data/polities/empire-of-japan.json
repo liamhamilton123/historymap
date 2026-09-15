@@ -1,6 +1,6 @@
 {
   "name": "Empire of Japan",
-  "color": "#9f7150",
+  "color": "#46aa46",
   "cliopatria": {"name":"Empire of Japan","wikipedia":"Empire of Japan","wikidata":"Q188712","seshat":null,"memberOf":null},
   "features": [
     { "from": "1868", "to": "1870",

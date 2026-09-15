@@ -1,6 +1,6 @@
 {
   "name": "Republic of Tunisia",
-  "color": "#9f8850",
+  "color": "#9c546c",
   "cliopatria": {"name":"Republic of Tunisia","wikipedia":"Tunisia","wikidata":"Q948","seshat":"tn_tunisia_rep","memberOf":null},
   "features": [
     { "from": "1956", "to": "1958",

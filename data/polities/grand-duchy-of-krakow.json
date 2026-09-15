@@ -1,6 +1,6 @@
 {
   "name": "Grand Duchy of Kraków",
-  "color": "#509f80",
+  "color": "#549c6c",
   "cliopatria": {"name":"Grand Duchy of Kraków","wikipedia":"Grand Duchy of Kraków","wikidata":"Q688918","seshat":null,"memberOf":null},
   "features": [
     { "from": "1279", "to": "1285",

@@ -1,6 +1,6 @@
 {
   "name": "Ottoman Empire",
-  "color": "#64509f",
+  "color": "#9c5454",
   "cliopatria": {"name":"Ottoman Empire","wikipedia":"Ottoman Empire","wikidata":"Q12560","seshat":null,"memberOf":null},
   "features": [
     { "from": "1305", "to": "1326",

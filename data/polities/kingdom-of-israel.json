@@ -1,6 +1,6 @@
 {
   "name": "Kingdom of Israel",
-  "color": "#8a9f50",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Kingdom of Israel","wikipedia":"Kingdom of Israel (united monarchy)","wikidata":"Q3185305","seshat":"il_yisrael","memberOf":null},
   "features": [
     { "from": "-1000", "to": "-900",

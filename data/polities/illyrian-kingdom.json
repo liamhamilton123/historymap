@@ -1,6 +1,6 @@
 {
   "name": "Illyrian Kingdom",
-  "color": "#9f7d50",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Illyrian Kingdom","wikipedia":"Illyrian kingdom","wikidata":"Q16084290","seshat":null,"memberOf":null},
   "features": [
     { "from": "-256", "to": "-247",

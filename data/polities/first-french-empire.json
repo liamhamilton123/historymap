@@ -1,6 +1,6 @@
 {
   "name": "First French Empire",
-  "color": "#509f53",
+  "color": "#4667aa",
   "cliopatria": {"name":"First French Empire","wikipedia":"First French Empire","wikidata":"Q71084","seshat":"fr_bourbon_k_2","memberOf":"(First French Empire)"},
   "features": [
     { "from": "1805", "to": "1806",

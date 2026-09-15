@@ -1,6 +1,6 @@
 {
   "name": "Hittites",
-  "color": "#509f92",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Hittites","wikipedia":"Hittites","wikidata":"Q5406","seshat":"tr_hatti_old_k","memberOf":null},
   "features": [
     { "from": "-1600", "to": "-1500",

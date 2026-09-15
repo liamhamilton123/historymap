@@ -1,6 +1,7 @@
 {
-  "name": "United States of America",
-  "color": "#50649f",
+  "name": "United States",
+  "adjective": "American",
+  "color": "#9c5454",
   "cliopatria": {"name":"United States of America","wikipedia":"United States","wikidata":"Q30","seshat":"us_antebellum","memberOf":null},
   "features": [
     { "from": "1776", "to": "1778",

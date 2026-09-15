@@ -1,6 +1,6 @@
 {
   "name": "Thracian Kingdom",
-  "color": "#9f7550",
+  "color": "#46aa46",
   "cliopatria": {"name":"Thracian Kingdom","wikipedia":"Thracian kingdom","wikidata":"Q104815700","seshat":null,"memberOf":null},
   "features": [
     { "from": "-87", "to": "-42",

@@ -1,6 +1,6 @@
 {
   "name": "Communist Cuba",
-  "color": "#799f50",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Communist Cuba","wikipedia":"Cuba","wikidata":"Q241","seshat":null,"memberOf":null},
   "features": [
     { "from": "1960", "to": "2024",

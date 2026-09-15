@@ -1,6 +1,6 @@
 {
   "name": "Roman Kingdom",
-  "color": "#9f7e50",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Roman Kingdom","wikipedia":"Roman Kingdom","wikidata":"Q201038","seshat":null,"memberOf":null},
   "features": [
     { "from": "-750", "to": "-700",

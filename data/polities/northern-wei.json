@@ -1,6 +1,6 @@
 {
   "name": "Northern Wei",
-  "color": "#509f7d",
+  "color": "#9c5454",
   "cliopatria": {"name":"Northern Wei","wikipedia":"Northern Wei","wikidata":"Q875305","seshat":"cn_northern_wei_dyn","memberOf":null},
   "features": [
     { "from": "387", "to": "394",

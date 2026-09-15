@@ -1,6 +1,6 @@
 {
   "name": "Gothia",
-  "color": "#9f6050",
+  "color": "#aaaa46",
   "cliopatria": {"name":"Gothia","wikipedia":"Gothia","wikidata":"Q422253","seshat":null,"memberOf":null},
   "features": [
     { "from": "207", "to": "238",

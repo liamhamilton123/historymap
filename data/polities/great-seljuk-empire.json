@@ -1,6 +1,6 @@
 {
   "name": "Great Seljuk Empire",
-  "color": "#6c9f50",
+  "color": "#aa46aa",
   "cliopatria": {"name":"Great Seljuk Empire","wikipedia":"Seljuk Empire","wikidata":"Q3708094","seshat":"ir_seljuk_sultanate","memberOf":null},
   "features": [
     { "from": "1040", "to": "1046",

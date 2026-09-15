@@ -1,6 +1,6 @@
 {
   "name": "Turks",
-  "color": "#8e9f50",
+  "color": "#aa4667",
   "cliopatria": {"name":"Turks","wikipedia":"Turk","wikidata":"Q2118293","seshat":null,"memberOf":null},
   "features": [
     { "from": "666", "to": "674",

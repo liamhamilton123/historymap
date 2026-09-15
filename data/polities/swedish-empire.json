@@ -1,6 +1,6 @@
 {
   "name": "Swedish Empire",
-  "color": "#929f50",
+  "color": "#9c9c54",
   "cliopatria": {"name":"Swedish Empire","wikipedia":"Swedish Empire","wikidata":"Q215443","seshat":"sv_swedish_emp","memberOf":null},
   "features": [
     { "from": "1612", "to": "1619",

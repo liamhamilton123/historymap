@@ -1,6 +1,6 @@
 {
   "name": "County of Pallars Jussà",
-  "color": "#919f50",
+  "color": "#9c9c54",
   "cliopatria": {"name":"County of Pallars Jussà","wikipedia":"Pallars Jussà","wikidata":"Q12723","seshat":null,"memberOf":null},
   "features": [
     { "from": "1040", "to": "1111",
