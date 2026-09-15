@@ -50,6 +50,68 @@ const MONTH_START = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 const SQ_DEG_TO_SQ_KM = 111 * 111;
 
 /**
+ * The map draws one instant, but a tile has no time in it, so every tile used
+ * to carry all 12,000-odd spans of history and the style filtered them down to
+ * the 238 or so alive at the year on screen. That is 2% of what was fetched.
+ *
+ * So the pyramid is written once per era instead, holding only the spans that
+ * overlap it, and the map points at the era for the year it is showing. A span
+ * lands in every era it touches, which costs about 15% more on disk and takes
+ * the worst first paint from 5.3 MB to under 400 KB.
+ *
+ * The periodisation is the one the styling already uses — see
+ * historicalThemeForYear in src/lib/mapStyle.ts — so the map swaps tiles
+ * exactly when it already swaps its palette, and there is one set of eras in
+ * the project rather than two. The long ones are subdivided, because an era is
+ * a claim about how the world looked and not a statement about payload: the
+ * Middle Ages run for 990 years and would put 4,964 spans in one tile.
+ */
+const ERAS = [
+  ['stone-age', -Infinity, -3000],
+  ['bronze-age', -3000, -1200],
+  ['iron-age', -1200, 500],
+  ['middle-ages', 500, 1490],
+  ['age-of-exploration', 1490, 1800],
+  ['industrial-era', 1800, 1910],
+  ['world-wars', 1910, 1945],
+  ['cold-war', 1945, 1990],
+  ['internet-age', 1990, Infinity],
+];
+/**
+ * The longest a single bucket may run. Past this an era is split into equal
+ * parts, which is what keeps the Middle Ages from being one enormous tile.
+ * Lower it for smaller tiles and more of them; measured on this data, 250
+ * years is where the saving stops being worth the extra files, because what
+ * is left is dense modern geometry rather than a long span of time.
+ */
+const MAX_ERA_SPAN = 250;
+/**
+ * The eras, subdivided, as the buckets the pyramid is written in.
+ *
+ * The first and last eras are open-ended, and how wide they are for the
+ * purpose of splitting is a question about the data rather than about
+ * periodisation: the Internet Age runs forever, but the record stops in 2024,
+ * and dividing "1990 onwards" into equal parts on any fixed bound just writes
+ * the same open-ended spans into bucket after empty bucket. So the open ends
+ * are closed at the record before anything is divided, and the outermost
+ * buckets keep their open ends so a span that starts before the record or has
+ * not finished still lands in one.
+ */
+function bucketsFor(first, last) {
+  return ERAS.flatMap(([id, from, to]) => {
+    const start = from === -Infinity ? Math.min(first, to) : from;
+    const end = to === Infinity ? Math.max(last, from) : to;
+    const parts = Math.max(1, Math.ceil((end - start) / MAX_ERA_SPAN));
+    const width = (end - start) / parts;
+    return Array.from({ length: parts }, (_, k) => ({
+      id: parts === 1 ? id : `${id}-${k + 1}`,
+      from: k === 0 && from === -Infinity ? -Infinity : start + k * width,
+      to: k === parts - 1 && to === Infinity ? Infinity : start + (k + 1) * width,
+    }));
+  });
+}
+
+/**
  * Sets how early a label appears: a polity shows its name once its extent is
  * roughly a fixed fraction of the viewport, so Russia is labelled from the
  * first zoom level and Armenia only once you are looking at the Caucasus.
@@ -852,16 +914,60 @@ const labels = features.flatMap((f) => {
 // simplification. At runtime, these features are served as vector tiles, so
 // MapLibre only requests the geographic area currently on screen.
 await mkdir(OUT_DIR, { recursive: true });
-const tileResult = await writeVectorTiles(
-  { type: 'FeatureCollection', features },
-  join(OUT_DIR, 'polities'),
-  'polities',
-);
-stage(`wrote ${tileResult.tiles} vector tile(s)`);
-// The client no longer consumes the monolithic TopoJSON source.
+
+// One pyramid and one label file per era, each holding only what overlaps it.
+// A span sits in every era it touches, so the client never has to stitch two
+// together: whichever era the current year falls in holds everything drawn.
+const overlapsEra = (from, to, era) => from < era.to && to > era.from;
+await rm(join(OUT_DIR, 'polities'), { recursive: true, force: true });
+await rm(join(OUT_DIR, 'polity-labels'), { recursive: true, force: true });
+await mkdir(join(OUT_DIR, 'polity-labels'), { recursive: true });
+
+// The record's own extent, which is what the open-ended eras are divided over.
+const dated = features.flatMap((f) => [f.properties.from, f.properties.to]).filter((y) => y !== OPEN_ENDED);
+const BUCKETS = bucketsFor(Math.min(...dated), Math.max(...dated));
+
+const tileResult = { tiles: 0, bytes: 0 };
+let labelBytes = 0;
+const manifest = [];
+for (const era of BUCKETS) {
+  const inEra = features.filter((f) => overlapsEra(f.properties.from, f.properties.to, era));
+  if (!inEra.length) continue;
+  const written = await writeVectorTiles(
+    { type: 'FeatureCollection', features: inEra },
+    join(OUT_DIR, 'polities', era.id),
+    'polities',
+  );
+  tileResult.tiles += written.tiles;
+  tileResult.bytes += written.bytes;
+
+  const eraLabels = labels.filter((l) => overlapsEra(l.from, l.to, era));
+  const text = JSON.stringify(eraLabels);
+  await writeFile(join(OUT_DIR, 'polity-labels', `${era.id}.json`), text);
+  labelBytes += text.length;
+
+  // Infinity is not JSON, and the client compares years, so the open ends are
+  // written as nulls and read as "no bound on this side".
+  manifest.push({
+    id: era.id,
+    from: era.from === -Infinity ? null : era.from,
+    to: era.to === Infinity ? null : era.to,
+    tiles: written.tiles,
+    bytes: written.bytes,
+    features: inEra.length,
+    labels: eraLabels.length,
+  });
+}
+stage(`wrote ${tileResult.tiles} vector tile(s) across ${manifest.length} era(s)`);
+
+// The list of eras, so the map picks its tiles from what was actually built
+// rather than from a second copy of the periodisation that can fall out of
+// step with this one.
+await writeFile(join(OUT_DIR, 'polity-eras.json'), JSON.stringify(manifest));
+// The client no longer consumes the monolithic TopoJSON source, nor the single
+// worldwide label file the eras replace.
 await rm(join(OUT_DIR, 'polities.topojson'), { force: true });
-const labelsOut = join(OUT_DIR, 'polity-labels.json');
-await writeFile(labelsOut, JSON.stringify(labels));
+await rm(join(OUT_DIR, 'polity-labels.json'), { force: true });
 // The stripe images the map has to generate before it can draw shared ground.
 // Only the data knows which polity colours end up contesting anything, so the
 // list is emitted rather than guessed at in the browser.
@@ -879,13 +985,16 @@ if (problems.length) {
   console.log(`\n${problems.length} problem(s):`);
   for (const problem of problems) console.log(`  ! ${problem}`);
 }
-const labelSize = (await import('node:fs/promises').then((fs) => fs.stat(labelsOut))).size;
+const heaviest = manifest.reduce((a, b) => (a.bytes >= b.bytes ? a : b));
 console.log(
   `\npolity tiles · ${features.length} features · ${tileResult.tiles} tiles` +
     ` · ${(tileResult.bytes / 1024).toFixed(0)} KB` +
     ` · ${byPolity.size - unclaimedCount - nonStatePeopleCount} polities` +
     ` · ${unclaimedCount} unclaimed region(s) · ${nonStatePeopleCount} non-state people(s)` +
-    `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB` +
+    `\npolity-labels/ · ${labels.length} labels across ${manifest.length} era(s)` +
+    ` · ${(labelBytes / 1024).toFixed(0)} KB` +
+    `\nheaviest era · ${heaviest.id} · ${heaviest.features} features` +
+    ` · ${(heaviest.bytes / 1024).toFixed(0)} KB over ${heaviest.tiles} tiles` +
     `\npolity-hatches.json · ${hatches.size} contested stripe pattern(s)`,
 );
 console.log(`\ntotal ${((Date.now() - started) / 1000).toFixed(1)}s`);

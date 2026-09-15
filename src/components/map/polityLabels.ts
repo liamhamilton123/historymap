@@ -1,7 +1,8 @@
 import { Marker, type Map as MapLibreMap } from 'maplibre-gl';
 import { POLITY_STATUS, DEFAULT_STATUS, UNCLAIMED, NON_STATE_PEOPLE, type PolityStatus } from '~/lib/mapStyle';
+import { polityLabelsUrl } from '~/lib/eras';
 
-/** One row of public/data/polity-labels.json, written by the data build. */
+/** One row of public/data/polity-labels/<era>.json, written by the data build. */
 type PolityLabel = {
   polity: string;
   /** 'polity' for ground with an owner, 'unclaimed' for ground with only a name. */
@@ -16,7 +17,7 @@ type PolityLabel = {
   minZoom: number;
 };
 
-const LABELS_URL = '/data/polity-labels.json';
+
 
 const styleFor = (label: PolityLabel) =>
   label.kind === 'unclaimed'
@@ -102,9 +103,10 @@ function labelElement(label: PolityLabel): HTMLElement {
  * apart in pixels as the map zooms in, so a hidden label returns by itself
  * once there is room for it.
  */
-export async function attachPolityLabels(map: MapLibreMap) {
-  const response = await fetch(LABELS_URL);
-  if (!response.ok) throw new Error(`${response.status} fetching ${LABELS_URL}`);
+export async function attachPolityLabels(map: MapLibreMap, era: string) {
+  const url = polityLabelsUrl(era);
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${response.status} fetching ${url}`);
   const labels: PolityLabel[] = await response.json();
 
   const markers = labels.map((label) => ({

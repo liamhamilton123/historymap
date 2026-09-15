@@ -27,9 +27,11 @@ import {
   STATIC_HATCHES,
   SELECTED_LAYER,
   type PolityHatch,
+  POLITY_SOURCE,
 } from '~/lib/mapStyle';
 import { hatchImage, hexToRgb, HATCH_PIXEL_RATIO } from '~/lib/hatch';
 import { attachPolityLabels, type PolityLabels } from './polityLabels';
+import { loadTileEras, eraForYear, polityTilesUrl, type TileEra } from '~/lib/eras';
 import { useMapStore } from '~/lib/store';
 import { readView, pushView, writeView } from '~/lib/url';
 import { hasWebGL2 } from '~/lib/webgl';
@@ -181,9 +183,30 @@ export default function HistoryMap() {
   const activeTheme = historicalThemes ? historicalTheme : 'default';
   const styleReady = useRef(false);
   const labels = useRef<PolityLabels | null>(null);
+  // Which era's tiles are loaded. The map holds one era at a time, so this is
+  // what a change of year is compared against before anything is refetched.
+  const [eras, setEras] = useState<TileEra[] | null>(null);
+  const era = useRef<string | null>(null);
+
+  // 4 KB, and the map cannot choose a tile URL without it, so it is fetched
+  // before the map is built rather than alongside it.
+  useEffect(() => {
+    let cancelled = false;
+    loadTileEras()
+      .then((list) => {
+        if (!cancelled) setEras(list);
+      })
+      .catch((error) => {
+        console.error('[policarta] tile eras failed to load', error);
+        if (!cancelled) setFailed('init');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
-    if (!container.current || map.current) return;
+    if (!container.current || map.current || !eras) return;
 
     // Probing beats catching: MapLibre logs a GPUInitializationError and then
     // dies asynchronously, which is impossible to recover from cleanly.
@@ -200,7 +223,12 @@ export default function HistoryMap() {
     try {
       instance = new MapLibreMap({
         container: container.current,
-        style: buildStyle(view.t, systemColorScheme(), useMapStore.getState().historicalThemes),
+        style: buildStyle(
+          view.t,
+          systemColorScheme(),
+          useMapStore.getState().historicalThemes,
+          eraForYear(eras, view.t),
+        ),
         center: [view.lng, view.lat],
         zoom: view.zoom,
         minZoom: MIN_ZOOM,
@@ -309,8 +337,10 @@ export default function HistoryMap() {
       instance.on('mouseleave', layer, leavePolity);
     }
 
+    era.current = eraForYear(eras, view.t);
+
     let cancelled = false;
-    attachPolityLabels(instance)
+    attachPolityLabels(instance, era.current)
       .then((attached) => {
         // The island can unmount before the fetch settles; tear down rather
         // than leaving markers bound to a removed map.
@@ -425,8 +455,9 @@ export default function HistoryMap() {
       window.removeEventListener('popstate', restoreFromHistory);
       instance.remove();
       map.current = null;
+      era.current = null;
     };
-  }, []);
+  }, [eras]);
 
   useEffect(() => {
     const query = window.matchMedia('(prefers-color-scheme: light)');
@@ -442,6 +473,39 @@ export default function HistoryMap() {
     if (!map.current || !styleReady.current) return;
     applyTheme(map.current, useMapStore.getState().t, colorScheme, historicalThemes);
   }, [colorScheme, historicalTheme, historicalThemes]);
+
+  // Scrubbing into another era means another pyramid. The source keeps its
+  // layers, filters and paint — only the URL it fetches from changes — so this
+  // is a refetch of what is on screen rather than a rebuild of the style.
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance || !eras || !styleReady.current) return;
+    const wanted = eraForYear(eras, t);
+    if (wanted === era.current) return;
+    era.current = wanted;
+
+    const source = instance.getSource(POLITY_SOURCE);
+    if (source && 'setTiles' in source) {
+      (source as { setTiles: (tiles: string[]) => void }).setTiles([polityTilesUrl(wanted)]);
+    }
+
+    // Labels are DOM markers built from the era's file, so they are rebuilt
+    // rather than refiltered. The old set is torn down first: leaving it up
+    // would double every name for as long as the fetch takes.
+    let cancelled = false;
+    labels.current?.destroy();
+    labels.current = null;
+    attachPolityLabels(instance, wanted)
+      .then((attached) => {
+        if (cancelled || era.current !== wanted) return attached.destroy();
+        labels.current = attached;
+        attached.update(useMapStore.getState().t);
+      })
+      .catch((error) => console.error('[policarta] polity labels failed to load', error));
+    return () => {
+      cancelled = true;
+    };
+  }, [t, eras]);
 
   useEffect(() => {
     if (!map.current) return;

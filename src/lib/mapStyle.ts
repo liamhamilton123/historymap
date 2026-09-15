@@ -5,6 +5,7 @@ import type {
   StyleSpecification,
 } from 'maplibre-gl';
 import { POLITY_COLOR, type HatchSpec } from './hatch';
+import { polityTilesUrl } from './eras';
 
 type ColorScheme = 'light' | 'dark';
 
@@ -674,6 +675,8 @@ export function buildStyle(
   t: number,
   colorScheme: ColorScheme = 'dark',
   historicalThemes = true,
+  /** Which era's pyramid to point the polity source at — see src/lib/eras.ts. */
+  era = '',
 ): StyleSpecification {
   const paint = themePaint(t, colorScheme, historicalThemes);
   return {
@@ -692,7 +695,7 @@ export function buildStyle(
       },
       [POLITY_SOURCE]: {
         type: 'vector',
-        tiles: ['/data/polities/{z}/{x}/{y}.pbf'],
+        tiles: [polityTilesUrl(era)],
         maxzoom: 6,
       },
     },

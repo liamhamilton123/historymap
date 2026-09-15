@@ -23,6 +23,15 @@ export const TILE_MAX_ZOOM = 6;
  */
 const INDEX_MAX_ZOOM = 2;
 
+/**
+ * Simplification while tiling, in tile units. This was 1 — finer than
+ * geojson-vt's own default of 3, and the reason a world tile carried 2.3M
+ * points. At 3 the same tile is less than half the size and the difference is
+ * below a pixel at the zoom it is drawn at, because a tile is simplified for
+ * the zoom it belongs to rather than once for all of them.
+ */
+const TOLERANCE = 3;
+
 /** geojson-vt's own tile key, so a written tile can be dropped from its cache. */
 const tileId = (z, x, y) => (((1 << z) * y + x) * 32) + z;
 
@@ -35,7 +44,7 @@ export async function writeVectorTiles(collection, directory, layer) {
     maxZoom: TILE_MAX_ZOOM,
     indexMaxZoom: INDEX_MAX_ZOOM,
     indexMaxPoints: 0,
-    tolerance: 1,
+    tolerance: TOLERANCE,
   });
 
   let bytes = 0;
