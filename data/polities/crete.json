@@ -1,0 +1,12 @@
+{
+  "name": "Cretan State",
+  "color": "#6f9cb8",
+  "features": [
+    { "from": "1900", "to": "1905",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[23.6154,35.5158],[23.6193,35.5],[24.1561,35.5],[24.1569,35.5158],[23.6154,35.5158]]]]},
+      "source": "Cliopatria slice \"Cretan State\" 1898–1904. Whole-year dates: the span ends on 1 January 1905 because the databank records 1904 as the last year of this extent. Wikidata Q72785." },
+    { "from": "1905", "to": "1908",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[23.6154,35.5158],[23.6193,35.5],[24.1561,35.5],[24.1569,35.5158],[23.6154,35.5158]]]]},
+      "source": "Cliopatria slice \"Cretan State\" 1905–1907. Whole-year dates: the span ends on 1 January 1908 because the databank records 1907 as the last year of this extent. Wikidata Q72785." }
+  ]
+}

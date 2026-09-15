@@ -1,0 +1,18 @@
+{
+  "name": "Free City of Danzig",
+  "color": "#a87f8a",
+  "features": [
+    { "from": "1919", "to": "1920",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[19.1671,53.8676],[19.355,54.0706],[19.3755,54.3417],[19.2888,54.3417],[18.6916,54.4774],[18.3354,54.3417],[18.3308,54.2739],[18.2352,54.1384],[18.8409,54.1384],[19.1671,53.8676]]],[[[20.9659,55.6348],[21.203,55.3618],[21.1966,55.2936],[21.4587,55.2936],[21.7881,55.0892],[22.4056,55.1573],[21.6401,55.3618],[21.2352,55.7031],[21.2482,55.8398],[20.9913,55.9082],[20.9659,55.6348]]]]},
+      "source": "Cliopatria slice \"Free City of Danzig\" 1919–1919. Whole-year dates: the span ends on 1 January 1920 because the databank records 1919 as the last year of this extent. Wikidata Q216173." },
+    { "from": "1920", "to": "1936",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[19.1671,53.8676],[19.355,54.0706],[19.3755,54.3417],[19.2888,54.3417],[18.6916,54.4774],[18.3354,54.3417],[18.3308,54.2739],[18.2352,54.1384],[18.8409,54.1384],[19.1671,53.8676]]],[[[20.9659,55.6348],[21.0535,55.6348],[21.1156,55.3618],[21.4522,55.2255],[21.5395,55.2255],[21.7881,55.0892],[22.4056,55.1573],[21.6401,55.3618],[21.2352,55.7031],[21.2482,55.8398],[20.9913,55.9082],[20.9659,55.6348]]]]},
+      "source": "Cliopatria slice \"Free City of Danzig\" 1920–1935. Whole-year dates: the span ends on 1 January 1936 because the databank records 1935 as the last year of this extent. Wikidata Q216173." },
+    { "from": "1936", "to": "1939",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[19.1671,53.8676],[19.355,54.0706],[19.3755,54.3417],[19.2888,54.3417],[18.5181,54.4774],[18.5087,54.3417],[18.3354,54.3417],[18.3308,54.2739],[18.2352,54.1384],[18.8409,54.1384],[19.1671,53.8676]]]]},
+      "source": "Cliopatria slice \"Free City of Danzig\" 1936–1938. Whole-year dates: the span ends on 1 January 1939 because the databank records 1938 as the last year of this extent. Wikidata Q216173." },
+    { "from": "1939", "to": "1940",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[19.1671,53.8676],[19.355,54.0706],[19.3755,54.3417],[19.2888,54.3417],[18.5181,54.4774],[18.5087,54.3417],[18.3354,54.3417],[18.3308,54.2739],[18.2352,54.1384],[18.8409,54.1384],[19.1671,53.8676]]]]},
+      "source": "Cliopatria slice \"Free City of Danzig\" 1939–1939. Whole-year dates: the span ends on 1 January 1940 because the databank records 1939 as the last year of this extent. Wikidata Q216173." }
+  ]
+}

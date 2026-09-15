@@ -40,7 +40,7 @@ const OVERLAP_EPSILON = 1e-5;
  * How many overlapping claims are listed before the rest are counted. A bulk
  * import can produce thousands, and a wall of them buries the build's summary.
  */
-const WARNING_LIMIT = 20;
+const WARNING_LIMIT = Number(process.env.WARNING_LIMIT ?? 20);
 /** Stands in for `to: null` so the runtime filter is a plain numeric compare. */
 const OPEN_ENDED = 9999;
 /** Days elapsed before the 1st of each month; leap years ignored on purpose. */

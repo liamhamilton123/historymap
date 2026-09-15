@@ -10,15 +10,17 @@
 
 ## Coverage
 
-Three regions, drawn at whatever depth the sources support. Everything outside
-them is simply absent, not empty:
+Everything outside these is simply absent, not empty:
 
 | | |
 | --- | --- |
-| **North America** | 7000 BCE to now. The mainland, Central America, the Caribbean and Greenland: Indigenous peoples and polities, the colonial empires as they grew, and the states that followed them. |
-| **South America** | 5000 BCE to now. The Andean empires, then the colonial viceroyalties and Guianas, then the modern republics. |
-| **Post-Soviet Eurasia** | 1922 to now. The USSR and its successor states. |
-| **Europe** | A modern-state snapshot from 2026. It adds the present-day European countries alongside the deeper regional histories already drawn. |
+| **Europe and northern Eurasia** | 1900 to now, imported from Cliopatria. 71 polities, 548 spans: the empires that opened the century, the states that came out of the two wars, the Soviet Union year by year, and the successor states. |
+| **The Americas** | 7000 BCE to now, but **only the non-state peoples layer and two unclaimed regions.** The polities that used to cover both continents — the Indigenous nations with governments, the colonial empires, the republics that followed — were hand-authored, and were removed with the move to Cliopatria. The databank has no equivalent to re-import them from. |
+
+The Americas are the hole this leaves, and it is the largest thing this map is
+missing. `data/non-state-peoples/` still draws 126 Indigenous peoples there and
+`data/unclaimed/` still names the Oregon Country and the Falklands, but no
+polity is drawn on either continent.
 
 Ground no polity is drawn on is blank rather than filled with a
 continent-sized approximation, and blank is a claim in itself: it says no
@@ -73,13 +75,25 @@ which extent was drawn and what was given up to draw it.
 
 ## Importing Cliopatria
 
-`npm run data:import-cliopatria` rewrites the post-Soviet Eurasia files —
-`ussr`, the fifteen successor states, plus `chechnya` and
-`russian-occupied-ukraine` — from the databank's own extents. It is run by
+`npm run data:import-cliopatria` writes **every file in `data/polities/`** —
+71 of them, 548 spans, Europe and northern Eurasia from 1900. It is run by
 hand, never as part of a build; what it writes is committed and then read like
-any hand-authored file. `SLICE` at the top of
-`data/scripts/import-cliopatria.mjs` is the whole configuration: which
-Cliopatria `Name`s become which file, under what name and colour.
+any hand-authored file, so a generated file can be corrected in place as long
+as the next import is not expected to preserve the correction.
+
+`SLICE` at the top of `data/scripts/import-cliopatria.mjs` is the whole
+configuration: which Cliopatria `Name`s become which file, under what name,
+adjective and colour. A file may name several, where the databank splits by
+regime what this map holds as one continuing identity — Bulgaria's
+principality, kingdom, people's republic and republic are four names for the
+ground one file draws. A name may carry its own year window for the cases where
+the databank runs one name past the point another takes over.
+
+`CLIP` is the region. Every imported shape is cut to it, because a Cliopatria
+polity is its *whole* extent: `Kingdom of Portugal` includes Angola and
+`Free French` is entirely African. Importing those whole would paint isolated
+blobs across continents this map does not otherwise cover. 103 shapes were cut;
+a span whose shape lost anything says so in its `source`.
 
 What the import costs, all of it visible in the generated files:
 
@@ -91,8 +105,14 @@ What the import costs, all of it visible in the generated files:
   could use it. The importer simplifies everything it writes on one shared
   topology, which keeps the imported polities aligned with each other.
 - **Real dual claims survive as dual claims.** Cliopatria draws Crimea inside
-  both Russia and Ukraine after 2014. That is now a warning rather than a build
-  failure, which is what makes the import possible at all.
+  both Russia and Ukraine after 2014, Nazi Germany over occupied Norway, and
+  Britain over its occupation zone in Austria. Those are warnings rather than
+  build failures, which is what makes the import possible at all. So are the
+  ~200 small slivers where two extents were digitised to nearly-but-not-quite
+  the same frontier; the build lists them by size.
+- **Microstates vanish.** Liechtenstein, San Marino and the Vatican are not in
+  the databank at any date, so they are not on the map. Andorra, Monaco, Malta
+  and Luxembourg are.
 
 Attribution is not optional here. Cliopatria is CC BY 4.0, so the panel in
 `MapControls.tsx` names it, links the licence, and says the geometry is

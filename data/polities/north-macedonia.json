@@ -1,0 +1,15 @@
+{
+  "name": "North Macedonia",
+  "color": "#ad7e4f",
+  "features": [
+    { "from": "1992", "to": "2000",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[20.5434,41.1328],[21.0777,40.744],[22.0486,41.068],[22.0526,41.1328],[22.5292,41.1328],[22.9436,41.3922],[22.8991,41.9114],[22.4377,42.1712],[22.3707,42.3662],[21.7228,42.2362],[21.487,42.3012],[21.2356,42.1063],[20.9998,42.1712],[20.5823,41.8465],[20.4919,41.6518],[20.5434,41.1328]]]]},
+      "source": "Cliopatria slice \"Former Yugoslav Republic of Macedonia\" 1992–1999. Whole-year dates: the span ends on 1 January 2000 because the databank records 1999 as the last year of this extent. Wikidata Q221." },
+    { "from": "2000", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[20.5434,41.1328],[21.0777,40.744],[22.0486,41.068],[22.0526,41.1328],[22.5292,41.1328],[22.9436,41.3922],[22.8991,41.9114],[22.4377,42.1712],[22.3707,42.3662],[21.7228,42.2362],[21.567,42.3012],[21.2356,42.1063],[20.9161,42.1063],[20.5823,41.8465],[20.4919,41.6518],[20.5434,41.1328]]]]},
+      "source": "Cliopatria slice \"Former Yugoslav Republic of Macedonia\" 2000–2023. Whole-year dates: the span ends on 1 January 2024 because the databank records 2023 as the last year of this extent. Wikidata Q221." },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[20.5434,41.1328],[21.0777,40.744],[22.0486,41.068],[22.0526,41.1328],[22.5292,41.1328],[22.9436,41.3922],[22.8991,41.9114],[22.4377,42.1712],[22.3707,42.3662],[21.7228,42.2362],[21.567,42.3012],[21.2356,42.1063],[20.9161,42.1063],[20.5823,41.8465],[20.4919,41.6518],[20.5434,41.1328]]]]},
+      "source": "Cliopatria slice \"Former Yugoslav Republic of Macedonia\" 2024–2024, still current. Whole-year dates: the span ends on 1 January 2025 because the databank records 2024 as the last year of this extent. Wikidata Q221." }
+  ]
+}

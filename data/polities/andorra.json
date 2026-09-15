@@ -1,0 +1,21 @@
+{
+  "name": "Andorra",
+  "color": "#8c6bb1",
+  "features": [
+    { "from": "1900", "to": "1936",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[1.4855,42.6262],[1.4888,42.5612],[1.5754,42.4312],[1.8091,42.5612],[1.729,42.5612],[1.7258,42.6262],[1.4855,42.6262]]]]},
+      "source": "Cliopatria slice \"Principality of Andorra\" 1840–1935. Whole-year dates: the span ends on 1 January 1936 because the databank records 1935 as the last year of this extent. Wikidata Q228." },
+    { "from": "1936", "to": "1938",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[1.4855,42.6262],[1.5754,42.4312],[1.8123,42.4962],[1.8091,42.5612],[1.729,42.5612],[1.7258,42.6262],[1.4855,42.6262]]]]},
+      "source": "Cliopatria slice \"Principality of Andorra\" 1936–1937. Whole-year dates: the span ends on 1 January 1938 because the databank records 1937 as the last year of this extent. Wikidata Q228." },
+    { "from": "1938", "to": "1943",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[1.4855,42.6262],[1.4888,42.5612],[1.5754,42.4312],[1.8123,42.4962],[1.7258,42.6262],[1.4855,42.6262]]]]},
+      "source": "Cliopatria slice \"Principality of Andorra\" 1938–1942. Whole-year dates: the span ends on 1 January 1943 because the databank records 1942 as the last year of this extent. Wikidata Q228." },
+    { "from": "1943", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[1.4855,42.6262],[1.4888,42.5612],[1.5754,42.4312],[1.8091,42.5612],[1.729,42.5612],[1.7258,42.6262],[1.4855,42.6262]]]]},
+      "source": "Cliopatria slice \"Principality of Andorra\" 1943–2023. Whole-year dates: the span ends on 1 January 2024 because the databank records 2023 as the last year of this extent. Wikidata Q228." },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[1.4855,42.6262],[1.4888,42.5612],[1.5754,42.4312],[1.8091,42.5612],[1.729,42.5612],[1.7258,42.6262],[1.4855,42.6262]]]]},
+      "source": "Cliopatria slice \"Principality of Andorra\" 2024–2024, still current. Whole-year dates: the span ends on 1 January 2025 because the databank records 2024 as the last year of this extent. Wikidata Q228." }
+  ]
+}
