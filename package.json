@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --port 4931",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro preview --port 4931",
     "check": "astro check",
     "data:fetch": "node data/scripts/fetch-sources.mjs",
     "data:basemap": "node data/scripts/build-basemap.mjs",
