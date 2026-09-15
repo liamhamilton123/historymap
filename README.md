@@ -48,7 +48,7 @@ src/
   pages/map.astro     The interactive map
   pages/404.astro     Not found
   layouts/Base.astro  Head metadata: canonical, Open Graph, Twitter, JSON-LD
-data/polities/        One file per polity — see data/README.md
+data/polities/        One file per polity, imported — see data/README.md
 data/unclaimed/       One file per named piece of ground nobody held
 data/                 Basemap pipeline — see data/README.md
 public/data/          Generated. Gitignored. Rebuild with `npm run data:build`.

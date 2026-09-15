@@ -17,7 +17,6 @@ export const UNCLAIMED_DIR = join(ROOT, 'data', 'unclaimed');
  * may overlap one another and held ground.
  */
 export const NON_STATE_PEOPLES_DIR = join(ROOT, 'data', 'non-state-peoples');
-export const PARTS_FILE = join(ROOT, 'data', 'parts.json');
 
 /** Physical layers, drawn as the basemap. */
 export const NATURAL_EARTH_LAYERS = [
@@ -25,12 +24,6 @@ export const NATURAL_EARTH_LAYERS = [
   { file: 'ne_50m_lakes', kind: 'lake' },
   { file: 'ne_50m_rivers_lake_centerlines', kind: 'river' },
 ];
-
-/**
- * Modern country outlines. Not drawn — they are the parts bin the polity build
- * assembles historical shapes from, keyed by ADM0_A3.
- */
-export const NATURAL_EARTH_PARTS = 'ne_50m_admin_0_countries';
 
 /**
  * Cliopatria / Seshat Global History Databank: historical polity extents,

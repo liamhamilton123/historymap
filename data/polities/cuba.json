@@ -1,8 +1,0 @@
-{
-  "name": "Cuba",
-  "color": "#b06a5c",
-  "features": [
-    { "from": "1902-05-20", "to": null, "parts": ["CUB"],
-      "source": "Independent at the end of the United States military government." }
-  ]
-}

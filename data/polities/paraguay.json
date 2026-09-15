@@ -1,7 +1,0 @@
-{
-  "name": "Paraguay",
-  "color": "#aa6c71",
-  "features": [
-    { "from": "1811-05-14", "to": null, "parts": ["PRY"], "source": "Paraguay's break with Spanish rule." }
-  ]
-}

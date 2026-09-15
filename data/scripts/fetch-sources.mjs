@@ -6,7 +6,6 @@ import { inflateRawSync } from 'node:zlib';
 import {
   SOURCES_DIR,
   NATURAL_EARTH_LAYERS,
-  NATURAL_EARTH_PARTS,
   CLIOPATRIA_URL,
   CLIOPATRIA_FILE,
 } from './lib/config.mjs';
@@ -40,16 +39,11 @@ const naturalEarthDir = join(SOURCES_DIR, 'naturalearth');
 await mkdir(naturalEarthDir, { recursive: true });
 
 console.log('Natural Earth (public domain)');
-await Promise.all([
-  ...NATURAL_EARTH_LAYERS.map((layer) =>
+await Promise.all(
+  NATURAL_EARTH_LAYERS.map((layer) =>
     download(NE_RAW(layer.file), join(naturalEarthDir, `${layer.file}.geojson`), layer.file),
   ),
-  download(
-    NE_RAW(NATURAL_EARTH_PARTS),
-    join(naturalEarthDir, `${NATURAL_EARTH_PARTS}.geojson`),
-    NATURAL_EARTH_PARTS,
-  ),
-]);
+);
 
 /**
  * The Cliopatria release is a zip holding one entry. Rather than depend on an

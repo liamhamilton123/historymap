@@ -43,10 +43,10 @@ as a primary chronological reference. Its public GeoJSON release is the
 canonical place to inspect its `Name`, `FromYear`, `ToYear`, `Components`, and
 `MemberOf` fields.
 
-**Most of the map's geometry is authored here**, from its own parts and inline
-shapes, with Cliopatria used to research and verify those entries. One region
-is the exception: the post-Soviet files are generated wholesale — see
-Importing Cliopatria below. Do not copy the full dataset into this repository.
+**The polity layer is imported from Cliopatria**, not authored here — see
+Importing Cliopatria below. The hand-authored layers that remain are
+`data/non-state-peoples/` and `data/unclaimed/`, which the databank has no
+equivalent for.
 
 The global attribution in the information panel and the Source section below
 are the only required citation; do not add per-polity Cliopatria citations
@@ -86,12 +86,10 @@ What the import costs, all of it visible in the generated files:
 - **Whole-year dates.** Cliopatria's `ToYear` is inclusive, so a span ends on
   1 January of the following year — the USSR dissolves on 1992-01-01, not on
   1991-12-26. Every span says so in its `source`.
-- **Inline geometry, no parts.** These extents are drawn per polity rather than
-  carved from a shared bin, so they cannot use `parts.json` and they overlap
-  their carved neighbours by a sliver along every shared frontier. The importer
-  simplifies everything it writes on one shared topology, which keeps the
-  imported polities aligned *with each other*; the seam against a hand-authored
-  neighbour is the price, and it shows up in the build's overlap warnings.
+- **Inline geometry.** These extents are drawn per polity rather than carved
+  from a shared bin — which is why the parts bin is gone; nothing is left that
+  could use it. The importer simplifies everything it writes on one shared
+  topology, which keeps the imported polities aligned with each other.
 - **Real dual claims survive as dual claims.** Cliopatria draws Crimea inside
   both Russia and Ukraine after 2014. That is now a warning rather than a build
   failure, which is what makes the import possible at all.
@@ -105,15 +103,15 @@ re-dated as above.
 
 One file per polity, named by its id: `data/polities/ukraine.json`. Each file
 gives the polity a name and a colour, and lists the spans of time it existed
-for. A span's shape is assembled from named `parts`.
+for. A span carries its own shape.
 
 ```json
 {
   "name": "Ukraine",
   "color": "#c8a24a",
   "features": [
-    { "from": "1991-12-26", "to": "2014-03-18", "parts": ["UKR", "crimea"] },
-    { "from": "2014-03-18", "to": null, "parts": ["UKR"] }
+    { "from": "1992", "to": "2014", "geometry": { "type": "Polygon", "coordinates": [] } },
+    { "from": "2014", "to": null, "geometry": { "type": "Polygon", "coordinates": [] } }
   ]
 }
 ```
@@ -121,7 +119,7 @@ for. A span's shape is assembled from named `parts`.
 A span may carry a `status`, defaulting to `controlled`:
 
 ```json
-{ "from": "2014-03-18", "to": null, "parts": ["crimea"], "status": "disputed" }
+{ "from": "2014", "to": null, "geometry": { }, "status": "disputed" }
 ```
 
 `controlled` is ground held and not seriously contested. `disputed` is ground
@@ -137,7 +135,7 @@ disputed place rather than as two territories that happen to coincide.
 
 ```json
 // in two polity files at once, for ground they both claim
-{ "from": "...", "to": "...", "parts": ["..."], "status": "contested" }
+{ "from": "...", "to": "...", "geometry": { }, "status": "contested" }
 ```
 
 Nothing currently uses it. Where two states each claim ground and neither holds
@@ -172,7 +170,7 @@ same way. It is a polity file with everything that implies an owner taken out:
   "name": "Oregon Country",
   "features": [
     { "from": "1818-10-20", "to": "1846-06-15",
-      "parts": ["oregon-country", "oregon-country-north"],
+      "geometry": { "type": "MultiPolygon", "coordinates": [] },
       "source": "Occupied jointly by Britain and the United States ..." }
   ]
 }
@@ -181,7 +179,7 @@ same way. It is a polity file with everything that implies an owner taken out:
 No `color`, because colour on this map means identity and there is none here.
 No `status`, because a status says how an owner holds something. Saying either
 is a build error rather than something quietly ignored. What it keeps is a
-name, spans, geometry assembled from the same parts bin, and a `source` note —
+name, spans, its own geometry, and a `source` note —
 so the ground can be labelled and can answer a click.
 
 Polities and unclaimed regions **share one id space and one overlap check**,
@@ -303,34 +301,28 @@ An existing span may instead carry `"relationship": "occupation"`. This
 does not change its geometry; it records that the named parent held the area
 by occupation, and the panel says “Occupied by …”.
 
-## Parts
+## Shapes
 
-A part is either a Natural Earth country code (`ADM0_A3`, e.g. `UKR`) or an id
-from `data/parts.json`. That file carves pieces out of the countries, for land
-that changed hands inside the period:
+**There is no parts bin.** Every span carries its own `geometry`, inline:
 
 ```json
-"crimea": { "source": "RUS", "within": [32.0, 44.0, 37.0, 46.5] },
-"donbas": { "source": "UKR", "clip": { "type": "Polygon", "coordinates": [...] } }
+{ "from": "1922", "to": "1924",
+  "geometry": { "type": "MultiPolygon", "coordinates": [] },
+  "source": "Why this span starts and ends where it does." }
 ```
 
-`within` takes whole polygons that fall inside `[west, south, east, north]` —
-cheap, and exact when the piece already stands alone as an island or peninsula.
-`clip` cuts against a drawn shape, for anything interior to a landmass.
+`data/parts.json` and the carving that went with it — a piece taken out of a
+Natural Earth country, the country keeping the remainder — are gone, along with
+`ne_50m_admin_0_countries` as a source. They existed to make one guarantee:
+nothing was ever in two parts at once, so polities assembled from parts could
+neither overlap nor leave a seam between them. Freehand shapes guarantee
+neither, and the build no longer pretends otherwise — the overlap check is
+geometric, and two polities sharing ground is a warning rather than something
+the model rules out.
 
-Carving is the only idea here: **the part is taken out of its source, and the
-source keeps the remainder.** So after the `crimea` entry above, `RUS` means
-"Russia without Crimea", and Ukraine spells itself `["UKR", "crimea"]` before
-2014 and `["UKR"]` after. Nothing is ever in two parts at once, so polities
-assembled from parts can neither overlap nor leave a gap.
-
-A rough `clip` shape is fine: the cut is exact regardless, because the part
-keeps the source's own coastline everywhere except along the cut, and the
-remainder is given the identical cut. Only the interior line is yours to draw.
-
-Anything the parts bin cannot express can be given as an inline `geometry` on a
-span instead. Inline shapes join the same topology, so one drawn to meet a
-neighbour's coordinates keeps meeting it.
+Every inline geometry is still cut against the same Natural Earth land and lake
+layers as the basemap, so a shape cannot paint an accidental sea claim. Author
+the inland edge only.
 
 ## Labels
 
@@ -372,12 +364,16 @@ their name is the entity's own.
 
 ## Simplification
 
-Every part is simplified once, together, as a shared topology — a border
-between two neighbours is one arc, simplified one way. This is why the
+Every shape is simplified once, together, as a shared topology — a border two
+polities were drawn to share is one arc, simplified one way. This is why the
 tolerance (`SIMPLIFY_WEIGHT` in `build-polities.mjs`) is global rather than
 per polity: give two neighbours their own tolerances and their shared border
 simplifies two ways, leaving a sliver along every frontier. Per-polity
 `minArea` is safe and is supported as a field on a polity file.
+
+This only aligns shapes that were *drawn* to meet. Two extents from different
+sources meet only as closely as their authors drew them, which is why the
+build's overlap warnings include small slivers along shared frontiers.
 
 ## Why the output is vector tiles
 
@@ -386,17 +382,16 @@ under `public/data/{basemap,polities}/{z}/{x}/{y}.pbf`. MapLibre loads only the
 tiles in the viewport, so startup no longer fetches a worldwide GeoJSON file or
 converts a whole historical topology on the main thread.
 
-The underlying parts are still simplified together as one topology before
-spans are assembled. That keeps neighbouring borders identical and prevents
-seams; the final tile step clips and simplifies that shared geometry for each
-zoom level. The pyramid is generated through zoom 6, after which MapLibre
+The shapes are still simplified together as one topology before spans are
+assembled; the final tile step clips and simplifies that shared geometry for
+each zoom level. The pyramid is generated through zoom 6, after which MapLibre
 overscales the highest-detail tiles for the map's constrained close views.
 
 ## Checks
 
 The build exits non-zero on any of:
 
-- a part id that does not exist, or a carve that selects nothing
+- a span with no `geometry` — including one still written with `parts`
 - a span that ends before it starts, or one using an unknown `status`
 - **one polity claiming the same ground twice at one instant**, which means a
   duplicated span
@@ -405,11 +400,10 @@ The build exits non-zero on any of:
   this map's own data
 - geometry that disappears entirely once specks are dropped
 
-That last check is answered from part ids, not from geometry. Carving already
-guarantees what it is testing: no two distinct parts share ground, so two spans
-naming disjoint sets of parts **cannot** overlap, and two spans naming a part in
-common overlap on exactly that part. Neither case needs an intersection. Only
-inline `geometry` spans, drawn freehand rather than carved, still need one.
+That last check is answered from geometry. It used to be answered from part
+ids, which was far cheaper, but nothing is carved any more and the shapes are
+all there is to compare. Coexisting pairs are screened by bounding box first,
+so only shapes that are actually near each other cost an intersection.
 
 Spans are swept in date order and the sweep stops as soon as a span starts after
 the current one ended, so pairs that never coexist are never examined. Together

@@ -11,7 +11,7 @@ import polylabel from 'polylabel';
 import { topology } from 'topojson-server';
 import { presimplify, simplify } from 'topojson-simplify';
 import { feature as topoFeature } from 'topojson-client';
-import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, NON_STATE_PEOPLES_DIR, PARTS_FILE, NATURAL_EARTH_PARTS } from './lib/config.mjs';
+import { SOURCES_DIR, OUT_DIR, POLITIES_DIR, UNCLAIMED_DIR, NON_STATE_PEOPLES_DIR } from './lib/config.mjs';
 import { simplifyGeometry } from './lib/geo.mjs';
 import { writeVectorTiles } from './lib/vector-tiles.mjs';
 
@@ -203,11 +203,6 @@ async function clipPolygonsToLand(polygons) {
   return near.length ? polygonClipping.difference(dry, near) : dry;
 }
 
-/** True when every vertex of a polygon's outer ring is inside [w, s, e, n]. */
-function polygonWithin(polygon, [w, s, e, n]) {
-  return polygon[0].every(([x, y]) => x >= w && x <= e && y >= s && y <= n);
-}
-
 /** [w, s, e, n] of a list of polygons. */
 function bboxOf(polygons) {
   let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
@@ -286,58 +281,17 @@ function nearBounds(set, bounds) {
   });
 }
 
-// --- the parts bin: modern countries, then the pieces carved out of them ----
-const parts = new Map();
-const partsPath = join(SOURCES_DIR, 'naturalearth', `${NATURAL_EARTH_PARTS}.geojson`);
-for (const ne of JSON.parse(await readFile(partsPath, 'utf8')).features) {
-  parts.set(ne.properties.ADM0_A3, polygonsOf(ne.geometry));
-}
-
-// Carving is the single idea: a part is taken out of its source, and the source
-// keeps the remainder. Nothing is ever in two parts at once, so a polity
-// assembled from parts can neither overlap another nor leave a seam. Specs are
-// applied in file order, each carving from whatever its source has left.
-const partSpec = JSON.parse(await readFile(PARTS_FILE, 'utf8')).parts ?? {};
-for (const [id, spec] of Object.entries(partSpec)) {
-  const source = parts.get(spec.source);
-  if (!source?.length) {
-    problems.push(`parts.json: "${id}" has no source "${spec.source}" left to carve`);
-    continue;
-  }
-
-  let taken;
-  let remainder;
-  if (spec.clip) {
-    // Cutting against a drawn shape. The cut is exact even when that shape is
-    // rough, because the part keeps the source's own coastline everywhere
-    // except along the cut itself — and the remainder gets the identical cut.
-    const clip = polygonsOf(spec.clip);
-    if (!clip.length) {
-      problems.push(`parts.json: "${id}" has an unusable clip geometry`);
-      continue;
-    }
-    taken = polygonClipping.intersection(source, clip);
-    remainder = polygonClipping.difference(source, clip);
-  } else if (spec.within) {
-    // Whole polygons inside a box. Cheaper, and exact when the piece already
-    // stands alone as an island or peninsula that NE draws separately.
-    taken = source.filter((polygon) => polygonWithin(polygon, spec.within));
-    remainder = source.filter((polygon) => !taken.includes(polygon));
-  } else {
-    problems.push(`parts.json: "${id}" needs either "clip" or "within"`);
-    continue;
-  }
-
-  if (!taken.length) {
-    problems.push(`parts.json: "${id}" selected nothing out of ${spec.source}`);
-    continue;
-  }
-  parts.set(id, taken);
-  parts.set(spec.source, remainder);
-  console.log(
-    `  ${id}: carved out of ${spec.source} · ${km2(areaOf(taken))} · ${remainder.length} polygon(s) left`,
-  );
-}
+// --- the shapes -----------------------------------------------------------
+// Every span draws its own geometry. There is no parts bin and no carving:
+// the map's history is imported from Cliopatria, whose extents are authored
+// per polity rather than cut out of a shared set of modern countries.
+//
+// That is a real trade and it is worth naming. Carving used to guarantee that
+// two spans could not overlap and could not leave a seam between them, which
+// made the overlap check a set comparison. Freehand shapes guarantee neither,
+// so the check below is geometric again, and two polities sharing ground is a
+// warning rather than something the data model rules out.
+const shapes = new Map();
 
 // --- specs: the filename is the id -----------------------------------------
 // Two kinds of file, assembled identically. A polity holds ground; an
@@ -351,11 +305,7 @@ const SOURCES = [
 ];
 const specs = [];
 const used = new Set();
-/** Parts small enough that global simplification would erase a real polity. */
-const preserveDetail = new Set();
 const seenIds = new Map();
-/** Part keys that came from an inline `geometry` rather than the parts bin. */
-const inlineParts = new Set();
 /**
  * Inline shapes waiting for a coast-aware transform. Collected rather than
  * transformed where they are found, because coastline data is loaded lazily
@@ -394,33 +344,26 @@ for (const { dir, kind } of SOURCES) {
       // `rounded` are also softened. The source data stays easy to author and
       // check, while the published map cannot paint an accidental sea claim.
       const shape = polygonsOf(entry.geometry);
-      parts.set(key, shape);
+      shapes.set(key, shape);
       const rounded = kind === 'non-state-people' || spec.rounded === true;
       coastlineTransforms.push({ key, shape, rounded });
-      entry.partKeys = [key];
+      entry.shapeKey = key;
       used.add(key);
-      // Drawn freehand rather than carved out of a source, so nothing
-      // guarantees it misses its neighbours the way a part does. The overlap
-      // check has to fall back to real geometry for these.
-      inlineParts.add(key);
       return;
     }
-    entry.partKeys = entry.parts ?? [];
-    for (const code of entry.partKeys) {
-      if (!parts.has(code)) problems.push(`${file}: no part "${code}"`);
-      else {
-        used.add(code);
-        if (spec.preserveDetail === true) preserveDetail.add(code);
-      }
-    }
+    problems.push(
+      `${file}: ${entry.from ?? `entry ${index}`} has no "geometry"` +
+        (entry.parts ? ' — "parts" is gone; see data/README.md' : ''),
+    );
+    entry.shapeKey = null;
   });
   }
 }
 
 // Transformed here rather than inside the walk above: one read of the coastline
-// serves all of them, and nothing has consumed the parts bin yet.
+// serves all of them, and nothing has consumed the shapes yet.
 for (const { key, shape, rounded } of coastlineTransforms) {
-  parts.set(
+  shapes.set(
     key,
     rounded
       ? await roundPolygons(shape, NON_STATE_PEOPLE_ROUNDING, NON_STATE_PEOPLE_MIN_EDGE)
@@ -428,20 +371,18 @@ for (const { key, shape, rounded } of coastlineTransforms) {
   );
 }
 
-// --- simplify every part at once, on a shared topology ---------------------
+// --- simplify every shape at once, on a shared topology --------------------
+// One topology, not one per file: a border two polities were drawn to share is
+// a single arc here, simplified once. Simplify them separately and the same
+// border simplifies two ways, leaving a sliver down every frontier.
 const objects = {};
-for (const id of used) objects[id] = { type: 'MultiPolygon', coordinates: parts.get(id) };
+for (const id of used) objects[id] = { type: 'MultiPolygon', coordinates: shapes.get(id) };
 const topo = simplify(presimplify(topology(objects)), SIMPLIFY_WEIGHT);
 const simplified = new Map();
 for (const id of used) simplified.set(id, polygonsOf(topoFeature(topo, topo.objects[id]).geometry));
-// A country may be smaller than the global simplification threshold yet still
-// be a sovereign polity worth keeping. Preserve the source shape in that rare
-// case; it is intentionally opt-in, because bypassing shared simplification
-// for ordinary borders would risk seams with their neighbours.
-for (const id of preserveDetail) simplified.set(id, parts.get(id));
 const countVertices = (map) =>
   [...map.values()].reduce((n, polys) => n + polys.reduce((m, p) => m + p.reduce((k, r) => k + r.length, 0), 0), 0);
-const before = countVertices(new Map([...used].map((id) => [id, parts.get(id)])));
+const before = countVertices(new Map([...used].map((id) => [id, shapes.get(id)])));
 console.log(
   `\n  simplified ${used.size} part(s) as one topology:` +
     ` ${before} -> ${countVertices(simplified)} vertices`,
@@ -449,22 +390,11 @@ console.log(
 
 // --- assemble the features -------------------------------------------------
 const features = [];
-const featureParts = [];
 for (const spec of specs) {
   let kept = 0;
   for (const entry of spec.entries) {
-    const assembled = entry.partKeys.flatMap((code) => simplified.get(code) ?? []);
-    if (!assembled.length) {
-      problems.push(`${spec.file}: ${entry.from} has no geometry`);
-      continue;
-    }
-
-    // Dissolve. A polity is one entity, so the seams between the parts it was
-    // assembled from are an artefact of the assembly and must not be drawn —
-    // otherwise the USSR shows internal republic borders. This is only exact
-    // because the parts were simplified on a shared topology and so meet
-    // exactly; union on independently simplified parts would leave slivers.
-    const polygons = entry.partKeys.length > 1 ? polygonClipping.union(assembled) : assembled;
+    const polygons = entry.shapeKey ? simplified.get(entry.shapeKey) ?? [] : [];
+    if (!polygons.length) continue;
 
     // Already simplified; this only drops specks and rounds coordinates.
     // Both sides of a shared arc get the same treatment, so no seam appears.
@@ -555,10 +485,6 @@ for (const spec of specs) {
       },
       geometry,
     });
-    // Which parts this span was assembled from, parallel to `features`. Kept
-    // beside them rather than on them because the overlap check needs it and
-    // the map does not: it must not be shipped.
-    featureParts.push(entry.partKeys);
     kept++;
   }
   console.log(`  ${spec.id}: ${kept} feature(s)`);
@@ -576,19 +502,13 @@ for (const spec of specs) {
 // holds several spans at once when they carry different statuses — controlled
 // ground here, disputed ground there.
 //
-// It is mostly answered from part ids rather than from geometry, because
-// carving already guarantees the thing being checked: a part is taken out of
-// its source and the source keeps the remainder, so no two distinct parts ever
-// share ground. Two spans naming disjoint sets of parts therefore cannot
-// overlap whatever their shapes look like, and two spans naming a part in
-// common overlap on exactly that part — neither case needs an intersection.
-//
-// Only inline `geometry` spans, which are drawn freehand rather than carved,
-// still need the real thing.
-//
-// Answering it this way also catches more than the geometry did: two polities
-// claiming the same part are now reported even when the ground they share is
-// too small to survive being simplified, which used to hide the mistake.
+// It is answered from geometry. It used to be answered from part ids, which
+// was far cheaper — carving guaranteed that two spans naming disjoint parts
+// could not overlap — but nothing is carved any more, so the shapes are all
+// there is to compare. Two screens keep that affordable: the sweep is sorted
+// by start date and breaks as soon as a span begins after the current one
+// ended, and coexisting pairs are then screened by bounding box. Only what
+// survives both is intersected.
 const byPolity = new Map();
 for (const f of features) {
   const list = byPolity.get(f.properties.polity) ?? [];
@@ -601,7 +521,6 @@ const unclaimedCount = countOfKind('unclaimed');
 const nonStatePeopleCount = countOfKind('non-state-people');
 
 const claims = features.map((f, index) => {
-  const partKeys = featureParts[index];
   const polygons = polygonsOf(f.geometry);
   return {
     // Position in `features`, which the sort below no longer preserves. The
@@ -610,8 +529,6 @@ const claims = features.map((f, index) => {
     props: f.properties,
     polygons,
     bbox: bboxOf(polygons),
-    parts: new Set(partKeys),
-    inline: partKeys.some((key) => inlineParts.has(key)),
   };
 });
 // Sorted by start so the sweep below can stop early rather than screening
@@ -642,22 +559,13 @@ for (let i = 0; i < claims.length; i++) {
     // overlap with a polity (or another non-state people) is expected.
     if (a.props.kind === 'non-state-people' || b.props.kind === 'non-state-people') continue;
 
-    const common = [...a.parts].filter((key) => b.parts.has(key));
-    // Disjoint parts, nothing drawn freehand: they cannot overlap. This is
-    // the case for almost every pair, and it costs a set lookup.
-    if (!common.length && !a.inline && !b.inline) continue;
-
-    let shared;
-    if (common.length) {
-      // They name the same ground, so how much they share is the size of the
-      // parts they share. No intersection needed to know it, or to measure it.
-      shared = common.reduce((total, key) => total + areaOf(simplified.get(key) ?? []), 0);
-    } else {
-      // One side at least is freehand, so only the shapes can settle it.
-      if (bboxesDisjoint(a.bbox, b.bbox)) continue;
-      intersected++;
-      shared = areaOf(polygonClipping.intersection(a.polygons, b.polygons));
-    }
+    // Every shape is freehand now, so only the shapes themselves can settle
+    // it. The bounding boxes screen out the overwhelming majority first —
+    // most pairs that coexist in time are nowhere near each other in space —
+    // and only what survives that costs an intersection.
+    if (bboxesDisjoint(a.bbox, b.bbox)) continue;
+    intersected++;
+    const shared = areaOf(polygonClipping.intersection(a.polygons, b.polygons));
     if (shared <= OVERLAP_EPSILON) continue;
 
     const from = Math.max(a.props.from, b.props.from);
