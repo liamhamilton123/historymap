@@ -1,0 +1,9 @@
+{
+  "name": "Cispadane Republic",
+  "color": "#9f8e50",
+  "cliopatria": {"name":"Cispadane Republic","wikipedia":"Cispadane Republic","wikidata":"Q463289","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1800", "to": "1803",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[10.6159,44.1243],[10.616,44.1896],[10.8584,44.1896],[10.8585,44.2548],[11.1022,44.7119],[11.4268,44.7773],[11.5085,44.908],[11.3467,45.0388],[10.4534,44.9734],[10.0487,44.6466],[10.1301,44.516],[10.0503,44.1896],[10.5352,44.1243],[10.6159,44.1243]]]]} }
+  ]
+}

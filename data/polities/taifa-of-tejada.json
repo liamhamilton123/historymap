@@ -1,0 +1,9 @@
+{
+  "name": "Taifa of Tejada",
+  "color": "#899f50",
+  "cliopatria": {"name":"Taifa of Tejada","wikipedia":"Taifa of Tejada","wikidata":"Q2522604","seshat":"es_taifas","memberOf":"(Taifas of Iberia)"},
+  "features": [
+    { "from": "1147", "to": "1152",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-7.7153,37.4483],[-7.9438,37.3838],[-8.0218,37.3838],[-8.1668,37.2549],[-8.1504,37.0615],[-8.0726,37.0615],[-7.6779,36.9971],[-7.4548,37.126],[-7.4706,37.3193],[-7.5486,37.3193],[-7.7153,37.4483]]]]} }
+  ]
+}

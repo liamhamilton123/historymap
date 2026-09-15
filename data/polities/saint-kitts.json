@@ -1,0 +1,11 @@
+{
+  "name": "Saint Kitts",
+  "color": "#50849f",
+  "cliopatria": {"name":"Saint Kitts","wikipedia":"Saint Kitts","wikidata":"Q204989","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1967", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-64.8826,17.7719],[-64.8675,17.6433],[-64.5798,17.7076],[-64.6688,17.8362],[-64.8902,17.8362],[-64.8826,17.7719]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-64.8826,17.7719],[-64.8675,17.6433],[-64.5798,17.7076],[-64.6688,17.8362],[-64.8902,17.8362],[-64.8826,17.7719]]]]} }
+  ]
+}

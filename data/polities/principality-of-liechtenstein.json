@@ -1,0 +1,11 @@
+{
+  "name": "Principality of Liechtenstein",
+  "color": "#909f50",
+  "cliopatria": {"name":"Principality of Liechtenstein","wikipedia":"Liechtenstein","wikidata":"Q347","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1721", "to": "1814",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[9.5425,47.269],[9.4601,47.269],[9.4613,47.1374],[9.6258,47.1374],[9.543,47.2032],[9.5425,47.269]]]]} },
+    { "from": "1814", "to": "1815",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[9.5425,47.269],[9.4601,47.269],[9.4613,47.1374],[9.6258,47.1374],[9.543,47.2032],[9.5425,47.269]]]]} }
+  ]
+}

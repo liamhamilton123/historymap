@@ -1,0 +1,11 @@
+{
+  "name": "Seychelles",
+  "color": "#5a509f",
+  "cliopatria": {"name":"Seychelles","wikipedia":"Seychelles","wikidata":"Q1042","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1976", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[55.4304,-4.7931],[55.4263,-4.6002],[55.2077,-4.6002],[55.4304,-4.7931]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[55.4304,-4.7931],[55.4263,-4.6002],[55.2077,-4.6002],[55.4304,-4.7931]]]]} }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Grenada",
+  "color": "#92509f",
+  "cliopatria": {"name":"Grenada","wikipedia":"Grenada","wikidata":"Q769","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1976", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.7751,12.0503],[-61.5511,11.986],[-61.5684,12.2432],[-61.715,12.2432],[-61.7106,12.1789],[-61.7751,12.0503]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.7751,12.0503],[-61.5511,11.986],[-61.5684,12.2432],[-61.715,12.2432],[-61.7106,12.1789],[-61.7751,12.0503]]]]} }
+  ]
+}

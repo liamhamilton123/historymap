@@ -1,0 +1,11 @@
+{
+  "name": "Nanzan",
+  "color": "#759f50",
+  "cliopatria": {"name":"Nanzan","wikipedia":"Nanzan","wikidata":"Q55522","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1314", "to": "1395",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[127.8176,26.0651],[127.8539,26.1937],[127.6289,26.1937],[127.5927,26.0651],[127.8176,26.0651]]]]} },
+    { "from": "1395", "to": "1402",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[127.8176,26.0651],[127.8539,26.1937],[127.6289,26.1937],[127.5927,26.0651],[127.8176,26.0651]]]]} }
+  ]
+}

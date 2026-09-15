@@ -1,0 +1,11 @@
+{
+  "name": "Kingdom of Dunoting",
+  "color": "#9f5095",
+  "cliopatria": {"name":"Kingdom of Dunoting","wikipedia":"Dunoding","wikidata":"Q2264840","seshat":"gb_brythonic_k","memberOf":"(Brythonic Kingdoms)"},
+  "features": [
+    { "from": "592", "to": "623",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-1.9274,54.1384],[-2.041,54.4095],[-2.3879,54.4095],[-2.2667,54.0706],[-2.1802,54.0706],[-2.1398,53.6647],[-1.8943,53.7999],[-1.9274,54.1384]]]]} },
+    { "from": "623", "to": "626",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-1.9274,54.1384],[-2.041,54.4095],[-2.3879,54.4095],[-2.2667,54.0706],[-2.1802,54.0706],[-2.1398,53.6647],[-1.8943,53.7999],[-1.9274,54.1384]]]]} }
+  ]
+}

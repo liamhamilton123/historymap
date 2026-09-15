@@ -1,0 +1,11 @@
+{
+  "name": "Free City of Frankfurt",
+  "color": "#509f6d",
+  "cliopatria": {"name":"Free City of Frankfurt","wikipedia":"Free City of Frankfurt","wikidata":"Q704300","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1820", "to": "1865",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[8.2607,50.113],[8.2629,49.98],[8.4306,49.98],[8.4286,50.113],[8.2607,50.113]]]]} },
+    { "from": "1865", "to": "1866",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[8.2607,50.113],[8.2629,49.98],[8.4306,49.98],[8.4286,50.113],[8.2607,50.113]]]]} }
+  ]
+}

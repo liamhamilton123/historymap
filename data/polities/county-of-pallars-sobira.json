@@ -1,0 +1,11 @@
+{
+  "name": "County of Pallars Sobirà",
+  "color": "#9f506f",
+  "cliopatria": {"name":"County of Pallars Sobirà","wikipedia":"Pallars Sobirà","wikidata":"Q12719","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1040", "to": "1192",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[0.9945,42.8213],[0.6738,42.8213],[0.601,42.6912],[0.6046,42.6262],[0.6847,42.6262],[0.6883,42.5612],[0.699,42.3662],[1.1856,42.2362],[1.4855,42.6262],[0.9945,42.8213]]]]} },
+    { "from": "1192", "to": "1202",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[0.9945,42.8213],[0.6738,42.8213],[0.601,42.6912],[0.699,42.3662],[1.1856,42.2362],[1.4855,42.6262],[0.9945,42.8213]]]]} }
+  ]
+}

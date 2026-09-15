@@ -1,0 +1,11 @@
+{
+  "name": "Antigua and Barbuda",
+  "color": "#86509f",
+  "cliopatria": {"name":"Antigua and Barbuda","wikipedia":"Antigua and Barbuda","wikidata":"Q781","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1967", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.7636,16.9362],[-61.6161,16.9362],[-61.6441,17.1933],[-61.8653,17.1933],[-61.8583,17.129],[-61.7636,16.9362]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.7636,16.9362],[-61.6161,16.9362],[-61.6441,17.1933],[-61.8653,17.1933],[-61.8583,17.129],[-61.7636,16.9362]]]]} }
+  ]
+}

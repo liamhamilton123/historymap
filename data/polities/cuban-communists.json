@@ -1,0 +1,9 @@
+{
+  "name": "Cuban Communists",
+  "color": "#509f82",
+  "cliopatria": {"name":"Cuban Communists","wikipedia":"Communist Party of Cuba","wikidata":"Q371402","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1958", "to": "1960",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-75.8954,19.9577],[-76.849,19.8934],[-76.9231,19.8934],[-77.0162,20.022],[-76.887,20.1505],[-76.526,20.2148],[-75.9236,20.1505],[-75.8213,19.9577],[-75.8954,19.9577]]]]} }
+  ]
+}

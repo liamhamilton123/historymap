@@ -1,0 +1,11 @@
+{
+  "name": "Angles",
+  "color": "#9f5b50",
+  "cliopatria": {"name":"Angles","wikipedia":"Angles","wikidata":"Q234218","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "387", "to": "476",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[9.9272,54.5453],[9.9268,54.8171],[9.2301,54.8851],[9.3176,54.8171],[9.2321,54.6132],[9.8404,54.5453],[9.9272,54.5453]]]]} },
+    { "from": "476", "to": "480",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[9.9272,54.5453],[9.9268,54.8171],[9.2301,54.8851],[9.3176,54.8171],[9.2321,54.6132],[9.8404,54.5453],[9.9272,54.5453]]]]} }
+  ]
+}

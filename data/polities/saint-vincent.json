@@ -1,0 +1,11 @@
+{
+  "name": "Saint Vincent",
+  "color": "#509f6f",
+  "cliopatria": {"name":"Saint Vincent","wikipedia":"Saint Vincent and the Grenadines","wikidata":"Q757","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1969", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.1933,13.1432],[-61.1884,13.0789],[-61.0466,13.1432],[-61.0662,13.4003],[-61.2813,13.336],[-61.1933,13.1432]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.1933,13.1432],[-61.1884,13.0789],[-61.0466,13.1432],[-61.0662,13.4003],[-61.2813,13.336],[-61.1933,13.1432]]]]} }
+  ]
+}

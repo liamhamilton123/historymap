@@ -1,0 +1,9 @@
+{
+  "name": "Commune of the Zealots",
+  "color": "#9f9e50",
+  "cliopatria": {"name":"Commune of the Zealots","wikipedia":"Thessaloniki","wikidata":"Q17151","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1344", "to": "1352",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[22.8842,40.4849],[22.8925,40.6144],[22.5716,40.5496],[22.5675,40.4849],[22.4132,40.5496],[22.5045,40.744],[23.143,40.8088],[23.1301,40.6144],[23.2093,40.6144],[23.1966,40.4201],[23.0383,40.4201],[22.8842,40.4849]]]]} }
+  ]
+}

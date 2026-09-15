@@ -1,0 +1,11 @@
+{
+  "name": "Domain of Rhodes",
+  "color": "#5d9f50",
+  "cliopatria": {"name":"Domain of Rhodes","wikipedia":"Rhodes","wikidata":"Q43048","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1206", "to": "1241",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[27.7426,35.902],[28.1393,36.0308],[28.2502,36.4816],[28.0171,36.4816],[27.6925,36.2884],[27.7426,35.902]]]]} },
+    { "from": "1241", "to": "1250",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[27.7426,35.902],[28.1393,36.0308],[28.2502,36.4816],[28.0171,36.4816],[27.6925,36.2884],[27.7426,35.902]]]]} }
+  ]
+}

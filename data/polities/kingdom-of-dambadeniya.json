@@ -1,0 +1,11 @@
+{
+  "name": "Kingdom of Dambadeniya",
+  "color": "#9f8e50",
+  "cliopatria": {"name":"Kingdom of Dambadeniya","wikipedia":"Kingdom of Dambadeniya","wikidata":"Q3136869","seshat":"sl_dambadeniya","memberOf":null},
+  "features": [
+    { "from": "1236", "to": "1285",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[79.8041,7.7155],[79.8501,7.2771],[80.215,7.2893],[80.5631,7.4557],[80.5588,7.6283],[80.3103,7.933],[79.7413,7.9655],[79.8041,7.7155]]]]} },
+    { "from": "1285", "to": "1294",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[79.8041,7.7155],[79.8501,7.2771],[80.215,7.2893],[80.5631,7.4557],[80.5588,7.6283],[80.3103,7.933],[79.7413,7.9655],[79.8041,7.7155]]]]} }
+  ]
+}

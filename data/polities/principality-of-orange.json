@@ -1,0 +1,15 @@
+{
+  "name": "Principality of Orange",
+  "color": "#50529f",
+  "cliopatria": {"name":"Principality of Orange","wikipedia":"Principality of Orange","wikidata":"Q2281221","seshat":"de_empire_3","memberOf":"(Holy Roman Empire)"},
+  "features": [
+    { "from": "1260", "to": "1272",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[4.7975,44.1896],[4.7953,44.2548],[5.0378,44.2548],[4.9613,44.1243],[4.7997,44.1243],[4.7975,44.1896]]]]} },
+    { "from": "1272", "to": "1459",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[4.7997,44.1243],[5.0399,44.1896],[4.9569,44.2548],[4.8761,44.2548],[4.7997,44.1243]]]]} },
+    { "from": "1459", "to": "1564",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[4.7997,44.1243],[5.0399,44.1896],[4.9569,44.2548],[4.8761,44.2548],[4.7997,44.1243]]]]} },
+    { "from": "1564", "to": "1572",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[4.7997,44.1243],[5.0399,44.1896],[4.9569,44.2548],[4.8761,44.2548],[4.7997,44.1243]]]]} }
+  ]
+}

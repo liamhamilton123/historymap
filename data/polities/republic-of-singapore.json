@@ -1,0 +1,11 @@
+{
+  "name": "Republic of Singapore",
+  "color": "#719f50",
+  "cliopatria": {"name":"Republic of Singapore","wikipedia":"Singapore","wikidata":"Q334","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1967", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[103.6323,1.25],[103.6346,1.3143],[103.5618,1.3143],[103.5641,1.3786],[103.9281,1.3786],[103.9258,1.3143],[103.853,1.3143],[103.8507,1.25],[103.6323,1.25]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[103.6323,1.25],[103.6346,1.3143],[103.5618,1.3143],[103.5641,1.3786],[103.9281,1.3786],[103.9258,1.3143],[103.853,1.3143],[103.8507,1.25],[103.6323,1.25]]]]} }
+  ]
+}

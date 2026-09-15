@@ -1,0 +1,11 @@
+{
+  "name": "Principality of Lichtenberg",
+  "color": "#589f50",
+  "cliopatria": {"name":"Principality of Lichtenberg","wikipedia":"Principality of Lichtenberg","wikidata":"Q547629","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1820", "to": "1825",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.5155,49.6479],[7.2677,49.5152],[7.3527,49.4489],[7.4363,49.4489],[7.5155,49.6479]]]]} },
+    { "from": "1825", "to": "1828",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[7.5155,49.6479],[7.2677,49.5152],[7.3527,49.4489],[7.4363,49.4489],[7.5155,49.6479]]]]} }
+  ]
+}

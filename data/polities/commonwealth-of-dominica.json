@@ -1,0 +1,11 @@
+{
+  "name": "Commonwealth of Dominica",
+  "color": "#999f50",
+  "cliopatria": {"name":"Commonwealth of Dominica","wikipedia":"Dominica","wikidata":"Q784","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1979", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.3669,15.2004],[-61.1463,15.2004],[-61.2629,15.6504],[-61.4836,15.6504],[-61.4649,15.4575],[-61.3669,15.2004]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.3669,15.2004],[-61.1463,15.2004],[-61.2629,15.6504],[-61.4836,15.6504],[-61.4649,15.4575],[-61.3669,15.2004]]]]} }
+  ]
+}

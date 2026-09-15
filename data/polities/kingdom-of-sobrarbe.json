@@ -1,0 +1,9 @@
+{
+  "name": "Kingdom of Sobrarbe",
+  "color": "#506b9f",
+  "cliopatria": {"name":"Kingdom of Sobrarbe","wikipedia":"Kingdom of Sobrarbe","wikidata":"Q3572492","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "825", "to": "830",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-1.1445,42.4312],[-0.7486,42.4962],[-0.6524,42.2362],[-0.4925,42.2362],[-0.1884,42.4962],[-0.124,42.7563],[-0.7735,42.8864],[-1.0772,42.6262],[-1.073,42.5612],[-1.153,42.5612],[-1.1445,42.4312]]]]} }
+  ]
+}

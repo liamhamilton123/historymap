@@ -1,0 +1,9 @@
+{
+  "name": "Nieuwe Republiek",
+  "color": "#508e9f",
+  "cliopatria": {"name":"Nieuwe Republiek","wikipedia":"Nieuwe Republiek","wikidata":"Q552157","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1885", "to": "1890",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[32.2334,-28.0011],[32.4674,-28.1297],[32.6431,-27.2939],[32.7823,-27.101],[32.7677,-26.8438],[32.0164,-26.8438],[31.8697,-26.9081],[31.8158,-27.2939],[31.6909,-27.7439],[32.075,-27.8725],[32.1581,-28.0011],[32.2334,-28.0011]]]]} }
+  ]
+}

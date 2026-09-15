@@ -1,0 +1,11 @@
+{
+  "name": "Isle of Man",
+  "color": "#50889f",
+  "cliopatria": {"name":"Isle of Man","wikipedia":"Isle of Man","wikidata":"Q9676","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1344", "to": "1395",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-4.3826,54.4095],[-4.8079,54.3417],[-4.7996,54.2739],[-4.8613,54.0706],[-4.3584,54.2061],[-4.3826,54.4095]]]]} },
+    { "from": "1395", "to": "1402",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-4.3826,54.4095],[-4.8079,54.3417],[-4.7996,54.2739],[-4.8613,54.0706],[-4.3584,54.2061],[-4.3826,54.4095]]]]} }
+  ]
+}

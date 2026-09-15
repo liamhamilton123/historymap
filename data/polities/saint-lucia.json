@@ -1,0 +1,11 @@
+{
+  "name": "Saint Lucia",
+  "color": "#509f78",
+  "cliopatria": {"name":"Saint Lucia","wikipedia":"Saint Lucia","wikidata":"Q760","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1979", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.0443,14.0432],[-60.9396,13.6575],[-60.798,13.7218],[-60.8241,14.0432],[-61.0443,14.0432]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-61.0443,14.0432],[-60.9396,13.6575],[-60.798,13.7218],[-60.8241,14.0432],[-61.0443,14.0432]]]]} }
+  ]
+}

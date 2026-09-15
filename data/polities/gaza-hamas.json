@@ -1,0 +1,11 @@
+{
+  "name": "Gaza/Hamas",
+  "color": "#6d9f50",
+  "cliopatria": {"name":"Gaza/Hamas","wikipedia":"Governance of the Gaza Strip","wikidata":"Q5588642","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "2014", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[34.3024,31.3362],[34.4547,31.3362],[34.389,31.4647],[34.3838,31.4005],[34.3024,31.3362]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[34.3024,31.3362],[34.4547,31.3362],[34.389,31.4647],[34.3838,31.4005],[34.3024,31.3362]]]]} }
+  ]
+}

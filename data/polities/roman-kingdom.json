@@ -1,0 +1,13 @@
+{
+  "name": "Roman Kingdom",
+  "color": "#9f7e50",
+  "cliopatria": {"name":"Roman Kingdom","wikipedia":"Roman Kingdom","wikidata":"Q201038","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "-750", "to": "-700",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[12.1305,41.9114],[12.4482,41.7816],[12.4517,42.1063],[11.9725,42.1063],[12.1311,41.9764],[12.1305,41.9114]]]]} },
+    { "from": "-700", "to": "-500",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[12.1305,41.9114],[12.4482,41.7816],[12.4517,42.1063],[11.9725,42.1063],[12.1311,41.9764],[12.1305,41.9114]]]]} },
+    { "from": "-500", "to": "-480",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[12.1305,41.9114],[12.4482,41.7816],[12.4517,42.1063],[11.9725,42.1063],[12.1311,41.9764],[12.1305,41.9114]]]]} }
+  ]
+}

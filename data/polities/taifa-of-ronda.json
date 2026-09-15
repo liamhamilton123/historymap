@@ -1,0 +1,11 @@
+{
+  "name": "Taifa of Ronda",
+  "color": "#50539f",
+  "cliopatria": {"name":"Taifa of Ronda","wikipedia":"Taifa of Ronda","wikidata":"Q2524715","seshat":"es_taifas","memberOf":"(Taifas of Iberia)"},
+  "features": [
+    { "from": "1040", "to": "1056",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-5.3926,36.6105],[-5.3149,36.6105],[-5.0862,36.6749],[-4.9486,36.9326],[-5.0265,36.9326],[-5.3424,36.9971],[-5.3972,36.6749],[-5.3926,36.6105]]]]} },
+    { "from": "1056", "to": "1066",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-5.3926,36.6105],[-5.3149,36.6105],[-5.0862,36.6749],[-4.9486,36.9326],[-5.0265,36.9326],[-5.3424,36.9971],[-5.3972,36.6749],[-5.3926,36.6105]]]]} }
+  ]
+}

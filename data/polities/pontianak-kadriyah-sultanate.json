@@ -1,0 +1,11 @@
+{
+  "name": "Pontianak Kadriyah Sultanate",
+  "color": "#74509f",
+  "cliopatria": {"name":"Pontianak Kadriyah Sultanate","wikipedia":"Pontianak Sultanate","wikidata":"Q3048747","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1772", "to": "1825",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[108.9291,-0.5501],[109.2214,-0.6144],[109.2239,-0.7429],[109.5137,-0.6786],[109.5784,-0.2286],[108.9928,0.0285],[108.9931,-0.0358],[108.9291,-0.5501]]]]} },
+    { "from": "1825", "to": "1828",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[108.9291,-0.5501],[109.2214,-0.6144],[109.2239,-0.7429],[109.5137,-0.6786],[109.5784,-0.2286],[108.9928,0.0285],[108.9931,-0.0358],[108.9291,-0.5501]]]]} }
+  ]
+}

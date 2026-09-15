@@ -1,0 +1,11 @@
+{
+  "name": "Kingdom of Bahrain",
+  "color": "#509f5c",
+  "cliopatria": {"name":"Kingdom of Bahrain","wikipedia":"Bahrain","wikidata":"Q398","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1973", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[50.4299,25.9365],[50.6487,25.8722],[50.6852,26.258],[50.4602,26.258],[50.4299,25.9365]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[50.4299,25.9365],[50.6487,25.8722],[50.6852,26.258],[50.4602,26.258],[50.4299,25.9365]]]]} }
+  ]
+}

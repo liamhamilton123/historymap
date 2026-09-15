@@ -1,0 +1,11 @@
+{
+  "name": "Barbados",
+  "color": "#739f50",
+  "cliopatria": {"name":"Barbados","wikipedia":"Barbados","wikidata":"Q244","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1967", "to": "2024",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-59.6675,13.336],[-59.5705,13.0146],[-59.3552,13.0789],[-59.3646,13.2075],[-59.4379,13.2075],[-59.5208,13.336],[-59.6675,13.336]]]]} },
+    { "from": "2024", "to": null,
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-59.6675,13.336],[-59.5705,13.0146],[-59.3552,13.0789],[-59.3646,13.2075],[-59.4379,13.2075],[-59.5208,13.336],[-59.6675,13.336]]]]} }
+  ]
+}

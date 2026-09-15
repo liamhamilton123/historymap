@@ -1,0 +1,11 @@
+{
+  "name": "Tangier International Zone",
+  "color": "#709f50",
+  "cliopatria": {"name":"Tangier International Zone","wikipedia":"Tangier International Zone","wikidata":"Q3497642","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1912", "to": "1956",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-5.8721,35.7089],[-5.9405,35.5802],[-5.7128,35.6445],[-5.7217,35.7733],[-5.8766,35.7733],[-5.8721,35.7089]]]]} },
+    { "from": "1956", "to": "1958",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-5.8721,35.7089],[-5.9405,35.5802],[-5.7128,35.6445],[-5.7217,35.7733],[-5.8766,35.7733],[-5.8721,35.7089]]]]} }
+  ]
+}

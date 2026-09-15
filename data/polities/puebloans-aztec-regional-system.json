@@ -1,0 +1,11 @@
+{
+  "name": "Puebloans - Aztec Regional System",
+  "color": "#9f5069",
+  "cliopatria": {"name":"Puebloans - Aztec Regional System","wikipedia":"Ancestral Puebloans","wikidata":"Q478805","seshat":"us_aztec_puebloan","memberOf":null},
+  "features": [
+    { "from": "1152", "to": "1294",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-108.776,36.8625],[-108.203,36.6934],[-107.9771,36.8354],[-108.5373,37.4639],[-108.9801,37.6166],[-109.6342,37.6653],[-109.94,37.4186],[-109.5434,37.2936],[-108.776,36.8625]]]]} },
+    { "from": "1294", "to": "1305",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[-108.776,36.8625],[-108.203,36.6934],[-107.9771,36.8354],[-108.5373,37.4639],[-108.9801,37.6166],[-109.6342,37.6653],[-109.94,37.4186],[-109.5434,37.2936],[-108.776,36.8625]]]]} }
+  ]
+}

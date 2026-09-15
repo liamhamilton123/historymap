@@ -1,0 +1,11 @@
+{
+  "name": "Republic of Amalfi",
+  "color": "#50679f",
+  "cliopatria": {"name":"Republic of Amalfi","wikipedia":"Duchy of Amalfi","wikidata":"Q686312","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "960", "to": "1028",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[14.4971,40.6792],[14.6556,40.6792],[14.657,40.744],[14.4985,40.744],[14.4971,40.6792]]]]} },
+    { "from": "1028", "to": "1034",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[14.4971,40.6792],[14.6556,40.6792],[14.657,40.744],[14.4985,40.744],[14.4971,40.6792]]]]} }
+  ]
+}

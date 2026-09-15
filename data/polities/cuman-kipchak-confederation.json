@@ -1,0 +1,9 @@
+{
+  "name": "Cuman-Kipchak Confederation",
+  "color": "#9f5080",
+  "cliopatria": {"name":"Cuman-Kipchak Confederation","wikipedia":"Cumania","wikidata":"Q1122052","seshat":null,"memberOf":null},
+  "features": [
+    { "from": "1056", "to": "1066",
+      "geometry": {"type":"MultiPolygon","coordinates":[[[[26.3136,48.6542],[26.3273,48.7865],[26.161,48.7865],[26.1407,48.5881],[26.3899,48.5881],[26.3967,48.6542],[26.3136,48.6542]]]]} }
+  ]
+}
