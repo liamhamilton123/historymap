@@ -520,7 +520,17 @@ const countOfKind = (kind) =>
 const unclaimedCount = countOfKind('unclaimed');
 const nonStatePeopleCount = countOfKind('non-state-people');
 
-const claims = features.map((f, index) => {
+/**
+ * Skip the sweep below. It is the slowest thing in the build — every coexisting
+ * pair screened, and every pair that survives the screen intersected — and at
+ * the scale of a full Cliopatria dump it dominates everything else. Set it to
+ * look at the map while the data is still being sorted out; never in a build
+ * whose output is being trusted, because it is what catches a polity drawn on
+ * top of itself.
+ */
+const SKIP_OVERLAP_CHECK = process.env.SKIP_OVERLAP_CHECK === '1';
+
+const claims = SKIP_OVERLAP_CHECK ? [] : features.map((f, index) => {
   const polygons = polygonsOf(f.geometry);
   return {
     // Position in `features`, which the sort below no longer preserves. The
@@ -628,8 +638,10 @@ for (let i = 0; i < claims.length; i++) {
 // how much of the check still costs geometry. It should stay near zero, rising
 // only with the number of inline shapes.
 console.log(
-  `  overlap check: ${coexisting} coexisting pair(s), ${intersected} intersected` +
-    `, ${warnings.length} overlapping claim(s)`,
+  SKIP_OVERLAP_CHECK
+    ? '  overlap check: SKIPPED (SKIP_OVERLAP_CHECK=1)'
+    : `  overlap check: ${coexisting} coexisting pair(s), ${intersected} intersected` +
+      `, ${warnings.length} overlapping claim(s)`,
 );
 for (const note of contested) console.log(`    shared: ${note}`);
 
