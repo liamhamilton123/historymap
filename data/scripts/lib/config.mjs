@@ -31,3 +31,13 @@ export const NATURAL_EARTH_LAYERS = [
  * assembles historical shapes from, keyed by ADM0_A3.
  */
 export const NATURAL_EARTH_PARTS = 'ne_50m_admin_0_countries';
+
+/**
+ * Cliopatria / Seshat Global History Databank: historical polity extents,
+ * CC BY 4.0. Not read by the build — it is the input to the one-off importer,
+ * data/scripts/import-cliopatria.mjs, which writes polity files that are then
+ * committed and read like any other.
+ */
+export const CLIOPATRIA_URL =
+  'https://github.com/Seshat-Global-History-Databank/cliopatria/raw/main/cliopatria.geojson.zip';
+export const CLIOPATRIA_FILE = join(SOURCES_DIR, 'cliopatria', 'cliopatria_polities_only.geojson');

@@ -11,6 +11,7 @@
     "data:fetch": "node data/scripts/fetch-sources.mjs",
     "data:basemap": "node data/scripts/build-basemap.mjs",
     "data:polities": "node data/scripts/build-polities.mjs",
+    "data:import-cliopatria": "node data/scripts/import-cliopatria.mjs",
     "data:build": "npm run data:fetch && npm run data:basemap && npm run data:polities"
   },
   "dependencies": {

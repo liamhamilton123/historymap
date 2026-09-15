@@ -36,6 +36,11 @@ const PRECISION = 1e-4;
  * a modelling mistake. Square degrees; roughly a tenth of a square km.
  */
 const OVERLAP_EPSILON = 1e-5;
+/**
+ * How many overlapping claims are listed before the rest are counted. A bulk
+ * import can produce thousands, and a wall of them buries the build's summary.
+ */
+const WARNING_LIMIT = 20;
 /** Stands in for `to: null` so the runtime filter is a plain numeric compare. */
 const OPEN_ENDED = 9999;
 /** Days elapsed before the 1st of each month; leap years ignored on purpose. */
@@ -83,9 +88,11 @@ const STATUSES = ['controlled', 'disputed', 'contested'];
 const DEFAULT_STATUS = 'controlled';
 const RELATIONSHIPS = ['vassal', 'occupation'];
 /**
- * The one status that may share ground. Every other overlap is a mistake; two
- * spans that are both `contested` are the map saying "these polities each claim
- * this", which is a thing the world does and the model has to be able to say.
+ * The status that shares ground *deliberately*. Two different polities may now
+ * overlap in any case — the check warns rather than fails — but two spans that
+ * are both `contested` are the map saying "these polities each claim this", and
+ * that declaration is what earns the shared stripes, the single label and the
+ * claimant list in the panel.
  */
 const SHARED_STATUS = 'contested';
 
@@ -233,6 +240,12 @@ function areaOf(polygons) {
 }
 
 const problems = [];
+/**
+ * Two different polities on the same ground is a disagreement between sources,
+ * not an authoring mistake, so it is reported and drawn rather than refused —
+ * see the overlap check below. These do not fail the build.
+ */
+const warnings = [];
 const km2 = (sqDeg) => `${(sqDeg * SQ_DEG_TO_SQ_KM).toFixed(0)} km²`;
 
 /**
@@ -551,10 +564,15 @@ for (const spec of specs) {
   console.log(`  ${spec.id}: ${kept} feature(s)`);
 }
 
-// --- the check: no ground may be claimed twice at the same instant ----------
-// One test covers both mistakes. Two polities overlapping is the failure the
-// parts bin exists to prevent; one polity overlapping itself is a duplicated
-// span. It cannot be a comparison of dates alone, because a polity legitimately
+// --- the check: who shares ground at the same instant -----------------------
+// One sweep finds every pair, and what it does with a pair depends on who the
+// two are. A polity overlapping *itself* is a duplicated span, and unclaimed
+// ground someone turns out to hold contradicts the claim the region makes, so
+// both fail the build. Two different polities on the same ground is a
+// disagreement between sources — the world does produce it, and nothing here
+// can tell it from a mistake — so it is warned about and drawn.
+//
+// It cannot be a comparison of dates alone, because a polity legitimately
 // holds several spans at once when they carry different statuses — controlled
 // ground here, disputed ground there.
 //
@@ -662,19 +680,39 @@ for (let i = 0; i < claims.length; i++) {
 
     // Unclaimed ground that someone turns out to hold is the whole point of
     // checking it: the region says nobody was here, and a polity says otherwise.
-    // Exactly one side being unclaimed is the interesting case: the region says
-    // nobody was here and a polity says otherwise. Both sides unclaimed is two
-    // regions overlapping, which the generic message already describes.
+    // Exactly one side being unclaimed is the interesting case. Both sides
+    // unclaimed is two regions overlapping, which the generic message describes.
     const empty = a.props.kind === 'unclaimed' ? a : b.props.kind === 'unclaimed' ? b : null;
     const holder = empty === a ? b : empty === b ? a : null;
-    problems.push(
-      a.props.polity === b.props.polity
-        ? `${a.props.polity} claims ${km2(shared)} twice during ${when}` +
-            ` (spans ${a.props.fromDate} and ${b.props.fromDate})`
-        : empty && holder && holder.props.kind !== 'unclaimed'
+
+    // One polity on its own ground twice is a duplicated span — it says nothing
+    // about the world, so it stays a build failure.
+    if (a.props.polity === b.props.polity) {
+      problems.push(
+        `${a.props.polity} claims ${km2(shared)} twice during ${when}` +
+          ` (spans ${a.props.fromDate} and ${b.props.fromDate})`,
+      );
+      continue;
+    }
+    // Unclaimed ground is a positive statement that nobody held this, so a
+    // holder on it is a contradiction within the map's own data, not two
+    // sources disagreeing. Both sides unclaimed is the same contradiction
+    // twice over: two regions cannot each be the name of one piece of ground.
+    if (empty) {
+      problems.push(
+        holder && holder.props.kind !== 'unclaimed'
           ? `${empty.props.polity} is drawn unclaimed, but ${holder.props.polity}` +
             ` holds ${km2(shared)} of it during ${when}`
-          : `${a.props.polity} and ${b.props.polity} both claim ${km2(shared)} during ${when}`,
+          : `${a.props.polity} and ${b.props.polity} are both drawn unclaimed over` +
+            ` ${km2(shared)} during ${when}`,
+      );
+      continue;
+    }
+    // Two polities on the same ground. Nothing here can tell a mistake from a
+    // genuine dual claim, so it is reported and drawn: the fills stack, and a
+    // click takes whichever is on top.
+    warnings.push(
+      `${a.props.polity} and ${b.props.polity} both claim ${km2(shared)} during ${when}`,
     );
   }
 }
@@ -682,7 +720,8 @@ for (let i = 0; i < claims.length; i++) {
 // how much of the check still costs geometry. It should stay near zero, rising
 // only with the number of inline shapes.
 console.log(
-  `  overlap check: ${coexisting} coexisting pair(s), ${intersected} intersected`,
+  `  overlap check: ${coexisting} coexisting pair(s), ${intersected} intersected` +
+    `, ${warnings.length} overlapping claim(s)`,
 );
 for (const note of contested) console.log(`    shared: ${note}`);
 
@@ -772,6 +811,13 @@ await writeFile(labelsOut, JSON.stringify(labels));
 const hatchesOut = join(OUT_DIR, 'polity-hatches.json');
 await writeFile(hatchesOut, JSON.stringify([...hatches.values()]));
 
+if (warnings.length) {
+  console.log(`\n${warnings.length} overlapping claim(s):`);
+  for (const warning of warnings.slice(0, WARNING_LIMIT)) console.log(`  ~ ${warning}`);
+  if (warnings.length > WARNING_LIMIT) {
+    console.log(`  ~ ... and ${warnings.length - WARNING_LIMIT} more`);
+  }
+}
 if (problems.length) {
   console.log(`\n${problems.length} problem(s):`);
   for (const problem of problems) console.log(`  ! ${problem}`);

@@ -6,6 +6,7 @@
 | `npm run data:basemap` | Simplifies land, lakes and rivers into `public/data/basemap/` vector tiles. |
 | `npm run data:polities` | Builds vector tiles, labels, and hatches from the historical data directories. |
 | `npm run data:build` | All three, in order. |
+| `npm run data:import-cliopatria` | One-off. Rewrites the post-Soviet polity files from Cliopatria — not part of a build. |
 
 ## Coverage
 
@@ -42,12 +43,14 @@ as a primary chronological reference. Its public GeoJSON release is the
 canonical place to inspect its `Name`, `FromYear`, `ToYear`, `Components`, and
 `MemberOf` fields.
 
-**Do not import Cliopatria geometry or copy its full dataset into this
-repository.** Keep the map's geometry authored from its own parts and inline
-shapes, and use Cliopatria to research and verify those entries. The global
-attribution in the information panel and the Source section below are the only
-required citation; do not add per-polity Cliopatria citations unless a user
-specifically asks for them.
+**Most of the map's geometry is authored here**, from its own parts and inline
+shapes, with Cliopatria used to research and verify those entries. One region
+is the exception: the post-Soviet files are generated wholesale — see
+Importing Cliopatria below. Do not copy the full dataset into this repository.
+
+The global attribution in the information panel and the Source section below
+are the only required citation; do not add per-polity Cliopatria citations
+unless a user specifically asks for them.
 
 ### Growth in steps
 
@@ -67,6 +70,36 @@ of it that stays true while the data grows.
 
 Where Cliopatria lets two claims overlap and this map cannot, the span says
 which extent was drawn and what was given up to draw it.
+
+## Importing Cliopatria
+
+`npm run data:import-cliopatria` rewrites the post-Soviet Eurasia files —
+`ussr`, the fifteen successor states, plus `chechnya` and
+`russian-occupied-ukraine` — from the databank's own extents. It is run by
+hand, never as part of a build; what it writes is committed and then read like
+any hand-authored file. `SLICE` at the top of
+`data/scripts/import-cliopatria.mjs` is the whole configuration: which
+Cliopatria `Name`s become which file, under what name and colour.
+
+What the import costs, all of it visible in the generated files:
+
+- **Whole-year dates.** Cliopatria's `ToYear` is inclusive, so a span ends on
+  1 January of the following year — the USSR dissolves on 1992-01-01, not on
+  1991-12-26. Every span says so in its `source`.
+- **Inline geometry, no parts.** These extents are drawn per polity rather than
+  carved from a shared bin, so they cannot use `parts.json` and they overlap
+  their carved neighbours by a sliver along every shared frontier. The importer
+  simplifies everything it writes on one shared topology, which keeps the
+  imported polities aligned *with each other*; the seam against a hand-authored
+  neighbour is the price, and it shows up in the build's overlap warnings.
+- **Real dual claims survive as dual claims.** Cliopatria draws Crimea inside
+  both Russia and Ukraine after 2014. That is now a warning rather than a build
+  failure, which is what makes the import possible at all.
+
+Attribution is not optional here. Cliopatria is CC BY 4.0, so the panel in
+`MapControls.tsx` names it, links the licence, and says the geometry is
+modified — which it is: simplified, clipped to the coastline by the build, and
+re-dated as above.
 
 ## Polities
 
@@ -96,9 +129,11 @@ held in fact but whose claim is rejected — occupation, annexation, unrecognise
 secession — drawn with diagonal stripes over its fill and a dashed outline.
 
 `contested` is the third case: ground **more than one polity claims at once**,
-with no one of them holding it. Where `disputed` has one holder, this has none,
-so it is the one status the overlap check lets share ground — the same shape is
-written once per claimant, in each polity's own file:
+with no one of them holding it. Where `disputed` has one holder, this has none.
+Any two polities may now share ground — see Checks — but `contested` is the
+only way to say the sharing is the point: the same shape is written once per
+claimant, in each polity's own file, and the build draws and names it as one
+disputed place rather than as two territories that happen to coincide.
 
 ```json
 // in two polity files at once, for ground they both claim
@@ -107,7 +142,9 @@ written once per claimant, in each polity's own file:
 
 Nothing currently uses it. Where two states each claim ground and neither holds
 it, the better answer is usually an unclaimed region — see below — which names
-the place rather than making it the joint property of its claimants.
+the place rather than making it the joint property of its claimants. Reach for
+`contested` over a plain overlap when the shared ground should read as one
+named dispute; leave it off when the two territories are simply both drawn.
 
 Contested spans get no fill, because two translucent fills stacked would blend
 into a third colour belonging to neither claimant. Each claimant reads as
@@ -361,9 +398,11 @@ The build exits non-zero on any of:
 
 - a part id that does not exist, or a carve that selects nothing
 - a span that ends before it starts, or one using an unknown `status`
-- **the same ground claimed twice at one instant** — by two polities, which is
-  the failure the parts bin exists to prevent, or by one polity, which means a
+- **one polity claiming the same ground twice at one instant**, which means a
   duplicated span
+- **unclaimed ground that some polity turns out to hold** — the region says
+  nobody was here and a polity says otherwise, which is a contradiction inside
+  this map's own data
 - geometry that disappears entirely once specks are dropped
 
 That last check is answered from part ids, not from geometry. Carving already
@@ -383,8 +422,24 @@ It also catches *more* than the geometric version did: two polities claiming the
 same part are now reported even when the ground they share is too small to
 survive simplification, which used to hide the mistake entirely.
 
-The build prints `overlap check: N coexisting pair(s), M intersected`. **M is
-the number to watch** — it is how much of the check still costs geometry, and it
+**Two different polities on the same ground is a warning, not a failure.** The
+world does produce dual claims, sources disagree about them, and nothing in the
+build can tell a genuine one from an authoring slip — so the pair is listed and
+then drawn. Overlapping fills stack and blend, and a click takes whichever is
+drawn on top. Both the self-overlap and the unclaimed contradictions above stay
+hard errors, because neither says anything about the world: one is a duplicated
+span and the other is the map contradicting itself.
+
+`contested` still exists for a dual claim you want *drawn as one* — striped in
+each claimant's colour, named once, with the panel listing every claimant.
+A plain overlap gets none of that; it is two ordinary territories that happen
+to share ground. Warnings are listed up to `WARNING_LIMIT` in
+`build-polities.mjs` and counted after that, so a bulk import cannot bury the
+summary.
+
+The build prints
+`overlap check: N coexisting pair(s), M intersected, W overlapping claim(s)`.
+**M is the number to watch** — it is how much of the check still costs geometry, and it
 should stay near zero, rising only with the number of inline shapes.
 
 ## Source
@@ -395,6 +450,9 @@ should stay near zero, rising only with the number of inline shapes.
 Each feature is tagged with a `kind` (`land`, `lake`, `river`) so the map style
 can drive all three from one source.
 
-[Cliopatria / Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria)
-is used as a historical reference when researching and checking the authored
-polity data; its geometries are not imported into this map.
+[Cliopatria / Seshat Global History Databank](https://github.com/Seshat-Global-History-Databank/cliopatria),
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Used as a historical
+reference when researching and checking the authored polity data, and imported
+directly for the post-Soviet region — see Importing Cliopatria above. The
+release is downloaded by `npm run data:fetch` into `data/sources/cliopatria/`
+(gitignored), which only the importer reads.

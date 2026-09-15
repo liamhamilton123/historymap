@@ -65,7 +65,7 @@ export default function MapControls({ onZoomIn, onZoomOut, canZoomIn }: MapContr
       <div className="relative mt-2 flex justify-center border-t border-ink/12 pt-2">
         {showAttribution && (
           <div className="absolute top-0 right-[calc(100%+10px)] w-52 rounded-lg border border-ink/12 bg-panel px-3 py-2 text-xs leading-relaxed text-ink-dim shadow-panel">
-            Map rendering by <a href="https://maplibre.org/" target="_blank" rel="noreferrer">MapLibre</a>. Physical data © <a href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">Natural Earth</a>.
+            Map rendering by <a href="https://maplibre.org/" target="_blank" rel="noreferrer">MapLibre</a>. Physical data © <a href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">Natural Earth</a>. Some historical boundaries from <a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noreferrer">Cliopatria / Seshat</a>, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>, modified.
           </div>
         )}
         <button
