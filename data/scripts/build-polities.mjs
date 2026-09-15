@@ -6,6 +6,7 @@
 // once rather than once per span — see the write step at the bottom.
 import { readFile, writeFile, mkdir, readdir, rm } from 'node:fs/promises';
 import { join, basename } from 'node:path';
+import { createHash } from 'node:crypto';
 import polygonClipping from 'polygon-clipping';
 import polylabel from 'polylabel';
 import { topology } from 'topojson-server';
@@ -194,13 +195,16 @@ async function roundPolygons(polygons, passes, minEdge) {
 
 /** Keep an authored extent on dry land without otherwise changing its edge. */
 async function clipPolygonsToLand(polygons) {
-  const { land, lakes } = await coastline();
+  const { land, lakes } = await coastlineGrid();
   const bounds = bboxOf(polygons);
   // Only the coast nearby can matter, and intersecting against every landmass
   // on earth to find that out is the slow way round.
-  const dry = polygonClipping.intersection(polygons, nearBounds(land, bounds));
-  const near = nearBounds(lakes, bounds);
-  return near.length ? polygonClipping.difference(dry, near) : dry;
+  const nearLand = cellsCovering(land, bounds);
+  if (!nearLand.length) return [];
+  const dry = polygonClipping.intersection(polygons, nearLand);
+  if (!dry.length) return dry;
+  const nearLakes = cellsCovering(lakes, bounds);
+  return nearLakes.length ? polygonClipping.difference(dry, nearLakes) : dry;
 }
 
 /** [w, s, e, n] of a list of polygons. */
@@ -232,6 +236,19 @@ function areaOf(polygons) {
     });
   }
   return total;
+}
+
+/**
+ * Stage timing, printed as the build goes rather than collected at the end.
+ * This build runs for minutes on the full Cliopatria import, and a run that
+ * prints nothing until it finishes cannot be told from one that has hung.
+ */
+const started = Date.now();
+let stageStarted = started;
+function stage(what) {
+  const now = Date.now();
+  process.stdout.write(`  ${((now - stageStarted) / 1000).toFixed(1)}s  ${what}\n`);
+  stageStarted = now;
 }
 
 const problems = [];
@@ -272,13 +289,74 @@ async function coastline() {
   return physical;
 }
 
-/** The polygons of `set` whose bounds come within a degree of `bounds`. */
-function nearBounds(set, bounds) {
-  const [w, s, e, n] = bounds;
-  return set.filter((polygon) => {
-    const [pw, ps, pe, pn] = bboxOf([polygon]);
-    return !(pe < w - 1 || pw > e + 1 || pn < s - 1 || ps > n + 1);
-  });
+/**
+ * The coastline, pre-cut into a grid of cells, in degrees per side.
+ *
+ * Clipping an authored shape to the coast is by far the most expensive thing
+ * this build does, and the cost is not the shape: the median span is 76
+ * vertices, while the Eurasian landmass it gets intersected against is a
+ * single ring of 10,297. Feeding that whole ring to the clipper 12,000 times
+ * is what the minutes went into.
+ *
+ * So the land and the lakes are cut up once, along a fixed grid, and a shape
+ * is clipped against the handful of cells its bounds cover. The result is
+ * identical — a piece of land outside a shape's bounding box cannot intersect
+ * that shape, so leaving it out changes nothing — and the operand shrinks from
+ * a continent to a neighbourhood.
+ *
+ * The cell size trades the one-off cutting against the per-shape saving. Ten
+ * degrees cuts the coastline in about 20 seconds and is where the saving stops
+ * growing fast; five costs four times as much to build for no better clipping.
+ */
+const COASTLINE_CELL = 10;
+
+const cellKey = (i, j) => `${i}:${j}`;
+const cellRange = (low, high, size) => {
+  const out = [];
+  for (let k = Math.floor(low / size); k <= Math.floor(high / size); k++) out.push(k);
+  return out;
+};
+
+/** Cut one set of polygons into a grid, keyed by cell. */
+function cropToGrid(polygons) {
+  const grid = new Map();
+  for (const polygon of polygons) {
+    const [w, s, e, n] = bboxOf([polygon]);
+    for (const i of cellRange(w, e, COASTLINE_CELL)) {
+      for (const j of cellRange(s, n, COASTLINE_CELL)) {
+        const [cw, cs] = [i * COASTLINE_CELL, j * COASTLINE_CELL];
+        const [ce, cn] = [cw + COASTLINE_CELL, cs + COASTLINE_CELL];
+        const cell = [[[cw, cs], [ce, cs], [ce, cn], [cw, cn], [cw, cs]]];
+        const piece = polygonClipping.intersection([polygon], [cell]);
+        if (!piece.length) continue;
+        const key = cellKey(i, j);
+        const list = grid.get(key);
+        if (list) list.push(...piece);
+        else grid.set(key, [...piece]);
+      }
+    }
+  }
+  return grid;
+}
+
+let gridded = null;
+async function coastlineGrid() {
+  if (gridded) return gridded;
+  const { land, lakes } = await coastline();
+  gridded = { land: cropToGrid(land), lakes: cropToGrid(lakes) };
+  return gridded;
+}
+
+/** The cropped coastline covering `bounds`. */
+function cellsCovering(grid, [w, s, e, n]) {
+  const out = [];
+  for (const i of cellRange(w, e, COASTLINE_CELL)) {
+    for (const j of cellRange(s, n, COASTLINE_CELL)) {
+      const list = grid.get(cellKey(i, j));
+      if (list) out.push(...list);
+    }
+  }
+  return out;
 }
 
 // --- the shapes -----------------------------------------------------------
@@ -357,26 +435,40 @@ for (const { dir, kind } of SOURCES) {
   }
 }
 
+stage(`read ${specs.length} file(s), ${coastlineTransforms.length} shape(s)`);
+
 // Transformed here rather than inside the walk above: one read of the coastline
 // serves all of them, and nothing has consumed the shapes yet.
+// Cliopatria repeats an extent across the years it did not change, so a sixth
+// of the spans are drawn on a shape some other span already carries. Clipping
+// is by far the most expensive step here and depends on nothing but the shape,
+// so each distinct one is clipped once and the result shared.
+const clipped = new Map();
 for (const { key, shape, rounded } of coastlineTransforms) {
-  shapes.set(
-    key,
-    rounded
+  const identity = `${rounded ? 'r' : 'c'}:${createHash('sha1').update(JSON.stringify(shape)).digest('base64')}`;
+  let result = clipped.get(identity);
+  if (!result) {
+    result = rounded
       ? await roundPolygons(shape, NON_STATE_PEOPLE_ROUNDING, NON_STATE_PEOPLE_MIN_EDGE)
-      : await clipPolygonsToLand(shape),
-  );
+      : await clipPolygonsToLand(shape);
+    clipped.set(identity, result);
+  }
+  shapes.set(key, result);
 }
 
 // --- simplify every shape at once, on a shared topology --------------------
 // One topology, not one per file: a border two polities were drawn to share is
 // a single arc here, simplified once. Simplify them separately and the same
 // border simplifies two ways, leaving a sliver down every frontier.
+stage(`clipped ${clipped.size} distinct shape(s) to the coastline`);
+
 const objects = {};
 for (const id of used) objects[id] = { type: 'MultiPolygon', coordinates: shapes.get(id) };
 const topo = simplify(presimplify(topology(objects)), SIMPLIFY_WEIGHT);
+stage('built and simplified the shared topology');
 const simplified = new Map();
 for (const id of used) simplified.set(id, polygonsOf(topoFeature(topo, topo.objects[id]).geometry));
+stage('read the shapes back off the topology');
 const countVertices = (map) =>
   [...map.values()].reduce((n, polys) => n + polys.reduce((m, p) => m + p.reduce((k, r) => k + r.length, 0), 0), 0);
 const before = countVertices(new Map([...used].map((id) => [id, shapes.get(id)])));
@@ -487,6 +579,8 @@ for (const spec of specs) {
   console.log(`  ${spec.id}: ${kept} feature(s)`);
 }
 
+stage(`assembled ${features.length} feature(s)`);
+
 // --- the check: who shares ground at the same instant -----------------------
 // One sweep finds every pair, and what it does with a pair depends on who the
 // two are. A polity overlapping *itself* is a duplicated span, and unclaimed
@@ -536,6 +630,11 @@ const claims = SKIP_OVERLAP_CHECK ? [] : features.map((f, index) => {
     props: f.properties,
     polygons,
     bbox: bboxOf(polygons),
+    // One box per polygon as well as one around the whole extent. An empire
+    // with possessions on four continents has a bounding box covering most of
+    // the world, which makes it a candidate against everything; its pieces do
+    // not.
+    boxes: polygons.map((polygon) => bboxOf([polygon])),
   };
 });
 // Sorted by start so the sweep below can stop early rather than screening
@@ -571,8 +670,31 @@ for (let i = 0; i < claims.length; i++) {
     // most pairs that coexist in time are nowhere near each other in space —
     // and only what survives that costs an intersection.
     if (bboxesDisjoint(a.bbox, b.bbox)) continue;
+
+    // Then the same screen again, piece by piece, which does two things at
+    // once: it drops the pairs whose extents merely share a bounding box
+    // without either's ground coming near the other, and it hands the clipper
+    // only the pieces that are actually neighbours. Britain's 137 polygons
+    // against France's are one pair of islands, not the pair of empires.
+    // Polygons whose boxes are disjoint cannot intersect, so leaving them out
+    // is exact rather than an approximation.
+    const mine = [];
+    const theirs = new Set();
+    for (let x = 0; x < a.polygons.length; x++) {
+      let near = false;
+      for (let y = 0; y < b.polygons.length; y++) {
+        if (bboxesDisjoint(a.boxes[x], b.boxes[y])) continue;
+        near = true;
+        theirs.add(y);
+      }
+      if (near) mine.push(a.polygons[x]);
+    }
+    if (!mine.length) continue;
+
     intersected++;
-    const shared = areaOf(polygonClipping.intersection(a.polygons, b.polygons));
+    const shared = areaOf(
+      polygonClipping.intersection(mine, [...theirs].map((y) => b.polygons[y])),
+    );
     if (shared <= OVERLAP_EPSILON) continue;
 
     const from = Math.max(a.props.from, b.props.from);
@@ -634,6 +756,7 @@ for (let i = 0; i < claims.length; i++) {
 // Intersections against coexisting pairs is the number worth watching: it says
 // how much of the check still costs geometry. It should stay near zero, rising
 // only with the number of inline shapes.
+stage('ran the overlap check');
 console.log(
   SKIP_OVERLAP_CHECK
     ? '  overlap check: SKIPPED (SKIP_OVERLAP_CHECK=1)'
@@ -641,6 +764,12 @@ console.log(
       `, ${warnings.length} overlapping claim(s)`,
 );
 for (const note of contested) console.log(`    shared: ${note}`);
+
+// The check is done with, and what it held is the second-largest thing in the
+// build: one entry per feature carrying its polygons and a box per polygon.
+// Releasing it here matters because the tile pyramid below indexes every
+// feature at every zoom, and the two peaks would otherwise be alive at once.
+claims.length = 0;
 
 // --- who is drawn which way on shared ground -------------------------------
 // A contested feature needs stripes that read through the other claimant's, so
@@ -687,7 +816,17 @@ const labels = features.flatMap((f) => {
   // would stack two identical names on the same anchor.
   if (f.properties.claim > 0) return [];
   const polygons = polygonsOf(f.geometry);
-  const largest = polygons.reduce((a, b) => (areaOf([a]) >= areaOf([b]) ? a : b));
+  // Measured once each rather than re-measuring the running winner every step;
+  // an empire with 137 pieces was costing 272 area sums to find its biggest.
+  let largest = polygons[0];
+  let largestArea = -Infinity;
+  for (const polygon of polygons) {
+    const size = areaOf([polygon]);
+    if (size > largestArea) {
+      largestArea = size;
+      largest = polygon;
+    }
+  }
   const [lng, lat] = polylabel(largest, LABEL_PRECISION);
   const extent = Math.sqrt(areaOf(polygons));
   const text = f.properties.label ?? f.properties.name;
@@ -718,6 +857,7 @@ const tileResult = await writeVectorTiles(
   join(OUT_DIR, 'polities'),
   'polities',
 );
+stage(`wrote ${tileResult.tiles} vector tile(s)`);
 // The client no longer consumes the monolithic TopoJSON source.
 await rm(join(OUT_DIR, 'polities.topojson'), { force: true });
 const labelsOut = join(OUT_DIR, 'polity-labels.json');
@@ -748,4 +888,5 @@ console.log(
     `\npolity-labels.json · ${labels.length} labels · ${(labelSize / 1024).toFixed(1)} KB` +
     `\npolity-hatches.json · ${hatches.size} contested stripe pattern(s)`,
 );
+console.log(`\ntotal ${((Date.now() - started) / 1000).toFixed(1)}s`);
 if (problems.length) process.exitCode = 1;
